@@ -1,0 +1,66 @@
+:root {
+  /* ============ FONTS (two-voice system) ============ */
+  /* Display = Oswald (condensed headlines). Sans = Roboto Condensed (UI/body). */
+  --font-display: "Oswald", "Arial Narrow", system-ui, sans-serif;
+  --font-sans: "Roboto Condensed", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Font sizes — modular scale (1.25), not random numbers */
+  --text-xs:   0.8rem;     /* 12.8px */
+  --text-sm:   0.9rem;     /* 14.4px */
+  --text-base: 1rem;       /* 16px   base */
+  --text-lg:   1.25rem;    /* 20px   */
+  --text-xl:   1.563rem;   /* 25px   */
+  --text-2xl:  1.953rem;   /* 31px   */
+  --text-3xl:  2.441rem;   /* 39px   */
+  --text-4xl:  3.052rem;   /* 49px   */
+  --text-5xl:  3.815rem;   /* 61px   */
+  --text-6xl:  5.96rem;    /* 95px   editorial hero */
+
+  /* Weight */
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold:   700;
+
+  /* Line height */
+  --leading-tight:  1.08;
+  --leading-snug:   1.25;
+  --leading-normal: 1.6;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-wide:   0.2em;
+
+  /* ============ COLORS (dark editorial — client palette) ============ */
+  --color-bg:        #0B0F14;   /* near-black, cool — canvas */
+  --color-surface:   #131820;   /* raised panels (between bg and slate) */
+  --color-surface-2: #1F2933;   /* inputs, hover surfaces — slate */
+  --color-text:      #f5f5f5;   /* primary text */
+  --color-text-soft: #9aa3ad;   /* secondary text — cool grey */
+  --color-accent:    #C9A227;   /* gold — used sparingly */
+  --color-accent-hover: #E6CF7A;/* champagne highlight */
+  --color-accent-deep: #4B3B2B; /* warm brown — deep accent / dividers */
+  --color-border:    #243038;   /* hairline on slate */
+  --color-overlay:   rgba(11, 15, 20, 0.5);   /* image scrim */
+  --color-overlay-strong: rgba(11, 15, 20, 0.74);
+
+  /* ============ SPACING (4px scale) ============ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-8: 5rem;
+  --space-10: 8rem;
+
+  /* ============ MISC ============ */
+  --radius:    4px;
+  --radius-lg: 10px;
+  --max-width: 1280px;
+  --shadow:    0 10px 30px rgba(0, 0, 0, 0.45);
+  --transition: 0.25s ease;
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --header-h: 84px;
+}

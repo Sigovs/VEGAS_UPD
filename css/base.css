@@ -1,0 +1,96 @@
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-normal);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* Headings use the Oswald display face — uppercase for a motorsport cadence */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-2xl); }
+
+/* Small headings / labels stay in the sans voice */
+h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+p { font-size: var(--text-base); color: var(--color-text-soft); }
+
+/* Display heading — oversized hero type */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-6xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+/* Uppercase tracked label — eyebrow above headings */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Lead paragraph — larger intro copy */
+.lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: var(--color-text-soft);
+  max-width: 52ch;
+}
+
+/* Section heading helper */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  max-width: 60ch;
+}
+
+/* Quiet editorial link with growing underline */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text);
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--transition), color var(--transition);
+  padding-bottom: var(--space-1);
+}
+
+.link:hover {
+  color: var(--color-accent);
+  background-size: 100% 1px;
+}

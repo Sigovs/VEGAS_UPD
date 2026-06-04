@@ -1,0 +1,196 @@
+/* ============================================================
+   LAYOUT — container, sections, grids, hero, editorial rows.
+   Tokens only, no hardcoded values.
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* Wider bleed for editorial bands */
+.container--wide {
+  max-width: 1600px;
+}
+
+/* ============ SECTIONS ============ */
+.section {
+  padding-block: var(--space-10);
+}
+
+.section--tight {
+  padding-block: var(--space-4);
+}
+
+.section--surface {
+  background: var(--color-surface);
+}
+
+/* ============ FLEX ROW ============ */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.row--center  { align-items: center; justify-content: center; }
+.row--between { align-items: center; justify-content: space-between; }
+.row--mt      { margin-top: var(--space-5); }
+
+/* Small spacing utility */
+.mt-3 { margin-top: var(--space-3); }
+
+/* ============ GRID ============ */
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid--auto { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ============ HERO (cinematic, full viewport) ============ */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-block: var(--space-10);
+  overflow: hidden;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Scrim: darken bottom for text legibility */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    var(--color-overlay-strong) 0%,
+    var(--color-overlay) 45%,
+    transparent 100%
+  );
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 64ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+/* ============ EDITORIAL ALTERNATING ROWS ============ */
+.editorial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.editorial + .editorial {
+  margin-top: var(--space-8);
+}
+
+/* Reverse every other row: image on the right */
+.editorial--reverse .editorial__media {
+  order: 2;
+}
+
+.editorial__media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.editorial__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ============ EVENTS LAYOUT ============ */
+.events {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--space-4);
+}
+
+.events__rail {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* ============ SELL LAYOUT ============ */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.split__media {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 960px) {
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .events { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 800px) {
+  .section { padding-block: var(--space-8); }
+
+  .editorial,
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .editorial--reverse .editorial__media { order: 0; }
+}
+
+@media (max-width: 600px) {
+  .grid--2,
+  .grid--3,
+  .grid--4 { grid-template-columns: 1fr; }
+
+  .hero { min-height: 78vh; }
+}

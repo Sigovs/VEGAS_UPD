@@ -1,0 +1,113 @@
+/* ============================================================
+   CSS RESET — современный сброс браузерных стилей.
+   Подключается ПЕРВЫМ, до tokens.css. Переменные используются
+   только там, где значение действительно завязано на дизайн-систему
+   (цвета, фокус, скругления). Структурный сброс — без переменных.
+   ============================================================ */
+
+/* Box model: всё считаем по border-box */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Сброс отступов у блочных элементов */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Корень: плавная прокрутка к якорям + базовый размер для rem */
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Тело: занимает минимум всю высоту, сглаживание шрифтов */
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Заголовки и абзацы не должны переносить слова уродливо */
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+/* Медиа: блочные, не вылезают за контейнер */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Формы наследуют типографику, а не используют браузерную */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Кнопки и интерактив — указатель и без лишних рамок */
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Ссылки: убираем подчёркивание по умолчанию, цвет — из токенов */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Списки без маркеров по умолчанию (декоративные навигации и т.п.) */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Таблицы */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Единый, доступный фокус — через токен основного цвета */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Уважаем настройку «уменьшить движение» */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

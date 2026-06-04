@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vegas Auto Gallery — Where Automotive Passion Meets Luxury</title>
+  <meta name="description" content="Curated exotic, luxury, and collector vehicles in Las Vegas. A boutique automotive lifestyle destination.">
+
+  <!-- Fonts: Oswald (display/headings) + Roboto Condensed (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (order: reset → tokens → base → layout → components) -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" data-header>
+    <div class="container container--wide row--between">
+      <a href="#" class="logo">Vegas Auto Gallery</a>
+
+      <button class="btn btn--secondary nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+
+      <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+        <ul role="list" class="nav__list">
+          <li>
+            <a href="#inventory" class="nav__link" data-mega-toggle aria-expanded="false" aria-controls="inventory-mega">Inventory</a>
+          </li>
+          <li><a href="#brands" class="nav__link">Brands</a></li>
+          <li><a href="#lotus" class="nav__link">Lotus</a></li>
+          <li><a href="#events" class="nav__link">Events</a></li>
+          <li><a href="#services" class="nav__link">Services</a></li>
+          <li><a href="#sell" class="nav__link">Sell</a></li>
+          <li><a href="#footer" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ INVENTORY MEGA MENU ============ -->
+  <div class="mega" id="inventory-mega" data-mega>
+    <div class="container container--wide">
+      <div class="mega__inner">
+        <a href="#" class="mega__link">Porsche</a>
+        <a href="#" class="mega__link">Ferrari</a>
+        <a href="#" class="mega__link">Lamborghini</a>
+        <a href="#" class="mega__link">McLaren</a>
+        <a href="#" class="mega__link">Bentley</a>
+        <a href="#" class="mega__link">Rolls-Royce</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <video class="hero__media" autoplay muted loop playsinline poster="assets/images/hero.jpg" data-hero-video>
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="container container--wide hero__content">
+      <span class="eyebrow" data-reveal>Las Vegas</span>
+      <h1 class="display" data-reveal>Where Automotive Passion Meets Luxury</h1>
+      <p class="lead" data-reveal>Curated exotic, luxury, and collector vehicles in Las Vegas.</p>
+      <div class="hero__actions" data-reveal>
+        <a href="#inventory" class="btn btn--primary">View Inventory</a>
+        <a href="#sell" class="btn btn--secondary">Sell Your Vehicle</a>
+      </div>
+    </div>
+    <span class="hero__scroll">Scroll</span>
+  </section>
+
+  <!-- ============ FEATURED BRANDS ============ -->
+  <section class="section" id="brands">
+    <div class="container container--wide">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Featured Marques</span>
+        <h2>Brands We Curate</h2>
+      </div>
+
+      <div class="grid grid--3">
+        <a href="#" class="brand-panel" data-reveal>
+          <img class="brand-panel__media" src="assets/images/brand-lotus.jpg" alt="Lotus" loading="lazy">
+          <span class="brand-panel__info">
+            <span class="brand-panel__name">Lotus</span>
+            <span class="brand-panel__tag">Performance Reimagined</span>
+          </span>
+        </a>
+        <a href="#" class="brand-panel" data-reveal>
+          <img class="brand-panel__media" src="assets/images/brand-czinger.jpg" alt="Czinger" loading="lazy">
+          <span class="brand-panel__info">
+            <span class="brand-panel__name">Czinger</span>
+            <span class="brand-panel__tag">The Future of Hypercars</span>
+          </span>
+        </a>
+        <a href="#" class="brand-panel" data-reveal>
+          <img class="brand-panel__media" src="assets/images/brand-hennessey.jpg" alt="Hennessey" loading="lazy">
+          <span class="brand-panel__info">
+            <span class="brand-panel__name">Hennessey</span>
+            <span class="brand-panel__tag">American Performance Without Limits</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOTUS BRAND SHOWCASE ============ -->
+  <section class="section lotus" id="lotus">
+    <div class="container container--wide">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Lotus · Official Showcase</span>
+        <h2>Performance Reimagined</h2>
+        <p class="lead">Four expressions of electric and combustion performance. Select a model to explore.</p>
+      </div>
+
+      <div class="lotus-showcase" data-lotus>
+        <!-- Control bar: model tabs + arrows + counter -->
+        <div class="lotus-bar" data-reveal>
+          <div class="lotus-tabs" role="tablist" aria-label="Lotus models">
+            <button class="lotus-tab is-active" role="tab" aria-selected="true" data-lotus-tab="0">Emeya</button>
+            <button class="lotus-tab" role="tab" aria-selected="false" data-lotus-tab="1">Eletre</button>
+            <button class="lotus-tab" role="tab" aria-selected="false" data-lotus-tab="2">Emira</button>
+            <button class="lotus-tab" role="tab" aria-selected="false" data-lotus-tab="3">Evija</button>
+          </div>
+          <div class="lotus-nav">
+            <span class="lotus-counter"><span data-lotus-current>01</span> / 04</span>
+            <button class="lotus-arrow" data-lotus-prev aria-label="Previous model">&#8249;</button>
+            <button class="lotus-arrow" data-lotus-next aria-label="Next model">&#8250;</button>
+          </div>
+        </div>
+
+        <!-- Sliding viewport -->
+        <div class="lotus-viewport">
+          <div class="lotus-track" data-lotus-track>
+            <article class="lotus-panel" role="tabpanel" aria-label="Lotus Emeya">
+              <img class="lotus-panel__media" src="assets/images/lotus-emeya.jpg" alt="Lotus Emeya" loading="lazy">
+              <div class="lotus-panel__info">
+                <h3 class="lotus-panel__name">Emeya</h3>
+                <p>The electric hyper-GT — grand touring rewritten for the electric age.</p>
+                <div class="lotus-specs">
+                  <div class="spec"><span class="spec__value">905</span><span class="spec__label">Horsepower</span></div>
+                  <div class="spec"><span class="spec__value">2.8s</span><span class="spec__label">0–60 mph</span></div>
+                  <div class="spec"><span class="spec__value">159</span><span class="spec__label">Top Speed (mph)</span></div>
+                </div>
+                <a href="#inventory" class="btn btn--primary">Explore Emeya</a>
+              </div>
+            </article>
+
+            <article class="lotus-panel" role="tabpanel" aria-label="Lotus Eletre">
+              <img class="lotus-panel__media" src="assets/images/lotus-eletre.jpg" alt="Lotus Eletre" loading="lazy">
+              <div class="lotus-panel__info">
+                <h3 class="lotus-panel__name">Eletre</h3>
+                <p>The Hyper-SUV — space, presence, and supercar performance.</p>
+                <div class="lotus-specs">
+                  <div class="spec"><span class="spec__value">905</span><span class="spec__label">Horsepower</span></div>
+                  <div class="spec"><span class="spec__value">2.9s</span><span class="spec__label">0–60 mph</span></div>
+                  <div class="spec"><span class="spec__value">373</span><span class="spec__label">Range (mi)</span></div>
+                </div>
+                <a href="#inventory" class="btn btn--primary">Explore Eletre</a>
+              </div>
+            </article>
+
+            <article class="lotus-panel" role="tabpanel" aria-label="Lotus Emira">
+              <img class="lotus-panel__media" src="assets/images/lotus-emira.jpg" alt="Lotus Emira" loading="lazy">
+              <div class="lotus-panel__info">
+                <h3 class="lotus-panel__name">Emira</h3>
+                <p>The final combustion Lotus — pure, mid-engined driver's sports car.</p>
+                <div class="lotus-specs">
+                  <div class="spec"><span class="spec__value">400</span><span class="spec__label">Horsepower</span></div>
+                  <div class="spec"><span class="spec__value">4.2s</span><span class="spec__label">0–60 mph</span></div>
+                  <div class="spec"><span class="spec__value">180</span><span class="spec__label">Top Speed (mph)</span></div>
+                </div>
+                <a href="#inventory" class="btn btn--primary">Explore Emira</a>
+              </div>
+            </article>
+
+            <article class="lotus-panel" role="tabpanel" aria-label="Lotus Evija">
+              <img class="lotus-panel__media" src="assets/images/lotus-evija.jpg" alt="Lotus Evija" loading="lazy">
+              <div class="lotus-panel__info">
+                <h3 class="lotus-panel__name">Evija</h3>
+                <p>The all-electric hypercar — limited, uncompromising, otherworldly.</p>
+                <div class="lotus-specs">
+                  <div class="spec"><span class="spec__value">2000</span><span class="spec__label">Horsepower</span></div>
+                  <div class="spec"><span class="spec__value">&lt;3.0s</span><span class="spec__label">0–60 mph</span></div>
+                  <div class="spec"><span class="spec__value">217</span><span class="spec__label">Top Speed (mph)</span></div>
+                </div>
+                <a href="#inventory" class="btn btn--primary">Explore Evija</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INVENTORY ENTRY ============ -->
+  <section class="section section--surface" id="inventory">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">The Collection</span>
+        <h2>Explore the Collection</h2>
+        <p class="lead">New and pre-owned, unified. Browse by marque — only what's currently available, presented the way it deserves.</p>
+      </div>
+
+      <form class="search-bar" data-search data-reveal>
+        <select name="make" aria-label="Make">
+          <option value="">Make</option>
+          <option>Porsche</option>
+          <option>Ferrari</option>
+          <option>Lamborghini</option>
+          <option>McLaren</option>
+          <option>Bentley</option>
+          <option>Rolls-Royce</option>
+        </select>
+        <select name="model" aria-label="Model">
+          <option value="">Model</option>
+          <option>911</option>
+          <option>SF90</option>
+          <option>Huracán</option>
+          <option>720S</option>
+        </select>
+        <select name="year" aria-label="Year">
+          <option value="">Year</option>
+          <option>2026</option>
+          <option>2025</option>
+          <option>2024</option>
+        </select>
+        <button type="submit" class="btn btn--primary">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ EVENTS & LIFESTYLE ============ -->
+  <section class="section" id="events">
+    <div class="container container--wide">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Beyond the Showroom</span>
+        <h2>Events &amp; Lifestyle</h2>
+        <p class="lead">Rallies, track days, launches, and Cars &amp; Coffee. More than a gallery — a community.</p>
+      </div>
+
+      <div class="events">
+        <a href="#" class="feature feature--lg" data-reveal>
+          <img class="feature__media" src="assets/images/events-feature.jpg" alt="Rally participation" loading="lazy">
+          <span class="feature__title">The Annual Vegas Rally</span>
+        </a>
+        <div class="events__rail">
+          <a href="#" class="feature" data-reveal>
+            <img class="feature__media" src="assets/images/event-1.jpg" alt="Track day" loading="lazy">
+            <span class="feature__title">Track Days</span>
+          </a>
+          <a href="#" class="feature" data-reveal>
+            <img class="feature__media" src="assets/images/event-2.jpg" alt="Cars and Coffee" loading="lazy">
+            <span class="feature__title">Cars &amp; Coffee</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SELL YOUR VEHICLE ============ -->
+  <section class="section section--surface" id="sell">
+    <div class="container container--wide">
+      <div class="split">
+        <img class="split__media" src="assets/images/sell.jpg" alt="Sell your exotic vehicle" loading="lazy" data-reveal>
+        <div class="editorial__text" data-reveal>
+          <span class="eyebrow">Acquisition</span>
+          <h2>Looking To Sell Your Exotic Vehicle?</h2>
+          <ul class="value-list">
+            <li>Consignment</li>
+            <li>Direct Purchase</li>
+            <li>Nationwide Transportation</li>
+            <li>Fast Evaluation</li>
+          </ul>
+          <div class="row row--mt">
+            <a href="#footer" class="btn btn--primary">Get An Offer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Ownership, Elevated</span>
+        <h2>Services</h2>
+      </div>
+
+      <div class="grid grid--2">
+        <div class="service" data-reveal>
+          <h3 class="service__title">Maintenance</h3>
+          <p>Factory-grade care from specialists who understand exotic and collector machinery.</p>
+        </div>
+        <div class="service" data-reveal>
+          <h3 class="service__title">Performance Upgrades</h3>
+          <p>Bespoke performance and personalization, executed to concours standards.</p>
+        </div>
+        <div class="service" data-reveal>
+          <h3 class="service__title">Vehicle Transportation</h3>
+          <p>Enclosed, insured nationwide transport — door to door, discreetly handled.</p>
+        </div>
+        <div class="service" data-reveal>
+          <h3 class="service__title">Concierge</h3>
+          <p>Private-client sourcing, storage, and white-glove support whenever you need it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LUXURY SHOWCASE (editorial) ============ -->
+  <section class="section section--surface" id="showcase">
+    <div class="container container--wide">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Editorial</span>
+        <h2>Exceptional Vehicles. Exceptional Experiences.</h2>
+      </div>
+
+      <div class="editorial" data-reveal>
+        <img class="editorial__media" src="assets/images/editorial-1.jpg" alt="Featured vehicle" loading="lazy">
+        <div class="editorial__text">
+          <h3>Curated, Not Stocked</h3>
+          <p>Every vehicle is selected for provenance, condition, and character — a collection assembled with intent, not volume.</p>
+          <a href="#inventory" class="link">View the Collection</a>
+        </div>
+      </div>
+
+      <div class="editorial editorial--reverse" data-reveal>
+        <img class="editorial__media" src="assets/images/editorial-2.jpg" alt="Private client experience" loading="lazy">
+        <div class="editorial__text">
+          <h3>A Relationship, Not a Transaction</h3>
+          <p>From first conversation to delivery and beyond, our private clients are looked after like family.</p>
+          <a href="#footer" class="link">Become a Client</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="container container--wide">
+      <div class="footer__cols">
+        <div class="footer__col">
+          <a href="#" class="logo">Vegas Auto Gallery</a>
+          <p class="mt-3">A boutique automotive lifestyle destination in Las Vegas.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:7252190524">725-219-0524</a></li>
+            <li><a href="mailto:concierge@vegasautogallery.com">concierge@vegasautogallery.com</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Visit</h4>
+          <ul>
+            <li>Las Vegas, Nevada</li>
+            <li>Mon–Sat · 9am–7pm</li>
+            <li>Sun · By appointment</li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Follow</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Vegas Auto Gallery. All rights reserved.</span>
+        <span>Brand Partners · Lotus · Czinger · Hennessey</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
