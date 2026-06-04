@@ -208,6 +208,18 @@
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- We Buy Cars lead form (stub) ---------- */
+  const buyForm = document.querySelector('[data-buy-form]');
+  if (buyForm) {
+    buyForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(buyForm));
+      // Placeholder: POST this to the acquisition endpoint when ready.
+      console.log('We Buy Cars lead:', data);
+      buyForm.innerHTML = '<p class="form-success">Thank you — our acquisition team will be in touch shortly.</p>';
+    });
+  }
+
   /* ---------- Inventory search (stub) ---------- */
   const search = document.querySelector('[data-search]');
   if (search) {

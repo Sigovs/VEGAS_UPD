@@ -489,6 +489,220 @@
   font-size: var(--text-xs);
 }
 
+/* ============ GOOGLE REVIEWS ============ */
+.reviews-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.reviews-head .section-head { margin-bottom: var(--space-5); }
+
+.rating-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.rating-summary__score {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.rating-summary__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+}
+
+.stars {
+  color: var(--color-accent);
+  letter-spacing: 2px;
+}
+
+.google-g { width: 32px; height: 32px; flex: 0 0 auto; }
+.google-g--sm { width: 20px; height: 20px; }
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.review__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.review__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-6);
+  height: var(--space-6);
+  flex: 0 0 auto;
+  border-radius: 50%;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  color: #fff;
+  background: var(--color-surface-2);
+}
+
+/* Google-style varied avatar colors */
+.review:nth-child(1) .review__avatar { background: #EA4335; }
+.review:nth-child(2) .review__avatar { background: #4285F4; }
+.review:nth-child(3) .review__avatar { background: #34A853; }
+
+.review__id {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.review__name { font-weight: var(--weight-semibold); color: var(--color-text); }
+.review__date { font-size: var(--text-xs); color: var(--color-text-soft); }
+.review__text { color: var(--color-text-soft); }
+
+/* ============ HOW IT WORKS — STEPS ============ */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.step__num {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.step__title {
+  font-size: var(--text-xl);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 700px) {
+  .steps { grid-template-columns: 1fr; gap: var(--space-4); }
+}
+
+/* ============ LEAD FORM (We Buy Cars) ============ */
+.lead-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  max-width: 760px;
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field label {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+.field input {
+  padding: var(--space-3);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.field input::placeholder { color: var(--color-text-soft); opacity: 0.6; }
+.field input:focus-visible { border-color: var(--color-accent); outline: none; }
+
+.lead-form__submit { grid-column: 1 / -1; }
+
+.form-success {
+  grid-column: 1 / -1;
+  padding-block: var(--space-3);
+  color: var(--color-text);
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 560px) {
+  .lead-form { grid-template-columns: 1fr; }
+}
+
+/* ============ INSTAGRAM FEED ============ */
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-2);
+}
+
+.insta-tile {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.insta-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.insta-tile__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-overlay-strong);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.insta-tile__overlay::after {
+  content: "";
+  width: 28px;
+  height: 28px;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23fff'%20stroke-width='2'%3E%3Crect%20x='2'%20y='2'%20width='20'%20height='20'%20rx='5'/%3E%3Ccircle%20cx='12'%20cy='12'%20r='4.5'/%3E%3Ccircle%20cx='17.5'%20cy='6.5'%20r='1'%20fill='%23fff'%20stroke='none'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.insta-tile:hover img { transform: scale(1.08); }
+.insta-tile:hover .insta-tile__overlay { opacity: 1; }
+
+@media (max-width: 900px) { .insta-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .insta-grid { grid-template-columns: repeat(2, 1fr); } }
+
 /* ============ SCROLL REVEAL (JS-driven) ============ */
 [data-reveal] {
   opacity: 0;

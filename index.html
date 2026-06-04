@@ -62,15 +62,17 @@
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
     <video class="hero__media" autoplay muted loop playsinline poster="assets/images/hero.jpg" data-hero-video>
-      <source src="assets/video/hero.mp4" type="video/mp4">
+      <source src="assets/video/herovideo.mp4" type="video/mp4">
     </video>
-    <div class="container container--wide hero__content">
-      <span class="eyebrow" data-reveal>Las Vegas</span>
-      <h1 class="display" data-reveal>Where Automotive Passion Meets Luxury</h1>
-      <p class="lead" data-reveal>Curated exotic, luxury, and collector vehicles in Las Vegas.</p>
-      <div class="hero__actions" data-reveal>
-        <a href="#inventory" class="btn btn--primary">View Inventory</a>
-        <a href="#sell" class="btn btn--secondary">Sell Your Vehicle</a>
+    <div class="container container--wide">
+      <div class="hero__content">
+        <span class="eyebrow" data-reveal>Las Vegas</span>
+        <h1 class="display" data-reveal>Where Automotive Passion<br>Meets Luxury</h1>
+        <p class="lead" data-reveal>Curated exotic, luxury, and collector vehicles in Las Vegas.</p>
+        <div class="hero__actions" data-reveal>
+          <a href="#inventory" class="btn btn--primary">View Inventory</a>
+          <a href="#sell" class="btn btn--secondary">Sell Your Vehicle</a>
+        </div>
       </div>
     </div>
     <span class="hero__scroll">Scroll</span>
@@ -279,10 +281,60 @@
             <li>Fast Evaluation</li>
           </ul>
           <div class="row row--mt">
-            <a href="#footer" class="btn btn--primary">Get An Offer</a>
+            <a href="#buy" class="btn btn--primary">Get An Offer</a>
           </div>
         </div>
       </div>
+
+      <!-- How it works — 3 easy steps -->
+      <div class="steps" data-reveal>
+        <div class="step">
+          <span class="step__num">01</span>
+          <h3 class="step__title">Submit Your Details</h3>
+          <p>Tell us about your vehicle in a couple of minutes — no obligation.</p>
+        </div>
+        <div class="step">
+          <span class="step__num">02</span>
+          <h3 class="step__title">Get An Offer</h3>
+          <p>Our acquisition team responds with a competitive, transparent valuation.</p>
+        </div>
+        <div class="step">
+          <span class="step__num">03</span>
+          <h3 class="step__title">Get Paid</h3>
+          <p>Accept and get paid fast — we handle the paperwork and transport.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WE BUY CARS ============ -->
+  <section class="section" id="buy">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">We Buy Cars</span>
+        <h2>Get An Offer In Minutes</h2>
+        <p class="lead">Tell us about your vehicle and our acquisition team will follow up with a competitive offer.</p>
+      </div>
+
+      <form class="lead-form" data-buy-form data-reveal>
+        <div class="field">
+          <label for="bf-name">Full Name</label>
+          <input id="bf-name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="bf-contact">Phone or Email</label>
+          <input id="bf-contact" name="contact" type="text" placeholder="How we can reach you" required>
+        </div>
+        <div class="field">
+          <label for="bf-vehicle">Year, Make &amp; Model</label>
+          <input id="bf-vehicle" name="vehicle" type="text" placeholder="2023 Lamborghini Huracán" required>
+        </div>
+        <div class="field">
+          <label for="bf-mileage">Mileage</label>
+          <input id="bf-mileage" name="mileage" type="text" placeholder="Approx. miles" inputmode="numeric">
+        </div>
+        <button type="submit" class="btn btn--primary lead-form__submit">Get An Offer</button>
+      </form>
     </div>
   </section>
 
@@ -339,6 +391,133 @@
           <p>From first conversation to delivery and beyond, our private clients are looked after like family.</p>
           <a href="#footer" class="link">Become a Client</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GOOGLE REVIEWS ============ -->
+  <section class="section reviews" id="reviews">
+    <div class="container container--wide">
+      <div class="reviews-head" data-reveal>
+        <div class="section-head">
+          <span class="eyebrow">Client Experiences</span>
+          <h2>What Our Clients Say</h2>
+        </div>
+        <div class="rating-summary">
+          <span class="rating-summary__score">4.9</span>
+          <div class="rating-summary__meta">
+            <span class="stars" aria-label="Rated 4.9 out of 5">★★★★★</span>
+            <span>Based on 287 Google reviews</span>
+          </div>
+          <svg class="google-g" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="review" data-reveal>
+          <div class="review__head">
+            <span class="review__avatar">JM</span>
+            <div class="review__id">
+              <span class="review__name">James Mitchell</span>
+              <span class="review__date">2 weeks ago</span>
+            </div>
+            <svg class="google-g google-g--sm" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+          </div>
+          <span class="stars" aria-label="5 out of 5">★★★★★</span>
+          <p class="review__text">A genuinely white-glove experience from start to finish. They sourced exactly the car I wanted and handled every detail. This is how buying an exotic should feel.</p>
+        </article>
+
+        <article class="review" data-reveal>
+          <div class="review__head">
+            <span class="review__avatar">SR</span>
+            <div class="review__id">
+              <span class="review__name">Sofia Reyes</span>
+              <span class="review__date">1 month ago</span>
+            </div>
+            <svg class="google-g google-g--sm" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+          </div>
+          <span class="stars" aria-label="5 out of 5">★★★★★</span>
+          <p class="review__text">The showroom is stunning and the team treats you like a private client, not a number. They even arranged enclosed transport across the country. Highly recommended.</p>
+        </article>
+
+        <article class="review" data-reveal>
+          <div class="review__head">
+            <span class="review__avatar">DK</span>
+            <div class="review__id">
+              <span class="review__name">Daniel Kovač</span>
+              <span class="review__date">1 month ago</span>
+            </div>
+            <svg class="google-g google-g--sm" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+          </div>
+          <span class="stars" aria-label="5 out of 5">★★★★★</span>
+          <p class="review__text">Bought and sold here. Fair, fast, and completely transparent on both sides. The concierge service is the real deal — they make ownership effortless.</p>
+        </article>
+      </div>
+
+      <div class="row row--mt" data-reveal>
+        <a href="https://www.google.com/maps" class="link">Read all reviews on Google</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSTAGRAM FEED ============ -->
+  <section class="section section--surface insta" id="instagram">
+    <div class="container container--wide">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Follow Along</span>
+        <h2>@vegasautogallery</h2>
+        <p class="lead">An ongoing reel of arrivals, events, and the machines that pass through our doors.</p>
+      </div>
+
+      <div class="insta-grid">
+        <a href="https://instagram.com/vegasautogallery" class="insta-tile" data-reveal aria-label="View on Instagram">
+          <img src="assets/images/ig-1.jpg" alt="Instagram post" loading="lazy">
+          <span class="insta-tile__overlay"></span>
+        </a>
+        <a href="https://instagram.com/vegasautogallery" class="insta-tile" data-reveal aria-label="View on Instagram">
+          <img src="assets/images/ig-2.jpg" alt="Instagram post" loading="lazy">
+          <span class="insta-tile__overlay"></span>
+        </a>
+        <a href="https://instagram.com/vegasautogallery" class="insta-tile" data-reveal aria-label="View on Instagram">
+          <img src="assets/images/ig-3.jpg" alt="Instagram post" loading="lazy">
+          <span class="insta-tile__overlay"></span>
+        </a>
+        <a href="https://instagram.com/vegasautogallery" class="insta-tile" data-reveal aria-label="View on Instagram">
+          <img src="assets/images/ig-4.jpg" alt="Instagram post" loading="lazy">
+          <span class="insta-tile__overlay"></span>
+        </a>
+        <a href="https://instagram.com/vegasautogallery" class="insta-tile" data-reveal aria-label="View on Instagram">
+          <img src="assets/images/ig-5.jpg" alt="Instagram post" loading="lazy">
+          <span class="insta-tile__overlay"></span>
+        </a>
+        <a href="https://instagram.com/vegasautogallery" class="insta-tile" data-reveal aria-label="View on Instagram">
+          <img src="assets/images/ig-6.jpg" alt="Instagram post" loading="lazy">
+          <span class="insta-tile__overlay"></span>
+        </a>
+      </div>
+
+      <div class="row row--center row--mt" data-reveal>
+        <a href="https://instagram.com/vegasautogallery" class="btn btn--secondary">Follow on Instagram</a>
       </div>
     </div>
   </section>
