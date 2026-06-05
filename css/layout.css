@@ -92,7 +92,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-4);
-  max-width: 64ch;
+  max-width: 820px;
   text-align: left;
 }
 
@@ -101,6 +101,50 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   margin-top: var(--space-2);
+}
+
+/* Rotating hero sets — only the active one is shown */
+.hero__set { display: none; }
+.hero__set.is-active {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+/* Headline broken into individual lines — each forced to stay on one line */
+.display .line {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Staircase reveal — one line at a time, stepping in from the left */
+@keyframes heroStep {
+  from { opacity: 0; transform: translateX(-48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.hero__set.is-active .eyebrow,
+.hero__set.is-active .display .line,
+.hero__set.is-active .lead,
+.hero__set.is-active .hero__actions {
+  opacity: 0;
+  animation: heroStep 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero__set.is-active .eyebrow                    { animation-delay: 0.05s; }
+.hero__set.is-active .display .line:nth-child(1) { animation-delay: 0.18s; }
+.hero__set.is-active .display .line:nth-child(2) { animation-delay: 0.30s; }
+.hero__set.is-active .display .line:nth-child(3) { animation-delay: 0.42s; }
+.hero__set.is-active .display .line:nth-child(4) { animation-delay: 0.54s; }
+.hero__set.is-active .lead                       { animation-delay: 0.66s; }
+.hero__set.is-active .hero__actions              { animation-delay: 0.78s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__set.is-active .eyebrow,
+  .hero__set.is-active .display .line,
+  .hero__set.is-active .lead,
+  .hero__set.is-active .hero__actions { opacity: 1; animation: none; }
 }
 
 .hero__scroll {
@@ -112,6 +156,88 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-text-soft);
+}
+
+/* ============ HERO FEATURED VEHICLE — frosted glass ============ */
+.hero-featured {
+  position: absolute;
+  right: var(--space-5);
+  /* bottom aligned with the hero CTA buttons (hero content bottom padding) */
+  bottom: var(--space-10);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: min(500px, 40vw);
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  box-shadow: var(--shadow);
+}
+
+.hero-featured__media {
+  flex: 0 0 58%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.hero-featured__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.hero-featured:hover .hero-featured__media img { transform: scale(1.05); }
+
+.hero-featured__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2) var(--space-1) 0;
+  flex: 1;
+}
+
+.hero-featured__label {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.hero-featured__name {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: var(--space-1);
+}
+
+.hero-featured__spec {
+  font-size: var(--text-xs);
+  color: var(--color-text);
+}
+
+.hero-featured__spec span {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-soft);
+}
+
+.hero-featured__btn {
+  margin-top: var(--space-2);
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .hero-featured { display: none; }
 }
 
 /* ============ EDITORIAL ALTERNATING ROWS ============ */
@@ -144,16 +270,81 @@
   gap: var(--space-4);
 }
 
-/* ============ EVENTS LAYOUT ============ */
-.events {
+/* ============ EVENTS — editorial magazine spreads (70/30) ============ */
+.ev-feature {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: var(--space-4);
+  grid-template-columns: 5fr 6fr;
+  gap: var(--space-6);
+  align-items: center;
+  --reveal-y: 80px; /* each spread slides further up from below on scroll */
 }
 
-.events__rail {
-  display: grid;
-  gap: var(--space-4);
+/* More breathing room between spreads */
+.ev-feature + .ev-feature { margin-top: var(--space-10); }
+
+/* Reverse row: image on the right, text on the left */
+.ev-feature--reverse { grid-template-columns: 6fr 5fr; }
+.ev-feature--reverse .ev-feature__media { order: 2; }
+
+.ev-feature__media {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 16 / 9;
+}
+
+.ev-feature__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.ev-feature__media:hover img { transform: scale(1.04); }
+
+.ev-feature__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  /* slide in from the right (text sits on the right in default rows) */
+  --reveal-x: 160px;
+  --reveal-y: 0;
+}
+
+/* On reversed rows the text sits on the left, so it slides in from the left */
+.ev-feature--reverse .ev-feature__text { --reveal-x: -160px; }
+
+/* Slower, more cinematic reveal for the event spreads */
+.ev-feature__media[data-reveal],
+.ev-feature__text[data-reveal] {
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Small mono kicker — issue / date line, magazine masthead feel */
+.ev-feature__kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ev-feature__title {
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+}
+
+@media (max-width: 800px) {
+  .ev-feature,
+  .ev-feature--reverse {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .ev-feature--reverse .ev-feature__media { order: 0; }
+  .ev-feature__title { font-size: var(--text-3xl); }
 }
 
 /* ============ SELL LAYOUT ============ */
@@ -187,6 +378,9 @@
   }
 
   .editorial--reverse .editorial__media { order: 0; }
+
+  /* Keep the 4-line hero headline from overflowing small screens */
+  .display { font-size: var(--text-4xl); }
 }
 
 @media (max-width: 600px) {

@@ -18,6 +18,22 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  /* ---------- Hero set rotator (staggered reveal) ---------- */
+  const rotator = document.querySelector('[data-hero-rotator]');
+  if (rotator) {
+    const sets = Array.from(rotator.querySelectorAll('.hero__set'));
+    // Each time a set is shown (display:none -> flex) its children replay the
+    // staircase animation automatically, so we only swap the .is-active class.
+    if (sets.length > 1 && !reduceMotion) {
+      let i = 0;
+      setInterval(() => {
+        sets[i].classList.remove('is-active');
+        i = (i + 1) % sets.length;
+        sets[i].classList.add('is-active');
+      }, 6500);
+    }
+  }
+
   /* ---------- Mobile navigation toggle ---------- */
   const navToggle = document.querySelector('[data-nav-toggle]');
   const nav = document.querySelector('[data-nav]');
@@ -207,6 +223,22 @@
   /* ---------- Auto-update footer year ---------- */
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- Featured inventory: infinite marquee ---------- */
+  const inv = document.querySelector('[data-inv]');
+  if (inv && !reduceMotion) {
+    const track = inv.querySelector('[data-inv-track]');
+    if (track) {
+      // Duplicate the card set once so the -50% CSS loop is seamless.
+      const originals = Array.from(track.children);
+      originals.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('a').forEach((a) => a.setAttribute('tabindex', '-1'));
+        track.appendChild(clone);
+      });
+    }
+  }
 
   /* ---------- We Buy Cars lead form (stub) ---------- */
   const buyForm = document.querySelector('[data-buy-form]');

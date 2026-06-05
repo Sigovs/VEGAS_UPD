@@ -5,32 +5,46 @@
 
 /* ============ BRAND ============ */
 .logo {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto; /* never let the logo shrink/distort in the flex row */
 }
 
-.logo:hover { color: var(--color-accent); }
+.logo__img {
+  height: var(--logo-height);
+  width: auto;
+  max-width: none; /* override the global img max-width:100% reset */
+  display: block;
+  transition: opacity var(--transition);
+}
+
+.logo:hover .logo__img { opacity: 0.8; }
 
 /* ============ HEADER / NAV ============ */
 .site-header {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 100;
-  height: var(--header-h);
   display: flex;
   align-items: center;
+  padding-block: var(--header-pad);
   background: transparent;
   border-bottom: 1px solid transparent;
-  transition: background var(--transition), border-color var(--transition), height var(--transition);
+  transition: background var(--transition), border-color var(--transition), padding var(--transition);
 }
 
-/* Condensed state after scroll (toggled by JS) */
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+/* Logo pushes the nav + call group to the right */
+.site-header__inner .logo { margin-right: auto; }
+
+/* Condensed state after scroll (toggled by JS) — stays roomy */
 .site-header.is-scrolled {
-  height: calc(var(--header-h) - var(--space-3));
+  padding-block: var(--header-pad-sm);
   background: color-mix(in srgb, var(--color-bg) 88%, transparent);
   backdrop-filter: blur(10px);
   border-bottom-color: var(--color-border);
@@ -38,7 +52,7 @@
 
 .nav__list {
   display: flex;
-  gap: var(--space-5);
+  gap: var(--space-4);
   align-items: center;
 }
 
@@ -129,6 +143,24 @@
 
 .btn--secondary { background: transparent; color: var(--color-text); border-color: var(--color-border); }
 .btn--secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* Tertiary — compact, understated ghost button */
+.btn--tertiary {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+.btn--tertiary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* Pill — fully rounded (header CALL button) */
+.btn--pill { border-radius: var(--radius-pill); }
+.nav-call { flex: 0 0 auto; white-space: nowrap; }
+
+@media (max-width: 560px) {
+  .nav-call { display: none; }
+}
 
 /* ============ BRAND PANELS ============ */
 .brand-panel {
@@ -358,6 +390,121 @@
   .lotus-tab { font-size: var(--text-lg); }
 }
 
+/* ============ FEATURED INVENTORY — card carousel (4 per view) ============ */
+.inv { padding-block: var(--space-10); }
+
+.inv__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.inv__head .section-head { margin-bottom: 0; }
+.inv__viewall { flex: 0 0 auto; }
+
+/* Full-bleed, infinite marquee */
+.inv-carousel { position: relative; overflow: hidden; }
+
+.inv-viewport { overflow: hidden; }
+
+.inv-track {
+  display: flex;
+  width: max-content;
+  animation: invScroll 60s linear infinite;
+  will-change: transform;
+}
+
+/* Pause so visitors can read / click a card */
+.inv-carousel:hover .inv-track { animation-play-state: paused; }
+
+/* Seamless loop: each card owns its trailing gap via margin (not flex gap),
+   so two identical halves line up perfectly at -50%. */
+@keyframes invScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ~4–5 cards across with neighbours peeking at both edges */
+.inv-card {
+  flex: 0 0 clamp(260px, 23vw, 360px);
+  margin-right: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.inv-card:hover { transform: translateY(-4px); border-color: var(--color-accent); }
+
+.inv-card__media {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.inv-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.inv-card:hover .inv-card__media img { transform: scale(1.05); }
+
+.inv-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  flex: 1;
+}
+
+.inv-card__brand {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.inv-card__name { font-size: var(--text-lg); }
+
+.inv-card__price {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+}
+
+.inv-card__specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+}
+
+.inv-card__specs span { position: relative; }
+
+.inv-card__specs span:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  right: calc(var(--space-3) / -2);
+  transform: translateX(50%);
+  color: var(--color-border);
+}
+
+.inv-card .link { margin-top: var(--space-3); }
+
+/* Reduced motion: stop the marquee, allow manual horizontal scroll */
+@media (prefers-reduced-motion: reduce) {
+  .inv-track { animation: none; }
+  .inv-viewport { overflow-x: auto; }
+}
+
 /* ============ FEATURE CARD (events / generic) ============ */
 .feature {
   position: relative;
@@ -396,6 +543,67 @@
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   color: var(--color-text);
+}
+
+/* ============ OWNERSHIP JOURNEY ============ */
+.journey {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.journey__intro {
+  position: sticky;
+  top: calc(var(--header-pad) + var(--logo-height) + var(--space-4));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.journey__intro .btn { margin-top: var(--space-2); }
+
+.journey__steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-5);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.journey-step:last-child { border-bottom: 1px solid var(--color-border); }
+
+.journey-step__num {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-5xl);
+  line-height: 0.9;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.journey-step__title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+}
+
+.journey-step__body p { color: var(--color-text-soft); }
+
+@media (max-width: 800px) {
+  .journey {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .journey__intro { position: static; }
+  .journey-step { gap: var(--space-4); }
+  .journey-step__num { font-size: var(--text-4xl); }
 }
 
 /* ============ SERVICE ITEM ============ */
@@ -706,7 +914,7 @@
 /* ============ SCROLL REVEAL (JS-driven) ============ */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translate(var(--reveal-x, 0), var(--reveal-y, 24px));
   transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
@@ -717,55 +925,19 @@
 
 /* ============ MOBILE NAV + MEGA ============ */
 @media (max-width: 900px) {
-  .nav-toggle {
-    display: inline-flex;
-    z-index: 110;
-  }
+  /* Nav drops to its own full-width line and wraps — no toggle needed */
+  .site-header__inner { flex-wrap: wrap; row-gap: var(--space-3); }
 
   .nav {
-    position: fixed;
-    inset: 0;
-    z-index: 105;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--space-8) var(--space-4);
-    background: var(--color-bg);
+    order: 3;
+    flex-basis: 100%;
   }
-
-  .nav.is-open { display: flex; }
 
   .nav__list {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-5);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3) var(--space-4);
   }
-
-  .nav__link { font-size: var(--text-2xl); font-family: var(--font-display); }
-
-  /* Mega menu becomes an inline accordion under its trigger */
-  .mega {
-    position: static;
-    inset: auto;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    background: transparent;
-    border: 0;
-    backdrop-filter: none;
-    display: none;
-    padding-left: var(--space-3);
-  }
-
-  .mega.is-open { display: block; }
-
-  .mega__inner {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-    padding-block: var(--space-4) 0;
-  }
-
-  .mega__link { font-size: var(--text-lg); }
 
   .footer__cols { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
 }

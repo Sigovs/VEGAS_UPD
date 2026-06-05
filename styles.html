@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Vegas Auto Gallery</title>
+
+  <!-- Fonts: Oswald (display) + Roboto Condensed (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Same system as the site, plus guide-only helpers -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/styleguide.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="sg-header">
+    <div class="container">
+      <span class="eyebrow">Vegas Auto Gallery</span>
+      <h1>Design System</h1>
+      <p class="lead">A living reference for colors, typography, spacing, and components. Everything here pulls from the same CSS the site uses — <a href="index.html" class="link">view the homepage</a>.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ============ COLORS ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Foundations</span>
+      <h2>Colors</h2>
+
+      <div class="sg-swatches">
+        <div class="swatch">
+          <div class="swatch__chip chip-bg"></div>
+          <div class="swatch__meta"><span class="swatch__name">Background</span><span class="swatch__val">--color-bg · #0B0F14</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-surface"></div>
+          <div class="swatch__meta"><span class="swatch__name">Surface</span><span class="swatch__val">--color-surface · #131820</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-surface-2"></div>
+          <div class="swatch__meta"><span class="swatch__name">Surface 2</span><span class="swatch__val">--color-surface-2 · #1F2933</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-text"></div>
+          <div class="swatch__meta"><span class="swatch__name">Text</span><span class="swatch__val">--color-text · #F5F5F5</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-text-soft"></div>
+          <div class="swatch__meta"><span class="swatch__name">Text Soft</span><span class="swatch__val">--color-text-soft · #9AA3AD</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-accent"></div>
+          <div class="swatch__meta"><span class="swatch__name">Accent (Gold)</span><span class="swatch__val">--color-accent · #C9A227</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-accent-hover"></div>
+          <div class="swatch__meta"><span class="swatch__name">Accent Hover</span><span class="swatch__val">--color-accent-hover · #E6CF7A</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-accent-deep"></div>
+          <div class="swatch__meta"><span class="swatch__name">Accent Deep</span><span class="swatch__val">--color-accent-deep · #4B3B2B</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-border"></div>
+          <div class="swatch__meta"><span class="swatch__name">Border</span><span class="swatch__val">--color-border · #243038</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TYPOGRAPHY ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Foundations</span>
+      <h2>Typography</h2>
+
+      <p class="sg-subtitle">Font families</p>
+      <div class="sg-row">
+        <div class="card">
+          <span class="card__title">Oswald</span>
+          <span class="card__body">Display / headings · --font-display</span>
+        </div>
+        <div class="card">
+          <span class="card__title font-sans">Roboto Condensed</span>
+          <span class="card__body">UI / body · --font-sans</span>
+        </div>
+      </div>
+
+      <p class="sg-subtitle">Type scale</p>
+      <div class="type-row"><span class="type-label">--text-6xl · 95px</span><span class="type-sample display t-6xl">Aa</span></div>
+      <div class="type-row"><span class="type-label">--text-5xl · 61px</span><span class="type-sample t-5xl">Heading 5xl</span></div>
+      <div class="type-row"><span class="type-label">--text-4xl · 49px</span><span class="type-sample t-4xl">Heading 4xl</span></div>
+      <div class="type-row"><span class="type-label">--text-3xl · 39px</span><span class="type-sample t-3xl">Heading 3xl</span></div>
+      <div class="type-row"><span class="type-label">--text-2xl · 31px</span><span class="type-sample t-2xl">Heading 2xl</span></div>
+      <div class="type-row"><span class="type-label">--text-xl · 25px</span><span class="type-sample t-xl">Heading xl</span></div>
+      <div class="type-row"><span class="type-label">--text-lg · 20px</span><span class="type-sample t-lg">Large body</span></div>
+      <div class="type-row"><span class="type-label">--text-base · 16px</span><span class="type-sample t-base">Base body text</span></div>
+      <div class="type-row"><span class="type-label">--text-sm · 14px</span><span class="type-sample t-sm">Small text</span></div>
+      <div class="type-row"><span class="type-label">--text-xs · 13px</span><span class="type-sample t-xs">Extra small / labels</span></div>
+
+      <p class="sg-subtitle">Heading & text styles</p>
+      <div class="type-row"><span class="type-label">.display · Oswald Bold · 95px · 0.005em</span><span class="display">Display</span></div>
+      <div class="type-row"><span class="type-label">h1 · Oswald Medium · 61px · 0.01em</span><h1>Heading 1</h1></div>
+      <div class="type-row"><span class="type-label">h2 · Oswald Medium · 49px · 0.01em</span><h2>Heading 2</h2></div>
+      <div class="type-row"><span class="type-label">h3 · Oswald Medium · 31px · 0.01em</span><h3>Heading 3</h3></div>
+      <div class="type-row"><span class="type-label">h4 · Roboto Condensed SemiBold · 20px · 0.04em</span><h4>Heading 4</h4></div>
+      <div class="type-row"><span class="type-label">.eyebrow · Roboto Condensed Medium · 14px · 0.2em</span><span class="eyebrow">Eyebrow label</span></div>
+      <div class="type-row"><span class="type-label">.lead · Roboto Condensed Regular · 20px · normal</span><p class="lead">Lead paragraph — larger intro copy used at the top of sections.</p></div>
+      <div class="type-row"><span class="type-label">p · Roboto Condensed Regular · 16px · normal</span><p>Body paragraph — the default reading size, soft grey on the dark canvas.</p></div>
+      <div class="type-row"><span class="type-label">.link · Roboto Condensed Medium · 14px · 0.2em</span><a href="#" class="link">Editorial link</a></div>
+      <div class="type-row"><span class="type-label">.btn (CTA) · Roboto Condensed Medium · 14px · 0.2em</span><span class="cta-sample">Get An Offer</span></div>
+    </section>
+
+    <!-- ============ SPACING ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Foundations</span>
+      <h2>Spacing</h2>
+      <p class="sg-subtitle">4px scale — used for padding, gaps, and margins</p>
+
+      <div class="space-row"><span class="space-label">--space-1 · 4px</span><span class="space-bar sp-1"></span></div>
+      <div class="space-row"><span class="space-label">--space-2 · 8px</span><span class="space-bar sp-2"></span></div>
+      <div class="space-row"><span class="space-label">--space-3 · 16px</span><span class="space-bar sp-3"></span></div>
+      <div class="space-row"><span class="space-label">--space-4 · 24px</span><span class="space-bar sp-4"></span></div>
+      <div class="space-row"><span class="space-label">--space-5 · 32px</span><span class="space-bar sp-5"></span></div>
+      <div class="space-row"><span class="space-label">--space-6 · 48px</span><span class="space-bar sp-6"></span></div>
+      <div class="space-row"><span class="space-label">--space-8 · 80px</span><span class="space-bar sp-8"></span></div>
+      <div class="space-row"><span class="space-label">--space-10 · 128px</span><span class="space-bar sp-10"></span></div>
+    </section>
+
+    <!-- ============ RADII / SHADOW ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Foundations</span>
+      <h2>Radius, Shadow &amp; Motion</h2>
+      <div class="sg-demos">
+        <div class="demo-box demo-radius">--radius<br>4px</div>
+        <div class="demo-box demo-radius-lg">--radius-lg<br>10px</div>
+        <div class="demo-box demo-shadow">--shadow</div>
+        <div class="demo-box demo-radius-lg">--transition<br>0.25s ease</div>
+        <div class="demo-box demo-radius-lg">--transition-slow<br>0.6s</div>
+      </div>
+    </section>
+
+    <!-- ============ BUTTONS ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Components</span>
+      <h2>Buttons</h2>
+      <div class="sg-row">
+        <a href="#" class="btn btn--primary">Primary</a>
+        <a href="#" class="btn btn--secondary">Secondary</a>
+        <a href="#" class="btn btn--tertiary">Tertiary</a>
+        <a href="#" class="link">Editorial link →</a>
+      </div>
+    </section>
+
+    <!-- ============ FORM FIELDS ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Components</span>
+      <h2>Form Fields</h2>
+      <form class="lead-form" onsubmit="return false">
+        <div class="field">
+          <label for="sg-a">Text Input</label>
+          <input id="sg-a" type="text" placeholder="Placeholder text">
+        </div>
+        <div class="field">
+          <label for="sg-b">Another Field</label>
+          <input id="sg-b" type="text" placeholder="How we can reach you">
+        </div>
+        <button type="submit" class="btn btn--primary lead-form__submit">Submit</button>
+      </form>
+
+      <p class="sg-subtitle">Select bar (inventory search)</p>
+      <form class="search-bar" onsubmit="return false">
+        <select aria-label="Make"><option>Make</option></select>
+        <select aria-label="Model"><option>Model</option></select>
+        <select aria-label="Year"><option>Year</option></select>
+        <button type="submit" class="btn btn--primary">Search</button>
+      </form>
+    </section>
+
+    <!-- ============ CARDS & PANELS ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Components</span>
+      <h2>Cards &amp; Panels</h2>
+
+      <p class="sg-subtitle">Card</p>
+      <div class="grid grid--3">
+        <article class="card">
+          <h3 class="card__title">Card Title</h3>
+          <p class="card__body">Card body copy describing a feature or service in a sentence or two.</p>
+        </article>
+      </div>
+
+      <p class="sg-subtitle">Brand panel</p>
+      <div class="grid grid--3">
+        <a href="#" class="brand-panel">
+          <img class="brand-panel__media" src="assets/images/brand-lotus.jpg" alt="Brand">
+          <span class="brand-panel__info">
+            <span class="brand-panel__name">Lotus</span>
+            <span class="brand-panel__tag">Performance Reimagined</span>
+          </span>
+        </a>
+      </div>
+
+      <p class="sg-subtitle">Feature tile</p>
+      <div class="grid grid--3">
+        <a href="#" class="feature">
+          <img class="feature__media" src="assets/images/event-1.jpg" alt="Feature">
+          <span class="feature__title">Track Days</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ SPECS & STEPS ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Components</span>
+      <h2>Specs &amp; Steps</h2>
+
+      <p class="sg-subtitle">Spec block</p>
+      <div class="lotus-specs">
+        <div class="spec"><span class="spec__value">905</span><span class="spec__label">Horsepower</span></div>
+        <div class="spec"><span class="spec__value">2.8s</span><span class="spec__label">0–60 mph</span></div>
+        <div class="spec"><span class="spec__value">159</span><span class="spec__label">Top Speed (mph)</span></div>
+      </div>
+
+      <p class="sg-subtitle">Numbered steps</p>
+      <div class="steps">
+        <div class="step"><span class="step__num">01</span><h3 class="step__title">Submit Details</h3><p>Tell us about your vehicle.</p></div>
+        <div class="step"><span class="step__num">02</span><h3 class="step__title">Get An Offer</h3><p>A transparent valuation.</p></div>
+        <div class="step"><span class="step__num">03</span><h3 class="step__title">Get Paid</h3><p>Fast, paperwork handled.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Components</span>
+      <h2>Reviews</h2>
+      <div class="rating-summary">
+        <span class="rating-summary__score">4.9</span>
+        <div class="rating-summary__meta">
+          <span class="stars">★★★★★</span>
+          <span>Based on 287 Google reviews</span>
+        </div>
+      </div>
+      <div class="grid grid--3 mt-5">
+        <article class="review">
+          <div class="review__head">
+            <span class="review__avatar">JM</span>
+            <div class="review__id"><span class="review__name">James Mitchell</span><span class="review__date">2 weeks ago</span></div>
+          </div>
+          <span class="stars">★★★★★</span>
+          <p class="review__text">A genuinely white-glove experience from start to finish.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__bottom">
+      <span>Design System · Vegas Auto Gallery</span>
+      <span><a href="index.html">← Back to homepage</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>

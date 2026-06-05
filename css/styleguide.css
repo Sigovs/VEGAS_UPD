@@ -1,0 +1,163 @@
+/* ============================================================
+   STYLEGUIDE.CSS — helpers used ONLY by styles.html.
+   Not loaded by the site. Everything references real tokens so
+   the guide always reflects the live design system.
+   ============================================================ */
+
+.sg-header {
+  padding-block: var(--space-8) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sg-section {
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.sg-section > .eyebrow { margin-bottom: var(--space-2); }
+.sg-section > h2 { margin-bottom: var(--space-5); }
+
+.sg-subtitle {
+  margin: var(--space-6) 0 var(--space-3);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+/* ---------- Color swatches ---------- */
+.sg-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: var(--space-4);
+}
+
+.swatch {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.swatch__chip { height: 96px; }
+
+.swatch__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  background: var(--color-surface);
+}
+
+.swatch__name { color: var(--color-text); font-weight: var(--weight-semibold); }
+.swatch__val { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-soft); }
+
+/* Color chips — one per token */
+.chip-bg          { background: var(--color-bg); }
+.chip-surface     { background: var(--color-surface); }
+.chip-surface-2   { background: var(--color-surface-2); }
+.chip-text        { background: var(--color-text); }
+.chip-text-soft   { background: var(--color-text-soft); }
+.chip-accent      { background: var(--color-accent); }
+.chip-accent-hover{ background: var(--color-accent-hover); }
+.chip-accent-deep { background: var(--color-accent-deep); }
+.chip-border      { background: var(--color-border); }
+
+/* ---------- Type scale ---------- */
+.type-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.type-label {
+  flex: 0 0 auto;
+  min-width: 280px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-text-soft);
+}
+
+.type-sample { color: var(--color-text); line-height: 1.1; }
+
+.t-xs   { font-size: var(--text-xs); }
+.t-sm   { font-size: var(--text-sm); }
+.t-base { font-size: var(--text-base); }
+.t-lg   { font-size: var(--text-lg); }
+.t-xl   { font-size: var(--text-xl); }
+.t-2xl  { font-size: var(--text-2xl); }
+.t-3xl  { font-size: var(--text-3xl); }
+.t-4xl  { font-size: var(--text-4xl); }
+.t-5xl  { font-size: var(--text-5xl); }
+.t-6xl  { font-size: var(--text-6xl); }
+
+/* ---------- Spacing ---------- */
+.space-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.space-label {
+  flex: 0 0 auto;
+  min-width: 220px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+}
+
+.space-bar { height: 18px; background: var(--color-accent); border-radius: 2px; }
+
+.sp-1  { width: var(--space-1); }
+.sp-2  { width: var(--space-2); }
+.sp-3  { width: var(--space-3); }
+.sp-4  { width: var(--space-4); }
+.sp-5  { width: var(--space-5); }
+.sp-6  { width: var(--space-6); }
+.sp-8  { width: var(--space-8); }
+.sp-10 { width: var(--space-10); }
+
+/* ---------- Radii / shadow / transition demos ---------- */
+.sg-demos { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+
+.demo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 90px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+  text-align: center;
+}
+
+.demo-radius    { border-radius: var(--radius); }
+.demo-radius-lg { border-radius: var(--radius-lg); }
+.demo-shadow    { box-shadow: var(--shadow); border-radius: var(--radius-lg); }
+
+/* ---------- Generic component demo wrap ---------- */
+.sg-row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+.sg-stack { display: grid; gap: var(--space-4); }
+
+/* Tighten reveal items so the static guide shows everything */
+[data-reveal] { opacity: 1 !important; transform: none !important; }
+
+/* Small helpers to avoid inline styles in the guide */
+.font-sans { font-family: var(--font-sans); }
+.mt-5 { margin-top: var(--space-5); }
+
+/* CTA / button text treatment, rendered as plain text for the type list */
+.cta-sample {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text);
+}

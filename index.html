@@ -22,42 +22,27 @@
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" data-header>
-    <div class="container container--wide row--between">
-      <a href="#" class="logo">Vegas Auto Gallery</a>
-
-      <button class="btn btn--secondary nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="primary-nav">
-        Menu
-      </button>
+    <div class="container container--wide site-header__inner">
+      <a href="#hero" class="logo" aria-label="Vegas Auto Gallery — home">
+        <img class="logo__img" src="assets/images/logo.svg" alt="Vegas Auto Gallery">
+      </a>
 
       <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
         <ul role="list" class="nav__list">
-          <li>
-            <a href="#inventory" class="nav__link" data-mega-toggle aria-expanded="false" aria-controls="inventory-mega">Inventory</a>
-          </li>
-          <li><a href="#brands" class="nav__link">Brands</a></li>
-          <li><a href="#lotus" class="nav__link">Lotus</a></li>
-          <li><a href="#events" class="nav__link">Events</a></li>
-          <li><a href="#services" class="nav__link">Services</a></li>
-          <li><a href="#sell" class="nav__link">Sell</a></li>
+          <li><a href="#inventory" class="nav__link">New</a></li>
+          <li><a href="#inventory" class="nav__link">Pre-Owned</a></li>
+          <li><a href="#sell" class="nav__link">Sell Your Car</a></li>
+          <li><a href="#inventory" class="nav__link">Sold</a></li>
+          <li><a href="#services" class="nav__link">Service</a></li>
+          <li><a href="#buy" class="nav__link">Finance</a></li>
+          <li><a href="#showcase" class="nav__link">About</a></li>
           <li><a href="#footer" class="nav__link">Contact</a></li>
         </ul>
       </nav>
+
+      <a href="tel:7252190524" class="btn btn--primary btn--pill nav-call">Call: 725-219-0524</a>
     </div>
   </header>
-
-  <!-- ============ INVENTORY MEGA MENU ============ -->
-  <div class="mega" id="inventory-mega" data-mega>
-    <div class="container container--wide">
-      <div class="mega__inner">
-        <a href="#" class="mega__link">Porsche</a>
-        <a href="#" class="mega__link">Ferrari</a>
-        <a href="#" class="mega__link">Lamborghini</a>
-        <a href="#" class="mega__link">McLaren</a>
-        <a href="#" class="mega__link">Bentley</a>
-        <a href="#" class="mega__link">Rolls-Royce</a>
-      </div>
-    </div>
-  </div>
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
@@ -65,16 +50,57 @@
       <source src="assets/video/herovideo.mp4" type="video/mp4">
     </video>
     <div class="container container--wide">
-      <div class="hero__content">
-        <span class="eyebrow" data-reveal>Las Vegas</span>
-        <h1 class="display" data-reveal>Where Automotive Passion<br>Meets Luxury</h1>
-        <p class="lead" data-reveal>Curated exotic, luxury, and collector vehicles in Las Vegas.</p>
-        <div class="hero__actions" data-reveal>
-          <a href="#inventory" class="btn btn--primary">View Inventory</a>
-          <a href="#sell" class="btn btn--secondary">Sell Your Vehicle</a>
+      <div class="hero__content" data-hero-rotator>
+
+        <!-- Set 1 — Collection -->
+        <div class="hero__set is-active">
+          <span class="eyebrow">Las Vegas</span>
+          <h1 class="display"><span class="line">Where</span><span class="line">Automotive</span><span class="line">Passion Meets</span><span class="line">Luxury</span></h1>
+          <p class="lead">Curated exotic, luxury, and collector vehicles in Las Vegas.</p>
+          <div class="hero__actions">
+            <a href="#inventory" class="btn btn--primary">View Inventory</a>
+            <a href="#sell" class="btn btn--secondary">Sell Your Vehicle</a>
+          </div>
         </div>
+
+        <!-- Set 2 — Acquisition -->
+        <div class="hero__set">
+          <span class="eyebrow">We Buy Cars</span>
+          <h1 class="display"><span class="line">Sell</span><span class="line">Your Exotic</span><span class="line">The Effortless</span><span class="line">Way</span></h1>
+          <p class="lead">Consignment, direct purchase, and nationwide transport — a competitive offer in minutes.</p>
+          <div class="hero__actions">
+            <a href="#buy" class="btn btn--primary">Get An Offer</a>
+            <a href="#sell" class="btn btn--secondary">How It Works</a>
+          </div>
+        </div>
+
+        <!-- Set 3 — Concierge -->
+        <div class="hero__set">
+          <span class="eyebrow">Private Client</span>
+          <h1 class="display"><span class="line">A</span><span class="line">Concierge</span><span class="line">Ownership</span><span class="line">Experience</span></h1>
+          <p class="lead">Maintenance, performance, and white-glove service for the cars you love.</p>
+          <div class="hero__actions">
+            <a href="#services" class="btn btn--primary">Explore Services</a>
+            <a href="#footer" class="btn btn--secondary">Contact Us</a>
+          </div>
+        </div>
+
       </div>
     </div>
+
+    <!-- Featured vehicle — frosted glass card, bottom-right -->
+    <aside class="hero-featured" data-reveal>
+      <a href="#inventory" class="hero-featured__media">
+        <img src="assets/images/featured-vehicle.png" alt="2025 Lamborghini Revuelto Base" loading="lazy">
+      </a>
+      <div class="hero-featured__info">
+        <h3 class="hero-featured__name">2025 Lamborghini Revuelto Base</h3>
+        <p class="hero-featured__spec"><span>Price:</span> $699,788</p>
+        <p class="hero-featured__spec"><span>Mileage:</span> 350</p>
+        <a href="#inventory" class="btn btn--tertiary hero-featured__btn">View Details</a>
+      </div>
+    </aside>
+
     <span class="hero__scroll">Scroll</span>
   </section>
 
@@ -108,6 +134,290 @@
             <span class="brand-panel__tag">American Performance Without Limits</span>
           </span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENTS & LIFESTYLE ============ -->
+  <section class="section" id="events">
+    <div class="container container--wide">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Beyond the Showroom</span>
+        <h2>Events &amp; Lifestyle</h2>
+        <p class="lead">Rallies, track days, launches, and Cars &amp; Coffee. More than a gallery — a community.</p>
+      </div>
+
+      <article class="ev-feature">
+        <a href="#" class="ev-feature__media" data-reveal><img src="assets/images/events-feature.jpg" alt="The Annual Vegas Rally" loading="lazy"></a>
+        <div class="ev-feature__text" data-reveal>
+          <span class="ev-feature__kicker">Issue 01 — Spring 2026</span>
+          <span class="eyebrow">The Rally</span>
+          <h3 class="ev-feature__title">A Thousand Miles of Open Desert</h3>
+          <p>Three days, a convoy of the world's finest machines, and the empty roads beyond Las Vegas. Our flagship driving event — by invitation.</p>
+          <a href="#" class="link">Read the Story</a>
+        </div>
+      </article>
+
+      <article class="ev-feature ev-feature--reverse">
+        <a href="#" class="ev-feature__media" data-reveal><img src="assets/images/event-1.jpg" alt="Track Days at Spring Mountain" loading="lazy"></a>
+        <div class="ev-feature__text" data-reveal>
+          <span class="ev-feature__kicker">On Track</span>
+          <span class="eyebrow">Performance</span>
+          <h3 class="ev-feature__title">Your Car At Its Absolute Limit</h3>
+          <p>Private circuit access at Spring Mountain, professional instruction, and the freedom to explore every horsepower — in complete safety.</p>
+          <a href="#" class="link">See the Calendar</a>
+        </div>
+      </article>
+
+      <article class="ev-feature">
+        <a href="#" class="ev-feature__media" data-reveal><img src="assets/images/event-2.jpg" alt="Cars &amp; Coffee" loading="lazy"></a>
+        <div class="ev-feature__text" data-reveal>
+          <span class="ev-feature__kicker">First Saturdays</span>
+          <span class="eyebrow">Community</span>
+          <h3 class="ev-feature__title">Cars &amp; Coffee at the Gallery</h3>
+          <p>Every first Saturday the doors open early. Espresso, like-minded enthusiasts, and an ever-changing lineup on the showroom floor.</p>
+          <a href="#" class="link">Join Us</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED INVENTORY (card carousel — 4 per view) ============ -->
+  <section class="inv" id="featured-inventory">
+    <div class="container container--wide">
+      <div class="inv__head" data-reveal>
+        <div class="section-head">
+          <span class="eyebrow">Featured Inventory</span>
+          <h2>The Collection</h2>
+        </div>
+        <a href="#inventory" class="link inv__viewall">View All Inventory</a>
+      </div>
+    </div>
+
+    <div class="inv-carousel" data-inv aria-label="Featured inventory">
+      <div class="inv-viewport">
+        <div class="inv-track" data-inv-track>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-1.jpg" alt="2023 Lamborghini Huracán EVO" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Lamborghini</span>
+                <h3 class="inv-card__name">Huracán EVO</h3>
+                <span class="inv-card__price">$269,900</span>
+                <div class="inv-card__specs"><span>2023</span><span>3,200 mi</span><span>V10</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-2.jpg" alt="2022 Ferrari F8 Tributo" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Ferrari</span>
+                <h3 class="inv-card__name">F8 Tributo</h3>
+                <span class="inv-card__price">$329,500</span>
+                <div class="inv-card__specs"><span>2022</span><span>4,100 mi</span><span>V8</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-3.jpg" alt="2021 McLaren 720S" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">McLaren</span>
+                <h3 class="inv-card__name">720S</h3>
+                <span class="inv-card__price">$279,000</span>
+                <div class="inv-card__specs"><span>2021</span><span>6,400 mi</span><span>V8</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-4.jpg" alt="2024 Porsche 911 Turbo S" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Porsche</span>
+                <h3 class="inv-card__name">911 Turbo S</h3>
+                <span class="inv-card__price">$234,900</span>
+                <div class="inv-card__specs"><span>2024</span><span>1,150 mi</span><span>Flat-6</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-5.jpg" alt="2022 Rolls-Royce Cullinan" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Rolls-Royce</span>
+                <h3 class="inv-card__name">Cullinan</h3>
+                <span class="inv-card__price">$389,000</span>
+                <div class="inv-card__specs"><span>2022</span><span>8,900 mi</span><span>V12</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-6.jpg" alt="2023 Bentley Continental GT" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Bentley</span>
+                <h3 class="inv-card__name">Continental GT</h3>
+                <span class="inv-card__price">$249,500</span>
+                <div class="inv-card__specs"><span>2023</span><span>5,300 mi</span><span>V8</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-7.jpg" alt="2021 Aston Martin DBS Superleggera" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Aston Martin</span>
+                <h3 class="inv-card__name">DBS Superleggera</h3>
+                <span class="inv-card__price">$284,900</span>
+                <div class="inv-card__specs"><span>2021</span><span>4,800 mi</span><span>V12</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-8.jpg" alt="2022 Mercedes-AMG GT Black Series" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Mercedes-AMG</span>
+                <h3 class="inv-card__name">GT Black Series</h3>
+                <span class="inv-card__price">$549,000</span>
+                <div class="inv-card__specs"><span>2022</span><span>2,100 mi</span><span>V8</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-9.jpg" alt="2022 Audi R8 V10 Performance" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Audi</span>
+                <h3 class="inv-card__name">R8 V10 Performance</h3>
+                <span class="inv-card__price">$199,900</span>
+                <div class="inv-card__specs"><span>2022</span><span>7,200 mi</span><span>V10</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-10.jpg" alt="2024 Lotus Emira" loading="lazy"></a>
+              <div class="inv-card__body">
+                <span class="inv-card__brand">Lotus</span>
+                <h3 class="inv-card__name">Emira</h3>
+                <span class="inv-card__price">$119,900</span>
+                <div class="inv-card__specs"><span>2024</span><span>900 mi</span><span>V6</span></div>
+                <a href="#inventory" class="link">View Details</a>
+              </div>
+            </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INVENTORY ENTRY ============ -->
+  <section class="section section--surface" id="inventory">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">The Collection</span>
+        <h2>Explore the Collection</h2>
+        <p class="lead">New and pre-owned, unified. Browse by marque — only what's currently available, presented the way it deserves.</p>
+      </div>
+
+      <form class="search-bar" data-search data-reveal>
+        <select name="make" aria-label="Make">
+          <option value="">Make</option>
+          <option>Porsche</option>
+          <option>Ferrari</option>
+          <option>Lamborghini</option>
+          <option>McLaren</option>
+          <option>Bentley</option>
+          <option>Rolls-Royce</option>
+        </select>
+        <select name="model" aria-label="Model">
+          <option value="">Model</option>
+          <option>911</option>
+          <option>SF90</option>
+          <option>Huracán</option>
+          <option>720S</option>
+        </select>
+        <select name="year" aria-label="Year">
+          <option value="">Year</option>
+          <option>2026</option>
+          <option>2025</option>
+          <option>2024</option>
+        </select>
+        <button type="submit" class="btn btn--primary">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ WE BUY CARS ============ -->
+  <section class="section" id="buy">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">We Buy Cars</span>
+        <h2>Get An Offer In Minutes</h2>
+        <p class="lead">Tell us about your vehicle and our acquisition team will follow up with a competitive offer.</p>
+      </div>
+
+      <form class="lead-form" data-buy-form data-reveal>
+        <div class="field">
+          <label for="bf-name">Full Name</label>
+          <input id="bf-name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="bf-contact">Phone or Email</label>
+          <input id="bf-contact" name="contact" type="text" placeholder="How we can reach you" required>
+        </div>
+        <div class="field">
+          <label for="bf-vehicle">Year, Make &amp; Model</label>
+          <input id="bf-vehicle" name="vehicle" type="text" placeholder="2023 Lamborghini Huracán" required>
+        </div>
+        <div class="field">
+          <label for="bf-mileage">Mileage</label>
+          <input id="bf-mileage" name="mileage" type="text" placeholder="Approx. miles" inputmode="numeric">
+        </div>
+        <button type="submit" class="btn btn--primary lead-form__submit">Get An Offer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ SELL YOUR VEHICLE ============ -->
+  <section class="section section--surface" id="sell">
+    <div class="container container--wide">
+      <div class="split">
+        <img class="split__media" src="assets/images/sell.jpg" alt="Sell your exotic vehicle" loading="lazy" data-reveal>
+        <div class="editorial__text" data-reveal>
+          <span class="eyebrow">Acquisition</span>
+          <h2>Looking To Sell Your Exotic Vehicle?</h2>
+          <ul class="value-list">
+            <li>Consignment</li>
+            <li>Direct Purchase</li>
+            <li>Nationwide Transportation</li>
+            <li>Fast Evaluation</li>
+          </ul>
+          <div class="row row--mt">
+            <a href="#buy" class="btn btn--primary">Get An Offer</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it works — 3 easy steps -->
+      <div class="steps" data-reveal>
+        <div class="step">
+          <span class="step__num">01</span>
+          <h3 class="step__title">Submit Your Details</h3>
+          <p>Tell us about your vehicle in a couple of minutes — no obligation.</p>
+        </div>
+        <div class="step">
+          <span class="step__num">02</span>
+          <h3 class="step__title">Get An Offer</h3>
+          <p>Our acquisition team responds with a competitive, transparent valuation.</p>
+        </div>
+        <div class="step">
+          <span class="step__num">03</span>
+          <h3 class="step__title">Get Paid</h3>
+          <p>Accept and get paid fast — we handle the paperwork and transport.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -201,143 +511,6 @@
     </div>
   </section>
 
-  <!-- ============ INVENTORY ENTRY ============ -->
-  <section class="section section--surface" id="inventory">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">The Collection</span>
-        <h2>Explore the Collection</h2>
-        <p class="lead">New and pre-owned, unified. Browse by marque — only what's currently available, presented the way it deserves.</p>
-      </div>
-
-      <form class="search-bar" data-search data-reveal>
-        <select name="make" aria-label="Make">
-          <option value="">Make</option>
-          <option>Porsche</option>
-          <option>Ferrari</option>
-          <option>Lamborghini</option>
-          <option>McLaren</option>
-          <option>Bentley</option>
-          <option>Rolls-Royce</option>
-        </select>
-        <select name="model" aria-label="Model">
-          <option value="">Model</option>
-          <option>911</option>
-          <option>SF90</option>
-          <option>Huracán</option>
-          <option>720S</option>
-        </select>
-        <select name="year" aria-label="Year">
-          <option value="">Year</option>
-          <option>2026</option>
-          <option>2025</option>
-          <option>2024</option>
-        </select>
-        <button type="submit" class="btn btn--primary">Search</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ============ EVENTS & LIFESTYLE ============ -->
-  <section class="section" id="events">
-    <div class="container container--wide">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Beyond the Showroom</span>
-        <h2>Events &amp; Lifestyle</h2>
-        <p class="lead">Rallies, track days, launches, and Cars &amp; Coffee. More than a gallery — a community.</p>
-      </div>
-
-      <div class="events">
-        <a href="#" class="feature feature--lg" data-reveal>
-          <img class="feature__media" src="assets/images/events-feature.jpg" alt="Rally participation" loading="lazy">
-          <span class="feature__title">The Annual Vegas Rally</span>
-        </a>
-        <div class="events__rail">
-          <a href="#" class="feature" data-reveal>
-            <img class="feature__media" src="assets/images/event-1.jpg" alt="Track day" loading="lazy">
-            <span class="feature__title">Track Days</span>
-          </a>
-          <a href="#" class="feature" data-reveal>
-            <img class="feature__media" src="assets/images/event-2.jpg" alt="Cars and Coffee" loading="lazy">
-            <span class="feature__title">Cars &amp; Coffee</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SELL YOUR VEHICLE ============ -->
-  <section class="section section--surface" id="sell">
-    <div class="container container--wide">
-      <div class="split">
-        <img class="split__media" src="assets/images/sell.jpg" alt="Sell your exotic vehicle" loading="lazy" data-reveal>
-        <div class="editorial__text" data-reveal>
-          <span class="eyebrow">Acquisition</span>
-          <h2>Looking To Sell Your Exotic Vehicle?</h2>
-          <ul class="value-list">
-            <li>Consignment</li>
-            <li>Direct Purchase</li>
-            <li>Nationwide Transportation</li>
-            <li>Fast Evaluation</li>
-          </ul>
-          <div class="row row--mt">
-            <a href="#buy" class="btn btn--primary">Get An Offer</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- How it works — 3 easy steps -->
-      <div class="steps" data-reveal>
-        <div class="step">
-          <span class="step__num">01</span>
-          <h3 class="step__title">Submit Your Details</h3>
-          <p>Tell us about your vehicle in a couple of minutes — no obligation.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">02</span>
-          <h3 class="step__title">Get An Offer</h3>
-          <p>Our acquisition team responds with a competitive, transparent valuation.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">03</span>
-          <h3 class="step__title">Get Paid</h3>
-          <p>Accept and get paid fast — we handle the paperwork and transport.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ WE BUY CARS ============ -->
-  <section class="section" id="buy">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">We Buy Cars</span>
-        <h2>Get An Offer In Minutes</h2>
-        <p class="lead">Tell us about your vehicle and our acquisition team will follow up with a competitive offer.</p>
-      </div>
-
-      <form class="lead-form" data-buy-form data-reveal>
-        <div class="field">
-          <label for="bf-name">Full Name</label>
-          <input id="bf-name" name="name" type="text" placeholder="Your name" required>
-        </div>
-        <div class="field">
-          <label for="bf-contact">Phone or Email</label>
-          <input id="bf-contact" name="contact" type="text" placeholder="How we can reach you" required>
-        </div>
-        <div class="field">
-          <label for="bf-vehicle">Year, Make &amp; Model</label>
-          <input id="bf-vehicle" name="vehicle" type="text" placeholder="2023 Lamborghini Huracán" required>
-        </div>
-        <div class="field">
-          <label for="bf-mileage">Mileage</label>
-          <input id="bf-mileage" name="mileage" type="text" placeholder="Approx. miles" inputmode="numeric">
-        </div>
-        <button type="submit" class="btn btn--primary lead-form__submit">Get An Offer</button>
-      </form>
-    </div>
-  </section>
-
   <!-- ============ SERVICES ============ -->
   <section class="section" id="services">
     <div class="container">
@@ -367,30 +540,58 @@
     </div>
   </section>
 
-  <!-- ============ LUXURY SHOWCASE (editorial) ============ -->
+  <!-- ============ OWNERSHIP JOURNEY ============ -->
   <section class="section section--surface" id="showcase">
     <div class="container container--wide">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Editorial</span>
-        <h2>Exceptional Vehicles. Exceptional Experiences.</h2>
-      </div>
+      <div class="journey">
 
-      <div class="editorial" data-reveal>
-        <img class="editorial__media" src="assets/images/editorial-1.jpg" alt="Featured vehicle" loading="lazy">
-        <div class="editorial__text">
-          <h3>Curated, Not Stocked</h3>
-          <p>Every vehicle is selected for provenance, condition, and character — a collection assembled with intent, not volume.</p>
-          <a href="#inventory" class="link">View the Collection</a>
+        <!-- Sticky editorial intro -->
+        <div class="journey__intro" data-reveal>
+          <span class="eyebrow">The Ownership Journey</span>
+          <h2>You're Not Buying a Car. You're Joining a Club.</h2>
+          <p class="lead">From the first conversation to the events calendar, ownership at Vegas Auto Gallery is a relationship — not a transaction.</p>
+          <a href="#footer" class="btn btn--primary">Become a Client</a>
         </div>
-      </div>
 
-      <div class="editorial editorial--reverse" data-reveal>
-        <img class="editorial__media" src="assets/images/editorial-2.jpg" alt="Private client experience" loading="lazy">
-        <div class="editorial__text">
-          <h3>A Relationship, Not a Transaction</h3>
-          <p>From first conversation to delivery and beyond, our private clients are looked after like family.</p>
-          <a href="#footer" class="link">Become a Client</a>
-        </div>
+        <!-- Numbered journey -->
+        <ol class="journey__steps">
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">01</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Private Consultation</h3>
+              <p>A dedicated specialist learns your taste, your garage, and exactly what you're looking for — discreetly.</p>
+            </div>
+          </li>
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">02</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Vehicle Acquisition</h3>
+              <p>We source, inspect, and secure the right car — from our floor or from our global network of collectors.</p>
+            </div>
+          </li>
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">03</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Worldwide Delivery</h3>
+              <p>Enclosed, insured transport and full customs handling — to your door, anywhere on earth.</p>
+            </div>
+          </li>
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">04</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Concierge Support</h3>
+              <p>Maintenance, storage, detailing, and performance — handled for you, for as long as you own the car.</p>
+            </div>
+          </li>
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">05</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Exclusive Events</h3>
+              <p>Rallies, track days, launches, and private gatherings — the part that money usually can't buy.</p>
+            </div>
+          </li>
+        </ol>
+
       </div>
     </div>
   </section>
