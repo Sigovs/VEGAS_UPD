@@ -161,26 +161,33 @@
 /* ============ HERO FEATURED VEHICLE — frosted glass ============ */
 .hero-featured {
   position: absolute;
-  right: var(--space-5);
+  /* right edge aligned with the header CALL button (container--wide right edge) */
+  right: max(calc((100vw - 1600px) / 2 + var(--space-4)), var(--space-4));
   /* bottom aligned with the hero CTA buttons (hero content bottom padding) */
   bottom: var(--space-10);
   z-index: 3;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: var(--space-3);
-  width: min(500px, 40vw);
-  padding: var(--space-2);
+  /* Fixed width keeps the card consistent across different featured cars;
+     only the height flexes with the title length (image stretches to match). */
+  width: 460px;
+  max-width: calc(100vw - var(--space-8));
+  padding: var(--space-3);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(18px) saturate(130%);
   -webkit-backdrop-filter: blur(18px) saturate(130%);
   box-shadow: var(--shadow);
+  transition: box-shadow var(--transition);
 }
+
+/* Lose the shadow on hover */
+.hero-featured:hover { box-shadow: none; }
 
 .hero-featured__media {
   flex: 0 0 58%;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: var(--radius);
 }
@@ -198,7 +205,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  padding: var(--space-1) var(--space-2) var(--space-1) 0;
+  padding: 0;
   flex: 1;
 }
 
@@ -209,22 +216,30 @@
   color: var(--color-accent);
 }
 
+.hero-featured__eyebrow {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
 .hero-featured__name {
   font-family: var(--font-sans);
   font-size: var(--text-base);
-  font-weight: var(--weight-medium);
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: 0;
-  margin-bottom: var(--space-1);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  overflow-wrap: break-word;
 }
 
-.hero-featured__spec {
-  font-size: var(--text-xs);
+.hero-featured__price {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
   color: var(--color-text);
 }
 
-.hero-featured__spec span {
+.hero-featured__meta {
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--color-text-soft);

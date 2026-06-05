@@ -154,6 +154,18 @@
 }
 .btn--tertiary:hover { border-color: var(--color-accent); color: var(--color-accent); }
 
+/* Dark — solid near-black fill; for use on glass / light surfaces */
+.btn--dark {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-bg);
+}
+.btn--dark:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
 /* Pill — fully rounded (header CALL button) */
 .btn--pill { border-radius: var(--radius-pill); }
 .nav-call { flex: 0 0 auto; white-space: nowrap; }
