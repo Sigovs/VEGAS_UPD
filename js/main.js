@@ -224,12 +224,12 @@
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Featured inventory: infinite marquee ---------- */
+  /* ---------- Featured inventory: auto-scroll marquee + mouse drag ---------- */
   const inv = document.querySelector('[data-inv]');
-  if (inv && !reduceMotion) {
+  if (inv) {
     const track = inv.querySelector('[data-inv-track]');
     if (track) {
-      // Duplicate the card set once so the -50% CSS loop is seamless.
+      // Duplicate the card set once so the loop is seamless in both directions.
       const originals = Array.from(track.children);
       originals.forEach((card) => {
         const clone = card.cloneNode(true);
@@ -237,6 +237,80 @@
         clone.querySelectorAll('a').forEach((a) => a.setAttribute('tabindex', '-1'));
         track.appendChild(clone);
       });
+
+      // Take over from the CSS marquee — we drive the transform in JS so a
+      // mouse drag can interrupt (and resume) the auto-scroll seamlessly.
+      track.style.animation = 'none';
+
+      let half = track.scrollWidth / 2; // width of one (original) card set
+      let offset = 0;                   // current translateX in px (<= 0)
+      const speed = 0.4;                // auto-scroll px per frame
+
+      let hovering = false;
+      let dragging = false;
+      let moved = false;                // true once a drag passes the threshold
+      let pointerStartX = 0;
+      let offsetStart = 0;
+
+      // Keep offset inside (-half, 0] so the loop is seamless either direction.
+      const wrap = (x) => {
+        if (half <= 0) return x;
+        while (x <= -half) x += half;
+        while (x > 0) x -= half;
+        return x;
+      };
+      const apply = () => { track.style.transform = `translateX(${offset}px)`; };
+
+      window.addEventListener('resize', () => { half = track.scrollWidth / 2; }, { passive: true });
+
+      // Continuous auto-scroll, paused while hovering, dragging, or reduced motion.
+      const tick = () => {
+        if (!dragging && !hovering && !reduceMotion) {
+          offset = wrap(offset - speed);
+          apply();
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+
+      inv.addEventListener('pointerenter', () => { hovering = true; });
+      inv.addEventListener('pointerleave', () => { hovering = false; });
+
+      // --- Mouse / touch drag to scroll ---
+      inv.style.cursor = 'grab';
+      inv.addEventListener('dragstart', (e) => e.preventDefault()); // no image ghost-drag
+
+      inv.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        dragging = true;
+        moved = false;
+        pointerStartX = e.clientX;
+        offsetStart = offset;
+        inv.style.cursor = 'grabbing';
+        inv.setPointerCapture?.(e.pointerId);
+      });
+
+      inv.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - pointerStartX;
+        if (Math.abs(dx) > 4) moved = true;
+        offset = wrap(offsetStart + dx);
+        apply();
+      });
+
+      const endDrag = (e) => {
+        if (!dragging) return;
+        dragging = false;
+        inv.style.cursor = 'grab';
+        inv.releasePointerCapture?.(e.pointerId);
+      };
+      inv.addEventListener('pointerup', endDrag);
+      inv.addEventListener('pointercancel', endDrag);
+
+      // Suppress the click that follows a real drag so cards don't navigate.
+      inv.addEventListener('click', (e) => {
+        if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+      }, true);
     }
   }
 

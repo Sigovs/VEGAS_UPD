@@ -456,8 +456,11 @@
 .inv__head .section-head { margin-bottom: 0; }
 .inv__viewall { flex: 0 0 auto; }
 
-/* Full-bleed, infinite marquee */
-.inv-carousel { position: relative; overflow: hidden; }
+/* Full-bleed, infinite marquee — draggable with the mouse (JS sets cursor) */
+.inv-carousel { position: relative; overflow: hidden; user-select: none; }
+
+/* No image ghost-drag / blue selection while grabbing the track */
+.inv-carousel img { -webkit-user-drag: none; user-drag: none; }
 
 .inv-viewport { overflow: hidden; }
 
