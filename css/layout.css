@@ -87,6 +87,20 @@
   );
 }
 
+/* Bottom fade into the page background — seamless hand-off to the next
+   section so there's no hard edge between hero and brands. */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30vh;
+  z-index: -1;
+  background: linear-gradient(to bottom, transparent 0%, var(--color-bg) 100%);
+  pointer-events: none;
+}
+
 .hero__content {
   display: flex;
   flex-direction: column;

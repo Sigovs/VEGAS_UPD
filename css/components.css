@@ -174,13 +174,42 @@
   .nav-call { display: none; }
 }
 
-/* ============ BRAND PANELS ============ */
-.brand-panel {
-  position: relative;
+/* ============ BRAND PANELS (expanding accordion) ============ */
+/* One panel open by default; the others expand on hover. Driven purely by
+   flex-grow so there's no specificity fight over the `flex` shorthand. */
+.brands-accordion {
   display: flex;
-  align-items: flex-end;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.brand-panel {
+  flex: 1 1 0;            /* equal base; flex-grow does the expanding */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: flex-grow var(--transition-slow);
+}
+
+/* Default-open panel */
+.brand-panel.is-open { flex-grow: 2.4; }
+
+/* While the row is being used: collapse the default-open, expand the hovered */
+.brands-accordion:hover .brand-panel { flex-grow: 1; }
+.brands-accordion:hover .brand-panel:hover { flex-grow: 2.4; }
+
+/* Static variant — three equal, non-expanding blocks (no accordion) */
+.brands-accordion--static .brand-panel,
+.brands-accordion--static.brands-accordion:hover .brand-panel,
+.brands-accordion--static.brands-accordion:hover .brand-panel:hover { flex-grow: 1; }
+.brands-accordion--static .brand-panel:hover .brand-panel__media { transform: none; }
+.brands-accordion--static .brand-panel__media-wrap::after { opacity: 1; }
+
+.brand-panel__media-wrap {
+  position: relative;
+  display: block;
   min-height: 460px;
-  padding: var(--space-5);
   border-radius: var(--radius-lg);
   overflow: hidden;
   isolation: isolate;
@@ -192,45 +221,56 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2;
   transition: transform var(--transition-slow);
 }
 
-.brand-panel::after {
+.brand-panel__media-wrap::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: linear-gradient(to top, var(--color-overlay-strong), transparent 70%);
-  transition: background var(--transition);
+  background: linear-gradient(to top, var(--color-overlay), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
 }
 
 .brand-panel:hover .brand-panel__media { transform: scale(1.06); }
-.brand-panel:hover::after {
-  background: linear-gradient(to top, var(--color-overlay-strong), var(--color-overlay) 80%);
-}
+.brand-panel:hover .brand-panel__media-wrap::after,
+.brand-panel.is-open .brand-panel__media-wrap::after { opacity: 1; }
 
 .brand-panel__info {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  transition: transform var(--transition-slow);
+  gap: var(--space-1);
+  min-width: 0;
 }
-
-.brand-panel:hover .brand-panel__info { transform: translateY(-6px); }
 
 .brand-panel__name {
   font-family: var(--font-sans);
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-medium);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .brand-panel__tag {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  color: var(--color-accent);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Stack on small screens — every panel full-width, no accordion */
+@media (max-width: 800px) {
+  .brands-accordion { flex-direction: column; }
+  .brand-panel,
+  .brand-panel.is-open,
+  .brands-accordion:hover .brand-panel,
+  .brands-accordion:hover .brand-panel:hover { flex-grow: 1; }
+  .brand-panel__media-wrap { min-height: 320px; }
 }
 
 /* ============ LOTUS SHOWCASE (carousel) ============ */
