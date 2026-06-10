@@ -9,7 +9,7 @@
   <!-- Fonts: Oswald (display/headings) + Roboto Condensed (UI/body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <!-- Styles (order: reset → tokens → base → layout → components) -->
   <link rel="stylesheet" href="css/reset.css">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
-<body>
+<body class="v2">
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" data-header>
@@ -54,7 +54,7 @@
 
         <!-- Set 1 — Collection -->
         <div class="hero__set is-active">
-          <span class="eyebrow">Las Vegas</span>
+          <span class="eyebrow eyebrow--oswald">Las Vegas</span>
           <h1 class="display"><span class="line">Where</span><span class="line">Automotive</span><span class="line">Passion Meets</span><span class="line">Luxury</span></h1>
           <p class="lead">Curated exotic, luxury, and collector vehicles in Las Vegas.</p>
           <div class="hero__actions">
@@ -65,7 +65,7 @@
 
         <!-- Set 2 — Acquisition -->
         <div class="hero__set">
-          <span class="eyebrow">We Buy Cars</span>
+          <span class="eyebrow eyebrow--oswald">We Buy Cars</span>
           <h1 class="display"><span class="line">Sell</span><span class="line">Your Exotic</span><span class="line">The Effortless</span><span class="line">Way</span></h1>
           <p class="lead">Consignment, direct purchase, and nationwide transport — a competitive offer in minutes.</p>
           <div class="hero__actions">
@@ -76,7 +76,7 @@
 
         <!-- Set 3 — Concierge -->
         <div class="hero__set">
-          <span class="eyebrow">Private Client</span>
+          <span class="eyebrow eyebrow--oswald">Private Client</span>
           <h1 class="display"><span class="line">A</span><span class="line">Concierge</span><span class="line">Ownership</span><span class="line">Experience</span></h1>
           <p class="lead">Maintenance, performance, and white-glove service for the cars you love.</p>
           <div class="hero__actions">
@@ -97,7 +97,6 @@
         <span class="hero-featured__eyebrow">Featured</span>
         <h3 class="hero-featured__name">2025 Lamborghini<br>Revuelto Base</h3>
         <span class="hero-featured__price">$699,788</span>
-        <span class="hero-featured__meta">350 miles</span>
         <a href="#inventory" class="btn btn--tertiary btn--dark hero-featured__btn">View Details</a>
       </div>
     </aside>
@@ -106,18 +105,19 @@
   </section>
 
   <!-- ============ FEATURED BRANDS ============ -->
-  <section class="section" id="brands">
+  <section class="section brands-redesign" id="brands">
     <div class="container container--wide">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Featured Marques</span>
-        <h2>Brands We Curate</h2>
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Featured Marques</span>
+        <h2 class="heading-light">Brands We Curate</h2>
       </div>
 
-      <div class="brands-accordion" data-reveal>
+      <div class="brands-accordion brands-accordion--overlay" data-reveal>
         <a href="#" class="brand-panel is-open">
           <span class="brand-panel__media-wrap">
-            <img class="brand-panel__media" src="assets/images/brand-lotus.jpg" alt="Lotus" loading="lazy">
+            <img class="brand-panel__media" src="assets/images/lotus_img.jpg" alt="Lotus" loading="lazy">
           </span>
+          <img class="brand-panel__logo brand-panel__logo--lotus" src="assets/images/lotus_logo.svg" alt="" aria-hidden="true">
           <span class="brand-panel__info">
             <span class="brand-panel__name">Lotus</span>
             <span class="brand-panel__tag">Performance Reimagined</span>
@@ -125,8 +125,9 @@
         </a>
         <a href="#" class="brand-panel">
           <span class="brand-panel__media-wrap">
-            <img class="brand-panel__media" src="assets/images/brand-czinger.jpg" alt="Czinger" loading="lazy">
+            <img class="brand-panel__media brand-panel__media--czinger" src="assets/images/czinger_img.jpg" alt="Czinger" loading="lazy">
           </span>
+          <img class="brand-panel__logo brand-panel__logo--czinger" src="assets/images/czinger_logo.svg" alt="" aria-hidden="true">
           <span class="brand-panel__info">
             <span class="brand-panel__name">Czinger</span>
             <span class="brand-panel__tag">The Future of Hypercars</span>
@@ -134,11 +135,12 @@
         </a>
         <a href="#" class="brand-panel">
           <span class="brand-panel__media-wrap">
-            <img class="brand-panel__media" src="assets/images/brand-hennessey.jpg" alt="Hennessey" loading="lazy">
+            <img class="brand-panel__media" src="assets/images/hennessy_img.jpg" alt="Hennessey" loading="lazy">
           </span>
+          <img class="brand-panel__logo" src="assets/images/hennessy_logo.svg" alt="" aria-hidden="true">
           <span class="brand-panel__info">
             <span class="brand-panel__name">Hennessey</span>
-            <span class="brand-panel__tag">American Performance Without Limits</span>
+            <span class="brand-panel__tag">Performance Without Limits</span>
           </span>
         </a>
       </div>
@@ -146,11 +148,11 @@
   </section>
 
   <!-- ============ EVENTS & LIFESTYLE ============ -->
-  <section class="section" id="events">
+  <section class="section ev-redesign" id="events">
     <div class="container container--wide">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Beyond the Showroom</span>
-        <h2>Events &amp; Lifestyle</h2>
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Beyond the Showroom</span>
+        <h2 class="heading-light">Events &amp; Lifestyle</h2>
         <p class="lead">Rallies, track days, launches, and Cars &amp; Coffee. More than a gallery — a community.</p>
       </div>
 
@@ -158,10 +160,10 @@
         <a href="#" class="ev-feature__media" data-reveal><img src="assets/images/events-feature.jpg" alt="The Annual Vegas Rally" loading="lazy"></a>
         <div class="ev-feature__text" data-reveal>
           <span class="ev-feature__kicker">Issue 01 — Spring 2026</span>
-          <span class="eyebrow">The Rally</span>
-          <h3 class="ev-feature__title">A Thousand Miles of Open Desert</h3>
+          <span class="eyebrow eyebrow--oswald">The Rally</span>
+          <h3 class="ev-feature__title heading-sm-light">A Thousand Miles of Open Desert</h3>
           <p>Three days, a convoy of the world's finest machines, and the empty roads beyond Las Vegas. Our flagship driving event — by invitation.</p>
-          <a href="#" class="link">Read the Story</a>
+          <a href="#" class="ev-cta"><span class="ev-cta__label">Read the Story</span><svg class="ev-cta__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a>
         </div>
       </article>
 
@@ -169,10 +171,10 @@
         <a href="#" class="ev-feature__media" data-reveal><img src="assets/images/event-1.jpg" alt="Track Days at Spring Mountain" loading="lazy"></a>
         <div class="ev-feature__text" data-reveal>
           <span class="ev-feature__kicker">On Track</span>
-          <span class="eyebrow">Performance</span>
-          <h3 class="ev-feature__title">Your Car At Its Absolute Limit</h3>
+          <span class="eyebrow eyebrow--oswald">Performance</span>
+          <h3 class="ev-feature__title heading-sm-light">Your Car At Its Absolute Limit</h3>
           <p>Private circuit access at Spring Mountain, professional instruction, and the freedom to explore every horsepower — in complete safety.</p>
-          <a href="#" class="link">See the Calendar</a>
+          <a href="#" class="ev-cta"><span class="ev-cta__label">See the Calendar</span><svg class="ev-cta__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a>
         </div>
       </article>
 
@@ -180,24 +182,24 @@
         <a href="#" class="ev-feature__media" data-reveal><img src="assets/images/event-2.jpg" alt="Cars &amp; Coffee" loading="lazy"></a>
         <div class="ev-feature__text" data-reveal>
           <span class="ev-feature__kicker">First Saturdays</span>
-          <span class="eyebrow">Community</span>
-          <h3 class="ev-feature__title">Cars &amp; Coffee at the Gallery</h3>
+          <span class="eyebrow eyebrow--oswald">Community</span>
+          <h3 class="ev-feature__title heading-sm-light">Cars &amp; Coffee at the Gallery</h3>
           <p>Every first Saturday the doors open early. Espresso, like-minded enthusiasts, and an ever-changing lineup on the showroom floor.</p>
-          <a href="#" class="link">Join Us</a>
+          <a href="#" class="ev-cta"><span class="ev-cta__label">Join Us</span><svg class="ev-cta__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a>
         </div>
       </article>
     </div>
   </section>
 
   <!-- ============ FEATURED INVENTORY (card carousel — 4 per view) ============ -->
-  <section class="inv" id="featured-inventory">
+  <section class="inv inv--redesign" id="featured-inventory">
     <div class="container container--wide">
       <div class="inv__head" data-reveal>
-        <div class="section-head">
-          <span class="eyebrow">Featured Inventory</span>
-          <h2>The Collection</h2>
+        <div class="section-head section-head--tight">
+          <span class="eyebrow eyebrow--oswald">Featured Inventory</span>
+          <h2 class="heading-light">The Collection</h2>
         </div>
-        <a href="#inventory" class="link inv__viewall">View All Inventory</a>
+        <a href="#inventory" class="ev-cta inv__viewall"><span class="ev-cta__label">View All Inventory</span><svg class="ev-cta__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a>
       </div>
     </div>
 
@@ -206,112 +208,52 @@
         <div class="inv-track" data-inv-track>
 
             <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-1.jpg" alt="2023 Lamborghini Huracán EVO" loading="lazy"></a>
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png" alt="2024 Lamborghini Huracán EVO" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
               <div class="inv-card__body">
-                <span class="inv-card__brand">Lamborghini</span>
-                <h3 class="inv-card__name">Huracán EVO</h3>
-                <span class="inv-card__price">$269,900</span>
-                <div class="inv-card__specs"><span>2023</span><span>3,200 mi</span><span>V10</span></div>
-                <a href="#inventory" class="link">View Details</a>
+                <h3 class="inv-card__title">2024 Lamborghini Huracán EVO</h3>
+                <div class="inv-card__meta"><span>Price: $274,900</span><span>Mileage: 3,200</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
               </div>
             </article>
 
             <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-2.jpg" alt="2022 Ferrari F8 Tributo" loading="lazy"></a>
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inventory/2021%20McLaren%20720S%20Base.png" alt="2021 McLaren 720S" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
               <div class="inv-card__body">
-                <span class="inv-card__brand">Ferrari</span>
-                <h3 class="inv-card__name">F8 Tributo</h3>
-                <span class="inv-card__price">$329,500</span>
-                <div class="inv-card__specs"><span>2022</span><span>4,100 mi</span><span>V8</span></div>
-                <a href="#inventory" class="link">View Details</a>
+                <h3 class="inv-card__title">2021 McLaren 720S</h3>
+                <div class="inv-card__meta"><span>Price: $259,900</span><span>Mileage: 6,400</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
               </div>
             </article>
 
             <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-3.jpg" alt="2021 McLaren 720S" loading="lazy"></a>
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inventory/2026%20Mercedes-Benz%20SL-Class%20Maybach%20SL%20680.png" alt="2026 Mercedes-Benz SL-Class Maybach SL 680" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
               <div class="inv-card__body">
-                <span class="inv-card__brand">McLaren</span>
-                <h3 class="inv-card__name">720S</h3>
-                <span class="inv-card__price">$279,000</span>
-                <div class="inv-card__specs"><span>2021</span><span>6,400 mi</span><span>V8</span></div>
-                <a href="#inventory" class="link">View Details</a>
+                <h3 class="inv-card__title">2026 Mercedes-Benz SL-Class Maybach SL 680</h3>
+                <div class="inv-card__meta"><span>Price: $215,000</span><span>Mileage: 850</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
               </div>
             </article>
 
             <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-4.jpg" alt="2024 Porsche 911 Turbo S" loading="lazy"></a>
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inventory/2025%20Rolls-Royce%20Ghost%20Base.png" alt="2025 Rolls-Royce Ghost" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
               <div class="inv-card__body">
-                <span class="inv-card__brand">Porsche</span>
-                <h3 class="inv-card__name">911 Turbo S</h3>
-                <span class="inv-card__price">$234,900</span>
-                <div class="inv-card__specs"><span>2024</span><span>1,150 mi</span><span>Flat-6</span></div>
-                <a href="#inventory" class="link">View Details</a>
+                <h3 class="inv-card__title">2025 Rolls-Royce Ghost</h3>
+                <div class="inv-card__meta"><span>Price: $389,000</span><span>Mileage: 2,100</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
               </div>
             </article>
 
             <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-5.jpg" alt="2022 Rolls-Royce Cullinan" loading="lazy"></a>
+              <a href="#inventory" class="inv-card__media"><img src="assets/images/inventory/2020%20Ford%20GT%20Carbon%20Series.png" alt="2020 Ford GT Carbon Series" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
               <div class="inv-card__body">
-                <span class="inv-card__brand">Rolls-Royce</span>
-                <h3 class="inv-card__name">Cullinan</h3>
-                <span class="inv-card__price">$389,000</span>
-                <div class="inv-card__specs"><span>2022</span><span>8,900 mi</span><span>V12</span></div>
-                <a href="#inventory" class="link">View Details</a>
-              </div>
-            </article>
-
-            <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-6.jpg" alt="2023 Bentley Continental GT" loading="lazy"></a>
-              <div class="inv-card__body">
-                <span class="inv-card__brand">Bentley</span>
-                <h3 class="inv-card__name">Continental GT</h3>
-                <span class="inv-card__price">$249,500</span>
-                <div class="inv-card__specs"><span>2023</span><span>5,300 mi</span><span>V8</span></div>
-                <a href="#inventory" class="link">View Details</a>
-              </div>
-            </article>
-
-            <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-7.jpg" alt="2021 Aston Martin DBS Superleggera" loading="lazy"></a>
-              <div class="inv-card__body">
-                <span class="inv-card__brand">Aston Martin</span>
-                <h3 class="inv-card__name">DBS Superleggera</h3>
-                <span class="inv-card__price">$284,900</span>
-                <div class="inv-card__specs"><span>2021</span><span>4,800 mi</span><span>V12</span></div>
-                <a href="#inventory" class="link">View Details</a>
-              </div>
-            </article>
-
-            <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-8.jpg" alt="2022 Mercedes-AMG GT Black Series" loading="lazy"></a>
-              <div class="inv-card__body">
-                <span class="inv-card__brand">Mercedes-AMG</span>
-                <h3 class="inv-card__name">GT Black Series</h3>
-                <span class="inv-card__price">$549,000</span>
-                <div class="inv-card__specs"><span>2022</span><span>2,100 mi</span><span>V8</span></div>
-                <a href="#inventory" class="link">View Details</a>
-              </div>
-            </article>
-
-            <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-9.jpg" alt="2022 Audi R8 V10 Performance" loading="lazy"></a>
-              <div class="inv-card__body">
-                <span class="inv-card__brand">Audi</span>
-                <h3 class="inv-card__name">R8 V10 Performance</h3>
-                <span class="inv-card__price">$199,900</span>
-                <div class="inv-card__specs"><span>2022</span><span>7,200 mi</span><span>V10</span></div>
-                <a href="#inventory" class="link">View Details</a>
-              </div>
-            </article>
-
-            <article class="inv-card">
-              <a href="#inventory" class="inv-card__media"><img src="assets/images/inv-10.jpg" alt="2024 Lotus Emira" loading="lazy"></a>
-              <div class="inv-card__body">
-                <span class="inv-card__brand">Lotus</span>
-                <h3 class="inv-card__name">Emira</h3>
-                <span class="inv-card__price">$119,900</span>
-                <div class="inv-card__specs"><span>2024</span><span>900 mi</span><span>V6</span></div>
-                <a href="#inventory" class="link">View Details</a>
+                <h3 class="inv-card__title">2020 Ford GT Carbon Series</h3>
+                <div class="inv-card__meta"><span>Price: $1,095,000</span><span>Mileage: 1,200</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
               </div>
             </article>
 
@@ -321,15 +263,21 @@
   </section>
 
   <!-- ============ INVENTORY ENTRY ============ -->
-  <section class="section section--surface" id="inventory">
+  <section class="section inv-entry" id="inventory">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">The Collection</span>
-        <h2>Explore the Collection</h2>
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">The Collection</span>
+        <h2 class="heading-light">Explore Inventory</h2>
         <p class="lead">New and pre-owned, unified. Browse by marque — only what's currently available, presented the way it deserves.</p>
       </div>
 
       <form class="search-bar" data-search data-reveal>
+        <select name="year" aria-label="Year">
+          <option value="">Year</option>
+          <option>2026</option>
+          <option>2025</option>
+          <option>2024</option>
+        </select>
         <select name="make" aria-label="Make">
           <option value="">Make</option>
           <option>Porsche</option>
@@ -346,12 +294,6 @@
           <option>Huracán</option>
           <option>720S</option>
         </select>
-        <select name="year" aria-label="Year">
-          <option value="">Year</option>
-          <option>2026</option>
-          <option>2025</option>
-          <option>2024</option>
-        </select>
         <button type="submit" class="btn btn--primary">Search</button>
       </form>
     </div>
@@ -359,89 +301,33 @@
 
   <!-- ============ LOTUS BRAND SHOWCASE ============ -->
   <section class="section lotus" id="lotus">
+    <canvas class="lotus-shader" data-lotus-shader aria-hidden="true"></canvas>
     <div class="container container--wide">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Lotus · Official Showcase</span>
-        <h2>Performance Reimagined</h2>
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Lotus · Official Showcase</span>
+        <h2 class="heading-light">Performance Reimagined</h2>
         <p class="lead">Four expressions of electric and combustion performance. Select a model to explore.</p>
       </div>
 
-      <div class="lotus-showcase" data-lotus>
-        <!-- Control bar: model tabs + arrows + counter -->
-        <div class="lotus-bar" data-reveal>
-          <div class="lotus-tabs" role="tablist" aria-label="Lotus models">
-            <button class="lotus-tab is-active" role="tab" aria-selected="true" data-lotus-tab="0">Emeya</button>
-            <button class="lotus-tab" role="tab" aria-selected="false" data-lotus-tab="1">Eletre</button>
-            <button class="lotus-tab" role="tab" aria-selected="false" data-lotus-tab="2">Emira</button>
-            <button class="lotus-tab" role="tab" aria-selected="false" data-lotus-tab="3">Evija</button>
-          </div>
-          <div class="lotus-nav">
-            <span class="lotus-counter"><span data-lotus-current>01</span> / 04</span>
-            <button class="lotus-arrow" data-lotus-prev aria-label="Previous model">&#8249;</button>
-            <button class="lotus-arrow" data-lotus-next aria-label="Next model">&#8250;</button>
-          </div>
+      <div class="lotus-deck" data-lotus-deck data-reveal>
+        <div class="lotus-tabs lotus-deck__tabs" role="tablist" aria-label="Lotus models">
+          <button class="lotus-tab is-active" role="tab" aria-selected="true" data-model="eletre">Eletre</button>
+          <button class="lotus-tab" role="tab" aria-selected="false" data-model="emeya">Emeya</button>
+          <button class="lotus-tab" role="tab" aria-selected="false" data-model="emira">Emira</button>
+          <button class="lotus-tab" role="tab" aria-selected="false" data-model="evija">Evija</button>
         </div>
 
-        <!-- Sliding viewport -->
-        <div class="lotus-viewport">
-          <div class="lotus-track" data-lotus-track>
-            <article class="lotus-panel" role="tabpanel" aria-label="Lotus Emeya">
-              <img class="lotus-panel__media" src="assets/images/lotus-emeya.jpg" alt="Lotus Emeya" loading="lazy">
-              <div class="lotus-panel__info">
-                <h3 class="lotus-panel__name">Emeya</h3>
-                <p>The electric hyper-GT — grand touring rewritten for the electric age.</p>
-                <div class="lotus-specs">
-                  <div class="spec"><span class="spec__value">905</span><span class="spec__label">Horsepower</span></div>
-                  <div class="spec"><span class="spec__value">2.8s</span><span class="spec__label">0–60 mph</span></div>
-                  <div class="spec"><span class="spec__value">159</span><span class="spec__label">Top Speed (mph)</span></div>
-                </div>
-                <a href="#inventory" class="btn btn--primary">Explore Emeya</a>
-              </div>
-            </article>
-
-            <article class="lotus-panel" role="tabpanel" aria-label="Lotus Eletre">
-              <img class="lotus-panel__media" src="assets/images/lotus-eletre.jpg" alt="Lotus Eletre" loading="lazy">
-              <div class="lotus-panel__info">
-                <h3 class="lotus-panel__name">Eletre</h3>
-                <p>The Hyper-SUV — space, presence, and supercar performance.</p>
-                <div class="lotus-specs">
-                  <div class="spec"><span class="spec__value">905</span><span class="spec__label">Horsepower</span></div>
-                  <div class="spec"><span class="spec__value">2.9s</span><span class="spec__label">0–60 mph</span></div>
-                  <div class="spec"><span class="spec__value">373</span><span class="spec__label">Range (mi)</span></div>
-                </div>
-                <a href="#inventory" class="btn btn--primary">Explore Eletre</a>
-              </div>
-            </article>
-
-            <article class="lotus-panel" role="tabpanel" aria-label="Lotus Emira">
-              <img class="lotus-panel__media" src="assets/images/lotus-emira.jpg" alt="Lotus Emira" loading="lazy">
-              <div class="lotus-panel__info">
-                <h3 class="lotus-panel__name">Emira</h3>
-                <p>The final combustion Lotus — pure, mid-engined driver's sports car.</p>
-                <div class="lotus-specs">
-                  <div class="spec"><span class="spec__value">400</span><span class="spec__label">Horsepower</span></div>
-                  <div class="spec"><span class="spec__value">4.2s</span><span class="spec__label">0–60 mph</span></div>
-                  <div class="spec"><span class="spec__value">180</span><span class="spec__label">Top Speed (mph)</span></div>
-                </div>
-                <a href="#inventory" class="btn btn--primary">Explore Emira</a>
-              </div>
-            </article>
-
-            <article class="lotus-panel" role="tabpanel" aria-label="Lotus Evija">
-              <img class="lotus-panel__media" src="assets/images/lotus-evija.jpg" alt="Lotus Evija" loading="lazy">
-              <div class="lotus-panel__info">
-                <h3 class="lotus-panel__name">Evija</h3>
-                <p>The all-electric hypercar — limited, uncompromising, otherworldly.</p>
-                <div class="lotus-specs">
-                  <div class="spec"><span class="spec__value">2000</span><span class="spec__label">Horsepower</span></div>
-                  <div class="spec"><span class="spec__value">&lt;3.0s</span><span class="spec__label">0–60 mph</span></div>
-                  <div class="spec"><span class="spec__value">217</span><span class="spec__label">Top Speed (mph)</span></div>
-                </div>
-                <a href="#inventory" class="btn btn--primary">Explore Evija</a>
-              </div>
-            </article>
-          </div>
+        <div class="lotus-deck__stage">
+          <img class="lotus-deck__img" data-lotus-img src="assets/images/models/eletre.png" alt="Lotus Eletre" width="831" height="350" loading="lazy">
         </div>
+
+        <div class="lotus-deck__specs" data-lotus-specs>
+          <div class="lotus-stat"><span class="lotus-stat__value">905</span><span class="lotus-stat__label">Horsepower</span></div>
+          <div class="lotus-stat"><span class="lotus-stat__value">2.9</span><span class="lotus-stat__label">0–60 mph</span></div>
+          <div class="lotus-stat"><span class="lotus-stat__value">373</span><span class="lotus-stat__label">Range (mi)</span></div>
+        </div>
+
+        <a href="#inventory" class="btn btn--primary lotus-deck__cta" data-lotus-cta>Explore Eletre</a>
       </div>
     </div>
   </section>
@@ -452,8 +338,8 @@
       <div class="split">
         <img class="split__media" src="assets/images/sell.jpg" alt="Sell your exotic vehicle" loading="lazy" data-reveal>
         <div class="editorial__text" data-reveal>
-          <span class="eyebrow">Acquisition</span>
-          <h2>Looking To Sell Your Exotic Vehicle?</h2>
+          <span class="eyebrow eyebrow--oswald">Acquisition</span>
+          <h2 class="heading-light">Looking To Sell Your Exotic Vehicle?</h2>
           <ul class="value-list">
             <li>Consignment</li>
             <li>Direct Purchase</li>
@@ -490,9 +376,9 @@
   <!-- ============ WE BUY CARS ============ -->
   <section class="section" id="buy">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">We Buy Cars</span>
-        <h2>Get An Offer In Minutes</h2>
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">We Buy Cars</span>
+        <h2 class="heading-light">Get An Offer In Minutes</h2>
         <p class="lead">Tell us about your vehicle and our acquisition team will follow up with a competitive offer.</p>
       </div>
 
@@ -521,9 +407,9 @@
   <!-- ============ SERVICES ============ -->
   <section class="section" id="services">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Ownership, Elevated</span>
-        <h2>Services</h2>
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Ownership, Elevated</span>
+        <h2 class="heading-light">Services</h2>
       </div>
 
       <div class="grid grid--2">
@@ -554,8 +440,8 @@
 
         <!-- Sticky editorial intro -->
         <div class="journey__intro" data-reveal>
-          <span class="eyebrow">The Ownership Journey</span>
-          <h2>You're Not Buying a Car. You're Joining a Club.</h2>
+          <span class="eyebrow eyebrow--oswald">The Ownership Journey</span>
+          <h2 class="heading-light">You're Not Buying a Car. You're Joining a Club.</h2>
           <p class="lead">From the first conversation to the events calendar, ownership at Vegas Auto Gallery is a relationship — not a transaction.</p>
           <a href="#footer" class="btn btn--primary">Become a Client</a>
         </div>
@@ -607,9 +493,9 @@
   <section class="section reviews" id="reviews">
     <div class="container container--wide">
       <div class="reviews-head" data-reveal>
-        <div class="section-head">
-          <span class="eyebrow">Client Experiences</span>
-          <h2>What Our Clients Say</h2>
+        <div class="section-head section-head--tight">
+          <span class="eyebrow eyebrow--oswald">Client Experiences</span>
+          <h2 class="heading-light">What Our Clients Say</h2>
         </div>
         <div class="rating-summary">
           <span class="rating-summary__score">4.9</span>
@@ -691,9 +577,9 @@
   <!-- ============ INSTAGRAM FEED ============ -->
   <section class="section section--surface insta" id="instagram">
     <div class="container container--wide">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Follow Along</span>
-        <h2>@vegasautogallery</h2>
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Follow Along</span>
+        <h2 class="heading-light">@vegasautogallery</h2>
         <p class="lead">An ongoing reel of arrivals, events, and the machines that pass through our doors.</p>
       </div>
 

@@ -18,6 +18,7 @@
   --text-6xl:  95px;   /* editorial hero */
 
   /* Weight */
+  --weight-light:  300;
   --weight-normal: 400;
   --weight-medium: 500;
   --weight-semibold: 600;

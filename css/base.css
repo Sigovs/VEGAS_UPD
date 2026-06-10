@@ -21,6 +21,30 @@ h1 { font-size: var(--text-5xl); }
 h2 { font-size: var(--text-4xl); }
 h3 { font-size: var(--text-2xl); }
 
+/* Light section heading — Oswald Light, airier editorial cadence */
+.heading-light {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: 50px;
+  line-height: 60px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+/* Small light heading — Oswald Light, used for card / feature titles
+   (brand names, event spreads). Shared spec; see also .brand-panel__name
+   and .ev-feature__title overrides. */
+.heading-sm-light {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
 /* Small headings / labels stay in the sans voice */
 h4 {
   font-family: var(--font-sans);
@@ -54,6 +78,15 @@ p { font-size: var(--text-base); color: var(--color-text-soft); }
   color: var(--color-accent);
 }
 
+/* Oswald eyebrow — label set in the display face, airy tracking */
+.eyebrow--oswald {
+  font-family: var(--font-display);
+  font-weight: var(--weight-normal);
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 3px;
+}
+
 /* Lead paragraph — larger intro copy */
 .lead {
   font-size: var(--text-lg);
@@ -69,6 +102,15 @@ p { font-size: var(--text-base); color: var(--color-text-soft); }
   gap: var(--space-3);
   margin-bottom: var(--space-6);
   max-width: 60ch;
+}
+
+/* Tight head — 4px between eyebrow and heading */
+.section-head--tight { gap: 4px; }
+
+/* Same 4px eyebrow → heading rhythm inside gap-based editorial columns */
+.editorial__text .eyebrow--oswald + .heading-light,
+.journey__intro .eyebrow--oswald + .heading-light {
+  margin-top: calc(4px - var(--space-4));
 }
 
 /* Quiet editorial link with growing underline */

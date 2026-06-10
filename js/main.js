@@ -114,109 +114,191 @@
     heroVideo.pause?.();
   }
 
-  /* ---------- Lotus model carousel ---------- */
-  const lotus = document.querySelector('[data-lotus]');
-  if (lotus) {
-    const track = lotus.querySelector('[data-lotus-track]');
-    const panels = Array.from(lotus.querySelectorAll('.lotus-panel'));
-    const tabs = Array.from(lotus.querySelectorAll('[data-lotus-tab]'));
-    const prevBtn = lotus.querySelector('[data-lotus-prev]');
-    const nextBtn = lotus.querySelector('[data-lotus-next]');
-    const counter = lotus.querySelector('[data-lotus-current]');
-    const count = panels.length;
-    let index = 0;
-    let revealed = false; // becomes true once the section is on screen
+  /* ---------- Lotus model showcase (tab deck) ---------- */
+  const lotusDeck = document.querySelector('[data-lotus-deck]');
+  if (lotusDeck) {
+    const MODELS = {
+      emeya:  { img: 'assets/images/models/emeya.png',  name: 'Emeya',  stats: [['905', 'Horsepower'], ['2.8', '0–60 mph'], ['295', 'Range (mi)']] },
+      eletre: { img: 'assets/images/models/eletre.png', name: 'Eletre', stats: [['905', 'Horsepower'], ['2.9', '0–60 mph'], ['373', 'Range (mi)']] },
+      emira:  { img: 'assets/images/models/emira.png',  name: 'Emira',  stats: [['400', 'Horsepower'], ['4.2', '0–60 mph'], ['180', 'Top Speed (mph)']] },
+      evija:  { img: 'assets/images/models/evija.png',  name: 'Evija',  stats: [['2011', 'Horsepower'], ['2.9', '0–60 mph'], ['217', 'Top Speed (mph)']] },
+    };
+    const tabs = Array.from(lotusDeck.querySelectorAll('.lotus-tab'));
+    const stage = lotusDeck.querySelector('.lotus-deck__stage');
+    let currentImg = lotusDeck.querySelector('[data-lotus-img]');
+    const specsEl = lotusDeck.querySelector('[data-lotus-specs]');
+    const cta = lotusDeck.querySelector('[data-lotus-cta]');
 
-    const pad = (n) => String(n).padStart(2, '0');
-
-    /* --- count-up numbers --- */
-    // Parse a spec string into prefix / number / decimals / suffix
-    // e.g. "905" · "2.8s" · "<3.0s" · "373"
+    /* count-up for the spec numbers */
     const parseSpec = (txt) => {
       const m = String(txt).trim().match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);
       if (!m) return null;
       const decimals = m[2].includes('.') ? m[2].split('.')[1].length : 0;
       return { prefix: m[1], end: parseFloat(m[2]), decimals, suffix: m[3] };
     };
-
-    // Cache each value's target text; zero it out (unless reduced motion)
-    lotus.querySelectorAll('.spec__value').forEach((el) => {
-      el.dataset.countTarget = el.textContent.trim();
-      if (!reduceMotion) {
-        const p = parseSpec(el.dataset.countTarget);
-        if (p) el.textContent = p.prefix + (0).toFixed(p.decimals) + p.suffix;
-      }
-    });
-
     const animateValue = (el, duration = 1100) => {
-      const p = parseSpec(el.dataset.countTarget);
-      if (!p) return;
+      const target = el.textContent.trim();
+      const p = parseSpec(target);
+      if (!p || reduceMotion) return;
       const start = performance.now();
       const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+      el.textContent = p.prefix + (0).toFixed(p.decimals) + p.suffix;
       const tick = (now) => {
         const k = Math.min((now - start) / duration, 1);
         el.textContent = p.prefix + (p.end * easeOut(k)).toFixed(p.decimals) + p.suffix;
         if (k < 1) requestAnimationFrame(tick);
-        else el.textContent = el.dataset.countTarget; // snap to exact target
+        else el.textContent = target;
       };
       requestAnimationFrame(tick);
     };
+    const countAll = () => specsEl.querySelectorAll('.lotus-stat__value').forEach((el) => animateValue(el));
 
-    const countSlide = (i) => {
-      if (reduceMotion) return;
-      panels[i].querySelectorAll('.spec__value').forEach((el) => animateValue(el));
+    const writeSpecs = (m) => {
+      specsEl.innerHTML = m.stats.map(([v, l]) =>
+        `<div class="lotus-stat"><span class="lotus-stat__value">${v}</span><span class="lotus-stat__label">${l}</span></div>`
+      ).join('');
+      countAll();
     };
 
-    const go = (next) => {
-      index = (next + count) % count; // wrap around
-      track.style.transform = `translateX(-${index * 100}%)`;
+    const render = (key) => {
+      const m = MODELS[key];
+      if (!m) return;
+      cta.textContent = `Explore ${m.name}`;
 
-      tabs.forEach((t, i) => {
-        const active = i === index;
-        t.classList.toggle('is-active', active);
-        t.setAttribute('aria-selected', String(active));
+      if (reduceMotion) {
+        currentImg.onerror = () => { currentImg.onerror = null; currentImg.src = `assets/images/lotus-${key}.jpg`; };
+        currentImg.src = m.img;
+        currentImg.alt = `Lotus ${m.name}`;
+        writeSpecs(m);
+        return;
+      }
+
+      // gently fade the spec block out, rewrite, fade back in
+      specsEl.style.transition = 'opacity 0.4s ease';
+      specsEl.style.opacity = '0';
+      setTimeout(() => { writeSpecs(m); specsEl.style.opacity = '1'; }, 260);
+
+      // crossfade the car: preload first, then layer the new image over the old
+      const next = new Image();
+      next.className = 'lotus-deck__img';
+      next.alt = `Lotus ${m.name}`;
+      next.decoding = 'async';
+      const place = () => {
+        next.style.opacity = '0';
+        next.style.transform = 'scale(1.04)';
+        stage.appendChild(next);
+        void next.offsetWidth;                 // force reflow so the 0→1 transition runs
+        next.style.opacity = '1';
+        next.style.transform = 'scale(1)';
+        const old = currentImg;
+        currentImg = next;
+        if (old) {
+          old.style.opacity = '0';
+          old.style.transform = 'scale(0.99)';
+          setTimeout(() => { if (old.parentNode) old.remove(); }, 900);
+        }
+      };
+      next.onload = place;
+      next.onerror = () => { next.onerror = null; next.src = `assets/images/lotus-${key}.jpg`; };
+      next.src = m.img;
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        if (tab.classList.contains('is-active')) return;
+        tabs.forEach((t) => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        render(tab.dataset.model);
       });
-      panels.forEach((p, i) => p.classList.toggle('is-current', i === index));
-      if (counter) counter.textContent = pad(index + 1);
-      if (revealed) countSlide(index); // re-count when navigating
-    };
-
-    tabs.forEach((tab, i) => tab.addEventListener('click', () => go(i)));
-    prevBtn?.addEventListener('click', () => go(index - 1));
-    nextBtn?.addEventListener('click', () => go(index + 1));
-
-    // Keyboard arrows when the carousel is in focus
-    lotus.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
     });
 
-    // Basic touch swipe
-    let startX = null;
-    lotus.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
-    lotus.addEventListener('touchend', (e) => {
-      if (startX === null) return;
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
-      startX = null;
-    });
-
-    go(0); // initial state — does not animate yet (revealed === false)
-
-    // Start the count-up the first time the section enters the viewport
+    // initial count-up when the section first scrolls into view
     if (reduceMotion || !('IntersectionObserver' in window)) {
-      revealed = true;
+      countAll();
     } else {
       const io = new IntersectionObserver((entries, obs) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            revealed = true;
-            countSlide(index);
-            obs.disconnect();
-          }
+          if (entry.isIntersecting) { countAll(); obs.disconnect(); }
         });
       }, { threshold: 0.3 });
-      io.observe(lotus);
+      io.observe(lotusDeck);
+    }
+  }
+
+  /* ---------- Lotus background — subtle flow-noise shader ---------- */
+  const shaderCanvas = document.querySelector('[data-lotus-shader]');
+  if (shaderCanvas && !reduceMotion) {
+    const gl = shaderCanvas.getContext('webgl', { antialias: false, alpha: true })
+            || shaderCanvas.getContext('experimental-webgl');
+    if (gl) {
+      const VERT = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
+      const FRAG = [
+        'precision highp float;',
+        'uniform vec2 u_res;uniform float u_time;',
+        'float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+        'float noise(vec2 p){vec2 i=floor(p),f=fract(p);float a=hash(i),b=hash(i+vec2(1.,0.)),c=hash(i+vec2(0.,1.)),d=hash(i+vec2(1.,1.));vec2 u=f*f*(3.-2.*f);return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}',
+        'float fbm(vec2 p){float v=0.,a=0.5;for(int i=0;i<5;i++){v+=a*noise(p);p*=2.0;a*=0.5;}return v;}',
+        'void main(){',
+        ' vec2 uv=gl_FragCoord.xy/u_res.xy;',
+        ' vec2 q=uv;q.x*=u_res.x/u_res.y;',
+        ' float t=u_time*0.025;',
+        ' float n=fbm(q*2.1+vec2(t,t*0.6)+fbm(q*1.4-t*0.5)*0.6);',
+        ' vec3 bg=vec3(0.043,0.059,0.078);',
+        ' vec3 slate=vec3(0.090,0.140,0.190);',
+        ' vec3 col=mix(bg,slate,smoothstep(0.40,0.74,n));',
+        ' float cy=abs(uv.y-0.5);',
+        ' float band=smoothstep(0.30,0.04,cy);',   // concentrated central band, clean top & bottom
+        ' col=mix(bg,col,band);',
+        ' gl_FragColor=vec4(col,1.0);',
+        '}'
+      ].join('\n');
+      const compile = (type, src) => {
+        const s = gl.createShader(type);
+        gl.shaderSource(s, src); gl.compileShader(s);
+        return s;
+      };
+      const prog = gl.createProgram();
+      gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+      gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+      gl.linkProgram(prog);
+      if (gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+        gl.useProgram(prog);
+        const buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+        const loc = gl.getAttribLocation(prog, 'p');
+        gl.enableVertexAttribArray(loc);
+        gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+        const uRes = gl.getUniformLocation(prog, 'u_res');
+        const uTime = gl.getUniformLocation(prog, 'u_time');
+        let running = false, start = null, raf = 0;
+        const resize = () => {
+          const r = shaderCanvas.getBoundingClientRect();
+          const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+          shaderCanvas.width = Math.max(1, Math.round(r.width * dpr));
+          shaderCanvas.height = Math.max(1, Math.round(r.height * dpr));
+          gl.viewport(0, 0, shaderCanvas.width, shaderCanvas.height);
+        };
+        const frame = (now) => {
+          if (!running) return;
+          if (start === null) start = now;
+          gl.uniform2f(uRes, shaderCanvas.width, shaderCanvas.height);
+          gl.uniform1f(uTime, (now - start) / 1000);
+          gl.drawArrays(gl.TRIANGLES, 0, 3);
+          raf = requestAnimationFrame(frame);
+        };
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+        // run only while the section is on screen
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting && !running) { running = true; raf = requestAnimationFrame(frame); }
+            else if (!en.isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+          });
+        }, { threshold: 0 });
+        io.observe(shaderCanvas);
+      }
     }
   }
 
@@ -325,6 +407,58 @@
       buyForm.innerHTML = '<p class="form-success">Thank you — our acquisition team will be in touch shortly.</p>';
     });
   }
+
+  /* ---------- Events photos: light 3D tilt on hover ---------- */
+  const tiltCards = document.querySelectorAll('.ev-redesign .ev-feature__media');
+  if (tiltCards.length && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    const MAX = 6; // max degrees of tilt
+    tiltCards.forEach((card) => {
+      card.style.willChange = 'transform';
+      const onMove = (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;   // -0.5 … 0.5
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        const ry = px * MAX * 2;     // rotateY follows the cursor horizontally
+        const rx = -py * MAX * 2;    // rotateX follows it vertically
+        card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+      };
+      card.addEventListener('pointerenter', () => { card.style.transition = 'transform 0.12s linear'; });
+      card.addEventListener('pointermove', onMove);
+      card.addEventListener('pointerleave', () => {
+        card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+  }
+
+  /* ---------- Explore Inventory — background parallax ---------- */
+  const parallaxSection = document.querySelector('.v2 .inv-entry');
+  if (parallaxSection && !reduceMotion) {
+    let ticking = false;
+    const updateParallax = () => {
+      const r = parallaxSection.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (r.bottom > 0 && r.top < vh) {
+        const offset = (r.top + r.height / 2) - vh / 2;   // section centre vs viewport centre
+        parallaxSection.style.setProperty('--py', (offset * -0.3).toFixed(1) + 'px');
+      }
+      ticking = false;
+    };
+    const onParallaxScroll = () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+    };
+    window.addEventListener('scroll', onParallaxScroll, { passive: true });
+    window.addEventListener('resize', onParallaxScroll, { passive: true });
+    updateParallax();
+  }
+
+  /* ---------- Save (favourite) heart toggle — delegated for cloned cards ---------- */
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.inv--redesign .inv-card__save');
+    if (!btn) return;
+    e.preventDefault();
+    btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+  });
 
   /* ---------- Inventory search (stub) ---------- */
   const search = document.querySelector('[data-search]');

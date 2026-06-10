@@ -376,6 +376,112 @@
   .ev-feature__title { font-size: var(--text-3xl); }
 }
 
+/* ============ EVENTS — Figma spec (index2 only, scoped via .ev-redesign) ============ */
+/* Vertical rhythm per Figma: 60px above the intro, 30px below the subtitle,
+   60px above the first row (→ 90px subtitle→row), 60px at the bottom. */
+.ev-redesign {
+  position: relative;
+  padding-block: 60px;
+  /* base matches the page canvas so the section edges are seamless */
+}
+/* Decorative layer: radial slate glow + faint film grain, vertically masked
+   so it fades into the neighbouring sections (no hard edge top or bottom). */
+.ev-redesign::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 70% 42% at 50% 44%, #16212d 0%, rgba(11, 15, 20, 0) 72%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
+}
+.ev-redesign > * { position: relative; z-index: 1; }
+
+/* Centered intro header: eyebrow→title 4px (from .section-head--tight),
+   title→subtitle 24px, subtitle 16/26 Roboto Condensed Light */
+.ev-redesign .section-head {
+  text-align: center;
+  align-items: center;
+  max-width: 952px;
+  margin-inline: auto;
+  margin-bottom: 90px;   /* 30px (intro pb) + 60px (row pt) */
+}
+.ev-redesign .section-head .lead {
+  margin-top: calc(var(--space-4) - var(--space-1));   /* 24px total with the 4px gap */
+  font-size: var(--text-base);
+  line-height: 26px;
+  font-weight: var(--weight-light);
+  max-width: none;
+  white-space: nowrap;     /* keep the subtitle on one line */
+}
+
+/* Text column rhythm: kicker →32→ (eyebrow →8→ title) →16→ body */
+.ev-redesign .ev-feature__text { gap: 0; }
+.ev-redesign .ev-feature__kicker {
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0;                 /* Figma kicker has no tracking */
+  margin-bottom: var(--space-5);     /* 32px */
+}
+.ev-redesign .ev-feature__text .eyebrow--oswald { margin-bottom: var(--space-2); }  /* 8px */
+.ev-redesign .ev-feature__title {     /* = .heading-sm-light, restored over the generic title size */
+  font-size: 30px;
+  line-height: 40px;
+  margin-bottom: var(--space-3);      /* 16px */
+}
+.ev-redesign .ev-feature__text p {
+  font-weight: var(--weight-light);   /* Roboto Condensed Light */
+  font-size: var(--text-base);        /* 16px */
+  line-height: 26px;
+}
+
+/* CTA — "Read the Story →" : Oswald 14/22/3px + chevron, 32px below the body.
+   Hover: text turns blue and the chevron nudges right. */
+.ev-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--space-5);          /* 32px */
+  font-family: var(--font-display);
+  font-weight: var(--weight-normal);
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  transition: color var(--transition);
+}
+.ev-cta__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+.ev-cta:hover { color: #6E8FD6; }                         /* blue on hover */
+.ev-cta:hover .ev-cta__icon { transform: translateX(4px); }
+
+/* Portrait media (464×600) */
+.ev-redesign .ev-feature__media { aspect-ratio: 464 / 600; }
+
+/* Fixed media + 342px text column, capped to the 952px content band.
+   Desktop only — narrow screens keep the generic 1fr stack above. */
+@media (min-width: 801px) {
+  .ev-redesign .ev-feature {
+    grid-template-columns: minmax(0, 464px) minmax(0, 342px);
+    justify-content: space-between;
+    align-items: start;
+    gap: 0;
+    max-width: 952px;
+    margin-inline: auto;
+  }
+  .ev-redesign .ev-feature--reverse {
+    grid-template-columns: minmax(0, 342px) minmax(0, 464px);
+  }
+}
+
 /* ============ SELL LAYOUT ============ */
 .split {
   display: grid;
