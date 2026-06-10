@@ -1350,6 +1350,10 @@
 /* ============ WE BUY CARS — form + steps over photo ============ */
 .buy {
   position: relative;
+  min-height: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding-block: var(--space-12);
   overflow: hidden;
   isolation: isolate;
@@ -1462,17 +1466,34 @@
   gap: var(--space-1);
 }
 
+/* Number — matches the Events eyebrow (.eyebrow--oswald) */
 .buy-step__num {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  letter-spacing: var(--tracking-wide);
+  font-family: var(--font-display);
+  font-weight: var(--weight-normal);
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 3px;
   color: var(--color-accent);
 }
 
-.buy-step__title { font-size: var(--text-2xl); }
-.buy-step__body p { color: var(--color-text-soft); }
+/* Title — matches the Events title (.heading-sm-light) */
+.buy-step__title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+/* Description — matches the Events copy (Roboto Condensed Light) */
+.buy-step__body p {
+  font-weight: var(--weight-light);
+  color: var(--color-text-soft);
+}
 
 @media (max-width: 900px) {
+  .buy { min-height: auto; }
   .buy__grid { flex-direction: column; align-items: stretch; gap: var(--space-6); }
   .buy__content { order: 0; max-width: none; }  /* heading first on mobile */
   .buy-form { order: 1; width: 100%; }
