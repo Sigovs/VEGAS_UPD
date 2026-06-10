@@ -302,6 +302,30 @@
     }
   }
 
+  /* ---------- Parallax background layers ---------- */
+  const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
+  if (parallaxEls.length && !reduceMotion) {
+    const SPEED = 0.16;
+    let ticking = false;
+    const update = () => {
+      const vh = window.innerHeight;
+      parallaxEls.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return; // off-screen
+        // distance of element centre from viewport centre → translate
+        const offset = (rect.top + rect.height / 2 - vh / 2) * SPEED;
+        el.style.setProperty('--parallax-y', `${offset.toFixed(1)}px`);
+      });
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  }
+
   /* ---------- Auto-update footer year ---------- */
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

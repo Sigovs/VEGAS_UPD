@@ -1350,19 +1350,37 @@
 /* ============ WE BUY CARS — form + steps over photo ============ */
 .buy {
   position: relative;
-  padding-block: var(--space-10);
-  background-image:
-    linear-gradient(var(--color-scrim), var(--color-scrim)),
-    url('../assets/images/we-buy-bg.jpg');
-  background-size: cover;
-  background-position: center;
+  padding-block: var(--space-12);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Parallax image layer (translated on scroll via JS; scaled up a touch) */
+.buy::before {
+  content: "";
+  position: absolute;
+  inset: -18% 0;
+  z-index: -2;
+  background: url('../assets/images/we-buy-bg.jpg') center / cover no-repeat;
+  transform: translateY(var(--parallax-y, 0)) scale(1.14);
+  will-change: transform;
+}
+
+/* Scrim */
+.buy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-scrim);
 }
 
 .buy__grid {
-  display: grid;
-  grid-template-columns: 464px minmax(0, 1fr);
-  gap: var(--space-8);
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
 }
 
 /* Left: frosted-glass acquisition form */
@@ -1418,13 +1436,17 @@
   font-size: var(--text-lg);
 }
 
-/* Right: heading + numbered steps */
+/* Text block — sits on the LEFT, form on the right */
 .buy__content {
   max-width: 600px;
-  order: 1; /* sits to the right of the form on desktop */
+  order: 0;
 }
 
-.buy-form { order: 0; }
+.buy-form {
+  flex: 0 0 auto;
+  width: 464px;
+  order: 1; /* form on the right */
+}
 
 .buy-steps {
   list-style: none;
@@ -1451,9 +1473,9 @@
 .buy-step__body p { color: var(--color-text-soft); }
 
 @media (max-width: 900px) {
-  .buy__grid { grid-template-columns: 1fr; gap: var(--space-6); }
-  .buy__content { order: 0; }   /* heading first on mobile */
-  .buy-form { order: 1; }
+  .buy__grid { flex-direction: column; align-items: stretch; gap: var(--space-6); }
+  .buy__content { order: 0; max-width: none; }  /* heading first on mobile */
+  .buy-form { order: 1; width: 100%; }
 }
 
 /* ============ INSTAGRAM FEED ============ */
