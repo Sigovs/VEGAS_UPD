@@ -305,7 +305,7 @@
   /* ---------- Parallax background layers ---------- */
   const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
   if (parallaxEls.length && !reduceMotion) {
-    const SPEED = 0.16;
+    const SPEED = 0.26;
     let ticking = false;
     const update = () => {
       const vh = window.innerHeight;
@@ -418,6 +418,32 @@
         if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
       }, true);
     }
+  }
+
+  /* ---------- Get An Offer slide-in panel ---------- */
+  const offer = document.querySelector('[data-offer]');
+  if (offer) {
+    const openers = document.querySelectorAll('[data-offer-open]');
+    const closers = offer.querySelectorAll('[data-offer-close]');
+
+    const openOffer = (e) => {
+      if (e) e.preventDefault();
+      offer.hidden = false;
+      // next frame so the transition runs from the hidden state
+      requestAnimationFrame(() => offer.classList.add('is-open'));
+      document.body.style.overflow = 'hidden';
+    };
+    const closeOffer = () => {
+      offer.classList.remove('is-open');
+      document.body.style.removeProperty('overflow');
+      setTimeout(() => { offer.hidden = true; }, 760);
+    };
+
+    openers.forEach((el) => el.addEventListener('click', openOffer));
+    closers.forEach((el) => el.addEventListener('click', closeOffer));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && offer.classList.contains('is-open')) closeOffer();
+    });
   }
 
   /* ---------- We Buy Cars lead form (stub) ---------- */

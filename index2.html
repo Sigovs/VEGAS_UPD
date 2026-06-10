@@ -59,7 +59,7 @@
           <p class="lead">Curated exotic, luxury, and collector vehicles in Las Vegas.</p>
           <div class="hero__actions">
             <a href="#inventory" class="btn btn--primary">View Inventory</a>
-            <a href="#sell" class="btn btn--secondary">Sell Your Vehicle</a>
+            <a href="#" class="btn btn--secondary" data-offer-open>Sell Your Vehicle</a>
           </div>
         </div>
 
@@ -69,7 +69,7 @@
           <h1 class="display"><span class="line">Sell</span><span class="line">Your Exotic</span><span class="line">The Effortless</span><span class="line">Way</span></h1>
           <p class="lead">Consignment, direct purchase, and nationwide transport — a competitive offer in minutes.</p>
           <div class="hero__actions">
-            <a href="#buy" class="btn btn--primary">Get An Offer</a>
+            <a href="#" class="btn btn--primary" data-offer-open>Get An Offer</a>
             <a href="#sell" class="btn btn--secondary">How It Works</a>
           </div>
         </div>
@@ -332,52 +332,10 @@
     </div>
   </section>
 
-  <!-- ============ SELL YOUR VEHICLE ============ -->
-  <section class="section section--surface" id="sell">
-    <div class="container container--wide">
-      <div class="split">
-        <img class="split__media" src="assets/images/sell.jpg" alt="Sell your exotic vehicle" loading="lazy" data-reveal>
-        <div class="editorial__text" data-reveal>
-          <span class="eyebrow eyebrow--oswald">Acquisition</span>
-          <h2 class="heading-light">Looking To Sell Your Exotic Vehicle?</h2>
-          <ul class="value-list">
-            <li>Consignment</li>
-            <li>Direct Purchase</li>
-            <li>Nationwide Transportation</li>
-            <li>Fast Evaluation</li>
-          </ul>
-          <div class="row row--mt">
-            <a href="#buy" class="btn btn--primary">Get An Offer</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- How it works — 3 easy steps -->
-      <div class="steps" data-reveal>
-        <div class="step">
-          <span class="step__num">01</span>
-          <h3 class="step__title">Submit Your Details</h3>
-          <p>Tell us about your vehicle in a couple of minutes — no obligation.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">02</span>
-          <h3 class="step__title">Get An Offer</h3>
-          <p>Our acquisition team responds with a competitive, transparent valuation.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">03</span>
-          <h3 class="step__title">Get Paid</h3>
-          <p>Accept and get paid fast — we handle the paperwork and transport.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ WE BUY CARS ============ -->
+  <!-- ============ WE BUY CARS — hidden, kept for later ============
   <section class="buy" id="buy" data-parallax>
     <div class="container container--wide buy__grid">
 
-      <!-- Left: glass acquisition form -->
       <form class="buy-form" data-buy-form data-reveal>
         <div class="field">
           <label class="sr-only" for="bf-year">Year</label>
@@ -410,7 +368,6 @@
         <button type="submit" class="btn btn--primary buy-form__submit">Get An Offer</button>
       </form>
 
-      <!-- Right: heading + steps -->
       <div class="buy__content" data-reveal>
         <span class="eyebrow eyebrow--oswald">We Buy Cars</span>
         <h2 class="heading-light">Get An Offer In Minutes</h2>
@@ -441,42 +398,79 @@
       </div>
     </div>
   </section>
+  ============ -->
 
-  <!-- ============ SERVICES ============ -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section-head section-head--tight" data-reveal>
+  <!-- ============ SERVICES (split: image + list) ============ -->
+  <section class="services-split" id="services">
+    <div class="services-split__media" data-reveal>
+      <img src="assets/images/services.jpg" alt="Exotic vehicle service" loading="lazy">
+    </div>
+    <div class="services-split__panel">
+      <div class="services-split__inner" data-reveal>
         <span class="eyebrow eyebrow--oswald">Ownership, Elevated</span>
         <h2 class="heading-light">Services</h2>
-      </div>
 
-      <div class="grid grid--2">
-        <div class="service" data-reveal>
-          <h3 class="service__title">Maintenance</h3>
-          <p>Factory-grade care from specialists who understand exotic and collector machinery.</p>
-        </div>
-        <div class="service" data-reveal>
-          <h3 class="service__title">Performance Upgrades</h3>
-          <p>Bespoke performance and personalization, executed to concours standards.</p>
-        </div>
-        <div class="service" data-reveal>
-          <h3 class="service__title">Vehicle Transportation</h3>
-          <p>Enclosed, insured nationwide transport — door to door, discreetly handled.</p>
-        </div>
-        <div class="service" data-reveal>
-          <h3 class="service__title">Concierge</h3>
-          <p>Private-client sourcing, storage, and white-glove support whenever you need it.</p>
+        <ul class="services-list">
+          <li class="service-item">
+            <h3 class="service-item__title">Maintenance</h3>
+            <p>Factory-grade care from specialists who understand exotic and collector machinery.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Performance Upgrades</h3>
+            <p>Bespoke performance and personalization, executed to concours standards.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Vehicle Transportation</h3>
+            <p>Enclosed, insured nationwide transport — door to door, discreetly handled.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Concierge</h3>
+            <p>Private-client sourcing, storage, and white-glove support whenever you need it.</p>
+          </li>
+        </ul>
+
+        <div class="services-split__actions">
+          <a href="#" class="btn btn--primary">Schedule Appointment</a>
+          <a href="tel:7252190524" class="btn btn--secondary">Call Us 725-219-0524</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ OWNERSHIP JOURNEY ============ -->
+  <!-- ============ PROMO LINKS (hover reveals CTA) ============ -->
+  <section class="section promos-section">
+    <div class="container container--wide">
+      <div class="promos" data-reveal>
+        <a class="promo promo--image promo--finance" href="#footer">
+          <span class="promo__head">
+            <span class="eyebrow eyebrow--oswald">Get Approved</span>
+            <span class="promo__title">Finance Services</span>
+          </span>
+          <span class="promo__cta">Start Here</span>
+        </a>
+        <a class="promo promo--image promo--we-buy" href="#" data-offer-open>
+          <span class="promo__head">
+            <span class="eyebrow eyebrow--oswald">Get Your Offer</span>
+            <span class="promo__title">We Buy Cars</span>
+          </span>
+          <span class="promo__cta">Get An Offer</span>
+        </a>
+        <a class="promo promo--image promo--collection" href="#inventory">
+          <span class="promo__head">
+            <span class="eyebrow eyebrow--oswald">Inventory</span>
+            <span class="promo__title">Our Collection</span>
+          </span>
+          <span class="promo__cta">View All</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OWNERSHIP JOURNEY — hidden, kept for later ============
   <section class="section section--surface" id="showcase">
     <div class="container container--wide">
       <div class="journey">
 
-        <!-- Sticky editorial intro -->
         <div class="journey__intro" data-reveal>
           <span class="eyebrow eyebrow--oswald">The Ownership Journey</span>
           <h2 class="heading-light">You're Not Buying a Car. You're Joining a Club.</h2>
@@ -484,7 +478,6 @@
           <a href="#footer" class="btn btn--primary">Become a Client</a>
         </div>
 
-        <!-- Numbered journey -->
         <ol class="journey__steps">
           <li class="journey-step" data-reveal>
             <span class="journey-step__num">01</span>
@@ -526,6 +519,7 @@
       </div>
     </div>
   </section>
+  ============ -->
 
   <!-- ============ GOOGLE REVIEWS ============ -->
   <section class="section reviews" id="reviews">
@@ -605,10 +599,6 @@
           <p class="review__text">Bought and sold here. Fair, fast, and completely transparent on both sides. The concierge service is the real deal — they make ownership effortless.</p>
         </article>
       </div>
-
-      <div class="row row--mt" data-reveal>
-        <a href="https://www.google.com/maps" class="link">Read all reviews on Google</a>
-      </div>
     </div>
   </section>
 
@@ -617,7 +607,7 @@
     <div class="container container--wide">
       <div class="section-head section-head--tight" data-reveal>
         <span class="eyebrow eyebrow--oswald">Follow Along</span>
-        <h2 class="heading-light">@vegasautogallery</h2>
+        <h2 class="heading-light"><a class="insta-handle" href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener">@vegasautogallery</a></h2>
         <p class="lead">An ongoing reel of arrivals, events, and the machines that pass through our doors.</p>
       </div>
 
@@ -648,50 +638,116 @@
         </a>
       </div>
 
-      <div class="row row--center row--mt" data-reveal>
-        <a href="https://instagram.com/vegasautogallery" class="btn btn--secondary">Follow on Instagram</a>
-      </div>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer" id="footer">
     <div class="container container--wide">
-      <div class="footer__cols">
+
+      <!-- Brand + partnership -->
+      <div class="footer__top">
+        <a href="#hero" class="footer__brand" aria-label="Vegas Auto Gallery — home">
+          <img src="assets/images/logo.svg" alt="Vegas Auto Gallery">
+        </a>
+        <div class="footer__partner">
+          <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
+          <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
+        </div>
+      </div>
+
+      <!-- Contact / hours -->
+      <div class="footer__grid">
         <div class="footer__col">
-          <a href="#" class="logo">Vegas Auto Gallery</a>
-          <p class="mt-3">A boutique automotive lifestyle destination in Las Vegas.</p>
+          <h4 class="footer__label">Sales</h4>
+          <a class="footer__phone" href="tel:7252190524">725-219-0524</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">5530 Rafael Rivera Way<br>Las Vegas, NV 89118</a></address>
         </div>
         <div class="footer__col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="tel:7252190524">725-219-0524</a></li>
-            <li><a href="mailto:concierge@vegasautogallery.com">concierge@vegasautogallery.com</a></li>
-          </ul>
+          <h4 class="footer__label">Service</h4>
+          <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road, Suites 130/135<br>Las Vegas, NV 89118</a></address>
         </div>
         <div class="footer__col">
-          <h4>Visit</h4>
-          <ul>
-            <li>Las Vegas, Nevada</li>
-            <li>Mon–Sat · 9am–7pm</li>
-            <li>Sun · By appointment</li>
-          </ul>
+          <h4 class="footer__label">Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>9:00 AM – 7:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
         </div>
         <div class="footer__col">
-          <h4>Follow</h4>
-          <ul>
-            <li><a href="#">Instagram</a></li>
+          <h4 class="footer__label">Follow</h4>
+          <ul class="footer__social">
+            <li><a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="#">Facebook</a></li>
             <li><a href="#">YouTube</a></li>
           </ul>
         </div>
       </div>
+
+      <!-- Brand partners -->
+      <div class="footer__partners">
+        <span class="footer__partners-label">Authorized Dealer</span>
+        <div class="footer__logos">
+          <img src="assets/images/lotus_logo.svg" alt="Lotus">
+          <img src="assets/images/czinger_logo.svg" alt="Czinger">
+          <img src="assets/images/hennessy_logo.svg" alt="Hennessey">
+          <img src="assets/images/vintage_logo.svg" alt="Vintage">
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
       <div class="footer__bottom">
-        <span>© <span data-year>2026</span> Vegas Auto Gallery. All rights reserved.</span>
-        <span>Brand Partners · Lotus · Czinger · Hennessey</span>
+        <span>© <span data-year>2026</span> Lotus Las Vegas. All Rights Reserved. <a href="#">Privacy Policy</a> <span class="footer__sep">|</span> <a href="#">Sitemap</a></span>
+        <span>Powered by All Auto Network</span>
       </div>
     </div>
   </footer>
+
+  <!-- ============ GET AN OFFER — slide-in panel ============ -->
+  <div class="offer" data-offer hidden>
+    <div class="offer__overlay" data-offer-close></div>
+    <aside class="offer__panel" role="dialog" aria-modal="true" aria-label="Get an offer">
+      <button class="offer__close" type="button" data-offer-close aria-label="Close">&times;</button>
+      <div class="offer__content">
+        <span class="eyebrow eyebrow--oswald">We Buy Cars</span>
+        <h2 class="heading-light">Get An Offer In Minutes</h2>
+
+        <form class="buy-form" data-buy-form>
+          <div class="field">
+            <label class="sr-only" for="of-year">Year</label>
+            <select id="of-year" name="year" class="buy-form__select">
+              <option value="">Year</option>
+              <option>2026</option><option>2025</option><option>2024</option>
+              <option>2023</option><option>2022</option><option>2021</option><option>2020</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="sr-only" for="of-make">Make</label>
+            <select id="of-make" name="make" class="buy-form__select">
+              <option value="">Make</option>
+              <option>Porsche</option><option>Ferrari</option><option>Lamborghini</option>
+              <option>McLaren</option><option>Bentley</option><option>Rolls-Royce</option>
+              <option>Aston Martin</option><option>Lotus</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="sr-only" for="of-model">Model</label>
+            <select id="of-model" name="model" class="buy-form__select">
+              <option value="">Model</option>
+              <option>911</option><option>SF90</option><option>Huracán</option><option>720S</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="sr-only" for="of-vin">VIN</label>
+            <input id="of-vin" name="vin" type="text" placeholder="VIN">
+          </div>
+          <button type="submit" class="btn btn--primary buy-form__submit">Get An Offer</button>
+        </form>
+      </div>
+    </aside>
+  </div>
 
   <script src="js/main.js" defer></script>
 </body>
