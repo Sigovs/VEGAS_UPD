@@ -465,56 +465,75 @@
           </div>
         </div>
       </div>
-
-      <!-- How it works — 3 easy steps -->
-      <div class="steps" data-reveal>
-        <div class="step">
-          <span class="step__num">01</span>
-          <h3 class="step__title">Submit Your Details</h3>
-          <p>Tell us about your vehicle in a couple of minutes — no obligation.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">02</span>
-          <h3 class="step__title">Get An Offer</h3>
-          <p>Our acquisition team responds with a competitive, transparent valuation.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">03</span>
-          <h3 class="step__title">Get Paid</h3>
-          <p>Accept and get paid fast — we handle the paperwork and transport.</p>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- ============ WE BUY CARS ============ -->
-  <section class="section" id="buy">
-    <div class="container">
-      <div class="section-head" data-reveal>
+  <section class="buy" id="buy">
+    <div class="container container--wide buy__grid">
+
+      <!-- Left: glass acquisition form -->
+      <form class="buy-form" data-buy-form data-reveal>
+        <div class="field">
+          <label class="sr-only" for="bf-year">Year</label>
+          <select id="bf-year" name="year" class="buy-form__select">
+            <option value="">Year</option>
+            <option>2026</option><option>2025</option><option>2024</option>
+            <option>2023</option><option>2022</option><option>2021</option><option>2020</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="sr-only" for="bf-make">Make</label>
+          <select id="bf-make" name="make" class="buy-form__select">
+            <option value="">Make</option>
+            <option>Porsche</option><option>Ferrari</option><option>Lamborghini</option>
+            <option>McLaren</option><option>Bentley</option><option>Rolls-Royce</option>
+            <option>Aston Martin</option><option>Lotus</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="sr-only" for="bf-model">Model</label>
+          <select id="bf-model" name="model" class="buy-form__select">
+            <option value="">Model</option>
+            <option>911</option><option>SF90</option><option>Huracán</option><option>720S</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="sr-only" for="bf-vin">VIN</label>
+          <input id="bf-vin" name="vin" type="text" placeholder="VIN">
+        </div>
+        <button type="submit" class="btn btn--primary buy-form__submit">Get An Offer</button>
+      </form>
+
+      <!-- Right: heading + steps -->
+      <div class="buy__content" data-reveal>
         <span class="eyebrow">We Buy Cars</span>
         <h2>Get An Offer In Minutes</h2>
-        <p class="lead">Tell us about your vehicle and our acquisition team will follow up with a competitive offer.</p>
-      </div>
 
-      <form class="lead-form" data-buy-form data-reveal>
-        <div class="field">
-          <label for="bf-name">Full Name</label>
-          <input id="bf-name" name="name" type="text" placeholder="Your name" required>
-        </div>
-        <div class="field">
-          <label for="bf-contact">Phone or Email</label>
-          <input id="bf-contact" name="contact" type="text" placeholder="How we can reach you" required>
-        </div>
-        <div class="field">
-          <label for="bf-vehicle">Year, Make &amp; Model</label>
-          <input id="bf-vehicle" name="vehicle" type="text" placeholder="2023 Lamborghini Huracán" required>
-        </div>
-        <div class="field">
-          <label for="bf-mileage">Mileage</label>
-          <input id="bf-mileage" name="mileage" type="text" placeholder="Approx. miles" inputmode="numeric">
-        </div>
-        <button type="submit" class="btn btn--primary lead-form__submit">Get An Offer</button>
-      </form>
+        <ol class="buy-steps">
+          <li class="buy-step">
+            <span class="buy-step__num">01</span>
+            <div class="buy-step__body">
+              <h3 class="buy-step__title">Submit Your Details</h3>
+              <p>Tell us about your vehicle in a couple of minutes — no obligation.</p>
+            </div>
+          </li>
+          <li class="buy-step">
+            <span class="buy-step__num">02</span>
+            <div class="buy-step__body">
+              <h3 class="buy-step__title">Get An Offer</h3>
+              <p>Our acquisition team responds with a competitive, transparent valuation.</p>
+            </div>
+          </li>
+          <li class="buy-step">
+            <span class="buy-step__num">03</span>
+            <div class="buy-step__body">
+              <h3 class="buy-step__title">Get Paid</h3>
+              <p>Accept and get paid fast — we handle the paperwork and transport.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 

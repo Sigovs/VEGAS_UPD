@@ -45,6 +45,7 @@
   --color-border:    #243038;   /* hairline on slate */
   --color-overlay:   rgba(11, 15, 20, 0.5);   /* image scrim */
   --color-overlay-strong: rgba(11, 15, 20, 0.74);
+  --color-scrim:     rgba(11, 15, 20, 0.62);  /* scrim over photos — keeps subject visible */
 
   /* ============ SPACING (4px scale) ============ */
   --space-1: 4px;

@@ -1347,16 +1347,35 @@
   .steps { grid-template-columns: 1fr; gap: var(--space-4); }
 }
 
-/* ============ LEAD FORM (We Buy Cars) ============ */
-.lead-form {
+/* ============ WE BUY CARS — form + steps over photo ============ */
+.buy {
+  position: relative;
+  padding-block: var(--space-10);
+  background-image:
+    linear-gradient(var(--color-scrim), var(--color-scrim)),
+    url('../assets/images/we-buy-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.buy__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 464px minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+/* Left: frosted-glass acquisition form */
+.buy-form {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-4);
-  max-width: 760px;
   padding: var(--space-5);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
 }
 
 .field {
@@ -1365,35 +1384,76 @@
   gap: var(--space-2);
 }
 
-.field label {
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-text-soft);
-}
-
-.field input {
-  padding: var(--space-3);
-  background: var(--color-surface-2);
+.buy-form__select,
+.buy-form input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font: inherit;
   color: var(--color-text);
+  background: var(--color-surface-2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
 }
 
-.field input::placeholder { color: var(--color-text-soft); opacity: 0.6; }
-.field input:focus-visible { border-color: var(--color-accent); outline: none; }
+/* Custom chevron on the selects */
+.buy-form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239aa3ad' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  background-size: 16px;
+  padding-right: var(--space-6);
+}
 
-.lead-form__submit { grid-column: 1 / -1; }
+.buy-form input::placeholder { color: var(--color-text-soft); }
+.buy-form__select:focus-visible,
+.buy-form input:focus-visible { border-color: var(--color-accent); outline: none; }
+
+.buy-form__submit { margin-top: var(--space-2); width: 100%; }
 
 .form-success {
-  grid-column: 1 / -1;
   padding-block: var(--space-3);
   color: var(--color-text);
   font-size: var(--text-lg);
 }
 
-@media (max-width: 560px) {
-  .lead-form { grid-template-columns: 1fr; }
+/* Right: heading + numbered steps */
+.buy__content {
+  max-width: 600px;
+  order: 1; /* sits to the right of the form on desktop */
+}
+
+.buy-form { order: 0; }
+
+.buy-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.buy-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.buy-step__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-accent);
+}
+
+.buy-step__title { font-size: var(--text-2xl); }
+.buy-step__body p { color: var(--color-text-soft); }
+
+@media (max-width: 900px) {
+  .buy__grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .buy__content { order: 0; }   /* heading first on mobile */
+  .buy-form { order: 1; }
 }
 
 /* ============ INSTAGRAM FEED ============ */
