@@ -246,6 +246,43 @@
     </div>
   </section>
 
+  <!-- ============ SERVICES (split: image + list) ============ -->
+  <section class="services-split" id="services">
+    <div class="services-split__media" data-reveal>
+      <img src="assets/images/services.jpg" alt="Exotic vehicle service" loading="lazy">
+    </div>
+    <div class="services-split__panel">
+      <div class="services-split__inner" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Ownership, Elevated</span>
+        <h2 class="heading-light">Services</h2>
+
+        <ul class="services-list">
+          <li class="service-item">
+            <h3 class="service-item__title">Maintenance</h3>
+            <p>Factory-grade care from specialists who understand exotic and collector machinery.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Performance Upgrades</h3>
+            <p>Bespoke performance and personalization, executed to concours standards.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Vehicle Transportation</h3>
+            <p>Enclosed, insured nationwide transport — door to door, discreetly handled.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Concierge</h3>
+            <p>Private-client sourcing, storage, and white-glove support whenever you need it.</p>
+          </li>
+        </ul>
+
+        <div class="services-split__actions">
+          <a href="#" class="btn btn--primary">Schedule Appointment</a>
+          <a href="tel:7252190524" class="btn btn--secondary">Call Us 725-219-0524</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ EVENTS & LIFESTYLE ============ -->
   <section class="section ev-redesign" id="events">
     <div class="container container--wide">
@@ -301,7 +338,7 @@
 
   <!-- ============ INVENTORY ENTRY ============ -->
   <section class="section inv-entry" id="inventory">
-    <div class="container">
+    <div class="container container--wide">
       <div class="section-head section-head--tight" data-reveal>
         <span class="eyebrow eyebrow--oswald">The Collection</span>
         <h2 class="heading-light">Explore Inventory</h2>
@@ -333,10 +370,20 @@
         </select>
         <button type="submit" class="btn btn--primary">Search</button>
       </form>
+
+      <div class="inv-marques" data-reveal>
+        <span class="inv-marques__label">Browse by Brand</span>
+        <div class="inv-marques__logos">
+          <a href="#inventory" aria-label="Lotus"><img src="assets/images/lotus_logo.svg" alt="Lotus"></a>
+          <a href="#inventory" aria-label="Czinger"><img src="assets/images/czinger_logo.svg" alt="Czinger"></a>
+          <a href="#inventory" aria-label="Hennessey"><img src="assets/images/hennessy_logo.svg" alt="Hennessey"></a>
+          <a href="#inventory" aria-label="Vintage"><img src="assets/images/vintage_logo.svg" alt="Vintage"></a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ============ LOTUS BRAND SHOWCASE ============ -->
+  <!-- ============ LOTUS BRAND SHOWCASE — hidden ============
   <section class="section lotus" id="lotus">
     <canvas class="lotus-shader" data-lotus-shader aria-hidden="true"></canvas>
     <div class="container container--wide">
@@ -368,6 +415,7 @@
       </div>
     </div>
   </section>
+  ============ -->
 
   <!-- ============ WE BUY CARS — hidden, kept for later ============
   <section class="buy" id="buy" data-parallax>
@@ -437,70 +485,38 @@
   </section>
   ============ -->
 
-  <!-- ============ SERVICES (split: image + list) ============ -->
-  <section class="services-split" id="services">
-    <div class="services-split__media" data-reveal>
-      <img src="assets/images/services.jpg" alt="Exotic vehicle service" loading="lazy">
-    </div>
-    <div class="services-split__panel">
-      <div class="services-split__inner" data-reveal>
-        <span class="eyebrow eyebrow--oswald">Ownership, Elevated</span>
-        <h2 class="heading-light">Services</h2>
-
-        <ul class="services-list">
-          <li class="service-item">
-            <h3 class="service-item__title">Maintenance</h3>
-            <p>Factory-grade care from specialists who understand exotic and collector machinery.</p>
-          </li>
-          <li class="service-item">
-            <h3 class="service-item__title">Performance Upgrades</h3>
-            <p>Bespoke performance and personalization, executed to concours standards.</p>
-          </li>
-          <li class="service-item">
-            <h3 class="service-item__title">Vehicle Transportation</h3>
-            <p>Enclosed, insured nationwide transport — door to door, discreetly handled.</p>
-          </li>
-          <li class="service-item">
-            <h3 class="service-item__title">Concierge</h3>
-            <p>Private-client sourcing, storage, and white-glove support whenever you need it.</p>
-          </li>
-        </ul>
-
-        <div class="services-split__actions">
-          <a href="#" class="btn btn--primary">Schedule Appointment</a>
-          <a href="tel:7252190524" class="btn btn--secondary">Call Us 725-219-0524</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ PROMO LINKS (hover reveals CTA) ============ -->
-  <section class="section promos-section">
-    <div class="container container--wide">
+  <section class="promos-section">
       <div class="promos" data-reveal>
-        <a class="promo promo--image promo--finance" href="#footer">
+        <a class="promo promo--image promo--newinv" href="#inventory">
           <span class="promo__head">
-            <span class="eyebrow eyebrow--oswald">Get Approved</span>
-            <span class="promo__title">Finance Services</span>
+            <span class="promo__eyebrow">Just Arrived</span>
+            <span class="promo__title">New Inventory</span>
           </span>
-          <span class="promo__cta">Start Here</span>
+          <span class="promo__cta">View Inventory</span>
         </a>
-        <a class="promo promo--image promo--we-buy" href="#" data-offer-open>
+        <a class="promo promo--image promo--preowned" href="#inventory">
           <span class="promo__head">
-            <span class="eyebrow eyebrow--oswald">Get Your Offer</span>
-            <span class="promo__title">We Buy Cars</span>
+            <span class="promo__eyebrow">Hand-Selected</span>
+            <span class="promo__title">Pre-Owned</span>
           </span>
-          <span class="promo__cta">Get An Offer</span>
+          <span class="promo__cta">View Pre-Owned</span>
         </a>
-        <a class="promo promo--image promo--collection" href="#inventory">
+        <a class="promo promo--image promo--lease" href="#buy">
           <span class="promo__head">
-            <span class="eyebrow eyebrow--oswald">Inventory</span>
-            <span class="promo__title">Our Collection</span>
+            <span class="promo__eyebrow">Limited-Time</span>
+            <span class="promo__title">Lease Specials</span>
           </span>
-          <span class="promo__cta">View All</span>
+          <span class="promo__cta">View Offers</span>
+        </a>
+        <a class="promo promo--image promo--service" href="#services">
+          <span class="promo__head">
+            <span class="promo__eyebrow">Factory-Trained</span>
+            <span class="promo__title">Service Department</span>
+          </span>
+          <span class="promo__cta">Schedule Service</span>
         </a>
       </div>
-    </div>
   </section>
 
   <!-- ============ OWNERSHIP JOURNEY — hidden, kept for later ============
@@ -558,7 +574,7 @@
   </section>
   ============ -->
 
-  <!-- ============ GOOGLE REVIEWS ============ -->
+  <!-- ============ GOOGLE REVIEWS — hidden ============
   <section class="section reviews" id="reviews">
     <div class="container container--wide">
       <div class="reviews-head" data-reveal>
@@ -638,6 +654,7 @@
       </div>
     </div>
   </section>
+  ============ -->
 
   <!-- ============ INSTAGRAM + NEWSLETTER ============ -->
   <section class="section section--surface insta" id="instagram">
@@ -664,10 +681,8 @@
 
       <!-- Right: newsletter -->
       <aside class="newsletter" data-reveal>
-        <img class="newsletter__logo" src="assets/images/logo.svg" alt="Vegas Auto Gallery">
         <span class="eyebrow eyebrow--oswald">Stay in the Know</span>
         <h2 class="heading-light">Join Our Mailing List</h2>
-        <p class="newsletter__text">First access to new arrivals, private events,<br>and exclusive offers — delivered to your inbox.</p>
         <form class="newsletter__form" data-newsletter>
           <label class="sr-only" for="nl-email">Email address</label>
           <input id="nl-email" name="email" type="email" placeholder="Enter Email" required>
@@ -678,19 +693,25 @@
     </div>
   </section>
 
+  <!-- ============ VIDEO BREAK ============ -->
+  <section class="video-break" id="video-break" aria-label="Czinger">
+    <video class="video-break__media" src="assets/video/czinger.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="video-break__content" data-reveal>
+      <img class="video-break__logo" src="assets/images/czinger_logo.svg" alt="Czinger">
+      <h2 class="heading-light">Revolutionary Technology</h2>
+      <p class="video-break__text">The pinnacle of automotive engineering, art and technology&#8288;-&#8288;based design.</p>
+      <a class="btn btn--primary video-break__cta" href="#inventory">Explore</a>
+    </div>
+  </section>
+
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer" id="footer">
     <div class="container container--wide">
 
-      <!-- Brand + partnership -->
-      <div class="footer__top">
-        <a href="#hero" class="footer__brand" aria-label="Vegas Auto Gallery — home">
-          <img src="assets/images/logo.svg" alt="Vegas Auto Gallery">
-        </a>
-        <div class="footer__partner">
-          <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
-          <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
-        </div>
+      <!-- Golden Knights partnership — its own centred band -->
+      <div class="footer__partner">
+        <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
+        <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
       </div>
 
       <!-- Contact / hours -->
