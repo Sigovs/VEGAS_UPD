@@ -1,4 +1,7 @@
 :root {
+  /* lets height/grid animate to & from `auto` (smooth <details>, etc.) */
+  interpolate-size: allow-keywords;
+
   /* ============ FONTS (two-voice system) ============ */
   /* Display = Oswald (condensed headlines). Sans = Roboto Condensed (UI/body). */
   --font-display: "Oswald", "Arial Narrow", system-ui, sans-serif;
@@ -37,6 +40,8 @@
   --color-bg:        #0B0F14;   /* near-black, cool — canvas */
   --color-surface:   #131820;   /* raised panels (between bg and slate) */
   --color-surface-2: #1F2933;   /* inputs, hover surfaces — slate */
+  --color-surface-deep:   #10161D; /* deep panel base (e.g. closed accordion) */
+  --color-surface-active: #1A2028; /* selected/open + hover panel — a step lighter */
   --color-card-border: #131b23; /* hairline around dark cards on the canvas */
   --color-input:     #1b2026;   /* form field fill on the dark canvas */
   --color-text:      #f5f5f5;   /* primary text */

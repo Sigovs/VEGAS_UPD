@@ -170,6 +170,84 @@
     });
   }
 
+  /* ---------- Whole car card is clickable → its media link (SRP, home, related) ---------- */
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.inv-card');
+    if (!card) return;
+    if (e.target.closest('.inv-card__save')) return;   // save button stays a button
+    if (e.target.closest('a')) return;                 // real links handle themselves
+    const link = card.querySelector('a.inv-card__media');
+    const href = link && link.getAttribute('href');
+    if (href) window.location.href = href;
+  });
+
+  /* ---------- VDP gallery — cycle the main photo via prev/next ---------- */
+  const galleryImg = document.querySelector('[data-gallery-img]');
+  if (galleryImg) {
+    const photos = Array.from(document.querySelectorAll('.vdp-photos img'))
+      .map((img) => img.getAttribute('src'));
+    if (photos.length) {
+      let gi = Math.max(0, photos.indexOf(galleryImg.getAttribute('src')));
+      const show = (n) => { gi = (n + photos.length) % photos.length; galleryImg.src = photos[gi]; };
+      document.querySelector('[data-gallery-prev]')?.addEventListener('click', (e) => { e.preventDefault(); show(gi - 1); });
+      document.querySelector('[data-gallery-next]')?.addEventListener('click', (e) => { e.preventDefault(); show(gi + 1); });
+    }
+  }
+
+  /* ---------- VDP: "Inquire" opens + scrolls to Request More Information ---------- */
+  const inqTarget = document.getElementById('request-info');
+  if (inqTarget) {
+    document.querySelectorAll('a[href="#request-info"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        inqTarget.open = true;
+        const top = inqTarget.getBoundingClientRect().top + window.scrollY - 130; // clear fixed header
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  }
+
+  /* ---------- VDP "Request more information" form (front-end stub) ---------- */
+  const inquiry = document.querySelector('[data-inquiry]');
+  if (inquiry) {
+    inquiry.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (inquiry.querySelector('.vdp-form__done')) return;
+      const done = document.createElement('p');
+      done.className = 'vdp-form__done';
+      done.textContent = 'Thank you — your request has been sent. We’ll be in touch shortly.';
+      inquiry.appendChild(done);
+      inquiry.querySelector('.vdp-form__actions .btn')?.setAttribute('disabled', '');
+    });
+  }
+
+  /* ---------- VDP finance calculator ---------- */
+  const calc = document.querySelector('[data-calc]');
+  if (calc) {
+    const num = (el) => parseFloat((el?.value || '').replace(/[^0-9.]/g, '')) || 0;
+    const price = calc.querySelector('[data-calc-price]');
+    const down = calc.querySelector('[data-calc-down]');
+    const apr = calc.querySelector('[data-calc-apr]');
+    const term = calc.querySelector('[data-calc-term]');
+    const loanOut = calc.querySelector('[data-calc-loan]');
+    const monthlyOut = calc.querySelector('[data-calc-monthly]');
+    const fmt = (n) => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const compute = () => {
+      const loan = Math.max(0, num(price) - num(down));
+      const r = num(apr) / 100 / 12;
+      const n = parseInt(term.value, 10) || 0;
+      let monthly = 0;
+      if (loan > 0 && n > 0) monthly = r > 0 ? (loan * r) / (1 - Math.pow(1 + r, -n)) : loan / n;
+      loanOut.textContent = fmt(loan);
+      monthlyOut.textContent = fmt(monthly);
+    };
+    calc.addEventListener('input', compute);
+    calc.addEventListener('change', compute);
+    calc.addEventListener('submit', (e) => { e.preventDefault(); compute(); });
+    calc.addEventListener('reset', () => { setTimeout(compute, 0); });
+    compute();
+  }
+
   /* ---------- Scroll reveal (IntersectionObserver) ---------- */
   const revealEls = document.querySelectorAll('[data-reveal]');
 
@@ -506,9 +584,9 @@
   const hf = document.querySelector('[data-hero-cars]');
   if (hf) {
     const cars = [
-      { name: '2024 Lamborghini<br>Huracán EVO', price: '$274,900',   img: 'inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png', href: '#inventory' },
-      { name: '2021 McLaren<br>720S',            price: '$259,900',   img: 'inventory/2021%20McLaren%20720S%20Base.png',            href: '#inventory' },
-      { name: '2020 Ford GT<br>Carbon Series',   price: '$1,095,000', img: 'inventory/2020%20Ford%20GT%20Carbon%20Series.png',      href: '#inventory' },
+      { name: '2024 Lamborghini<br>Huracán EVO', price: '$274,900',   img: 'inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png', href: 'vdp.html' },
+      { name: '2021 McLaren<br>720S',            price: '$259,900',   img: 'inventory/2021%20McLaren%20720S%20Base.png',            href: 'vdp.html' },
+      { name: '2020 Ford GT<br>Carbon Series',   price: '$1,095,000', img: 'inventory/2020%20Ford%20GT%20Carbon%20Series.png',      href: 'vdp.html' },
     ];
     const imgEl = hf.querySelector('[data-hf-img]');
     const nameEl = hf.querySelector('[data-hf-name]');

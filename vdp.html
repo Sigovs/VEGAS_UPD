@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2024 Lamborghini Urus S — Vegas Auto Gallery</title>
+  <meta name="description" content="2024 Lamborghini Urus S AWD in Blu Cepheus Metallic — 657 HP twin-turbo V8 super-SUV. Vegas Auto Gallery, Las Vegas.">
+
+  <!-- Fonts: Oswald (display/headings) + Roboto Condensed (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (order: reset → tokens → base → layout → components) -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <script src="js/main.js" defer></script>
+</head>
+<body class="v2 page-vdp">
+
+  <!-- ============ HEADER (shared with index3 / srp — mega menu host) ============ -->
+  <header class="site-header" data-header>
+    <div class="container container--wide site-header__inner">
+      <a href="index3.html" class="logo" aria-label="Vegas Auto Gallery — home">
+        <img class="logo__img" src="assets/images/logo.svg" alt="Vegas Auto Gallery">
+      </a>
+
+      <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+        <ul role="list" class="nav__list">
+          <li class="nav__item--mega">
+            <a href="srp.html" class="nav__link nav__link--menu" aria-haspopup="true">Inventory</a>
+            <div class="mega-menu" role="menu" aria-label="Inventory">
+              <div class="mega-menu__inner">
+                <div class="mega-menu__cols">
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Shop</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp.html"><span>View All</span><span class="mega-menu__count">42</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=new"><span>New</span><span class="mega-menu__count">18</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=preowned"><span>Pre-Owned</span><span class="mega-menu__count">24</span></a>
+                      <a class="mega-menu__link" href="srp.html?sort=new-arrivals"><span>New Arrivals</span><span class="mega-menu__count">7</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=sold"><span>Sold</span><span class="mega-menu__count"></span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">By Type</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp.html?body=coupe"><span>Coupe</span><span class="mega-menu__count">15</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=convertible"><span>Convertible</span><span class="mega-menu__count">9</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=suv"><span>SUV</span><span class="mega-menu__count">8</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=sedan"><span>Sedan</span><span class="mega-menu__count">6</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=electric"><span>Electric</span><span class="mega-menu__count">4</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mega-menu__brands">
+                  <p class="mega-menu__col-title">Browse by Brand</p>
+                  <div class="mega-menu__pills">
+                    <a class="mega-menu__pill" href="srp.html?make=lamborghini">Lamborghini</a>
+                    <a class="mega-menu__pill" href="srp.html?make=ferrari">Ferrari</a>
+                    <a class="mega-menu__pill" href="srp.html?make=mclaren">McLaren</a>
+                    <a class="mega-menu__pill" href="srp.html?make=rolls-royce">Rolls-Royce</a>
+                    <a class="mega-menu__pill" href="srp.html?make=bentley">Bentley</a>
+                    <a class="mega-menu__pill" href="srp.html?make=porsche">Porsche</a>
+                    <a class="mega-menu__pill" href="srp.html?make=mercedes-benz">Mercedes-Benz</a>
+                    <a class="mega-menu__pill" href="srp.html?make=aston-martin">Aston Martin</a>
+                    <a class="mega-menu__pill" href="srp.html?make=bugatti">Bugatti</a>
+                    <a class="mega-menu__pill" href="srp.html?make=lotus">Lotus</a>
+                    <a class="mega-menu__pill" href="srp.html?make=maserati">Maserati</a>
+                    <a class="mega-menu__pill" href="srp.html?make=all">All Makes &rarr;</a>
+                  </div>
+                  <a class="btn btn--primary mega-menu__cta" href="srp.html">View All Inventory</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="srp.html?cond=preowned" class="nav__link nav__link--menu" aria-haspopup="true">Pre-Owned</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="srp.html?sort=new-arrivals" role="menuitem">Just Arrived</a></li>
+              <li><a href="srp.html?status=pending" role="menuitem">Sale Pending</a></li>
+              <li><a href="srp.html?sort=reduced" role="menuitem">Recently Reduced</a></li>
+              <li><a href="srp.html?status=soon" role="menuitem">Coming Soon</a></li>
+            </ul>
+          </li>
+          <li><a href="index3.html#sell" class="nav__link">Sell Your Car</a></li>
+          <li><a href="srp.html?cond=sold" class="nav__link">Sold</a></li>
+          <li><a href="index3.html#services" class="nav__link nav__link--menu">Service</a></li>
+          <li><a href="index3.html#buy" class="nav__link nav__link--menu">Finance</a></li>
+          <li><a href="index3.html#showcase" class="nav__link">About</a></li>
+          <li><a href="index3.html#footer" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="nav-icon" href="tel:7252190524" aria-label="Call 725-219-0524">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a class="nav-icon" href="index3.html#footer" aria-label="Hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </a>
+        <a class="nav-icon" href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener" aria-label="Directions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="vdp-page">
+    <div class="container container--wide">
+
+      <!-- ============ BREADCRUMB ============ -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index3.html">Home</a>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <a href="srp.html">Inventory</a>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__current" aria-current="page">2024 Lamborghini Urus S</span>
+      </nav>
+
+
+      <!-- ============ SUMMARY — gallery · panel · action bar ============ -->
+      <section class="vdp-summary" aria-label="Vehicle overview">
+
+        <div class="vdp-summary__media">
+          <a class="vdp-gallery__main" href="#photos" data-gallery-main aria-label="See all 10 photos">
+            <img src="assets/images/vdp/urus-3.jpg" alt="2024 Lamborghini Urus S in Blu Cepheus Metallic" data-gallery-img>
+          </a>
+          <button type="button" class="vdp-gallery__nav vdp-gallery__nav--prev" data-gallery-prev aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="vdp-gallery__nav vdp-gallery__nav--next" data-gallery-next aria-label="Next photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <aside class="vdp-panel" aria-label="Pricing and details">
+          <h1 class="vdp-panel__title">2024 Lamborghini Urus S</h1>
+          <div class="vdp-panel__price">
+            <span class="eyebrow eyebrow--oswald">Price</span>
+            <span class="vdp-panel__price-value">$279,900</span>
+          </div>
+          <ul class="vdp-specs">
+            <li><span class="vdp-specs__label">Exterior</span><span class="vdp-specs__value">Blu Cepheus Metallic</span></li>
+            <li><span class="vdp-specs__label">Interior</span><span class="vdp-specs__value">Nero Ade / Bianco Leda</span></li>
+            <li><span class="vdp-specs__label">Engine</span><span class="vdp-specs__value">4.0L Twin-Turbo V8 · 657 HP</span></li>
+            <li><span class="vdp-specs__label">Transmission</span><span class="vdp-specs__value">8-Speed Automatic</span></li>
+            <li><span class="vdp-specs__label">Drivetrain</span><span class="vdp-specs__value">All-Wheel Drive</span></li>
+            <li><span class="vdp-specs__label">Mileage</span><span class="vdp-specs__value">9,956 mi</span></li>
+            <li><span class="vdp-specs__label">Body</span><span class="vdp-specs__value">SUV</span></li>
+            <li><span class="vdp-specs__label">Stock</span><span class="vdp-specs__value">86105X</span></li>
+            <li><span class="vdp-specs__label">VIN</span><span class="vdp-specs__value">ZPBUB3ZL9RLA35134</span></li>
+          </ul>
+          <div class="vdp-panel__ctas">
+            <a href="#request-info" class="btn btn--primary">Inquire</a>
+          </div>
+        </aside>
+
+        <div class="vdp-actionbar" aria-label="Actions">
+         <div class="vdp-actionbar__main">
+          <span class="vdp-actionbar__trust"><img src="assets/images/carfax.svg" alt="CARFAX Report Available"></span>
+          <div class="vdp-actionbar__actions">
+            <button class="vdp-action" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg><span>Save</span>
+            </button>
+            <button class="vdp-action" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>Share</span>
+            </button>
+            <button class="vdp-action" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg><span>Text</span>
+            </button>
+          </div>
+         </div>
+          <div class="vdp-actionbar__buy">
+            <a class="btn btn--secondary" href="tel:7252190524">725-219-0524</a>
+            <a class="btn btn--primary" href="index3.html#footer">Start Buying</a>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ============ SECTIONS — collapsible cards ============ -->
+      <div class="vdp-sections">
+
+        <details class="vdp-accordion" open>
+          <summary class="vdp-accordion__trigger">
+            <span class="vdp-accordion__label">
+              <svg class="vdp-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg>
+              <h2 class="vdp-accordion__title">About This Vehicle</h2>
+            </span>
+            <span class="vdp-accordion__chip" aria-hidden="true"></span>
+          </summary>
+          <div class="vdp-accordion__body">
+            <div class="vdp-prose">
+              <p class="vdp-prose__lead">The super-SUV that started it all — now with even more attitude.</p>
+              <p>Vegas Auto Gallery presents a 2024 Lamborghini Urus S finished in the striking Blu Cepheus Metallic over a Nero Ade and Bianco Leda leather interior. With just 9,956 miles, Stock #86105X, VIN ZPBUB3ZL9RLA35134, this example pairs everyday usability with genuine Lamborghini theatre.</p>
+
+              <h3 class="vdp-prose__sub">Performance</h3>
+              <p>At its heart is a 4.0-liter twin-turbocharged V8 producing 657 horsepower, paired with an eight-speed automatic and Lamborghini's permanent all-wheel-drive system with active torque vectoring. The result is supercar acceleration in a vehicle that seats the whole family — 0–60 in the low three-second range and a top speed north of 190 mph.</p>
+
+              <h3 class="vdp-prose__sub">Design</h3>
+              <p>The Urus S sharpens the formula with darkened exterior accents, a carbon-fiber detailing package, and an aggressive front fascia. Inside, the dual-tone Nero Ade and Bianco Leda cabin is trimmed in fine leather with contrast stitching, hexagonal motifs, and Lamborghini's signature flight-deck control layout.</p>
+
+              <h3 class="vdp-prose__sub">Technology &amp; Comfort</h3>
+              <p>Dual touchscreen infotainment with navigation and Apple CarPlay, a head-up display, 360° camera, adaptive air suspension, and a premium sound system come together with heated and ventilated front seats for a cockpit that is as comfortable on the Strip as it is on track.</p>
+
+              <p class="vdp-prose__disclaimer t-small">All pricing and details are believed to be accurate but are not warranted or guaranteed and are subject to change. Vehicle information is based upon standard equipment and may vary. Please contact Vegas Auto Gallery to confirm availability and specifications.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="vdp-accordion">
+          <summary class="vdp-accordion__trigger">
+            <span class="vdp-accordion__label">
+              <svg class="vdp-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1.4 1.4L7 4.8"/><path d="m3 12 1.4 1.4L7 10.8"/><path d="m3 18 1.4 1.4L7 16.8"/></svg>
+              <h2 class="vdp-accordion__title">Options &amp; Equipment</h2>
+            </span>
+            <span class="vdp-accordion__chip" aria-hidden="true"></span>
+          </summary>
+          <div class="vdp-accordion__body">
+            <ul class="vdp-options">
+              <li>23" Taigete wheels — diamond finish</li>
+              <li>Carbon-ceramic brake system</li>
+              <li>Panoramic glass sunroof</li>
+              <li>Bang &amp; Olufsen 3D sound system</li>
+              <li>Adaptive air suspension</li>
+              <li>Sport exhaust system</li>
+              <li>Full Nero Ade / Bianco Leda leather</li>
+              <li>Heated &amp; ventilated front seats</li>
+              <li>Head-up display</li>
+              <li>360° surround camera</li>
+              <li>Lamborghini Smartphone Interface (CarPlay)</li>
+              <li>Front &amp; rear parking sensors</li>
+              <li>Carbon-fiber exterior package</li>
+              <li>Privacy glass</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="vdp-accordion">
+          <summary class="vdp-accordion__trigger">
+            <span class="vdp-accordion__label">
+              <svg class="vdp-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="8" y2="11"/><line x1="12" y1="11" x2="12" y2="11"/><line x1="16" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="8" y2="15"/><line x1="12" y1="15" x2="12" y2="15"/><line x1="16" y1="15" x2="16" y2="15"/></svg>
+              <h2 class="vdp-accordion__title">Finance Calculator</h2>
+            </span>
+            <span class="vdp-accordion__chip" aria-hidden="true"></span>
+          </summary>
+          <div class="vdp-accordion__body">
+            <form class="vdp-calc" data-calc autocomplete="off">
+              <div class="vdp-calc__grid">
+                <div class="vdp-calc__field">
+                  <label class="vdp-calc__label" for="calc-price">Vehicle Price ($)</label>
+                  <input class="vdp-calc__input" id="calc-price" name="price" type="text" inputmode="decimal" value="279,900" data-calc-price>
+                </div>
+                <div class="vdp-calc__field">
+                  <label class="vdp-calc__label" for="calc-down">Down Payment ($)</label>
+                  <input class="vdp-calc__input" id="calc-down" name="down" type="text" inputmode="decimal" value="50,000" data-calc-down>
+                </div>
+                <div class="vdp-calc__field vdp-calc__field--output">
+                  <span class="vdp-calc__label">Loan Amount ($)</span>
+                  <output class="vdp-calc__output" data-calc-loan>0.00</output>
+                </div>
+                <div class="vdp-calc__field">
+                  <label class="vdp-calc__label" for="calc-apr">APR (%)</label>
+                  <input class="vdp-calc__input" id="calc-apr" name="apr" type="text" inputmode="decimal" value="6.99" data-calc-apr>
+                </div>
+                <div class="vdp-calc__field">
+                  <label class="vdp-calc__label" for="calc-term">Loan Length (Months)</label>
+                  <select class="vdp-calc__input" id="calc-term" name="term" data-calc-term>
+                    <option value="36">36</option>
+                    <option value="48">48</option>
+                    <option value="60" selected>60</option>
+                    <option value="72">72</option>
+                    <option value="84">84</option>
+                  </select>
+                </div>
+                <div class="vdp-calc__field vdp-calc__field--output vdp-calc__field--result">
+                  <span class="vdp-calc__label">Monthly Payment ($)</span>
+                  <output class="vdp-calc__output" data-calc-monthly>0.00</output>
+                </div>
+              </div>
+              <div class="vdp-calc__actions">
+                <button type="reset" class="btn btn--secondary">Clear</button>
+                <button type="submit" class="btn btn--primary">Calculate Payments</button>
+              </div>
+              <p class="vdp-calc__note">Estimate only — not a financing offer. Contact Vegas Auto Gallery for current rates and terms.</p>
+            </form>
+          </div>
+        </details>
+
+        <details class="vdp-accordion" id="request-info">
+          <summary class="vdp-accordion__trigger">
+            <span class="vdp-accordion__label">
+              <svg class="vdp-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              <h2 class="vdp-accordion__title">Request More Information</h2>
+            </span>
+            <span class="vdp-accordion__chip" aria-hidden="true"></span>
+          </summary>
+          <div class="vdp-accordion__body">
+            <div class="vdp-inquiry__vehicle">
+              <img class="vdp-inquiry__thumb" src="assets/images/vdp/urus-3.jpg" alt="2024 Lamborghini Urus S">
+              <span class="vdp-inquiry__meta">
+                <span class="vdp-inquiry__name">2024 Lamborghini Urus S</span>
+                <span class="vdp-inquiry__sub">$279,900 &middot; Stock 86105X</span>
+              </span>
+            </div>
+            <form class="vdp-form" data-inquiry>
+              <div class="vdp-form__grid">
+                <div class="vdp-form__field"><label for="inq-first">First Name</label><input id="inq-first" name="first" type="text" autocomplete="given-name"></div>
+                <div class="vdp-form__field"><label for="inq-last">Last Name</label><input id="inq-last" name="last" type="text" autocomplete="family-name"></div>
+                <div class="vdp-form__field"><label for="inq-email">Email</label><input id="inq-email" name="email" type="email" autocomplete="email"></div>
+                <div class="vdp-form__field"><label for="inq-phone">Phone</label><input id="inq-phone" name="phone" type="tel" autocomplete="tel"></div>
+                <div class="vdp-form__field vdp-form__field--full"><label for="inq-msg">Message</label><textarea id="inq-msg" name="message" placeholder="I'd like more information on this 2024 Lamborghini Urus S."></textarea></div>
+              </div>
+              <div class="vdp-form__actions">
+                <button type="submit" class="btn btn--primary">Send Request</button>
+              </div>
+              <p class="vdp-calc__note">By submitting, you agree to be contacted by Vegas Auto Gallery about this vehicle. We never share your details.</p>
+            </form>
+          </div>
+        </details>
+
+      </div>
+
+
+      <!-- ============ GALLERY ============ -->
+      <section class="vdp-gallery-sec" id="photos" aria-labelledby="gallery-heading">
+        <div class="vdp-gallery-sec__head">
+          <h2 id="gallery-heading">Gallery</h2>
+          <span class="vdp-gallery-sec__count">10 Photos</span>
+        </div>
+        <ul class="vdp-photos">
+          <li><img src="assets/images/vdp/urus-1.jpg" alt="2024 Lamborghini Urus S — front three-quarter" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-2.jpg" alt="2024 Lamborghini Urus S — rear three-quarter" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-3.jpg" alt="2024 Lamborghini Urus S — side profile" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-4.jpg" alt="2024 Lamborghini Urus S — rear" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-5.jpg" alt="2024 Lamborghini Urus S — wheels" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-6.jpg" alt="2024 Lamborghini Urus S — interior" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-7.jpg" alt="2024 Lamborghini Urus S — dashboard" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-8.jpg" alt="2024 Lamborghini Urus S — seats" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-9.jpg" alt="2024 Lamborghini Urus S — console" loading="lazy"></li>
+          <li><img src="assets/images/vdp/urus-10.jpg" alt="2024 Lamborghini Urus S — detail" loading="lazy"></li>
+        </ul>
+      </section>
+
+
+      <!-- ============ RELATED ============ -->
+      <section class="vdp-related" aria-labelledby="related-heading">
+        <div class="vdp-related__head">
+          <h2 class="vdp-related__title" id="related-heading">Related Vehicles</h2>
+          <a class="ev-cta" href="srp.html"><span class="ev-cta__label">View All Inventory</span><svg class="ev-cta__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a>
+        </div>
+        <ul class="vdp-related__grid inv--redesign" role="list">
+          <li>
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png" alt="2024 Lamborghini Huracán EVO" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2024 Lamborghini Huracán EVO</h3>
+                <div class="inv-card__meta"><span>Price: $274,900</span><span>Mileage: 3,200</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2021%20McLaren%20720S%20Base.png" alt="2021 McLaren 720S" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2021 McLaren 720S</h3>
+                <div class="inv-card__meta"><span>Price: $259,900</span><span>Mileage: 6,400</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2025%20Rolls-Royce%20Ghost%20Base.png" alt="2025 Rolls-Royce Ghost" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2025 Rolls-Royce Ghost</h3>
+                <div class="inv-card__meta"><span>Price: $385,000</span><span>Mileage: 1,150</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2026%20Mercedes-Benz%20SL-Class%20Maybach%20SL%20680.png" alt="2026 Mercedes-Benz Maybach SL 680" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2026 Mercedes-AMG GT 63</h3>
+                <div class="inv-card__meta"><span>Price: $189,000</span><span>Mileage: 2,400</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- ============ FOOTER (shared) ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="container container--wide">
+
+      <!-- Golden Knights partnership — its own centred band -->
+      <div class="footer__partner">
+        <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
+        <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
+      </div>
+
+      <!-- Contact / hours -->
+      <div class="footer__grid">
+        <div class="footer__col">
+          <h4 class="footer__label">Sales</h4>
+          <a class="footer__phone" href="tel:7252190524">725-219-0524</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">5530 Rafael Rivera Way<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service</h4>
+          <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road, Suites 130/135<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>9:00 AM – 7:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Follow</h4>
+          <ul class="footer__social">
+            <li><a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Brand partners -->
+      <div class="footer__partners">
+        <span class="footer__partners-label">Authorized Dealer</span>
+        <div class="footer__logos">
+          <img src="assets/images/lotus_logo.svg" alt="Lotus">
+          <img src="assets/images/czinger_logo.svg" alt="Czinger">
+          <img src="assets/images/hennessy_logo.svg" alt="Hennessey">
+          <img src="assets/images/vintage_logo.svg" alt="Vintage">
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Lotus Las Vegas. All Rights Reserved. <a href="#">Privacy Policy</a> <span class="footer__sep">|</span> <a href="#">Sitemap</a></span>
+        <span>Powered by All Auto Network</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

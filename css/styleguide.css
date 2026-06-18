@@ -55,6 +55,8 @@
 .chip-bg          { background: var(--color-bg); }
 .chip-surface     { background: var(--color-surface); }
 .chip-surface-2   { background: var(--color-surface-2); }
+.chip-surface-deep   { background: var(--color-surface-deep); }
+.chip-surface-active { background: var(--color-surface-active); }
 .chip-card-border { background: var(--color-card-border); }
 .chip-input       { background: var(--color-input); }
 .chip-text        { background: var(--color-text); }
