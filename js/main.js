@@ -420,6 +420,61 @@
     }
   }
 
+  /* ---------- Hero featured-vehicle slider (2–3 cars) ---------- */
+  const hf = document.querySelector('[data-hero-cars]');
+  if (hf) {
+    const cars = [
+      { name: '2024 Lamborghini<br>Huracán EVO', price: '$274,900',   img: 'inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png', href: '#inventory' },
+      { name: '2021 McLaren<br>720S',            price: '$259,900',   img: 'inventory/2021%20McLaren%20720S%20Base.png',            href: '#inventory' },
+      { name: '2020 Ford GT<br>Carbon Series',   price: '$1,095,000', img: 'inventory/2020%20Ford%20GT%20Carbon%20Series.png',      href: '#inventory' },
+    ];
+    const imgEl = hf.querySelector('[data-hf-img]');
+    const nameEl = hf.querySelector('[data-hf-name]');
+    const priceEl = hf.querySelector('[data-hf-price]');
+    const links = hf.querySelectorAll('[data-hf-link]');
+    const dotsWrap = hf.querySelector('[data-hf-dots]');
+    let idx = 0;
+    let timer = null;
+
+    cars.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'hero-featured__dot';
+      b.setAttribute('aria-label', `Vehicle ${i + 1}`);
+      b.addEventListener('click', () => { go(i); restart(); });
+      dotsWrap.appendChild(b);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    const render = (i) => {
+      const c = cars[i];
+      imgEl.src = `assets/images/${c.img}`;
+      imgEl.alt = c.name.replace('<br>', ' ');
+      nameEl.innerHTML = c.name;
+      priceEl.textContent = c.price;
+      links.forEach((l) => l.setAttribute('href', c.href));
+      dots.forEach((d, di) => d.classList.toggle('is-active', di === i));
+    };
+
+    const go = (i) => {
+      idx = (i + cars.length) % cars.length;
+      if (reduceMotion) { render(idx); return; }
+      hf.classList.add('is-fading');
+      setTimeout(() => { render(idx); hf.classList.remove('is-fading'); }, 350);
+    };
+
+    const start = () => { if (!reduceMotion && cars.length > 1) timer = setInterval(() => go(idx + 1), 6000); };
+    const restart = () => { clearInterval(timer); start(); };
+
+    hf.querySelector('[data-hf-prev]').addEventListener('click', () => { go(idx - 1); restart(); });
+    hf.querySelector('[data-hf-next]').addEventListener('click', () => { go(idx + 1); restart(); });
+    hf.addEventListener('mouseenter', () => clearInterval(timer));
+    hf.addEventListener('mouseleave', start);
+
+    render(0);
+    start();
+  }
+
   /* ---------- Get An Offer slide-in panel ---------- */
   const offer = document.querySelector('[data-offer]');
   if (offer) {
@@ -509,6 +564,17 @@
     e.preventDefault();
     btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
   });
+
+  /* ---------- Newsletter sign-up (stub) ---------- */
+  const newsletter = document.querySelector('[data-newsletter]');
+  if (newsletter) {
+    newsletter.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = new FormData(newsletter).get('email');
+      console.log('Newsletter sign-up:', email);
+      newsletter.innerHTML = '<p class="form-success">Thank you — you\'re on the list.</p>';
+    });
+  }
 
   /* ---------- Inventory search (stub) ---------- */
   const search = document.querySelector('[data-search]');

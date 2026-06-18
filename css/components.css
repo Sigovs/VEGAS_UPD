@@ -59,9 +59,12 @@
 .nav__list > li { position: relative; }
 
 .nav__link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--color-text);
   font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   background-image: linear-gradient(var(--color-accent), var(--color-accent));
@@ -77,6 +80,81 @@
   color: var(--color-accent);
   background-size: 100% 1px;
 }
+
+/* Solid filled dropdown arrow — gold by default, white on hover */
+.nav__link--menu::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--color-accent);
+  transition: transform var(--transition), border-top-color var(--transition);
+}
+.nav__link--menu:hover::after,
+.nav__list > li:hover > .nav__link--menu::after {
+  border-top-color: var(--color-text);
+  transform: translateY(1px);
+}
+
+/* Dropdown menu */
+.nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 210px;
+  padding: var(--space-2);
+  list-style: none;
+  background: color-mix(in srgb, var(--color-bg) 94%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  z-index: 50;
+}
+.nav__list > li:hover > .nav__dropdown,
+.nav__list > li:focus-within > .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav__dropdown a {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  transition: color var(--transition), background var(--transition);
+}
+.nav__dropdown a:hover { color: var(--color-accent); background: var(--color-surface); }
+
+/* Header icon buttons (search / phone / hours / location) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 0 0 auto;
+}
+.nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: var(--color-text);
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: color var(--transition), border-color var(--transition);
+}
+.nav-icon svg { width: 20px; height: 20px; }
+.nav-icon:hover { color: var(--color-accent); border-color: var(--color-border); }
 
 .nav-toggle { display: none; }
 
@@ -1909,6 +1987,73 @@
 .insta-handle { color: inherit; transition: color var(--transition); }
 .insta-handle:hover { color: var(--color-accent); }
 
+/* Two-column layout: IG feed (left) + newsletter (right) */
+.insta__layout {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;     /* group both blocks toward the centre */
+  gap: var(--space-6);         /* tighter gap between feed and newsletter */
+  align-items: center;         /* vertically centre the newsletter against the feed */
+}
+.insta__feed { max-width: 528px; }   /* compact 3×3 thumbnails, like McLaren */
+.insta__head { margin-bottom: var(--space-5); }
+
+/* Newsletter sign-up — centred, McLaren style */
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  width: auto;
+}
+.newsletter__logo { height: 48px; width: auto; margin-bottom: var(--space-2); }
+.newsletter .heading-light { font-size: 38px; line-height: 44px; }
+.newsletter__text {
+  font-weight: var(--weight-light);
+  color: var(--color-text-soft);
+}
+.newsletter__form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-3);
+  width: auto;
+  margin-top: var(--space-2);
+  /* frosted box, exactly like the inventory Search bar */
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+}
+.newsletter__form input {
+  width: 342px;   /* exactly the YEAR field size */
+  max-width: 100%;
+  height: 55px;   /* same as the inventory Search field */
+  padding: 0 var(--space-4);
+  font: inherit;
+  color: var(--color-text);
+  background-color: #1b2026;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+}
+.newsletter__form input::placeholder { color: var(--color-text-soft); }
+.newsletter__form input:focus-visible { border-color: var(--color-accent); outline: none; }
+.newsletter__form .btn { width: auto; height: 55px; white-space: nowrap; }   /* CTA like the Search button */
+
+@media (max-width: 900px) {
+  .insta__layout { grid-template-columns: 1fr; justify-content: stretch; gap: var(--space-6); }
+  .insta__feed { max-width: none; }
+  .newsletter { width: auto; }
+}
+@media (max-width: 560px) {
+  .newsletter__form { flex-direction: column; }
+  .newsletter__form input { width: 100%; }
+  .newsletter__form .btn { width: 100%; }
+}
+
 /* ---- Reviews + Instagram intros: staggered slide-in ---- */
 .insta .section-head[data-reveal],
 .reviews-head[data-reveal] { opacity: 1; transform: none; }  /* trigger only */
@@ -1936,8 +2081,8 @@
 
 .insta-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: var(--space-2);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1);
 }
 
 .insta-tile {
