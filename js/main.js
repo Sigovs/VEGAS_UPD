@@ -88,6 +88,88 @@
     closeNav();
   });
 
+  /* ---------- SRP filter bar: one dropdown open at a time + outside/Escape close ---------- */
+  const filterDetails = Array.from(document.querySelectorAll('.srp-filters .filter, .srp-filters .sort'));
+  if (filterDetails.length) {
+    filterDetails.forEach((d) => {
+      d.addEventListener('toggle', () => {
+        if (!d.open) return;
+        filterDetails.forEach((o) => { if (o !== d) o.removeAttribute('open'); });
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.srp-filters .filter, .srp-filters .sort')) return;
+      filterDetails.forEach((d) => d.removeAttribute('open'));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') filterDetails.forEach((d) => d.removeAttribute('open'));
+    });
+  }
+
+  /* ---------- SRP active filter chips: built live from checked options ---------- */
+  const filtersRoot = document.querySelector('.srp-filters');
+  const chipsBox = document.querySelector('.filter-chips');
+  if (filtersRoot && chipsBox) {
+    const clearBtn = chipsBox.querySelector('.chip-clear');
+    const allBoxes = () => Array.from(filtersRoot.querySelectorAll('input[type="checkbox"]'));
+    const labelFor = (input) => {
+      const lbl = input.closest('label');
+      if (!lbl) return 'Filter';
+      const clone = lbl.cloneNode(true);
+      clone.querySelectorAll('.filter__option-count').forEach((s) => s.remove());
+      return clone.textContent.trim();
+    };
+    const renderChips = () => {
+      chipsBox.querySelectorAll('.chip').forEach((c) => c.remove());
+      const checked = allBoxes().filter((b) => b.checked);
+      checked.forEach((box) => {
+        const text = labelFor(box);
+        const chip = document.createElement('span');
+        chip.className = 'chip';
+        chip.append(text + ' ');
+        const x = document.createElement('button');
+        x.type = 'button';
+        x.setAttribute('aria-label', 'Remove ' + text);
+        x.innerHTML = '&times;';
+        x.addEventListener('click', () => { box.checked = false; renderChips(); });
+        chip.append(x);
+        chipsBox.insertBefore(chip, clearBtn);
+      });
+      chipsBox.hidden = checked.length === 0;
+    };
+    filtersRoot.addEventListener('change', (e) => {
+      if (e.target.matches('input[type="checkbox"]')) renderChips();
+    });
+    clearBtn?.addEventListener('click', () => {
+      allBoxes().forEach((b) => { b.checked = false; });
+      renderChips();
+    });
+    renderChips();
+  }
+
+  /* ---------- SRP "Load More": reveal the next batch (front-end demo) ---------- */
+  const loadMoreBtn = document.querySelector('[data-loadmore]');
+  const srpGrid = document.querySelector('.srp-grid');
+  if (loadMoreBtn && srpGrid) {
+    const hint = document.querySelector('.srp-loadmore__hint');
+    const total = 42;
+    const batch = srpGrid.children.length;       // 9 — the seed batch
+    const template = Array.from(srpGrid.children).map((li) => li.cloneNode(true));
+    loadMoreBtn.addEventListener('click', () => {
+      const shown = srpGrid.children.length;
+      const next = Math.min(batch, total - shown);
+      for (let i = 0; i < next; i++) {
+        srpGrid.append(template[i % template.length].cloneNode(true));
+      }
+      const nowShown = srpGrid.children.length;
+      if (hint) hint.textContent = `Showing ${nowShown} of ${total}`;
+      if (nowShown >= total) {
+        loadMoreBtn.remove();
+        if (hint) hint.textContent = `Showing all ${total} vehicles`;
+      }
+    });
+  }
+
   /* ---------- Scroll reveal (IntersectionObserver) ---------- */
   const revealEls = document.querySelectorAll('[data-reveal]');
 

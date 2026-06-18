@@ -29,18 +29,64 @@
 
       <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
         <ul role="list" class="nav__list">
-          <li><a href="#inventory" class="nav__link nav__link--menu">New</a></li>
+          <li class="nav__item--mega">
+            <a href="srp.html" class="nav__link nav__link--menu" aria-haspopup="true">Inventory</a>
+            <div class="mega-menu" role="menu" aria-label="Inventory">
+              <div class="mega-menu__inner">
+                <div class="mega-menu__cols">
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Shop</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp.html"><span>View All</span><span class="mega-menu__count">42</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=new"><span>New</span><span class="mega-menu__count">18</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=preowned"><span>Pre-Owned</span><span class="mega-menu__count">24</span></a>
+                      <a class="mega-menu__link" href="srp.html?sort=new-arrivals"><span>New Arrivals</span><span class="mega-menu__count">7</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=sold"><span>Sold</span><span class="mega-menu__count"></span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">By Type</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp.html?body=coupe"><span>Coupe</span><span class="mega-menu__count">15</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=convertible"><span>Convertible</span><span class="mega-menu__count">9</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=suv"><span>SUV</span><span class="mega-menu__count">8</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=sedan"><span>Sedan</span><span class="mega-menu__count">6</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=electric"><span>Electric</span><span class="mega-menu__count">4</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mega-menu__brands">
+                  <p class="mega-menu__col-title">Browse by Brand</p>
+                  <div class="mega-menu__pills">
+                    <a class="mega-menu__pill" href="srp.html?make=lamborghini">Lamborghini</a>
+                    <a class="mega-menu__pill" href="srp.html?make=ferrari">Ferrari</a>
+                    <a class="mega-menu__pill" href="srp.html?make=mclaren">McLaren</a>
+                    <a class="mega-menu__pill" href="srp.html?make=rolls-royce">Rolls-Royce</a>
+                    <a class="mega-menu__pill" href="srp.html?make=bentley">Bentley</a>
+                    <a class="mega-menu__pill" href="srp.html?make=porsche">Porsche</a>
+                    <a class="mega-menu__pill" href="srp.html?make=mercedes-benz">Mercedes-Benz</a>
+                    <a class="mega-menu__pill" href="srp.html?make=aston-martin">Aston Martin</a>
+                    <a class="mega-menu__pill" href="srp.html?make=bugatti">Bugatti</a>
+                    <a class="mega-menu__pill" href="srp.html?make=lotus">Lotus</a>
+                    <a class="mega-menu__pill" href="srp.html?make=maserati">Maserati</a>
+                    <a class="mega-menu__pill" href="srp.html?make=all">All Makes &rarr;</a>
+                  </div>
+                  <a class="btn btn--primary mega-menu__cta" href="srp.html">View All Inventory</a>
+                </div>
+              </div>
+            </div>
+          </li>
           <li>
-            <a href="#inventory" class="nav__link nav__link--menu" aria-haspopup="true">Pre-Owned</a>
+            <a href="srp.html?cond=preowned" class="nav__link nav__link--menu" aria-haspopup="true">Pre-Owned</a>
             <ul class="nav__dropdown" role="menu">
-              <li><a href="#inventory" role="menuitem">Just Arrived</a></li>
-              <li><a href="#inventory" role="menuitem">Sale Pending</a></li>
-              <li><a href="#inventory" role="menuitem">Recently Reduced</a></li>
-              <li><a href="#inventory" role="menuitem">Coming Soon</a></li>
+              <li><a href="srp.html?sort=new-arrivals" role="menuitem">Just Arrived</a></li>
+              <li><a href="srp.html?status=pending" role="menuitem">Sale Pending</a></li>
+              <li><a href="srp.html?sort=reduced" role="menuitem">Recently Reduced</a></li>
+              <li><a href="srp.html?status=soon" role="menuitem">Coming Soon</a></li>
             </ul>
           </li>
           <li><a href="#" class="nav__link" data-offer-open>Sell Your Car</a></li>
-          <li><a href="#inventory" class="nav__link">Sold</a></li>
+          <li><a href="srp.html?cond=sold" class="nav__link">Sold</a></li>
           <li><a href="#services" class="nav__link nav__link--menu">Service</a></li>
           <li><a href="#buy" class="nav__link nav__link--menu">Finance</a></li>
           <li><a href="#showcase" class="nav__link">About</a></li>

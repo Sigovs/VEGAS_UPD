@@ -37,8 +37,11 @@
   --color-bg:        #0B0F14;   /* near-black, cool — canvas */
   --color-surface:   #131820;   /* raised panels (between bg and slate) */
   --color-surface-2: #1F2933;   /* inputs, hover surfaces — slate */
+  --color-card-border: #131b23; /* hairline around dark cards on the canvas */
+  --color-input:     #1b2026;   /* form field fill on the dark canvas */
   --color-text:      #f5f5f5;   /* primary text */
   --color-text-soft: #9aa3ad;   /* secondary text — cool grey */
+  --color-text-muted: #506172;  /* tertiary text — addresses, fine print */
   --color-accent:    #C9A227;   /* gold — used sparingly */
   --color-accent-hover: #E6CF7A;/* champagne highlight */
   --color-accent-deep: #4B3B2B; /* warm brown — deep accent / dividers */
@@ -47,6 +50,10 @@
   --color-overlay-strong: rgba(11, 15, 20, 0.74);
   --color-scrim:     rgba(11, 15, 20, 0.8);   /* scrim over photos */
 
+  /* Canonical gold (index3 / .v2) — set as the live accent in the .v2 block below */
+  --color-gold:      #CEB655;   /* primary gold used across the canonical site */
+  --color-gold-deep: #746734;   /* deep gold — button/CTA hover fill (text → white) */
+
   /* ============ SPACING (4px scale) ============ */
   --space-1: 4px;
   --space-2: 8px;
@@ -54,8 +61,11 @@
   --space-4: 24px;
   --space-5: 32px;
   --space-6: 48px;
+  --space-7: 64px;
   --space-8: 80px;
+  --space-9: 96px;
   --space-10: 128px;
+  --space-11: 144px;
   --space-12: 180px;
 
   /* ============ MISC ============ */
@@ -71,4 +81,22 @@
   --logo-height:    62px;
   --header-pad:     var(--space-5); /* top/bottom — default */
   --header-pad-sm:  var(--space-4); /* top/bottom — on scroll */
+  --header-h:       127px;          /* full header height — page offset + sticky filter anchor */
+  --header-h-sm:    111px;          /* condensed header height (.is-scrolled) — sticky anchor on scroll */
+
+  /* Mega menu / SRP */
+  --mega-pad:        var(--space-6);   /* mega panel inner padding */
+  --logo-cell-h:     72px;             /* brand-logo grid cell height */
+  --logo-cell-img:   44px;             /* max logo height inside a cell */
+  --filter-panel-w:  300px;            /* dropdown filter panel width */
+  --srp-gap:         var(--space-5);   /* gap between result cards */
+}
+
+/* ============================================================
+   CANONICAL THEME (.v2) — index3 and all new pages (SRP / VDP).
+   Promotes the brighter gold to the live accent. Build new pages
+   inside <body class="v2"> so they inherit this palette.
+   ============================================================ */
+.v2 {
+  --color-accent: var(--color-gold);   /* #CEB655 — buttons reference --color-gold-deep for hover */
 }

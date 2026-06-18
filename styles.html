@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/styleguide.css">
 </head>
-<body>
+<body class="v2">
 
   <!-- ============ HEADER ============ -->
   <header class="sg-header">
@@ -50,6 +50,14 @@
           <div class="swatch__meta"><span class="swatch__name">Surface 2</span><span class="swatch__val">--color-surface-2 · #1F2933</span></div>
         </div>
         <div class="swatch">
+          <div class="swatch__chip chip-card-border"></div>
+          <div class="swatch__meta"><span class="swatch__name">Card Border</span><span class="swatch__val">--color-card-border · #131B23</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-input"></div>
+          <div class="swatch__meta"><span class="swatch__name">Input Fill</span><span class="swatch__val">--color-input · #1B2026</span></div>
+        </div>
+        <div class="swatch">
           <div class="swatch__chip chip-text"></div>
           <div class="swatch__meta"><span class="swatch__name">Text</span><span class="swatch__val">--color-text · #F5F5F5</span></div>
         </div>
@@ -58,12 +66,16 @@
           <div class="swatch__meta"><span class="swatch__name">Text Soft</span><span class="swatch__val">--color-text-soft · #9AA3AD</span></div>
         </div>
         <div class="swatch">
-          <div class="swatch__chip chip-accent"></div>
-          <div class="swatch__meta"><span class="swatch__name">Accent (Gold)</span><span class="swatch__val">--color-accent · #C9A227</span></div>
+          <div class="swatch__chip chip-text-muted"></div>
+          <div class="swatch__meta"><span class="swatch__name">Text Muted</span><span class="swatch__val">--color-text-muted · #506172</span></div>
         </div>
         <div class="swatch">
-          <div class="swatch__chip chip-accent-hover"></div>
-          <div class="swatch__meta"><span class="swatch__name">Accent Hover</span><span class="swatch__val">--color-accent-hover · #E6CF7A</span></div>
+          <div class="swatch__chip chip-accent"></div>
+          <div class="swatch__meta"><span class="swatch__name">Accent (live)</span><span class="swatch__val">--color-accent · #CEB655</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip chip-gold-deep"></div>
+          <div class="swatch__meta"><span class="swatch__name">Gold Deep (hover)</span><span class="swatch__val">--color-gold-deep · #746734</span></div>
         </div>
         <div class="swatch">
           <div class="swatch__chip chip-accent-deep"></div>
@@ -74,6 +86,7 @@
           <div class="swatch__meta"><span class="swatch__name">Border</span><span class="swatch__val">--color-border · #243038</span></div>
         </div>
       </div>
+      <p class="sg-subtitle">Canonical gold lives in <code class="font-sans">.v2</code> — <code class="font-sans">--color-accent</code> resolves to <code class="font-sans">--color-gold #CEB655</code>. The base theme (index.html) keeps the original <code class="font-sans">#C9A227</code>.</p>
     </section>
 
     <!-- ============ TYPOGRAPHY ============ -->
@@ -137,8 +150,12 @@
       <div class="space-row"><span class="space-label">--space-4 · 24px</span><span class="space-bar sp-4"></span></div>
       <div class="space-row"><span class="space-label">--space-5 · 32px</span><span class="space-bar sp-5"></span></div>
       <div class="space-row"><span class="space-label">--space-6 · 48px</span><span class="space-bar sp-6"></span></div>
+      <div class="space-row"><span class="space-label">--space-7 · 64px</span><span class="space-bar sp-7"></span></div>
       <div class="space-row"><span class="space-label">--space-8 · 80px</span><span class="space-bar sp-8"></span></div>
+      <div class="space-row"><span class="space-label">--space-9 · 96px</span><span class="space-bar sp-9"></span></div>
       <div class="space-row"><span class="space-label">--space-10 · 128px</span><span class="space-bar sp-10"></span></div>
+      <div class="space-row"><span class="space-label">--space-11 · 144px</span><span class="space-bar sp-11"></span></div>
+      <div class="space-row"><span class="space-label">--space-12 · 180px</span><span class="space-bar sp-12"></span></div>
     </section>
 
     <!-- ============ RADII / SHADOW ============ -->
@@ -222,6 +239,26 @@
           <img class="feature__media" src="assets/images/event-1.jpg" alt="Feature">
           <span class="feature__title">Track Days</span>
         </a>
+      </div>
+    </section>
+
+    <!-- ============ INVENTORY CARD ============ -->
+    <section class="sg-section">
+      <span class="eyebrow">Components</span>
+      <h2>Inventory Card</h2>
+      <p class="sg-subtitle">The vehicle card — building block for SRP grids and VDP "similar vehicles". Hover lifts the card and slides the gold CTA up over a darkened photo.</p>
+      <div class="inv inv--redesign">
+        <div class="sg-row">
+          <article class="inv-card">
+            <a href="#" class="inv-card__media"><img src="assets/images/inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png" alt="2024 Lamborghini Huracán EVO"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+            <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+            <div class="inv-card__body">
+              <h3 class="inv-card__title">2024 Lamborghini Huracán EVO</h3>
+              <div class="inv-card__meta"><span>Price: $274,900</span><span>Mileage: 3,200</span></div>
+              <span class="inv-card__address">5530 Rafael Rivera Way</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
