@@ -1482,6 +1482,9 @@
 
 .search-bar select:focus-visible { border-color: var(--color-accent); }
 
+/* Filters under the Featured Inventory "The Collection" heading */
+.inv__filters { margin-top: var(--space-5); }
+
 /* ============ EXPLORE INVENTORY — full-bleed bg, centred (index2 .v2) ============ */
 .v2 .inv-entry {
   position: relative;
@@ -1760,7 +1763,7 @@
   padding-block: var(--space-10) var(--space-10);
   border-bottom: 1px solid var(--color-border);
 }
-.footer__vgk { height: 88px; width: auto; flex: 0 0 auto; }
+.footer__vgk { height: 123px; width: auto; flex: 0 0 auto; }
 .footer__partner-text {
   font-size: var(--text-sm);
   letter-spacing: var(--tracking-wide);
@@ -1874,7 +1877,7 @@
 
 @media (max-width: 800px) {
   .footer__grid { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
-  .footer__vgk { height: 72px; }
+  .footer__vgk { height: 101px; }
 }
 @media (max-width: 520px) {
   .footer__grid { grid-template-columns: 1fr; }
@@ -2440,6 +2443,17 @@
 /* SRP opens with a hero image; the header sits transparent over it and gains
    its background only on scroll (.is-scrolled) — same behaviour as the homepage. */
 
+/* Flat SRP (no top hero) — solid header from the top + clear the fixed header */
+.page-srp--flat .site-header {
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-bottom-color: var(--color-border);
+}
+.page-srp--flat .srp-page { padding-top: var(--header-h); }
+/* same rhythm as the gaps between Popular Makes / filters / Featured (~80px) */
+.page-srp--flat .popular-makes { padding-top: var(--space-8); }
+
 /* ---- Top hero (page title over the image) ---- */
 .srp-hero {
   position: relative;
@@ -2495,9 +2509,39 @@
 }
 /* header condenses on scroll (127 → 111) — pull the bar up to stay flush */
 body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
+/* flat SRP — filters are not sticky */
+.page-srp--flat .srp-filters { position: static; }
 .srp-filters__eyebrow { display: block; margin-bottom: var(--space-5); }
 .srp-filters__row { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-4); }
 .srp-filters__spacer { flex: 1 1 auto; }
+
+/* keyword search next to the filters */
+.filter-search {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 42px;
+  padding: 0 var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition);
+}
+.filter-search:focus-within { border-color: var(--color-accent); }
+.filter-search svg { width: 16px; height: 16px; flex: 0 0 auto; color: var(--color-text-soft); }
+.filter-search input {
+  height: 100%;
+  min-width: 190px;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+}
+.filter-search input:focus { outline: none; }
+.filter-search input::placeholder { color: var(--color-text-soft); letter-spacing: 0; }
+.filter-search input::-webkit-search-cancel-button { filter: invert(0.6); }
 
 .filter, .sort { position: relative; }
 .filter > summary, .sort > summary { list-style: none; cursor: pointer; }
@@ -2696,8 +2740,8 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-1) var(--space-3);
-  font-size: var(--text-xs);
+  padding: calc(var(--space-1) * 1.25) calc(var(--space-3) * 1.25);   /* +25% */
+  font-size: calc(var(--text-xs) * 1.25);                              /* +25% */
   font-weight: var(--weight-medium);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
@@ -2795,6 +2839,12 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 .pm-mclaren { max-height: 26px; }
 .pm-bugatti { max-height: 22px; }
 .pm-czinger { max-height: 24px; }
+.pm-porsche { max-height: 20px; max-width: 86%; }   /* wide wordmark */
+.pm-mercedes{ max-height: 44px; }                    /* star emblem (square) */
+
+/* one-line variant — all makes on a single row, sharing width equally */
+.popular-makes__grid--row { flex-wrap: nowrap; }
+.popular-makes__grid--row .popular-makes__item { flex: 1 1 0; min-width: 0; max-width: none; }
 
 @media (prefers-reduced-motion: reduce) { .popular-makes__item:hover { transform: none; } }
 
@@ -2980,8 +3030,8 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   color: var(--color-text-soft);
 }
 .vdp-specs__value { font-size: var(--text-sm); color: var(--color-text); text-align: right; text-transform: uppercase; letter-spacing: 0.03em; }
-.vdp-panel__ctas { margin-top: var(--space-4); }
-.vdp-panel__ctas .btn { width: 100%; }
+.vdp-panel__ctas { margin-top: var(--space-4); display: flex; gap: var(--space-3); }
+.vdp-panel__ctas .btn { flex: 1 1 0; }
 
 /* Action bar */
 .vdp-actionbar {

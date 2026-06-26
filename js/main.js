@@ -584,9 +584,9 @@
   const hf = document.querySelector('[data-hero-cars]');
   if (hf) {
     const cars = [
-      { name: '2024 Lamborghini<br>Huracán EVO', price: '$274,900',   img: 'inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png', href: 'vdp.html' },
-      { name: '2021 McLaren<br>720S',            price: '$259,900',   img: 'inventory/2021%20McLaren%20720S%20Base.png',            href: 'vdp.html' },
-      { name: '2020 Ford GT<br>Carbon Series',   price: '$1,095,000', img: 'inventory/2020%20Ford%20GT%20Carbon%20Series.png',      href: 'vdp.html' },
+      { name: '2024 Lamborghini<br>Huracán EVO', price: '$274,900',   img: 'inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png', href: 'vdp4.html' },
+      { name: '2021 McLaren<br>720S',            price: '$259,900',   img: 'inventory/2021%20McLaren%20720S%20Base.png',            href: 'vdp4.html' },
+      { name: '2020 Ford GT<br>Carbon Series',   price: '$1,095,000', img: 'inventory/2020%20Ford%20GT%20Carbon%20Series.png',      href: 'vdp4.html' },
     ];
     const imgEl = hf.querySelector('[data-hf-img]');
     const nameEl = hf.querySelector('[data-hf-name]');
