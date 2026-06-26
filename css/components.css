@@ -2889,6 +2889,14 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
    .inv-card (index3) for related vehicles.
    ============================================================ */
 .vdp-page { padding-top: var(--header-h); }
+/* Service page (service4 / parts4) — content page, solid header, clears the fixed header */
+.service-main { padding-top: var(--header-h); }
+.page-service .site-header {
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-bottom-color: var(--color-border);
+}
 /* glow — mirrors the footer's radial wash: top + a soft wash down each side */
 .page-vdp {
   background:
@@ -3217,7 +3225,8 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 .vdp-form__field { display: flex; flex-direction: column; gap: var(--space-2); }
 .vdp-form__field--full { grid-column: 1 / -1; }
 .vdp-form__field label { font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-soft); }
-.vdp-form__field input,
+.vdp-form__field input:not([type="checkbox"]),
+.vdp-form__field select,
 .vdp-form__field textarea {
   padding: var(--space-3);
   background: rgba(255, 255, 255, 0.8);
@@ -3230,11 +3239,23 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 }
 .vdp-form__field input::placeholder,
 .vdp-form__field textarea::placeholder { color: var(--color-text-muted); }
-.vdp-form__field input { height: 50px; }
+.vdp-form__field input:not([type="checkbox"]),
+.vdp-form__field select { height: 50px; }
 .vdp-form__field textarea { min-height: 112px; resize: vertical; }
 .vdp-form__field input:focus,
+.vdp-form__field select:focus,
 .vdp-form__field textarea:focus { outline: none; border-color: var(--color-accent); }
-.vdp-form__actions { display: flex; justify-content: flex-end; margin-top: var(--space-4); }
+/* step sub-headings inside a grouped form */
+.vdp-form__step { display: block; margin: var(--space-6) 0 var(--space-3); }
+.vdp-form__step:first-child { margin-top: 0; }
+/* Service Required — checkbox group */
+.vdp-form__checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin: var(--space-2) 0 var(--space-4); }
+.vdp-check { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-sans); font-size: var(--text-base); color: var(--color-text); cursor: pointer; }
+.vdp-check input[type="checkbox"] { width: 18px; height: 18px; flex: none; accent-color: var(--color-accent); cursor: pointer; }
+@media (max-width: 760px) { .vdp-form__checks { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .vdp-form__checks { grid-template-columns: 1fr; } }
+.vdp-form__actions { display: flex; justify-content: flex-end; margin-top: var(--space-6); }
+.vdp-form .vdp-calc__note { text-align: center; margin-top: var(--space-6); max-width: 60ch; margin-inline: auto; }
 .vdp-form__done { margin-top: var(--space-4); color: var(--color-accent); font-size: var(--text-sm); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
 
 @media (max-width: 560px) {
@@ -3277,4 +3298,161 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   .vdp-related__grid { grid-template-columns: 1fr; }
   .vdp-photos { grid-template-columns: 1fr; }
   .vdp-calc__grid { grid-template-columns: 1fr; }
+}
+
+/* ============ SERVICE4 — hero boxes + centred location/map ============ */
+/* on-load entrance: text steps in from the left, boxes rise one by one */
+@keyframes svc-in-left { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+@keyframes svc-in-up   { from { opacity: 0; transform: translateY(30px);  } to { opacity: 1; transform: none; } }
+.service-hero .hero__content > * { animation: svc-in-left 0.7s cubic-bezier(.22,.61,.36,1) backwards; }
+.service-hero .hero__content > *:nth-child(1) { animation-delay: 0.10s; }
+.service-hero .hero__content > *:nth-child(2) { animation-delay: 0.22s; }
+.service-hero .hero__content > *:nth-child(3) { animation-delay: 0.34s; }
+.service-hero__box { animation: svc-in-up 0.7s cubic-bezier(.22,.61,.36,1) backwards; }
+.service-hero__box:nth-child(1) { animation-delay: 0.50s; }
+.service-hero__box:nth-child(2) { animation-delay: 0.64s; }
+.service-hero__box:nth-child(3) { animation-delay: 0.78s; }
+.service-hero__box:nth-child(4) { animation-delay: 0.92s; }
+@media (prefers-reduced-motion: reduce) {
+  .service-hero .hero__content > *, .service-hero__box { animation: none; opacity: 1; }
+}
+
+/* full-screen hero, content + boxes anchored to the bottom of the image */
+.service-hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  align-items: flex-end;
+  padding-top: calc(var(--header-h) + var(--space-4));
+  padding-bottom: var(--space-10);
+}
+/* darken top (for nav contrast) and bottom (for text), keep the middle clear */
+.service-hero::after {
+  background:
+    linear-gradient(rgba(11, 15, 20, 0.15), rgba(11, 15, 20, 0.15)),
+    linear-gradient(
+      to bottom,
+      rgba(11, 15, 20, 0.92) 0%,
+      rgba(11, 15, 20, 0.64) 18%,
+      rgba(11, 15, 20, 0.48) 42%,
+      rgba(11, 15, 20, 0.7) 76%,
+      rgba(11, 15, 20, 0.95) 100%
+    );
+}
+.service-hero .hero__content { gap: var(--space-5); }
+.service-hero .hero__actions { margin-top: var(--space-2); }
+.service-hero__boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+.service-hero__box {
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition: transform 0.3s var(--transition-ease, ease), border-color 0.3s ease, background 0.3s ease;
+}
+.service-hero__box:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+.service-hero__box .service-item__title { margin-bottom: var(--space-3); }
+.service-hero__box p { color: var(--color-text-soft); font-size: var(--text-sm); line-height: var(--leading-normal); }
+
+/* Hours & Location — centred + Leaflet map */
+.service-location { text-align: left; }
+.service-location .section-head { align-items: center; margin-inline: auto; max-width: none; text-align: center; }
+.service-map {
+  height: 100%;
+  min-height: 440px;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+  z-index: 0;
+}
+/* info left (vertical stack), map right */
+.service-location__layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-8);
+  align-items: stretch;
+}
+.service-location__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+.service-location__item .footer__label { margin-bottom: var(--space-3); }
+.service-location__item .footer__addr,
+.service-location__item .footer__phone { font-style: normal; }
+.service-location__item .footer__hours { display: block; text-align: left; }
+.service-location__item .footer__hours > div { display: block; margin-bottom: var(--space-2); }
+.service-location__item .footer__hours dt { display: inline; }
+.service-location__item .footer__hours dd { display: inline; margin-left: var(--space-3); }
+.service-location__cta { margin-top: var(--space-2); }
+
+/* centre the appointment section heading + submit button */
+#appointment .section-head { align-items: center; margin-inline: auto; text-align: center; }
+#appointment .vdp-form__actions { justify-content: center; }
+
+/* Parts section — subtle dual radial glow behind the banner */
+#parts {
+  background:
+    radial-gradient(ellipse 820px 560px at 34% 38%, rgba(22, 33, 45, 0.85) 0%, rgba(11, 15, 20, 0) 78%),
+    radial-gradient(ellipse 820px 560px at 66% 62%, rgba(22, 33, 45, 0.85) 0%, rgba(11, 15, 20, 0) 78%),
+    var(--color-bg);
+  background-repeat: no-repeat;
+}
+/* Parts — full-width advertising banner, text centred inside the image */
+.parts-promo {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-card-border);
+}
+.parts-promo__img {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 46vh, 560px);
+  object-fit: cover;
+}
+.parts-promo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 72% 92% at 50% 50%, rgba(11, 15, 20, 0.62) 0%, rgba(11, 15, 20, 0.2) 100%),
+    linear-gradient(180deg, rgba(11, 15, 20, 0.45) 0%, rgba(11, 15, 20, 0.8) 100%);
+}
+.parts-promo__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding: var(--space-8);
+}
+.parts-promo__overlay .lead { max-width: 56ch; margin-inline: auto; }
+
+@media (max-width: 900px) {
+  .service-hero__boxes { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .service-location__layout { grid-template-columns: 1fr; }
+  .service-map { min-height: 360px; }
+}
+@media (max-width: 560px) {
+  .service-hero__boxes { grid-template-columns: 1fr; }
 }
