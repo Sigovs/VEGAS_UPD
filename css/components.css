@@ -50,6 +50,65 @@
   border-bottom-color: var(--color-border);
 }
 
+/* ---- Brand bar (v5): slim "authorized dealer" strip above the main nav ---- */
+:root { --brand-bar-h: 64px; }
+.site-header:has(.brand-bar) { flex-direction: column; align-items: stretch; padding-block: 0; }
+.site-header:has(.brand-bar) .site-header__inner { padding-block: var(--header-pad); }
+.site-header:has(.brand-bar).is-scrolled .site-header__inner { padding-block: var(--header-pad-sm); }
+
+.brand-bar {
+  background: rgba(11, 15, 20, 0.5);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  max-height: var(--brand-bar-h);
+  transition: max-height var(--transition), opacity var(--transition), border-color var(--transition);
+}
+.brand-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--brand-bar-h);
+}
+.brand-bar__label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  white-space: nowrap;
+}
+.brand-bar__logos { display: flex; align-items: center; gap: var(--space-5); }
+.brand-bar__logos a { display: inline-flex; }
+.brand-bar__logos img {
+  height: 22px;
+  width: auto;
+  display: block;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: filter var(--transition), opacity var(--transition);
+}
+/* per-brand optical sizing (compact marks read smaller at the same height) */
+.brand-bar__logos img[alt="Lotus"]     { height: 40px; }
+.brand-bar__logos img[alt="Vintage"]   { height: 30px; }
+.brand-bar__logos img[alt="Hennessey"] { height: 18px; }
+.brand-bar__logos a:hover img { filter: none; opacity: 1; }
+
+/* collapse the bar once scrolled — condensed header returns to normal height */
+.site-header.is-scrolled .brand-bar { max-height: 0; opacity: 0; border-color: transparent; }
+
+/* content pages that carry a brand bar clear the taller header */
+body:has(.brand-bar) .srp-page,
+body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand-bar-h)); }
+
+@media (max-width: 720px) {
+  .brand-bar__label { display: none; }
+  .brand-bar__inner { justify-content: center; }
+  .brand-bar__logos { gap: var(--space-4); }
+}
+
 .nav__list {
   display: flex;
   gap: var(--space-4);
@@ -387,6 +446,19 @@
   opacity: 0;
   transition: opacity var(--transition);
 }
+
+/* hover video — sits above the photo, below the ::after gradient */
+.brand-panel__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  pointer-events: none;
+}
+.brand-panel:hover .brand-panel__video { opacity: 1; }
 
 .brand-panel:hover .brand-panel__media { transform: scale(1.06); }
 .brand-panel:hover .brand-panel__media-wrap::after,
@@ -1155,6 +1227,12 @@
   grid-template-columns: 1fr 1fr;
   min-height: 820px;
   background: var(--color-bg);
+}
+
+/* flipped variant — image right, text left (desktop only; mobile keeps image-on-top) */
+@media (min-width: 901px) {
+  .services-split--reverse .services-split__media { grid-column: 2; grid-row: 1; }
+  .services-split--reverse .services-split__panel { grid-column: 1; grid-row: 1; justify-content: flex-end; }
 }
 
 .services-split__media { position: relative; overflow: hidden; }

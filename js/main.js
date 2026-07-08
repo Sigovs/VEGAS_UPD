@@ -584,9 +584,9 @@
   const hf = document.querySelector('[data-hero-cars]');
   if (hf) {
     const cars = [
-      { name: '2024 Lamborghini<br>Huracán EVO', price: '$274,900',   img: 'inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png', href: 'vdp4.html' },
-      { name: '2021 McLaren<br>720S',            price: '$259,900',   img: 'inventory/2021%20McLaren%20720S%20Base.png',            href: 'vdp4.html' },
-      { name: '2020 Ford GT<br>Carbon Series',   price: '$1,095,000', img: 'inventory/2020%20Ford%20GT%20Carbon%20Series.png',      href: 'vdp4.html' },
+      { name: '2024 Lamborghini<br>Huracán EVO', price: '$274,900',   img: 'inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png', href: 'vdp5.html' },
+      { name: '2021 McLaren<br>720S',            price: '$259,900',   img: 'inventory/2021%20McLaren%20720S%20Base.png',            href: 'vdp5.html' },
+      { name: '2020 Ford GT<br>Carbon Series',   price: '$1,095,000', img: 'inventory/2020%20Ford%20GT%20Carbon%20Series.png',      href: 'vdp5.html' },
     ];
     const imgEl = hf.querySelector('[data-hf-img]');
     const nameEl = hf.querySelector('[data-hf-name]');
@@ -750,4 +750,33 @@
       // window.location.href = `/inventory?${params.toString()}`;
     });
   }
+
+  /* ---------- Hero scroll-down arrow ---------- */
+  const heroScroll = document.querySelector('[data-hero-scroll]');
+  if (heroScroll) {
+    heroScroll.addEventListener('click', () => {
+      const hero = heroScroll.closest('.hero') || document.querySelector('.hero');
+      const target = hero && hero.nextElementSibling;
+      if (target) {
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: window.innerHeight, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+    });
+  }
+
+  /* ---------- Brand panels: play video on hover ---------- */
+  document.querySelectorAll('.brand-panel').forEach((panel) => {
+    const video = panel.querySelector('.brand-panel__video');
+    if (!video) return;
+    panel.addEventListener('mouseenter', () => {
+      if (reduceMotion) return;
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    });
+    panel.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
 })();
