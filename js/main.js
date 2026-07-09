@@ -248,16 +248,96 @@
     invSwipeGallery = null;
   }, { passive: true });
 
-  /* ---------- VDP gallery — cycle the main photo via prev/next ---------- */
+  /* ---------- VDP details — Ferrari-style tabs ---------- */
+  document.querySelectorAll('[data-tabs]').forEach((tabs) => {
+    const tabButtons = Array.from(tabs.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(tabs.querySelectorAll('[role="tabpanel"]'));
+    if (!tabButtons.length) return;
+    const activate = (tab) => {
+      tabButtons.forEach((t) => {
+        const on = t === tab;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((p) => {
+        const on = p.id === tab.getAttribute('aria-controls');
+        p.classList.toggle('is-active', on);
+        p.hidden = !on;
+      });
+    };
+    tabButtons.forEach((tab, i) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        const dir = e.key === 'ArrowRight' ? 1 : -1;
+        const next = tabButtons[(i + dir + tabButtons.length) % tabButtons.length];
+        next.focus();
+        activate(next);
+      });
+    });
+
+    // Legacy anchors (Inquire) open the matching tab
+    const anchorMap = { 'request-info': 'tab-contact' };
+    Object.entries(anchorMap).forEach(([hash, tabId]) => {
+      const tab = tabs.querySelector('#' + tabId);
+      if (!tab) return;
+      document.querySelectorAll('a[href="#' + hash + '"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          activate(tab);
+          tabs.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        });
+      });
+    });
+  });
+
+  /* ---------- VDP related — carousel arrows ---------- */
+  document.querySelectorAll('[data-related-carousel]').forEach((car) => {
+    const track = car.querySelector('.vdp-related__track');
+    const prev = car.querySelector('[data-rel-prev]');
+    const next = car.querySelector('[data-rel-next]');
+    if (!track) return;
+    const step = () => {
+      const slide = track.querySelector('.vdp-related__slide');
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '16') || 16;
+      return slide ? slide.getBoundingClientRect().width + gap : track.clientWidth * 0.9;
+    };
+    if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    if (next) next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    const sync = () => {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      if (prev) prev.style.visibility = track.scrollLeft > 2 ? 'visible' : 'hidden';
+      if (next) next.style.visibility = track.scrollLeft < max ? 'visible' : 'hidden';
+    };
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync, { passive: true });
+    sync();
+  });
+
+  /* ---------- VDP hero mosaic — the whole gallery advances as one ---------- */
   const galleryImg = document.querySelector('[data-gallery-img]');
   if (galleryImg) {
     const photos = Array.from(document.querySelectorAll('.vdp-photos img'))
       .map((img) => img.getAttribute('src'));
+    const thumbs = Array.from(document.querySelectorAll('[data-gallery-thumb]'));
     if (photos.length) {
+      const len = photos.length;
       let gi = Math.max(0, photos.indexOf(galleryImg.getAttribute('src')));
-      const show = (n) => { gi = (n + photos.length) % photos.length; galleryImg.src = photos[gi]; };
-      document.querySelector('[data-gallery-prev]')?.addEventListener('click', (e) => { e.preventDefault(); show(gi - 1); });
-      document.querySelector('[data-gallery-next]')?.addEventListener('click', (e) => { e.preventDefault(); show(gi + 1); });
+      // main = photos[gi]; the mosaic tiles trail as the next photos in sequence
+      const render = () => {
+        galleryImg.src = photos[gi];
+        thumbs.forEach((t, k) => { t.src = photos[(gi + 1 + k) % len]; });
+      };
+      const step = (d) => { gi = (gi + d + len) % len; render(); };
+      document.querySelector('[data-gallery-prev]')?.addEventListener('click', (e) => { e.preventDefault(); step(-1); });
+      document.querySelector('[data-gallery-next]')?.addEventListener('click', (e) => { e.preventDefault(); step(1); });
+      // Click a tile → bring that photo to the main slot, re-window the rest
+      thumbs.forEach((t, k) => {
+        t.addEventListener('click', () => { gi = (gi + 1 + k) % len; render(); });
+      });
+      render();
     }
   }
 
@@ -792,6 +872,53 @@
     e.preventDefault();
     btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
   });
+
+  /* ---------- Share — native share sheet on mobile, popover fallback on desktop ---------- */
+  (() => {
+    let menu = null;
+    const enc = encodeURIComponent;
+    const close = () => { if (menu) { menu.remove(); menu = null; } };
+
+    const build = (btn, url, title, text) => {
+      const shareStr = `${text} ${url}`;
+      menu = document.createElement('div');
+      menu.className = 'share-menu';
+      menu.setAttribute('role', 'menu');
+      menu.innerHTML =
+        `<a class="share-menu__item" role="menuitem" href="mailto:?subject=${enc(title)}&body=${enc(shareStr)}">Email</a>` +
+        `<a class="share-menu__item" role="menuitem" href="sms:?&body=${enc(shareStr)}">Text message</a>` +
+        `<a class="share-menu__item" role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${enc(url)}">Facebook</a>` +
+        `<a class="share-menu__item" role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=${enc(url)}&text=${enc(text)}">X (Twitter)</a>` +
+        `<button class="share-menu__item" role="menuitem" type="button" data-copy>Copy link</button>`;
+      document.body.appendChild(menu);
+      const r = btn.getBoundingClientRect();
+      const vw = document.documentElement.clientWidth;
+      let left = r.left + window.scrollX;
+      left = Math.min(left, window.scrollX + vw - menu.offsetWidth - 8);
+      menu.style.top = `${r.bottom + window.scrollY + 8}px`;
+      menu.style.left = `${Math.max(8, left)}px`;
+      menu.querySelector('[data-copy]').addEventListener('click', () => {
+        const done = () => { const b = menu && menu.querySelector('[data-copy]'); if (b) { b.textContent = 'Link copied ✓'; setTimeout(close, 900); } };
+        if (navigator.clipboard) { navigator.clipboard.writeText(url).then(done).catch(done); } else { done(); }
+      });
+    };
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-share]');
+      if (btn) {
+        e.preventDefault();
+        const url = btn.dataset.shareUrl || location.href;
+        const title = btn.dataset.shareTitle || document.title;
+        const text = btn.dataset.shareText || title;
+        if (navigator.share) { navigator.share({ title, text, url }).catch(() => {}); return; }
+        if (menu) { close(); return; }              // toggle closed if already open
+        build(btn, url, title, text);
+        return;
+      }
+      if (menu && !e.target.closest('.share-menu')) close();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  })();
 
   /* ---------- Newsletter sign-up (stub) ---------- */
   const newsletter = document.querySelector('[data-newsletter]');
