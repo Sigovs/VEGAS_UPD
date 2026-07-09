@@ -975,6 +975,29 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   .inv-gallery__nav { display: none; }   /* touch: use swipe + dots */
 }
 
+/* Diagonal status sash across the vehicle photo (experiment) */
+.inv-card__ribbon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+  width: 150%;
+  transform: translate(-50%, -50%) rotate(-28deg);
+  padding: 17px 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+}
+.inv-card__ribbon--sale { background: rgba(28, 100, 210, 0.7); }  /* pending: blue, 70% */
+.inv-card__ribbon--sold { background: rgba(193, 18, 31, 0.7); }   /* sold: red, 70% */
+
 .inv-card__body {
   display: flex;
   flex-direction: column;
