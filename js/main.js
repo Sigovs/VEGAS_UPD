@@ -176,10 +176,77 @@
     if (!card) return;
     if (e.target.closest('.inv-card__save')) return;   // save button stays a button
     if (e.target.closest('a')) return;                 // real links handle themselves
-    const link = card.querySelector('a.inv-card__media');
+    if (e.target.closest('.inv-gallery__nav, .inv-gallery__dot')) return; // gallery controls
+    const link = card.querySelector('a.inv-card__media, .inv-card__media a');
     const href = link && link.getAttribute('href');
     if (href) window.location.href = href;
   });
+
+  /* ---------- Inventory card photo galleries — scroll through photos (SRP + home).
+     Delegated so it also works on the home marquee's cloned cards. ---------- */
+  document.querySelectorAll('[data-inv-gallery]').forEach((gallery) => {
+    const img = gallery.querySelector('img[data-imgs]');
+    const dotsWrap = gallery.querySelector('.inv-gallery__dots');
+    const imgs = img && img.dataset.imgs ? img.dataset.imgs.split('|').filter(Boolean) : [];
+    if (!img || imgs.length < 2) {
+      gallery.querySelectorAll('.inv-gallery__nav').forEach((b) => b.remove());
+      if (dotsWrap) dotsWrap.remove();
+      return;
+    }
+    gallery.dataset.idx = '0';
+    if (dotsWrap && !dotsWrap.children.length) {
+      imgs.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'inv-gallery__dot' + (i === 0 ? ' is-active' : '');
+        dotsWrap.appendChild(dot);
+      });
+    }
+  });
+
+  const invGalleryShow = (gallery, n) => {
+    const img = gallery.querySelector('img[data-imgs]');
+    if (!img) return;
+    const imgs = img.dataset.imgs.split('|').filter(Boolean);
+    const idx = (n + imgs.length) % imgs.length;
+    gallery.dataset.idx = String(idx);
+    img.src = imgs[idx];
+    gallery.querySelectorAll('.inv-gallery__dot').forEach((d, di) => d.classList.toggle('is-active', di === idx));
+  };
+
+  document.addEventListener('click', (e) => {
+    const nav = e.target.closest('.inv-gallery__nav');
+    const dot = e.target.closest('.inv-gallery__dot');
+    if (!nav && !dot) return;
+    const gallery = e.target.closest('[data-inv-gallery]');
+    if (!gallery) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const idx = parseInt(gallery.dataset.idx || '0', 10);
+    if (dot) {
+      invGalleryShow(gallery, Array.from(gallery.querySelectorAll('.inv-gallery__dot')).indexOf(dot));
+    } else {
+      invGalleryShow(gallery, idx + (nav.classList.contains('inv-gallery__nav--next') ? 1 : -1));
+    }
+  });
+
+  // Swipe — only outside the auto-scroll marquee (there the carousel owns the drag)
+  let invSwipeX = null, invSwipeGallery = null;
+  document.addEventListener('touchstart', (e) => {
+    const gallery = e.target.closest('[data-inv-gallery]');
+    if (!gallery || gallery.closest('[data-inv-track]')) { invSwipeGallery = null; return; }
+    invSwipeGallery = gallery;
+    invSwipeX = e.touches[0].clientX;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (invSwipeX === null || !invSwipeGallery) return;
+    const dx = e.changedTouches[0].clientX - invSwipeX;
+    if (Math.abs(dx) > 40) {
+      const idx = parseInt(invSwipeGallery.dataset.idx || '0', 10);
+      invGalleryShow(invSwipeGallery, idx + (dx < 0 ? 1 : -1));
+    }
+    invSwipeX = null;
+    invSwipeGallery = null;
+  }, { passive: true });
 
   /* ---------- VDP gallery — cycle the main photo via prev/next ---------- */
   const galleryImg = document.querySelector('[data-gallery-img]');
@@ -548,6 +615,7 @@
 
       inv.addEventListener('pointerdown', (e) => {
         if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (e.target.closest('.inv-gallery__nav, .inv-gallery__dot')) return; // let gallery controls click
         dragging = true;
         moved = false;
         pointerStartX = e.clientX;
@@ -769,14 +837,31 @@
   document.querySelectorAll('.brand-panel').forEach((panel) => {
     const video = panel.querySelector('.brand-panel__video');
     if (!video) return;
+    const start = parseFloat(video.dataset.start || '0');
+    const seek = () => { try { video.currentTime = start; } catch (e) {} };
+    const play = () => { const p = video.play(); if (p && typeof p.catch === 'function') p.catch(() => {}); };
+    if (start > 0) {
+      // rest on the start frame, and loop back to it instead of 0
+      video.loop = false;
+      const toStart = () => seek();
+      if (video.readyState >= 1) toStart();
+      else video.addEventListener('loadedmetadata', toStart, { once: true });
+      video.addEventListener('ended', () => { seek(); play(); });
+    }
     panel.addEventListener('mouseenter', () => {
       if (reduceMotion) return;
-      const p = video.play();
-      if (p && typeof p.catch === 'function') p.catch(() => {});
+      // seek reliably: metadata may not be loaded yet on a large file
+      if (video.readyState >= 1) {
+        seek();
+        play();
+      } else {
+        video.addEventListener('loadedmetadata', () => { seek(); play(); }, { once: true });
+        video.load();
+      }
     });
     panel.addEventListener('mouseleave', () => {
       video.pause();
-      video.currentTime = 0;
+      seek();
     });
   });
 })();

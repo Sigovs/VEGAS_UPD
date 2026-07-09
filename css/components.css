@@ -454,13 +454,12 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity var(--transition-slow);
+  transition: transform var(--transition-slow);
   pointer-events: none;
 }
-.brand-panel:hover .brand-panel__video { opacity: 1; }
 
 .brand-panel:hover .brand-panel__media { transform: scale(1.06); }
+.brand-panel:hover .brand-panel__video { transform: scale(1.06); }
 .brand-panel:hover .brand-panel__media-wrap::after,
 .brand-panel.is-open .brand-panel__media-wrap::after { opacity: 1; }
 
@@ -925,6 +924,56 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 }
 
 .inv-card:hover .inv-card__media img { transform: scale(1.05); }
+
+/* ---- Inventory card photo gallery — scroll through photos ---- */
+.inv-gallery { position: relative; }
+.inv-gallery__link { position: absolute; inset: 0; display: block; z-index: 1; }
+.inv-gallery__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(11, 15, 20, 0.55);
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition), background var(--transition);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+.inv-gallery__nav svg { width: 16px; height: 16px; }
+.inv-gallery__nav--prev { left: var(--space-2); }
+.inv-gallery__nav--next { right: var(--space-2); }
+.inv-gallery__nav:hover { background: rgba(11, 15, 20, 0.82); }
+.inv-card:hover .inv-gallery__nav { opacity: 1; }
+.inv-gallery__dots {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-2);
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 5px;
+}
+.inv-gallery__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.inv-gallery__dot.is-active { background: #fff; transform: scale(1.3); }
+@media (hover: none) {
+  .inv-gallery__nav { display: none; }   /* touch: use swipe + dots */
+}
 
 .inv-card__body {
   display: flex;
@@ -1896,7 +1945,24 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 .footer__hours dt { color: var(--color-text-soft); }
 .footer__hours dd { color: var(--color-text); }
 
-.footer__social { list-style: none; display: grid; gap: var(--space-2); }
+.footer__social { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-soft);
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+.footer__social a svg { width: 18px; height: 18px; }
+.footer__social a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(206, 182, 85, 0.08);
+}
 
 .footer__grid .footer__col:last-child { text-align: left; }
 
@@ -2273,12 +2339,62 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 /* Two-column layout: IG feed (left) + newsletter (right) */
 .insta__layout {
   display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;     /* group both blocks toward the centre */
-  gap: var(--space-6);         /* tighter gap between feed and newsletter */
-  align-items: center;         /* vertically centre the newsletter against the feed */
+  grid-template-columns: auto auto auto;
+  justify-content: center;     /* group the blocks toward the centre */
+  gap: var(--space-7);         /* gap between shorts, feed and newsletter */
+  align-items: center;         /* YouTube + mailing centred vertically (equal-height blocks) */
 }
-.insta__feed { max-width: 528px; }   /* compact 3×3 thumbnails, like McLaren */
+/* order: YouTube Shorts (left) · Instagram (middle) · Mailing list (right) */
+.shorts     { order: 1; }
+.insta__feed { order: 2; max-width: 528px; text-align: center; }   /* compact 3×3 thumbnails, like McLaren */
+.newsletter { order: 3; }
+/* match the IG heading size to the newsletter + shorts headings */
+.insta__head .heading-light { font-size: 38px; line-height: 44px; }
+
+/* YouTube Shorts zone */
+.shorts { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-4); }
+.shorts .heading-light { font-size: 38px; line-height: 44px; }
+.shorts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  width: 340px;
+  max-width: 100%;
+  margin-top: var(--space-2);
+}
+.shorts__item {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.shorts__item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition); }
+.shorts__item:hover img { transform: scale(1.06); }
+.shorts__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  transition: background var(--transition);
+}
+.shorts__play::after {
+  content: "";
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 13px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 3px;
+}
+.shorts__item:hover .shorts__play { background: var(--color-accent); }
+.shorts__item:hover .shorts__play::after { border-color: transparent transparent transparent var(--color-bg); }
 .insta__head { margin-bottom: var(--space-5); }
 
 /* Newsletter sign-up — centred, McLaren style */
@@ -2326,6 +2442,12 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 .newsletter__form input:focus-visible { border-color: var(--color-accent); outline: none; }
 .newsletter__form .btn { width: auto; height: 55px; white-space: nowrap; }   /* CTA like the Search button */
 
+/* 3 zones need width — stack them (centred) below this */
+@media (max-width: 1300px) {
+  .insta__layout { grid-template-columns: 1fr; justify-content: center; gap: var(--space-8); }
+  .insta__feed { margin-inline: auto; }
+  .newsletter, .shorts { margin-inline: auto; }
+}
 @media (max-width: 900px) {
   .insta__layout { grid-template-columns: 1fr; justify-content: stretch; gap: var(--space-6); }
   .insta__feed { max-width: none; }
