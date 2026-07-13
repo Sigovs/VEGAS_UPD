@@ -55,9 +55,16 @@
 .chip-bg          { background: var(--color-bg); }
 .chip-surface     { background: var(--color-surface); }
 .chip-surface-2   { background: var(--color-surface-2); }
+.chip-surface-deep   { background: var(--color-surface-deep); }
+.chip-surface-active { background: var(--color-surface-active); }
+.chip-card-border { background: var(--color-card-border); }
+.chip-input       { background: var(--color-input); }
 .chip-text        { background: var(--color-text); }
 .chip-text-soft   { background: var(--color-text-soft); }
+.chip-text-muted  { background: var(--color-text-muted); }
 .chip-accent      { background: var(--color-accent); }
+.chip-gold        { background: var(--color-gold); }
+.chip-gold-deep   { background: var(--color-gold-deep); }
 .chip-accent-hover{ background: var(--color-accent-hover); }
 .chip-accent-deep { background: var(--color-accent-deep); }
 .chip-border      { background: var(--color-border); }
@@ -117,8 +124,12 @@
 .sp-4  { width: var(--space-4); }
 .sp-5  { width: var(--space-5); }
 .sp-6  { width: var(--space-6); }
+.sp-7  { width: var(--space-7); }
 .sp-8  { width: var(--space-8); }
+.sp-9  { width: var(--space-9); }
 .sp-10 { width: var(--space-10); }
+.sp-11 { width: var(--space-11); }
+.sp-12 { width: var(--space-12); }
 
 /* ---------- Radii / shadow / transition demos ---------- */
 .sg-demos { display: flex; flex-wrap: wrap; gap: var(--space-4); }

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Department — Vegas Auto Gallery</title>
+  <meta name="description" content="Factory-trained service for exotic, luxury, and collector automobiles in Las Vegas — maintenance, repairs, performance, and parts. Schedule your appointment.">
+
+  <!-- Fonts: Oswald (display/headings) + Roboto Condensed (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (order: reset → tokens → base → layout → components) -->
+  <!-- Private preview gate (All Auto Network) -->
+  <script src="js/gate.js"></script>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Leaflet map (open-source) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+
+  <script src="js/main.js" defer></script>
+</head>
+<body class="v2">
+
+  <!-- ============ HEADER (shared — mega menu host) ============ -->
+  <header class="site-header" data-header>
+    <div class="brand-bar">
+      <div class="container container--wide brand-bar__inner">
+        <span class="brand-bar__label">Authorized Dealer</span>
+        <nav class="brand-bar__logos" aria-label="Brands we curate">
+          <a href="srp5.html?make=lotus" aria-label="Lotus inventory"><img src="assets/images/lotus_logo.svg" alt="Lotus"></a>
+          <a href="srp5.html?make=czinger" aria-label="Czinger inventory"><img src="assets/images/czinger_logo.svg" alt="Czinger"></a>
+          <a href="srp5.html?make=hennessey" aria-label="Hennessey inventory"><img src="assets/images/hennessy_logo.svg" alt="Hennessey"></a>
+          <a href="srp5.html?make=vintage" aria-label="Vintage inventory"><img src="assets/images/vintage_logo.svg" alt="Vintage"></a>
+        </nav>
+      </div>
+    </div>
+    <div class="container container--wide site-header__inner">
+      <a href="index5.html" class="logo" aria-label="Vegas Auto Gallery — home">
+        <img class="logo__img" src="assets/images/logo_upd.svg" alt="Vegas Auto Gallery">
+      </a>
+
+      <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+        <ul role="list" class="nav__list">
+          <li class="nav__item--mega">
+            <a href="srp5.html" class="nav__link nav__link--menu" aria-haspopup="true">Inventory</a>
+            <div class="mega-menu" role="menu" aria-label="Inventory">
+              <div class="mega-menu__inner">
+                <div class="mega-menu__cols">
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Shop</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp5.html"><span>View All</span><span class="mega-menu__count">42</span></a>
+                      <a class="mega-menu__link" href="srp5.html?cond=new"><span>New</span><span class="mega-menu__count">18</span></a>
+                      <a class="mega-menu__link" href="srp5.html?cond=preowned"><span>Pre-Owned</span><span class="mega-menu__count">24</span></a>
+                      <a class="mega-menu__link" href="srp5.html?sort=new-arrivals"><span>New Arrivals</span><span class="mega-menu__count">7</span></a>
+                      <a class="mega-menu__link" href="srp5.html?cond=sold"><span>Sold</span><span class="mega-menu__count"></span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">By Type</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp5.html?body=coupe"><span>Coupe</span><span class="mega-menu__count">15</span></a>
+                      <a class="mega-menu__link" href="srp5.html?body=convertible"><span>Convertible</span><span class="mega-menu__count">9</span></a>
+                      <a class="mega-menu__link" href="srp5.html?body=suv"><span>SUV</span><span class="mega-menu__count">8</span></a>
+                      <a class="mega-menu__link" href="srp5.html?body=sedan"><span>Sedan</span><span class="mega-menu__count">6</span></a>
+                      <a class="mega-menu__link" href="srp5.html?body=electric"><span>Electric</span><span class="mega-menu__count">4</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mega-menu__brands">
+                  <p class="mega-menu__col-title">Browse by Brand</p>
+                  <div class="mega-menu__pills">
+                    <a class="mega-menu__pill" href="srp5.html?make=lamborghini">Lamborghini</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=ferrari">Ferrari</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=mclaren">McLaren</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=rolls-royce">Rolls-Royce</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=bentley">Bentley</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=porsche">Porsche</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=mercedes-benz">Mercedes-Benz</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=aston-martin">Aston Martin</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=bugatti">Bugatti</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=lotus">Lotus</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=maserati">Maserati</a>
+                    <a class="mega-menu__pill" href="srp5.html?make=all">All Makes &rarr;</a>
+                  </div>
+                  <a class="btn btn--primary mega-menu__cta" href="srp5.html">View All Inventory</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="index5.html#sell" class="nav__link">Sell Your Car</a></li>
+          <li><a href="srp5.html?cond=sold" class="nav__link">Sold</a></li>
+          <li>
+            <a href="service5.html" class="nav__link nav__link--menu is-active" aria-haspopup="true">Service</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="service5.html" role="menuitem">Service Department</a></li>
+              <li><a href="service5.html#appointment" role="menuitem">Schedule Service</a></li>
+              <li><a href="#parts" role="menuitem">Parts</a></li>
+              <li><a href="service5.html" role="menuitem">Detailing</a></li>
+              <li><a href="service5.html" role="menuitem">Bespoke Cars</a></li>
+            </ul>
+          </li>
+          <li><a href="index5.html#buy" class="nav__link nav__link--menu">Finance</a></li>
+          <li><a href="index5.html#showcase" class="nav__link">About</a></li>
+          <li><a href="index5.html#footer" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="nav-icon" href="tel:7029642886" aria-label="Call Service 702-964-2886">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a class="nav-icon" href="#location" aria-label="Hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </a>
+        <a class="nav-icon" href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener" aria-label="Directions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- ============ HERO — full-screen, darkened, with 4 service boxes ============ -->
+    <section class="hero service-hero" id="service-top" aria-labelledby="service-heading">
+      <img class="hero__media" src="assets/images/service-hero.jpg" alt="" aria-hidden="true">
+      <div class="container container--wide">
+        <div class="hero__content">
+          <span class="eyebrow eyebrow--oswald">Service Department</span>
+          <h1 class="heading-light" id="service-heading">First-Class Service &amp; Care</h1>
+          <div class="hero__actions">
+            <a href="#appointment" class="btn btn--primary">Schedule Service</a>
+            <a href="tel:7029642886" class="btn btn--secondary">Call 702-964-2886</a>
+          </div>
+        </div>
+        <div class="service-hero__boxes">
+          <div class="service-hero__box"><h3 class="service-item__title">Factory-Trained</h3><p>Technicians who understand exotic, luxury, and collector machinery.</p></div>
+          <div class="service-hero__box"><h3 class="service-item__title">Genuine Parts</h3><p>OEM and performance parts, fitted to concours standards.</p></div>
+          <div class="service-hero__box"><h3 class="service-item__title">Full Service</h3><p>Routine maintenance and oil changes through to major repairs and diagnostics.</p></div>
+          <div class="service-hero__box"><h3 class="service-item__title">White-Glove</h3><p>Pickup, delivery, and concierge support for our private clients.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT WE SERVICE — 4 image cards (Events pattern) ============ -->
+    <section class="section ev-redesign" aria-labelledby="what-heading">
+      <div class="container container--wide">
+        <div class="section-head section-head--tight" data-reveal>
+          <span class="eyebrow eyebrow--oswald">What We Do</span>
+          <h2 class="heading-light" id="what-heading">Service &amp; Care</h2>
+        </div>
+        <div class="ev-cards" data-reveal>
+          <article class="ev-card">
+            <a href="#appointment" class="ev-card__media"><img src="assets/images/service-maintenance.jpg" alt="Maintenance" loading="lazy"></a>
+            <div class="ev-card__body">
+              <span class="ev-card__kicker">Scheduled</span>
+              <h3 class="ev-card__title">Maintenance</h3>
+              <p class="ev-card__text">Oil, fluids, brakes, and factory-grade service for exotic and collector machinery.</p>
+            </div>
+          </article>
+          <article class="ev-card">
+            <a href="#appointment" class="ev-card__media"><img src="assets/images/service-diagnostics.jpg" alt="Diagnostics and repair" loading="lazy"></a>
+            <div class="ev-card__body">
+              <span class="ev-card__kicker">Dealer-Level</span>
+              <h3 class="ev-card__title">Diagnostics &amp; Repair</h3>
+              <p class="ev-card__text">Advanced diagnostics and major repairs with OEM parts and concours attention.</p>
+            </div>
+          </article>
+          <article class="ev-card">
+            <a href="#appointment" class="ev-card__media"><img src="assets/images/service-performance.jpg" alt="Performance upgrades" loading="lazy"></a>
+            <div class="ev-card__body">
+              <span class="ev-card__kicker">Bespoke</span>
+              <h3 class="ev-card__title">Performance Upgrades</h3>
+              <p class="ev-card__text">Exhaust, suspension, wheels, and tuning, executed to concours standards.</p>
+            </div>
+          </article>
+          <article class="ev-card">
+            <a href="#appointment" class="ev-card__media"><img src="assets/images/service-detailing.jpg" alt="Detailing and protection" loading="lazy"></a>
+            <div class="ev-card__body">
+              <span class="ev-card__kicker">Showroom</span>
+              <h3 class="ev-card__title">Detailing &amp; Protection</h3>
+              <p class="ev-card__text">Paint correction, ceramic coatings, and protective films to stay flawless.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICE SPECIALS — current offers ============ -->
+    <section class="section" id="specials" aria-labelledby="specials-heading">
+      <div class="container container--wide">
+        <div class="section-head section-head--tight" data-reveal>
+          <span class="eyebrow eyebrow--oswald">Current Offers</span>
+          <h2 class="heading-light" id="specials-heading">Service Specials</h2>
+        </div>
+        <div class="specials" data-reveal>
+          <article class="special">
+            <span class="special__validity">Through August 31</span>
+            <h3 class="special__title">$250 Off Major Service</h3>
+            <p class="special__text">Complete factory-scheduled maintenance, fluids, and a full multi-point inspection for your exotic.</p>
+            <span class="special__note">Present this offer at checkout</span>
+          </article>
+          <article class="special">
+            <span class="special__validity">Limited Time</span>
+            <h3 class="special__title">15% Off Performance Upgrades</h3>
+            <p class="special__text">Exhaust, suspension, wheels, and tuning from our in-house performance shop.</p>
+            <span class="special__note">Present this offer at checkout</span>
+          </article>
+          <article class="special">
+            <span class="special__validity">With Any Service Over $750</span>
+            <h3 class="special__title">Complimentary Hand Detail</h3>
+            <p class="special__text">A full exterior and interior hand detail, on us, with qualifying service.</p>
+            <span class="special__note">Present this offer at checkout</span>
+          </article>
+        </div>
+        <p class="specials__terms t-small" data-reveal>Offers cannot be combined and are subject to change. Please mention the offer when scheduling your appointment.</p>
+      </div>
+    </section>
+
+    <!-- ============ SCHEDULE SERVICE — stepped form (vdp-form pattern) ============ -->
+    <section class="section" id="appointment" aria-labelledby="appt-heading">
+      <div class="container container--wide">
+        <div class="section-head section-head--tight" data-reveal>
+          <span class="eyebrow eyebrow--oswald">Schedule Service</span>
+          <h2 class="heading-light" id="appt-heading">Book an Appointment</h2>
+        </div>
+        <form class="vdp-form" data-inquiry data-reveal>
+          <span class="eyebrow eyebrow--oswald vdp-form__step">1&nbsp;&middot;&nbsp;Your Vehicle</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field"><label for="sv-year">Year</label><input id="sv-year" name="year" type="text" inputmode="numeric" placeholder="2024"></div>
+            <div class="vdp-form__field"><label for="sv-make">Make</label><input id="sv-make" name="make" type="text" placeholder="Lamborghini"></div>
+            <div class="vdp-form__field"><label for="sv-model">Model</label><input id="sv-model" name="model" type="text" placeholder="Urus S"></div>
+            <div class="vdp-form__field"><label for="sv-miles">Mileage</label><input id="sv-miles" name="mileage" type="text" inputmode="numeric" placeholder="9,956"></div>
+          </div>
+
+          <span class="eyebrow eyebrow--oswald vdp-form__step">2&nbsp;&middot;&nbsp;Service Needed</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field vdp-form__field--full">
+              <label>Service Required</label>
+              <div class="vdp-form__checks">
+                <label class="vdp-check"><input type="checkbox" name="service" value="Oil Change"><span>Oil Change</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Fuel Filter"><span>Fuel Filter</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Spark Plugs"><span>Spark Plugs</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Transmission"><span>Transmission</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Brake Inspection"><span>Brake Inspection</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Air Filter"><span>Air Filter</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Wheel Alignment"><span>Wheel Alignment</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Cooling System"><span>Cooling System</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Shocks"><span>Shocks</span></label>
+                <label class="vdp-check"><input type="checkbox" name="service" value="Air Conditioner"><span>Air Conditioner</span></label>
+              </div>
+            </div>
+            <div class="vdp-form__field"><label for="sv-contact">Preferred Contact</label>
+              <select id="sv-contact" name="contact"><option>Phone</option><option>Email</option><option>Text</option></select>
+            </div>
+            <div class="vdp-form__field vdp-form__field--full"><label for="sv-notes">Details</label><textarea id="sv-notes" name="notes" placeholder="Describe the service or concern…"></textarea></div>
+          </div>
+
+          <span class="eyebrow eyebrow--oswald vdp-form__step">3&nbsp;&middot;&nbsp;Preferred Time</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field"><label for="sv-date">Preferred Date</label><input id="sv-date" name="date" type="date"></div>
+            <div class="vdp-form__field"><label for="sv-tod">Time of Day</label>
+              <select id="sv-tod" name="tod"><option>Morning</option><option>Afternoon</option></select>
+            </div>
+          </div>
+
+          <span class="eyebrow eyebrow--oswald vdp-form__step">4&nbsp;&middot;&nbsp;Your Information</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field"><label for="sv-first">First Name</label><input id="sv-first" name="first" type="text" autocomplete="given-name"></div>
+            <div class="vdp-form__field"><label for="sv-last">Last Name</label><input id="sv-last" name="last" type="text" autocomplete="family-name"></div>
+            <div class="vdp-form__field"><label for="sv-email">Email</label><input id="sv-email" name="email" type="email" autocomplete="email"></div>
+            <div class="vdp-form__field"><label for="sv-phone">Phone</label><input id="sv-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+
+          <div class="vdp-form__actions">
+            <button type="submit" class="btn btn--primary">Request Appointment</button>
+          </div>
+          <p class="vdp-calc__note">By submitting, you agree to be contacted by Vegas Auto Gallery about your service request. We never share your details. Or call Service directly at <a href="tel:7029642886">702-964-2886</a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ HOURS & LOCATION (info left, map right) ============ -->
+    <section class="section section--surface" id="location" aria-labelledby="loc-heading">
+      <div class="container service-location">
+        <div class="section-head section-head--tight" data-reveal>
+          <span class="eyebrow eyebrow--oswald">Service Center</span>
+          <h2 class="heading-light" id="loc-heading">Hours &amp; Location</h2>
+        </div>
+
+        <div class="service-location__layout" data-reveal>
+          <div class="service-location__panel">
+            <div class="service-location__item">
+              <h4 class="footer__label">Visit Us</h4>
+              <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road,<br>Suites 130/135<br>Las Vegas, NV 89118</a></address>
+            </div>
+            <div class="service-location__item">
+              <h4 class="footer__label">Call Service</h4>
+              <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+            </div>
+            <div class="service-location__item">
+              <h4 class="footer__label">Service Hours</h4>
+              <dl class="footer__hours">
+                <div><dt>Mon – Fri</dt><dd>8:00 AM – 5:30 PM</dd></div>
+                <div><dt>Saturday</dt><dd>By Appointment</dd></div>
+                <div><dt>Sunday</dt><dd>Closed</dd></div>
+              </dl>
+            </div>
+            <a class="btn btn--secondary service-location__cta" href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+
+          <div id="service-map" class="service-map" aria-label="Map to Vegas Auto Gallery Service Center"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARTS — centred advertising block (image + text centred) ============ -->
+    <section class="section" id="parts" aria-labelledby="parts-heading">
+      <div class="container">
+        <div class="parts-promo" data-reveal>
+          <img class="parts-promo__img" src="assets/images/service-parts.jpg" alt="Genuine parts department" loading="lazy">
+          <div class="parts-promo__overlay">
+            <span class="eyebrow eyebrow--oswald">Genuine Parts</span>
+            <h2 class="heading-light" id="parts-heading">Parts Department</h2>
+            <p class="lead">OEM and performance parts for your exotic or luxury vehicle, sourced and fitted by our specialists.</p>
+            <a href="#appointment" class="btn btn--primary">Request a Part</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ PROMO LINKS (4 boxes — hover reveals description + CTA) ============ -->
+    <section class="promos-section">
+      <div class="promos" data-reveal>
+        <a class="promo promo--image promo--service" href="service5.html#appointment">
+          <span class="promo__head">
+            <span class="promo__eyebrow">Factory-Trained</span>
+            <span class="promo__title">Service</span>
+          </span>
+          <span class="promo__desc">Factory-trained technicians for exotic and luxury maintenance, repair, and inspection.</span>
+          <span class="promo__cta">Schedule Service</span>
+        </a>
+        <a class="promo promo--image promo--aftermarket" href="index5.html#aftermarket">
+          <span class="promo__head">
+            <span class="promo__eyebrow">In-House Shop</span>
+            <span class="promo__title">Aftermarket</span>
+          </span>
+          <span class="promo__desc">Performance upgrades, forced induction, exhaust, and bespoke styling done in-house.</span>
+          <span class="promo__cta">Explore Aftermarket</span>
+        </a>
+        <a class="promo promo--image promo--lease" href="index5.html#buy">
+          <span class="promo__head">
+            <span class="promo__eyebrow">Fast &amp; Flexible</span>
+            <span class="promo__title">Finance</span>
+          </span>
+          <span class="promo__desc">Tailored financing and leasing options to put you in the driver's seat, faster.</span>
+          <span class="promo__cta">Explore Finance</span>
+        </a>
+        <a class="promo promo--image promo--newinv" href="srp5.html?cond=preowned">
+          <span class="promo__head">
+            <span class="promo__eyebrow">Hand-Selected</span>
+            <span class="promo__title">Pre-Owned</span>
+          </span>
+          <span class="promo__desc">Hand-selected, meticulously inspected pre-owned exotics ready to drive home.</span>
+          <span class="promo__cta">View Pre-Owned</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============ FOOTER (shared) ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="container container--wide">
+
+      <!-- Golden Knights partnership — its own centred band -->
+      <div class="footer__partner">
+        <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
+        <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
+      </div>
+
+      <!-- Contact / hours -->
+      <div class="footer__grid">
+        <div class="footer__col">
+          <h4 class="footer__label">Sales</h4>
+          <a class="footer__phone" href="tel:7252190524">725-219-0524</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">5530 Rafael Rivera Way<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service</h4>
+          <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road, Suites 130/135<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>9:00 AM – 7:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Follow</h4>
+          <ul class="footer__social">
+            <li><a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></li>
+            <li><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></li>
+            <li><a href="https://www.youtube.com/@vegasautogallery" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4.5"/><path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/></svg></a></li>
+            <li><a href="#" aria-label="Blog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.6" fill="currentColor" stroke="none"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Brand partners -->
+      <div class="footer__partners">
+        <span class="footer__partners-label">Authorized Dealer</span>
+        <div class="footer__logos">
+          <img src="assets/images/lotus_logo.svg" alt="Lotus">
+          <img src="assets/images/czinger_logo.svg" alt="Czinger">
+          <img src="assets/images/hennessy_logo.svg" alt="Hennessey">
+          <img src="assets/images/vintage_logo.svg" alt="Vintage">
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Lotus Las Vegas. All Rights Reserved. <a href="#">Privacy Policy</a> <span class="footer__sep">|</span> <a href="#">Sitemap</a></span>
+        <span>Powered by All Auto Network</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Service Center map (Leaflet + CARTO dark tiles) -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      var el = document.getElementById('service-map');
+      if (!el || !window.L) return;
+      var coords = [36.0719, -115.1969]; // 6551 Westwind Rd, Las Vegas, NV 89118 (approx)
+      var map = L.map(el, { scrollWheelZoom: false, zoomControl: true }).setView(coords, 14);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+      L.marker(coords).addTo(map)
+        .bindPopup('Vegas Auto Gallery — Service<br>6551 Westwind Rd, Las Vegas');
+      // keep tiles filling the container through any layout/size change
+      setTimeout(function () { map.invalidateSize(); map.setView(coords, 14); }, 250);
+      window.addEventListener('load', function () { map.invalidateSize(); });
+      if (window.ResizeObserver) {
+        new ResizeObserver(function () { map.invalidateSize(); }).observe(el);
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vegas Auto Gallery — Where Automotive Passion Meets Luxury</title>
+  <meta name="description" content="Curated exotic, luxury, and collector vehicles in Las Vegas. A boutique automotive lifestyle destination.">
+
+  <!-- Fonts: Oswald (display/headings) + Roboto Condensed (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (order: reset → tokens → base → layout → components) -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="v2">
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" data-header>
+    <div class="container container--wide site-header__inner">
+      <a href="#hero" class="logo" aria-label="Vegas Auto Gallery — home">
+        <img class="logo__img" src="assets/images/logo_upd.svg" alt="Vegas Auto Gallery">
+      </a>
+
+      <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+        <ul role="list" class="nav__list">
+          <li class="nav__item--mega">
+            <a href="srp.html" class="nav__link nav__link--menu" aria-haspopup="true">Inventory</a>
+            <div class="mega-menu" role="menu" aria-label="Inventory">
+              <div class="mega-menu__inner">
+                <div class="mega-menu__cols">
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Shop</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp.html"><span>View All</span><span class="mega-menu__count">42</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=new"><span>New</span><span class="mega-menu__count">18</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=preowned"><span>Pre-Owned</span><span class="mega-menu__count">24</span></a>
+                      <a class="mega-menu__link" href="srp.html?sort=new-arrivals"><span>New Arrivals</span><span class="mega-menu__count">7</span></a>
+                      <a class="mega-menu__link" href="srp.html?cond=sold"><span>Sold</span><span class="mega-menu__count"></span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">By Type</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp.html?body=coupe"><span>Coupe</span><span class="mega-menu__count">15</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=convertible"><span>Convertible</span><span class="mega-menu__count">9</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=suv"><span>SUV</span><span class="mega-menu__count">8</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=sedan"><span>Sedan</span><span class="mega-menu__count">6</span></a>
+                      <a class="mega-menu__link" href="srp.html?body=electric"><span>Electric</span><span class="mega-menu__count">4</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mega-menu__brands">
+                  <p class="mega-menu__col-title">Browse by Brand</p>
+                  <div class="mega-menu__pills">
+                    <a class="mega-menu__pill" href="srp.html?make=lamborghini">Lamborghini</a>
+                    <a class="mega-menu__pill" href="srp.html?make=ferrari">Ferrari</a>
+                    <a class="mega-menu__pill" href="srp.html?make=mclaren">McLaren</a>
+                    <a class="mega-menu__pill" href="srp.html?make=rolls-royce">Rolls-Royce</a>
+                    <a class="mega-menu__pill" href="srp.html?make=bentley">Bentley</a>
+                    <a class="mega-menu__pill" href="srp.html?make=porsche">Porsche</a>
+                    <a class="mega-menu__pill" href="srp.html?make=mercedes-benz">Mercedes-Benz</a>
+                    <a class="mega-menu__pill" href="srp.html?make=aston-martin">Aston Martin</a>
+                    <a class="mega-menu__pill" href="srp.html?make=bugatti">Bugatti</a>
+                    <a class="mega-menu__pill" href="srp.html?make=lotus">Lotus</a>
+                    <a class="mega-menu__pill" href="srp.html?make=maserati">Maserati</a>
+                    <a class="mega-menu__pill" href="srp.html?make=all">All Makes &rarr;</a>
+                  </div>
+                  <a class="btn btn--primary mega-menu__cta" href="srp.html">View All Inventory</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="srp.html?cond=preowned" class="nav__link nav__link--menu" aria-haspopup="true">Pre-Owned</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="srp.html?sort=new-arrivals" role="menuitem">Just Arrived</a></li>
+              <li><a href="srp.html?status=pending" role="menuitem">Sale Pending</a></li>
+              <li><a href="srp.html?sort=reduced" role="menuitem">Recently Reduced</a></li>
+              <li><a href="srp.html?status=soon" role="menuitem">Coming Soon</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="nav__link" data-offer-open>Sell Your Car</a></li>
+          <li><a href="srp.html?cond=sold" class="nav__link">Sold</a></li>
+          <li><a href="#services" class="nav__link nav__link--menu">Service</a></li>
+          <li><a href="#buy" class="nav__link nav__link--menu">Finance</a></li>
+          <li><a href="#showcase" class="nav__link">About</a></li>
+          <li><a href="#footer" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="nav-icon" href="tel:7252190524" aria-label="Call 725-219-0524">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a class="nav-icon" href="#footer" aria-label="Hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </a>
+        <a class="nav-icon" href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener" aria-label="Directions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <video class="hero__media" autoplay muted loop playsinline poster="assets/images/hero.jpg" data-hero-video>
+      <source src="assets/video/herovideo.mp4" type="video/mp4">
+    </video>
+    <div class="container container--wide">
+      <div class="hero__content" data-hero-rotator>
+
+        <!-- Set 1 — Collection -->
+        <div class="hero__set is-active">
+          <span class="eyebrow eyebrow--oswald">Las Vegas</span>
+          <h1 class="display"><span class="line">Where</span><span class="line">Automotive</span><span class="line">Passion Meets</span><span class="line">Luxury</span></h1>
+          <p class="lead">Curated exotic, luxury, and collector vehicles in Las Vegas.</p>
+          <div class="hero__actions">
+            <a href="#inventory" class="btn btn--primary">View Inventory</a>
+            <a href="#" class="btn btn--secondary" data-offer-open>Sell Your Vehicle</a>
+          </div>
+        </div>
+
+        <!-- Set 2 — Acquisition -->
+        <div class="hero__set">
+          <span class="eyebrow eyebrow--oswald">We Buy Cars</span>
+          <h1 class="display"><span class="line">Sell</span><span class="line">Your Exotic</span><span class="line">The Effortless</span><span class="line">Way</span></h1>
+          <p class="lead">Consignment, direct purchase, and nationwide transport — a competitive offer in minutes.</p>
+          <div class="hero__actions">
+            <a href="#" class="btn btn--primary" data-offer-open>Get An Offer</a>
+            <a href="#sell" class="btn btn--secondary">How It Works</a>
+          </div>
+        </div>
+
+        <!-- Set 3 — Concierge -->
+        <div class="hero__set">
+          <span class="eyebrow eyebrow--oswald">Private Client</span>
+          <h1 class="display"><span class="line">A</span><span class="line">Concierge</span><span class="line">Ownership</span><span class="line">Experience</span></h1>
+          <p class="lead">Maintenance, performance, and white-glove service for the cars you love.</p>
+          <div class="hero__actions">
+            <a href="#services" class="btn btn--primary">Explore Services</a>
+            <a href="#footer" class="btn btn--secondary">Contact Us</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Featured vehicle — frosted glass card, bottom-right -->
+    <aside class="hero-featured" data-reveal data-hero-cars>
+      <div class="hero-featured__main">
+        <a href="vdp.html" class="hero-featured__media" data-hf-link>
+          <img src="assets/images/inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png" alt="2024 Lamborghini Huracán EVO" loading="lazy" data-hf-img>
+        </a>
+        <div class="hero-featured__info">
+          <span class="hero-featured__eyebrow">Featured</span>
+          <h3 class="hero-featured__name" data-hf-name>2024 Lamborghini<br>Huracán EVO</h3>
+          <span class="hero-featured__price" data-hf-price>$274,900</span>
+          <a href="vdp.html" class="btn btn--tertiary btn--dark hero-featured__btn" data-hf-link>View Details</a>
+        </div>
+      </div>
+      <div class="hero-featured__nav">
+        <button class="hero-featured__arrow" type="button" data-hf-prev aria-label="Previous vehicle">&#8249;</button>
+        <div class="hero-featured__dots" data-hf-dots></div>
+        <button class="hero-featured__arrow" type="button" data-hf-next aria-label="Next vehicle">&#8250;</button>
+      </div>
+    </aside>
+
+    <span class="hero__scroll">Scroll</span>
+  </section>
+
+  <!-- ============ FEATURED BRANDS ============ -->
+  <section class="section brands-redesign" id="brands">
+    <div class="container container--wide">
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Featured Marques</span>
+        <h2 class="heading-light">Brands We Curate</h2>
+      </div>
+
+      <div class="brands-accordion brands-accordion--overlay" data-reveal>
+        <a href="#" class="brand-panel is-open">
+          <span class="brand-panel__media-wrap">
+            <img class="brand-panel__media" src="assets/images/lotus_img.jpg" alt="Lotus" loading="lazy">
+          </span>
+          <img class="brand-panel__logo brand-panel__logo--lotus" src="assets/images/lotus_logo.svg" alt="" aria-hidden="true">
+          <span class="brand-panel__info">
+            <span class="brand-panel__name">Lotus</span>
+            <span class="brand-panel__tag">Performance Reimagined</span>
+          </span>
+        </a>
+        <a href="#" class="brand-panel">
+          <span class="brand-panel__media-wrap">
+            <img class="brand-panel__media brand-panel__media--czinger" src="assets/images/czinger_img.jpg" alt="Czinger" loading="lazy">
+          </span>
+          <img class="brand-panel__logo brand-panel__logo--czinger" src="assets/images/czinger_logo.svg" alt="" aria-hidden="true">
+          <span class="brand-panel__info">
+            <span class="brand-panel__name">Czinger</span>
+            <span class="brand-panel__tag">The Future of Hypercars</span>
+          </span>
+        </a>
+        <a href="#" class="brand-panel">
+          <span class="brand-panel__media-wrap">
+            <img class="brand-panel__media" src="assets/images/hennessy_img.jpg" alt="Hennessey" loading="lazy">
+          </span>
+          <img class="brand-panel__logo" src="assets/images/hennessy_logo.svg" alt="" aria-hidden="true">
+          <span class="brand-panel__info">
+            <span class="brand-panel__name">Hennessey</span>
+            <span class="brand-panel__tag">Performance Without Limits</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED INVENTORY (card carousel — 4 per view) ============ -->
+  <section class="inv inv--redesign" id="featured-inventory">
+    <div class="container container--wide">
+      <div class="inv__head" data-reveal>
+        <div class="section-head section-head--tight">
+          <span class="eyebrow eyebrow--oswald">Featured Inventory</span>
+          <h2 class="heading-light">The Collection</h2>
+        </div>
+        <a href="srp.html" class="ev-cta inv__viewall"><span class="ev-cta__label">View All Inventory</span><svg class="ev-cta__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a>
+      </div>
+    </div>
+
+    <div class="inv-carousel" data-inv aria-label="Featured inventory">
+      <div class="inv-viewport">
+        <div class="inv-track" data-inv-track>
+
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png" alt="2024 Lamborghini Huracán EVO" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2024 Lamborghini Huracán EVO</h3>
+                <div class="inv-card__meta"><span>Price: $274,900</span><span>Mileage: 3,200</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2021%20McLaren%20720S%20Base.png" alt="2021 McLaren 720S" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2021 McLaren 720S</h3>
+                <div class="inv-card__meta"><span>Price: $259,900</span><span>Mileage: 6,400</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2026%20Mercedes-Benz%20SL-Class%20Maybach%20SL%20680.png" alt="2026 Mercedes-Benz SL-Class Maybach SL 680" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2026 Mercedes-Benz SL-Class Maybach SL 680</h3>
+                <div class="inv-card__meta"><span>Price: $215,000</span><span>Mileage: 850</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2025%20Rolls-Royce%20Ghost%20Base.png" alt="2025 Rolls-Royce Ghost" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2025 Rolls-Royce Ghost</h3>
+                <div class="inv-card__meta"><span>Price: $389,000</span><span>Mileage: 2,100</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+
+            <article class="inv-card">
+              <a href="vdp.html" class="inv-card__media"><img src="assets/images/inventory/2020%20Ford%20GT%20Carbon%20Series.png" alt="2020 Ford GT Carbon Series" loading="lazy"><span class="inv-card__scrim" aria-hidden="true"></span><span class="inv-card__cta btn btn--primary btn--pill">View Details</span></a>
+              <button type="button" class="inv-card__save" aria-label="Save vehicle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.5 3.5 9.3C3.5 6.6 5.6 4.8 8 4.8C9.7 4.8 11.2 5.8 12 7.2C12.8 5.8 14.3 4.8 16 4.8C18.4 4.8 20.5 6.6 20.5 9.3C20.5 15.5 12 20.5 12 20.5Z"/></svg></button>
+              <div class="inv-card__body">
+                <h3 class="inv-card__title">2020 Ford GT Carbon Series</h3>
+                <div class="inv-card__meta"><span>Price: $1,095,000</span><span>Mileage: 1,200</span></div>
+                <span class="inv-card__address">5530 Rafael Rivera Way</span>
+              </div>
+            </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES (split: image + list) ============ -->
+  <section class="services-split" id="services">
+    <div class="services-split__media" data-reveal>
+      <img src="assets/images/services.jpg" alt="Exotic vehicle service" loading="lazy">
+    </div>
+    <div class="services-split__panel">
+      <div class="services-split__inner" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Ownership, Elevated</span>
+        <h2 class="heading-light">Services</h2>
+
+        <ul class="services-list">
+          <li class="service-item">
+            <h3 class="service-item__title">Maintenance</h3>
+            <p>Factory-grade care from specialists who understand exotic and collector machinery.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Performance Upgrades</h3>
+            <p>Bespoke performance and personalization, executed to concours standards.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Vehicle Transportation</h3>
+            <p>Enclosed, insured nationwide transport — door to door, discreetly handled.</p>
+          </li>
+          <li class="service-item">
+            <h3 class="service-item__title">Concierge</h3>
+            <p>Private-client sourcing, storage, and white-glove support whenever you need it.</p>
+          </li>
+        </ul>
+
+        <div class="services-split__actions">
+          <a href="#" class="btn btn--primary">Schedule Appointment</a>
+          <a href="tel:7252190524" class="btn btn--secondary">Call Us 725-219-0524</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENTS & LIFESTYLE ============ -->
+  <section class="section ev-redesign" id="events">
+    <div class="container container--wide">
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Beyond the Showroom</span>
+        <h2 class="heading-light">Events &amp; Lifestyle</h2>
+        <p class="lead">Rallies, track days, launches, and Cars &amp; Coffee. More than a gallery — a community.</p>
+      </div>
+
+      <div class="ev-cards" data-reveal>
+        <article class="ev-card">
+          <a href="#" class="ev-card__media"><img src="assets/images/events-feature.jpg" alt="The Annual Vegas Rally" loading="lazy"></a>
+          <div class="ev-card__body">
+            <span class="ev-card__kicker">May 2026</span>
+            <h3 class="ev-card__title">A Thousand Miles of Open Desert</h3>
+            <p class="ev-card__text">Three days, a convoy of the finest machines, and the open roads beyond Las Vegas.</p>
+          </div>
+        </article>
+
+        <article class="ev-card">
+          <a href="#" class="ev-card__media"><img src="assets/images/event-1.jpg" alt="Track Days at Spring Mountain" loading="lazy"></a>
+          <div class="ev-card__body">
+            <span class="ev-card__kicker">Monthly</span>
+            <h3 class="ev-card__title">Your Car At Its Absolute Limit</h3>
+            <p class="ev-card__text">Private circuit access at Spring Mountain with professional instruction.</p>
+          </div>
+        </article>
+
+        <article class="ev-card">
+          <a href="#" class="ev-card__media"><img src="assets/images/event-2.jpg" alt="Cars &amp; Coffee" loading="lazy"></a>
+          <div class="ev-card__body">
+            <span class="ev-card__kicker">First Saturdays</span>
+            <h3 class="ev-card__title">Cars &amp; Coffee at the Gallery</h3>
+            <p class="ev-card__text">Espresso, like-minded enthusiasts, and an ever-changing showroom lineup.</p>
+          </div>
+        </article>
+
+        <article class="ev-card">
+          <a href="#" class="ev-card__media"><img src="assets/images/editorial-1.jpg" alt="Private model launches" loading="lazy"></a>
+          <div class="ev-card__body">
+            <span class="ev-card__kicker">Fall 2026</span>
+            <h3 class="ev-card__title">Private Model Launches</h3>
+            <p class="ev-card__text">First looks at the season's most anticipated arrivals, hosted for our clients.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="ev-cards__more" data-reveal>
+        <a href="#" class="btn btn--secondary">View All Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INVENTORY ENTRY ============ -->
+  <section class="section inv-entry" id="inventory">
+    <div class="container container--wide">
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">The Collection</span>
+        <h2 class="heading-light">Explore Inventory</h2>
+        <p class="lead">New and pre-owned, unified. Browse by marque — only what's currently available, presented the way it deserves.</p>
+      </div>
+
+      <form class="search-bar" data-search data-reveal>
+        <select name="year" aria-label="Year">
+          <option value="">Year</option>
+          <option>2026</option>
+          <option>2025</option>
+          <option>2024</option>
+        </select>
+        <select name="make" aria-label="Make">
+          <option value="">Make</option>
+          <option>Porsche</option>
+          <option>Ferrari</option>
+          <option>Lamborghini</option>
+          <option>McLaren</option>
+          <option>Bentley</option>
+          <option>Rolls-Royce</option>
+        </select>
+        <select name="model" aria-label="Model">
+          <option value="">Model</option>
+          <option>911</option>
+          <option>SF90</option>
+          <option>Huracán</option>
+          <option>720S</option>
+        </select>
+        <button type="submit" class="btn btn--primary">Search</button>
+      </form>
+
+      <div class="inv-marques" data-reveal>
+        <span class="inv-marques__label">Browse by Brand</span>
+        <div class="inv-marques__logos">
+          <a href="#inventory" aria-label="Lotus"><img src="assets/images/lotus_logo.svg" alt="Lotus"></a>
+          <a href="#inventory" aria-label="Czinger"><img src="assets/images/czinger_logo.svg" alt="Czinger"></a>
+          <a href="#inventory" aria-label="Hennessey"><img src="assets/images/hennessy_logo.svg" alt="Hennessey"></a>
+          <a href="#inventory" aria-label="Vintage"><img src="assets/images/vintage_logo.svg" alt="Vintage"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOTUS BRAND SHOWCASE — hidden ============
+  <section class="section lotus" id="lotus">
+    <canvas class="lotus-shader" data-lotus-shader aria-hidden="true"></canvas>
+    <div class="container container--wide">
+      <div class="section-head section-head--tight" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Lotus · Official Showcase</span>
+        <h2 class="heading-light">Performance Reimagined</h2>
+        <p class="lead">Four expressions of electric and combustion performance. Select a model to explore.</p>
+      </div>
+
+      <div class="lotus-deck" data-lotus-deck data-reveal>
+        <div class="lotus-tabs lotus-deck__tabs" role="tablist" aria-label="Lotus models">
+          <button class="lotus-tab is-active" role="tab" aria-selected="true" data-model="eletre">Eletre</button>
+          <button class="lotus-tab" role="tab" aria-selected="false" data-model="emeya">Emeya</button>
+          <button class="lotus-tab" role="tab" aria-selected="false" data-model="emira">Emira</button>
+          <button class="lotus-tab" role="tab" aria-selected="false" data-model="evija">Evija</button>
+        </div>
+
+        <div class="lotus-deck__stage">
+          <img class="lotus-deck__img" data-lotus-img src="assets/images/models/eletre.png" alt="Lotus Eletre" width="831" height="350" loading="lazy">
+        </div>
+
+        <div class="lotus-deck__specs" data-lotus-specs>
+          <div class="lotus-stat"><span class="lotus-stat__value">905</span><span class="lotus-stat__label">Horsepower</span></div>
+          <div class="lotus-stat"><span class="lotus-stat__value">2.9</span><span class="lotus-stat__label">0–60 mph</span></div>
+          <div class="lotus-stat"><span class="lotus-stat__value">373</span><span class="lotus-stat__label">Range (mi)</span></div>
+        </div>
+
+        <a href="#inventory" class="btn btn--primary lotus-deck__cta" data-lotus-cta>Explore Eletre</a>
+      </div>
+    </div>
+  </section>
+  ============ -->
+
+  <!-- ============ WE BUY CARS — hidden, kept for later ============
+  <section class="buy" id="buy" data-parallax>
+    <div class="container container--wide buy__grid">
+
+      <form class="buy-form" data-buy-form data-reveal>
+        <div class="field">
+          <label class="sr-only" for="bf-year">Year</label>
+          <select id="bf-year" name="year" class="buy-form__select">
+            <option value="">Year</option>
+            <option>2026</option><option>2025</option><option>2024</option>
+            <option>2023</option><option>2022</option><option>2021</option><option>2020</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="sr-only" for="bf-make">Make</label>
+          <select id="bf-make" name="make" class="buy-form__select">
+            <option value="">Make</option>
+            <option>Porsche</option><option>Ferrari</option><option>Lamborghini</option>
+            <option>McLaren</option><option>Bentley</option><option>Rolls-Royce</option>
+            <option>Aston Martin</option><option>Lotus</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="sr-only" for="bf-model">Model</label>
+          <select id="bf-model" name="model" class="buy-form__select">
+            <option value="">Model</option>
+            <option>911</option><option>SF90</option><option>Huracán</option><option>720S</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="sr-only" for="bf-vin">VIN</label>
+          <input id="bf-vin" name="vin" type="text" placeholder="VIN">
+        </div>
+        <button type="submit" class="btn btn--primary buy-form__submit">Get An Offer</button>
+      </form>
+
+      <div class="buy__content" data-reveal>
+        <span class="eyebrow eyebrow--oswald">We Buy Cars</span>
+        <h2 class="heading-light">Get An Offer In Minutes</h2>
+
+        <ol class="buy-steps">
+          <li class="buy-step">
+            <span class="buy-step__num">01</span>
+            <div class="buy-step__body">
+              <h3 class="buy-step__title">Submit Your Details</h3>
+              <p>Tell us about your vehicle in a couple of minutes — no obligation.</p>
+            </div>
+          </li>
+          <li class="buy-step">
+            <span class="buy-step__num">02</span>
+            <div class="buy-step__body">
+              <h3 class="buy-step__title">Get An Offer</h3>
+              <p>Our acquisition team responds with a competitive, transparent valuation.</p>
+            </div>
+          </li>
+          <li class="buy-step">
+            <span class="buy-step__num">03</span>
+            <div class="buy-step__body">
+              <h3 class="buy-step__title">Get Paid</h3>
+              <p>Accept and get paid fast — we handle the paperwork and transport.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  ============ -->
+
+  <!-- ============ PROMO LINKS (hover reveals CTA) ============ -->
+  <section class="promos-section">
+      <div class="promos" data-reveal>
+        <a class="promo promo--image promo--newinv" href="#inventory">
+          <span class="promo__head">
+            <span class="promo__eyebrow">Just Arrived</span>
+            <span class="promo__title">New Inventory</span>
+          </span>
+          <span class="promo__cta">View Inventory</span>
+        </a>
+        <a class="promo promo--image promo--preowned" href="#inventory">
+          <span class="promo__head">
+            <span class="promo__eyebrow">Hand-Selected</span>
+            <span class="promo__title">Pre-Owned</span>
+          </span>
+          <span class="promo__cta">View Pre-Owned</span>
+        </a>
+        <a class="promo promo--image promo--lease" href="#buy">
+          <span class="promo__head">
+            <span class="promo__eyebrow">Limited-Time</span>
+            <span class="promo__title">Lease Specials</span>
+          </span>
+          <span class="promo__cta">View Offers</span>
+        </a>
+        <a class="promo promo--image promo--service" href="#services">
+          <span class="promo__head">
+            <span class="promo__eyebrow">Factory-Trained</span>
+            <span class="promo__title">Service Department</span>
+          </span>
+          <span class="promo__cta">Schedule Service</span>
+        </a>
+      </div>
+  </section>
+
+  <!-- ============ OWNERSHIP JOURNEY — hidden, kept for later ============
+  <section class="section section--surface" id="showcase">
+    <div class="container container--wide">
+      <div class="journey">
+
+        <div class="journey__intro" data-reveal>
+          <span class="eyebrow eyebrow--oswald">The Ownership Journey</span>
+          <h2 class="heading-light">You're Not Buying a Car. You're Joining a Club.</h2>
+          <p class="lead">From the first conversation to the events calendar, ownership at Vegas Auto Gallery is a relationship — not a transaction.</p>
+          <a href="#footer" class="btn btn--primary">Become a Client</a>
+        </div>
+
+        <ol class="journey__steps">
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">01</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Private Consultation</h3>
+              <p>A dedicated specialist learns your taste, your garage, and exactly what you're looking for — discreetly.</p>
+            </div>
+          </li>
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">02</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Vehicle Acquisition</h3>
+              <p>We source, inspect, and secure the right car — from our floor or from our global network of collectors.</p>
+            </div>
+          </li>
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">03</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Worldwide Delivery</h3>
+              <p>Enclosed, insured transport and full customs handling — to your door, anywhere on earth.</p>
+            </div>
+          </li>
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">04</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Concierge Support</h3>
+              <p>Maintenance, storage, detailing, and performance — handled for you, for as long as you own the car.</p>
+            </div>
+          </li>
+          <li class="journey-step" data-reveal>
+            <span class="journey-step__num">05</span>
+            <div class="journey-step__body">
+              <h3 class="journey-step__title">Exclusive Events</h3>
+              <p>Rallies, track days, launches, and private gatherings — the part that money usually can't buy.</p>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </section>
+  ============ -->
+
+  <!-- ============ GOOGLE REVIEWS — hidden ============
+  <section class="section reviews" id="reviews">
+    <div class="container container--wide">
+      <div class="reviews-head" data-reveal>
+        <div class="section-head section-head--tight">
+          <span class="eyebrow eyebrow--oswald">Client Experiences</span>
+          <h2 class="heading-light">What Our Clients Say</h2>
+        </div>
+        <div class="rating-summary">
+          <span class="rating-summary__score">4.9</span>
+          <div class="rating-summary__meta">
+            <span class="stars" aria-label="Rated 4.9 out of 5">★★★★★</span>
+            <span>Based on 287 Google reviews</span>
+          </div>
+          <svg class="google-g" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="review" data-reveal>
+          <div class="review__head">
+            <span class="review__avatar">JM</span>
+            <div class="review__id">
+              <span class="review__name">James Mitchell</span>
+              <span class="review__date">2 weeks ago</span>
+            </div>
+            <svg class="google-g google-g--sm" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+          </div>
+          <span class="stars" aria-label="5 out of 5">★★★★★</span>
+          <p class="review__text">A genuinely white-glove experience from start to finish. They sourced exactly the car I wanted and handled every detail. This is how buying an exotic should feel.</p>
+        </article>
+
+        <article class="review" data-reveal>
+          <div class="review__head">
+            <span class="review__avatar">SR</span>
+            <div class="review__id">
+              <span class="review__name">Sofia Reyes</span>
+              <span class="review__date">1 month ago</span>
+            </div>
+            <svg class="google-g google-g--sm" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+          </div>
+          <span class="stars" aria-label="5 out of 5">★★★★★</span>
+          <p class="review__text">The showroom is stunning and the team treats you like a private client, not a number. They even arranged enclosed transport across the country. Highly recommended.</p>
+        </article>
+
+        <article class="review" data-reveal>
+          <div class="review__head">
+            <span class="review__avatar">DK</span>
+            <div class="review__id">
+              <span class="review__name">Daniel Kovač</span>
+              <span class="review__date">1 month ago</span>
+            </div>
+            <svg class="google-g google-g--sm" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+          </div>
+          <span class="stars" aria-label="5 out of 5">★★★★★</span>
+          <p class="review__text">Bought and sold here. Fair, fast, and completely transparent on both sides. The concierge service is the real deal — they make ownership effortless.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  ============ -->
+
+  <!-- ============ INSTAGRAM + NEWSLETTER ============ -->
+  <section class="section section--surface insta" id="instagram">
+    <div class="container container--wide insta__layout">
+
+      <!-- Left: Instagram feed -->
+      <div class="insta__feed">
+        <div class="insta__head" data-reveal>
+          <span class="eyebrow eyebrow--oswald">Follow Along</span>
+          <h2 class="heading-light"><a class="insta-handle" href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener">@vegasautogallery</a></h2>
+        </div>
+        <div class="insta-grid">
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-1.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-2.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-3.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-4.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-5.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-6.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-7.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-8.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+          <a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" class="insta-tile" data-reveal aria-label="View on Instagram"><img src="assets/images/ig-9.jpg" alt="Instagram post" loading="lazy"><span class="insta-tile__overlay"></span></a>
+        </div>
+      </div>
+
+      <!-- Right: newsletter -->
+      <aside class="newsletter" data-reveal>
+        <span class="eyebrow eyebrow--oswald">Stay in the Know</span>
+        <h2 class="heading-light">Join Our Mailing List</h2>
+        <form class="newsletter__form" data-newsletter>
+          <label class="sr-only" for="nl-email">Email address</label>
+          <input id="nl-email" name="email" type="email" placeholder="Enter Email" required>
+          <button type="submit" class="btn btn--primary">Join Now</button>
+        </form>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ============ VIDEO BREAK ============ -->
+  <section class="video-break" id="video-break" aria-label="Czinger">
+    <video class="video-break__media" src="assets/video/czinger.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="video-break__content" data-reveal>
+      <img class="video-break__logo" src="assets/images/czinger_logo.svg" alt="Czinger">
+      <h2 class="heading-light">Revolutionary Technology</h2>
+      <p class="video-break__text">The pinnacle of automotive engineering, art and technology&#8288;-&#8288;based design.</p>
+      <a class="btn btn--primary video-break__cta" href="#inventory">Explore</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="container container--wide">
+
+      <!-- Golden Knights partnership — its own centred band -->
+      <div class="footer__partner">
+        <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
+        <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
+      </div>
+
+      <!-- Contact / hours -->
+      <div class="footer__grid">
+        <div class="footer__col">
+          <h4 class="footer__label">Sales</h4>
+          <a class="footer__phone" href="tel:7252190524">725-219-0524</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">5530 Rafael Rivera Way<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service</h4>
+          <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road, Suites 130/135<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>9:00 AM – 7:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Follow</h4>
+          <ul class="footer__social">
+            <li><a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Brand partners -->
+      <div class="footer__partners">
+        <span class="footer__partners-label">Authorized Dealer</span>
+        <div class="footer__logos">
+          <img src="assets/images/lotus_logo.svg" alt="Lotus">
+          <img src="assets/images/czinger_logo.svg" alt="Czinger">
+          <img src="assets/images/hennessy_logo.svg" alt="Hennessey">
+          <img src="assets/images/vintage_logo.svg" alt="Vintage">
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Lotus Las Vegas. All Rights Reserved. <a href="#">Privacy Policy</a> <span class="footer__sep">|</span> <a href="#">Sitemap</a></span>
+        <span>Powered by All Auto Network</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ GET AN OFFER — slide-in panel ============ -->
+  <div class="offer" data-offer hidden>
+    <div class="offer__overlay" data-offer-close></div>
+    <aside class="offer__panel" role="dialog" aria-modal="true" aria-label="Get an offer">
+      <button class="offer__close" type="button" data-offer-close aria-label="Close">&times;</button>
+      <div class="offer__content">
+        <span class="eyebrow eyebrow--oswald">We Buy Cars</span>
+        <h2 class="heading-light">Get An Offer In Minutes</h2>
+
+        <form class="buy-form" data-buy-form>
+          <div class="field">
+            <label class="sr-only" for="of-year">Year</label>
+            <select id="of-year" name="year" class="buy-form__select">
+              <option value="">Year</option>
+              <option>2026</option><option>2025</option><option>2024</option>
+              <option>2023</option><option>2022</option><option>2021</option><option>2020</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="sr-only" for="of-make">Make</label>
+            <select id="of-make" name="make" class="buy-form__select">
+              <option value="">Make</option>
+              <option>Porsche</option><option>Ferrari</option><option>Lamborghini</option>
+              <option>McLaren</option><option>Bentley</option><option>Rolls-Royce</option>
+              <option>Aston Martin</option><option>Lotus</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="sr-only" for="of-model">Model</label>
+            <select id="of-model" name="model" class="buy-form__select">
+              <option value="">Model</option>
+              <option>911</option><option>SF90</option><option>Huracán</option><option>720S</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="sr-only" for="of-vin">VIN</label>
+            <input id="of-vin" name="vin" type="text" placeholder="VIN">
+          </div>
+          <button type="submit" class="btn btn--primary buy-form__submit">Get An Offer</button>
+        </form>
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
