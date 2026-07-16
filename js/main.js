@@ -920,16 +920,15 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   })();
 
-  /* ---------- Newsletter sign-up (stub) ---------- */
-  const newsletter = document.querySelector('[data-newsletter]');
-  if (newsletter) {
-    newsletter.addEventListener('submit', (e) => {
+  /* ---------- Newsletter sign-up (stub) — wire every form, the page can carry more than one ---------- */
+  document.querySelectorAll('[data-newsletter]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = new FormData(newsletter).get('email');
+      const email = new FormData(form).get('email');
       console.log('Newsletter sign-up:', email);
-      newsletter.innerHTML = '<p class="form-success">Thank you — you\'re on the list.</p>';
+      form.innerHTML = '<p class="form-success">Thank you — you\'re on the list.</p>';
     });
-  }
+  });
 
   /* ---------- Inventory search (stub) ---------- */
   const search = document.querySelector('[data-search]');

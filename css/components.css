@@ -99,6 +99,18 @@
 /* collapse the bar once scrolled — condensed header returns to normal height */
 .site-header.is-scrolled .brand-bar { max-height: 0; opacity: 0; border-color: transparent; }
 
+/* ---- v6: brand bar stays put on scroll — logos keep their full size (client requirement).
+   The nav row below condenses a little more to offset the kept bar height.
+   Scoped to .v6 so the v5 chain (under client review) is untouched. ---- */
+.v6 .site-header.is-scrolled .brand-bar {
+  max-height: var(--brand-bar-h);
+  opacity: 1;
+  border-color: var(--color-border);
+}
+.v6 .site-header:has(.brand-bar).is-scrolled .site-header__inner { padding-block: var(--space-3); }
+/* the kept bar makes the condensed header taller — re-anchor anything sticky under it */
+.v6 { --header-h-sm: 159px; }
+
 /* content pages that carry a brand bar clear the taller header */
 body:has(.brand-bar) .srp-page,
 body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand-bar-h)); }
@@ -1938,6 +1950,30 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   border-bottom: 1px solid var(--color-border);
 }
 .footer__vgk { height: 123px; width: auto; flex: 0 0 auto; }
+
+/* ---- v6: Knights players flanking the VGK logo.
+   The PNGs are pre-matted to #0B0F14 (--color-bg) at the bottom, so they must sit where the
+   footer's radial glow hasn't reached — i.e. the top band — and be bottom-aligned so the
+   baked fades line up on one baseline. ---- */
+.v6 .footer__partner {
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-7);
+}
+.v6 .footer__partner-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+.v6 .footer__knight { height: 300px; width: auto; flex: 0 0 auto; }
+@media (max-width: 1100px) { .v6 .footer__knight { height: 230px; } }
+@media (max-width: 860px) {
+  .v6 .footer__partner { flex-direction: column; align-items: center; }
+  .v6 .footer__knight { display: none; }   /* players would squeeze the lockup */
+}
 .footer__partner-text {
   font-size: var(--text-sm);
   letter-spacing: var(--tracking-wide);
@@ -2011,6 +2047,15 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   background: rgba(206, 182, 85, 0.08);
 }
 
+/* ---- v6: footer social — real brand marks supplied by the client (full-colour SVGs,
+   Instagram keeps its own gradient). They're <img>, so currentColor tinting doesn't apply.
+   The Blog/RSS icon was dropped — it was never in any client doc and linked nowhere. ---- */
+.v6 .footer__social a img { width: 20px; height: 20px; display: block; }
+.v6 .footer__social a:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .footer__grid .footer__col:last-child { text-align: left; }
 
 .footer__sep { color: var(--color-border); margin: 0 var(--space-1); }
@@ -2048,6 +2093,8 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   transition: opacity var(--transition);
 }
 .footer__logos img:hover { opacity: 1; }
+/* v6: dealer logos run in their real brand colours — 0.8 would mute them */
+.v6 .footer__logos img { opacity: 1; }
 /* Optical balance — same as the brand boxes up top */
 .footer__logos img[alt="Lotus"]    { height: 44px; }
 .footer__logos img[alt="Czinger"]  { height: 30px; }
@@ -2395,6 +2442,10 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 .shorts     { order: 1; }
 .insta__feed { order: 2; max-width: 528px; text-align: center; }   /* compact 3×3 thumbnails, like McLaren */
 .newsletter { order: 3; }
+/* v6: client wants Instagram · Mailing list · YouTube */
+.v6 .insta__feed { order: 1; }
+.v6 .newsletter  { order: 2; }
+.v6 .shorts      { order: 3; }
 /* match the IG heading size to the newsletter + shorts headings */
 .insta__head .heading-light { font-size: 38px; line-height: 44px; }
 
@@ -2488,6 +2539,30 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 .newsletter__form input::placeholder { color: var(--color-text-soft); }
 .newsletter__form input:focus-visible { border-color: var(--color-accent); outline: none; }
 .newsletter__form .btn { width: auto; height: 55px; white-space: nowrap; }   /* CTA like the Search button */
+
+/* ---- Newsletter band — title left, email field directly to its right (index6, under inventory).
+   Reuses .newsletter__form for the frosted box + 342x55 input + button; just flips it to a row. ---- */
+/* Tighten the run-in from the inventory cards to this band.
+   .inv-viewport is overflow:hidden, so its bottom padding is what keeps the card hover
+   shadow from being clipped — that shadow (0 30px 80px -12px) reaches ~58px, so 64px is
+   enough; the original 116px existed only to eat the section's --space-10 rhythm. */
+.v6 .inv--redesign .inv-viewport { padding-bottom: 64px; }
+.v6 .inv.inv--redesign { padding-bottom: 0; }
+.newsletter-band { padding-block: var(--space-3) var(--space-8); }
+.newsletter-band__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* title + field grouped, centred as one block */
+  flex-wrap: wrap;
+  gap: var(--space-5) var(--space-6);
+}
+.newsletter-band__title { font-size: 38px; line-height: 44px; }
+.newsletter-band__form { flex-direction: row; align-items: center; margin-top: 0; }
+@media (max-width: 900px) {
+  .newsletter-band__inner { flex-direction: column; align-items: flex-start; }
+  .newsletter-band__form { width: 100%; }
+  .newsletter-band__form input { flex: 1 1 auto; width: auto; }
+}
 
 /* 3 zones need width — stack them (centred) below this */
 @media (max-width: 1300px) {
