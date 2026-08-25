@@ -4082,11 +4082,13 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 .service-hero__box:nth-child(3) { animation-delay: 0.78s; }
 .service-hero__box:nth-child(4) { animation-delay: 0.92s; }
 @media (prefers-reduced-motion: reduce) {
-  .service-hero .hero__content > *, .service-hero__box { animation: none; opacity: 1; }
+  .service-hero .hero__content > *, .service-hero__box,
+  .page-hero .hero__content > * { animation: none; opacity: 1; }
 }
 
 /* full-screen hero, content + boxes anchored to the bottom of the image */
-.service-hero {
+.service-hero,
+.page-hero {
   min-height: 100vh;
   min-height: 100dvh;
   align-items: flex-end;
@@ -4094,7 +4096,8 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   padding-bottom: var(--space-10);
 }
 /* darken top (for nav contrast) and bottom (for text), keep the middle clear */
-.service-hero::after {
+.service-hero::after,
+.page-hero::after {
   background:
     linear-gradient(rgba(11, 15, 20, 0.15), rgba(11, 15, 20, 0.15)),
     linear-gradient(
@@ -4106,8 +4109,10 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
       rgba(11, 15, 20, 0.95) 100%
     );
 }
-.service-hero .hero__content { gap: var(--space-5); }
-.service-hero .hero__actions { margin-top: var(--space-2); }
+.service-hero .hero__content,
+.page-hero .hero__content { gap: var(--space-5); }
+.service-hero .hero__actions,
+.page-hero .hero__actions { margin-top: var(--space-2); }
 .service-hero__boxes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -4223,4 +4228,659 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 }
 @media (max-width: 560px) {
   .service-hero__boxes { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   NEW CONTENT PAGES (about6 / sell6) — components added for the
+   merged About/Team/Heritage page and the Sell Your Car page.
+   ============================================================ */
+/* ============================================================
+   PAGE HERO — shared full-screen hero for content pages
+   Geometry/scrim live with .service-hero above (one definition,
+   two role names). Only the entrance is declared here.
+   Reduced-motion path: handled in the .service-hero guard above.
+   ============================================================ */
+.page-hero .hero__content > * { animation: svc-in-left 0.7s cubic-bezier(.22,.61,.36,1) backwards; }
+.page-hero .hero__content > *:nth-child(1) { animation-delay: 0.10s; }
+.page-hero .hero__content > *:nth-child(2) { animation-delay: 0.22s; }
+.page-hero .hero__content > *:nth-child(3) { animation-delay: 0.34s; }
+.page-hero .hero__content > *:nth-child(4) { animation-delay: 0.46s; }
+
+/* ============================================================
+   FACT PLATE — paired label/value data (locations, hours, spec)
+   Mono micro-labels over near-white values; hairline separated.
+   ============================================================ */
+.factplate {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+.factplate__item { display: flex; flex-direction: column; gap: var(--space-2); }
+.factplate__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.factplate__value {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  font-style: normal;
+}
+.factplate__value a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--color-border); }
+.factplate__value a:hover { border-bottom-color: var(--color-accent); }
+@media (max-width: 620px) { .factplate { grid-template-columns: 1fr; } }
+
+
+
+/* ============================================================
+   MODIFIERS on existing grids — three categories, four props.
+   Count follows the content; the content is never padded to the grid.
+   ============================================================ */
+.ev-cards--three { grid-template-columns: repeat(3, 1fr); }
+.specials--four { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) { .ev-cards--three { grid-template-columns: 1fr; } }
+@media (max-width: 1100px) { .specials--four { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px)  { .specials--four { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   SELL HERO — the valuation form is a first-screen mass, not a
+   destination link. Sits beside the proposition, glass over photo.
+   ============================================================ */
+.sell-hero .container { width: 100%; }
+.sell-hero__layout {
+  display: grid;
+  grid-template-columns: 1fr 464px;
+  gap: var(--space-8);
+  align-items: end;
+}
+.sell-hero__layout .hero__content { max-width: 640px; }
+.sell-hero .buy-form { width: 100%; animation: svc-in-up 0.7s cubic-bezier(.22,.61,.36,1) backwards; animation-delay: 0.42s; }
+.sell-hero__form-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.sell-hero__form-note { font-size: var(--text-xs); color: var(--color-text-soft); }
+@media (prefers-reduced-motion: reduce) { .sell-hero .buy-form { animation: none; opacity: 1; } }
+@media (max-width: 1000px) {
+  .sell-hero__layout { grid-template-columns: 1fr; gap: var(--space-6); }
+  .sell-hero__layout .hero__content { max-width: none; }
+}
+
+/* Sell hero scrim — rebuilt, not deepened. The proposition sits lower-left and
+   the valuation form sits right, so the darkening is biased to the left third:
+   the type gets a dedicated ground while the building and the cars stay legible.
+   A uniformly deeper scrim would have bought the same contrast by erasing the scene.
+   Verified on the composited render at 1440/1280/768/390. */
+.sell-hero::after {
+  background:
+    linear-gradient(100deg,
+      rgba(11, 15, 20, 0.90) 0%,
+      rgba(11, 15, 20, 0.78) 42%,
+      rgba(11, 15, 20, 0.26) 68%,
+      rgba(11, 15, 20, 0.06) 100%),
+    linear-gradient(to bottom,
+      rgba(11, 15, 20, 0.88) 0%,
+      rgba(11, 15, 20, 0.44) 20%,
+      rgba(11, 15, 20, 0.28) 46%,
+      rgba(11, 15, 20, 0.44) 74%,
+      rgba(11, 15, 20, 0.82) 100%);
+}
+/* On one column the form stacks under the type, so the left bias stops making
+   sense — fall back to a straight vertical scrim. */
+@media (max-width: 1000px) {
+  .sell-hero::after {
+    background:
+      linear-gradient(rgba(11, 15, 20, 0.18), rgba(11, 15, 20, 0.18)),
+      linear-gradient(to bottom,
+        rgba(11, 15, 20, 0.90) 0%,
+        rgba(11, 15, 20, 0.68) 18%,
+        rgba(11, 15, 20, 0.60) 46%,
+        rgba(11, 15, 20, 0.78) 74%,
+        rgba(11, 15, 20, 0.94) 100%);
+  }
+}
+
+/* ============================================================
+   ACTIVE NAV ITEM — "you are here".
+   No new device: this is the existing hover underline pinned at full
+   width, plus the gold label. The v6 markup already carried .is-active
+   (srp6 → Inventory, service6 → Service) with no rule behind it, so the
+   class was inert everywhere; this is the rule that markup was asking for.
+   The ::after dropdown arrow is already gold at rest, so it stays coherent.
+   ============================================================ */
+.nav__link.is-active {
+  color: var(--color-accent);
+  background-size: 100% 1px;
+}
+/* Hovering the page you are already on shouldn't read as a state change,
+   but the label still needs to answer the pointer — lift the underline
+   to the text colour so the link confirms it is a control. */
+.nav__link.is-active:hover {
+  color: var(--color-text);
+  background-image: linear-gradient(var(--color-text), var(--color-text));
+}
+.nav__link--menu.is-active:hover::after { border-top-color: var(--color-text); }
+
+/* Keyboard parity — the active item must still show a visible focus ring. */
+.nav__link.is-active:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+
+/* ============================================================
+   TEAM — a grid of portraits, each carrying its own name.
+   Every portrait on the client's site was shot in the same showroom under
+   the same string-lit ceiling, so one crop and one plate treatment turn
+   sixteen separate photographs into a single line-up. The plate is bound
+   INTO the frame rather than floating under it, which is where the
+   client's own page loses the tie between a face and its label.
+   Six of the sixteen have no portrait there either; they carry an authored
+   initials tile rather than the grey logo plate repeated six times.
+   ============================================================ */
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  /* the tiles are deliberately smaller than the column they sit in: sixteen
+     faces at full container width read as a wall, and the air either side
+     is what lets a hovered tile come forward without crowding anything */
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.team-shot {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.team-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 14%;
+  display: block;
+  filter: grayscale(0.35);
+  transition: filter 0.35s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* the tile steps out of the grid. Scale and z-index only — no geometry
+   changes, so the fifteen tiles around it never shift under the pointer. */
+.team-shot:hover {
+  z-index: 2;
+  transform: scale(1.075);
+  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.62);
+  border-color: var(--color-accent);
+}
+.team-shot:hover img { filter: grayscale(0); transform: scale(1.04); }
+
+/* plate ground — bound to the frame, not floating under it. Tuned on the
+   composited render for THIS tile height: the same gradient over a shorter
+   tile puts the labels in its light half, which measured 1.3:1. */
+.team-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    transparent 30%,
+    rgba(11, 15, 20, 0.46) 55%,
+    rgba(11, 15, 20, 0.90) 74%,
+    rgba(11, 15, 20, 0.97) 88%,
+    rgba(11, 15, 20, 0.99) 100%);
+  pointer-events: none;
+}
+.team-shot__plate {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-4) var(--space-3);
+}
+.team-shot__name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-base);
+  line-height: 1.16;
+  color: var(--color-text);
+}
+.team-shot__role {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);      /* functional text stays on the 14px floor */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+/* No portrait supplied yet. An authored typographic tile, NOT the client's
+   grey logo placeholder: initials read as a designed state, a repeated logo
+   reads as a page waiting for assets.
+   TO ADD A PHOTO: drop <img> in as the first child and remove --nophoto. */
+.team-shot--nophoto {
+  background:
+    radial-gradient(120% 90% at 50% 24%, rgba(206, 182, 85, 0.07), transparent 70%),
+    linear-gradient(165deg, var(--color-surface-2), var(--color-surface-deep));
+}
+.team-shot--nophoto::after {
+  background: linear-gradient(to bottom, transparent 52%, rgba(11, 15, 20, 0.6) 82%, rgba(11, 15, 20, 0.9) 100%);
+}
+.team-shot__initials {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: var(--text-4xl);
+  letter-spacing: 0.08em;
+  color: rgba(245, 245, 245, 0.17);
+  transform: translateY(-9%);
+  transition: color 0.35s ease;
+}
+.team-shot--nophoto:hover .team-shot__initials { color: rgba(206, 182, 85, 0.5); }
+
+.team__contact { max-width: 1000px; margin: var(--space-7) auto 0; }
+
+@media (max-width: 1100px) {
+  .team__grid { max-width: 820px; }
+  .team__contact { max-width: 820px; }
+}
+@media (max-width: 700px) {
+  .team__grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); max-width: none; }
+  .team__contact { max-width: none; margin-top: var(--space-6); }
+  .team-shot__name { font-size: var(--text-sm); }
+  .team-shot__role { letter-spacing: 0.05em; }   /* stays at 14px — a role is information */
+  .team-shot__plate { padding: var(--space-3) var(--space-2); }
+  .team-shot__initials { font-size: var(--text-2xl); }
+  /* nothing comes forward on a touch screen — there is no pointer to do it with */
+  .team-shot:hover { transform: none; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-shot, .team-shot img, .team-shot__initials { transition: none; }
+  .team-shot:hover { transform: none; }
+  .team-shot:hover img { transform: none; }
+}
+
+/* ============================================================
+   HERITAGE ROUTE — the road stands still; the years drive along it.
+   The client's own heritage page has the right idea and pays ~19,700px of
+   stock forest aerial for it. Kept: heritage is a route with the years as
+   waypoints. Changed: the road is fixed to the frame and the years travel
+   THROUGH it, so the whole marque history costs one section of page height,
+   the field is the archive itself, and the road is drawn in the page's own
+   hairline instead of a landscape bought to stand behind it.
+
+   Every one of the 68 years carries its own title and description — nothing
+   was cut. Only the year standing in the centre is lit and legible; the rest
+   stay muted at the sides. The text of an inactive year is faded, never
+   removed, so the whole timeline is still one continuous list to a screen
+   reader.
+
+   Nothing about the active state changes layout: the medallion grows by
+   transform and the caption fades, so neighbouring years never shift under
+   the pointer while the visitor is travelling.
+   ============================================================ */
+.route-shell {
+  position: relative;
+  --stop-w: 216px;
+  /* Two halves. The bottom one has to hold the reserved year and title rows
+     plus the longest description in the archive; measured on the render, that
+     is 272px, so the track is 570 rather than a round number that clips. */
+  --route-h: 570px;
+  /* reserves, measured on the render: the year at its active size, and the
+     tallest title at this width */
+  --year-h: 50px;
+  --title-h: 30px;
+}
+
+/* THE ROAD — lives on the shell, which does not scroll, so it stays put */
+.route-road {
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--color-border) 8%, var(--color-border) 92%, transparent);
+}
+/* where the active year arrives */
+.route-road::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 15px; height: 15px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  background: var(--color-bg);
+  box-shadow: 0 0 0 5px rgba(206, 182, 85, 0.12);
+}
+
+/* the years fade out toward the edges rather than being cut by them */
+.route-shell::before,
+.route-shell::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 190px;
+  z-index: 3;
+  pointer-events: none;
+}
+.route-shell::before { left: 0;  background: linear-gradient(90deg, var(--color-bg) 22%, transparent); }
+.route-shell::after  { right: 0; background: linear-gradient(270deg, var(--color-bg) 22%, transparent); }
+
+.route {
+  position: relative;
+  z-index: 2;
+  height: var(--route-h);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  cursor: grab;
+  /* the native bar is hidden: the arrows and the year slider below carry the
+     affordance, and they say more than it did — which way, and which year */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.route::-webkit-scrollbar { display: none; }
+.route:active { cursor: grabbing; }
+.route:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -4px; }
+
+.route__track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  height: 100%;
+  list-style: none;
+  /* half a viewport of lead-in and lead-out, so 1948 and Today can both
+     reach the centre of the road */
+  padding-inline: calc(50vw - (var(--stop-w) / 2));
+}
+
+.route__stop {
+  position: relative;
+  flex: 0 0 var(--stop-w);
+  width: var(--stop-w);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  /* pin the column to the stop width: the caption is wider than the stop and
+     would otherwise stretch the implicit column and shift the medallion off
+     the centre of the road */
+  grid-template-columns: minmax(0, 1fr);
+  scroll-snap-align: center;
+  text-align: center;
+}
+
+/* the waypoint dot rides the road */
+.route__node {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 7px; height: 7px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  transition: background 0.35s ease, transform 0.35s ease;
+}
+.route__stop.is-active .route__node { background: var(--color-accent); transform: scale(1.5); }
+
+/* ---- the medallion: grows up out of the road when its year arrives ---- */
+.route__frame {
+  grid-row: 1;
+  align-self: end;
+  justify-self: center;
+  width: 160px; height: 160px;
+  margin-bottom: var(--space-6);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transform: scale(0.6);
+  transform-origin: center bottom;
+  filter: grayscale(1);
+  opacity: 0.4;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease,
+              filter 0.35s ease, border-color 0.35s ease;
+}
+.route__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.route__stop.is-active .route__frame {
+  transform: scale(1);
+  opacity: 1;
+  filter: none;
+  border-color: var(--color-accent);
+}
+
+/* ---- the caption ---- */
+.route__label {
+  /* taken out of the grid entirely and hung from the centre of the stop, so a
+     caption wider than the stop cannot move the medallion off the road.
+     Wider on purpose: only one year is ever lit, so the caption may use the
+     quiet space either side of it and keep a readable measure. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 460px;
+  max-width: 88vw;
+  padding-top: var(--space-6);
+  /* Reserved rows. The year more than doubles in size when its stop becomes
+     the live one, and four of the 68 entries carry no title at all — left in
+     normal flow, both facts move the text underneath and the caption visibly
+     jitters as the road travels. Year and title rows are therefore sized to
+     their largest state and held, so only the description ever reflows, and
+     it is last. */
+  display: grid;
+  grid-template-rows: var(--year-h) var(--title-h) auto;
+  justify-items: center;
+  align-content: start;
+  row-gap: var(--space-2);
+  pointer-events: none;
+}
+.route__stop.is-active .route__label { pointer-events: auto; }
+
+.route__year {
+  grid-row: 1;
+  align-self: center;   /* grows from its own centre — nothing above or below shifts */
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-lg);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+  transition: color 0.35s ease, font-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.route__stop.is-active .route__year { color: var(--color-accent); font-size: var(--text-4xl); }
+
+.route__title { grid-row: 2; align-self: start; }
+.route__desc  { grid-row: 3; }
+
+.route__title,
+.route__desc {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.route__stop.is-active .route__title,
+.route__stop.is-active .route__desc { opacity: 1; transform: none; }
+.route__stop.is-active .route__title { transition-delay: 0.06s; }
+.route__stop.is-active .route__desc  { transition-delay: 0.12s; }
+
+.route__title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-xl);
+  line-height: 1.16;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+.route__desc {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-soft);
+  max-width: 46ch;
+}
+
+/* the culmination — the route arrives at this dealership */
+.route__stop--now .route__frame {
+  display: grid;
+  place-items: center;
+  background: radial-gradient(120% 120% at 50% 30%, rgba(206, 182, 85, 0.2), transparent 70%), var(--color-surface);
+}
+.route__stop--now .route__frame img { width: 74%; height: auto; object-fit: contain; }
+.route__stop--now.is-active .route__frame { filter: none; }
+
+@media (max-width: 900px) {
+  /* --title-h holds two lines: at 320px the longest titles wrap. --route-h is
+     sized to the longest description under that wrap, measured at 320. */
+  .route-shell { --stop-w: 168px; --route-h: 590px; --year-h: 40px; --title-h: 52px; }
+  .route__frame { width: 124px; height: 124px; }
+  .route__label { width: 92vw; padding-top: var(--space-5); }
+  .route__stop.is-active .route__year { font-size: var(--text-3xl); }
+  .route__title { font-size: var(--text-lg); }
+  .route__desc { font-size: var(--text-sm); }
+  .route-shell::before, .route-shell::after { width: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route__frame, .route__year, .route__title, .route__desc, .route__node { transition: none; }
+}
+
+/* ============================================================
+   ROUTE CONTROLS — step arrows and a year slider.
+   The native scrollbar is hidden because these two say more than it did:
+   which way there is still road to travel, and which year you are in.
+   The arrows step exactly one year, because a year is what the road is
+   made of; the slider is for crossing decades at once.
+   ============================================================ */
+.route-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 54px; height: 54px;
+  margin-top: -27px;
+  border-radius: 50%;
+  background: rgba(19, 24, 32, 0.9);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition),
+              color var(--transition), opacity var(--transition);
+}
+.route-nav--prev { left: var(--space-5); }
+.route-nav--next { right: var(--space-5); }
+.route-nav:hover { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg); }
+.route-nav:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.route-nav svg { width: 21px; height: 21px; }
+.route-nav[disabled] { opacity: 0.25; pointer-events: none; }
+
+/* ---- the year slider: a control, not a readout ---- */
+.route-scrub {
+  position: relative;
+  margin-top: var(--space-4);
+  padding-block: var(--space-6) var(--space-2);
+  touch-action: none;
+}
+.route-scrub__rail {
+  position: relative;
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-2);
+  cursor: pointer;
+}
+.route-scrub__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+}
+/* decade ticks, so the rail reads as a span of years rather than a bare bar */
+.route-scrub__ticks {
+  position: absolute;
+  inset: -6px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+.route-scrub__ticks span { width: 1px; height: 11px; background: var(--color-border); }
+
+.route-scrub__handle {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  min-width: 84px;
+  padding: 10px var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-lg);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+  cursor: grab;
+  white-space: nowrap;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+.route-scrub__handle::after {
+  /* grip — says "drag me" without a label */
+  content: "";
+  position: absolute;
+  right: 10px;
+  width: 2px; height: 12px;
+  border-radius: 1px;
+  background: rgba(11, 15, 20, 0.42);
+  box-shadow: -4px 0 0 rgba(11, 15, 20, 0.42);
+}
+.route-scrub__handle:hover { background: var(--color-accent-hover); }
+.route-scrub.is-dragging { cursor: grabbing; }
+.route-scrub.is-dragging .route-scrub__handle { cursor: grabbing; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65); }
+.route-scrub:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 6px; border-radius: var(--radius); }
+
+.route-ends {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.route-ends span:last-child { text-align: right; }
+.route-actions { margin-top: var(--space-6); }
+
+@media (max-width: 760px) {
+  .route-nav { width: 44px; height: 44px; margin-top: -22px; }
+  .route-nav--prev { left: var(--space-2); }
+  .route-nav--next { right: var(--space-2); }
+  .route-scrub__handle { min-width: 74px; font-size: var(--text-base); }
+  .route-ends { letter-spacing: 0.02em; gap: var(--space-3); }  /* stays on the 14px floor */
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-nav, .route-scrub__handle { transition: none; }
 }
