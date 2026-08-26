@@ -4306,6 +4306,83 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 @media (max-width: 1100px) { .specials--four { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px)  { .specials--four { grid-template-columns: 1fr; } }
 
+/* ---- THE PROCESS BAND ----
+   A full-bleed frame with the ground brought back over it, which is how the
+   hero and the video break already do this on the chain. The first attempt
+   masked only the left edge of a half-width picture and left hard cuts on the
+   other three; a frame that stops has to stop into something, and here there is
+   nothing to stop into but flat ground.
+
+   So the frame fills the band and two gradients dispose of every edge: one
+   across, which also builds the dark field the proposition needs on the left,
+   and one down, which dissolves the top and foot into the page. The car sits
+   right of centre by object-position rather than by cropping the file. */
+.process__band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 520px;
+  padding-block: var(--space-8);
+  margin-bottom: var(--space-7);
+  overflow: hidden;
+  isolation: isolate;
+}
+.process__band > .container { position: relative; z-index: 1; }
+.process__intro { max-width: 560px; }
+
+.process__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% center;
+  z-index: -2;
+}
+
+.process__band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(to right,
+      var(--color-bg) 0%,
+      rgba(11, 15, 20, 0.94) 24%,
+      rgba(11, 15, 20, 0.58) 46%,
+      rgba(11, 15, 20, 0.20) 68%,
+      rgba(11, 15, 20, 0.12) 100%),
+    linear-gradient(to bottom,
+      var(--color-bg) 0%,
+      rgba(11, 15, 20, 0) 16%,
+      rgba(11, 15, 20, 0) 80%,
+      var(--color-bg) 100%);
+}
+
+.process__steps { list-style: none; }
+
+/* One column: the type can no longer have a side of its own, so the frame goes
+   under it and the across-gradient is dropped — only the vertical dissolve is
+   still doing work, plus an even wash to carry the heading. */
+@media (max-width: 1000px) {
+  .process__band {
+    min-height: 420px;
+    margin-bottom: var(--space-6);
+  }
+  .process__intro { max-width: none; }
+  .process__media { object-position: 62% center; }
+  .process__band::after {
+    background:
+      linear-gradient(rgba(11, 15, 20, 0.62), rgba(11, 15, 20, 0.62)),
+      linear-gradient(to bottom,
+        var(--color-bg) 0%,
+        rgba(11, 15, 20, 0.10) 20%,
+        rgba(11, 15, 20, 0.10) 76%,
+        var(--color-bg) 100%);
+  }
+}
+
 /* ============================================================
    SELL HERO — the valuation form is a first-screen mass, not a
    destination link. Sits beside the proposition, glass over photo.
