@@ -1885,6 +1885,24 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
     rgba(11, 15, 20, 0.2) 70%,
     rgba(11, 15, 20, 0) 100%);
 }
+/* The sell page's break frame throws its headlights straight through the middle
+   band, which is exactly where this component sets its type. Measured on the
+   composited render, #f5f5f5 over the brightest reflection there is 3.68:1 —
+   under the 4.5 the paragraph needs, though the heading would have passed. The
+   component's two gradients meet near-transparent at the middle by design, so a
+   flat 0.22 joins the foot layer for this instance only: enough to carry the
+   text at 5.08:1, light enough that the beam still reads as a beam. */
+#floor::after {
+  background:
+    linear-gradient(rgba(11, 15, 20, 0.22), rgba(11, 15, 20, 0.22)),
+    linear-gradient(to top,
+      #0B0F14 0%,
+      rgba(11, 15, 20, 0.85) 22%,
+      rgba(11, 15, 20, 0.5) 45%,
+      rgba(11, 15, 20, 0.2) 70%,
+      rgba(11, 15, 20, 0) 100%);
+}
+
 .video-break__content {
   position: relative;
   z-index: 2;
@@ -4292,6 +4310,60 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
    SELL HERO — the valuation form is a first-screen mass, not a
    destination link. Sits beside the proposition, glass over photo.
    ============================================================ */
+/* The hero frame is mirrored. The source puts the car and the transporter on
+   the right and throws the headlight beam left across the wet ground; flipped,
+   the beam sweeps toward the valuation form and the crew stands on the
+   proposition's side. */
+.sell-hero .hero__media { transform: scaleX(-1); }
+
+/* ---- THE HEADLIGHTS STRIKE ----
+   The light in this frame is baked into the pixels, so nothing can switch it
+   on. What can be done is to lay the same frame over itself, brightened, and
+   let only the beam through: a mask centred on where the beam actually is —
+   sampled off the source at x 52%, y 62%, spreading x 30–80% and y 45–80% —
+   so the ignition happens in the one place light belongs and the rest of the
+   scene never moves.
+
+   The mask is written in the source's own coordinates on purpose. The layer
+   inherits the hero's scaleX(-1), and a transform is applied after masking, so
+   both travel together and the mirror cannot pull them apart.
+
+   One gesture, once, on arrival: the car has pulled up and its lights come on.
+   It does not repeat, it does not follow the pointer, and it is finished before
+   anyone reaches the valuation form beside it. */
+.sell-hero { isolation: isolate; }   /* keeps the screen blend inside the hero */
+
+.sell-hero__glow {
+  z-index: -2;                       /* same level as the frame; DOM order puts it above */
+  mix-blend-mode: screen;
+  filter: brightness(1.5) saturate(0.85);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 34% 26% at 52% 62%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.72) 42%,
+    rgba(0, 0, 0, 0.22) 72%,
+    transparent 100%);
+  mask-image: radial-gradient(ellipse 34% 26% at 52% 62%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.72) 42%,
+    rgba(0, 0, 0, 0.22) 72%,
+    transparent 100%);
+  animation: sell-ignite 1.15s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s both;
+}
+
+/* struck, not faded up: it overshoots, drops back, then holds — the way a lamp
+   catches rather than the way a slider moves */
+@keyframes sell-ignite {
+  0%   { opacity: 0; }
+  38%  { opacity: 0.92; }
+  52%  { opacity: 0.66; }
+  100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sell-hero__glow { animation: none; opacity: 1; }
+}
 .sell-hero .container { width: 100%; }
 .sell-hero__layout {
   display: grid;
@@ -4315,37 +4387,41 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   .sell-hero__layout .hero__content { max-width: none; }
 }
 
-/* Sell hero scrim — rebuilt, not deepened. The proposition sits lower-left and
-   the valuation form sits right, so the darkening is biased to the left third:
-   the type gets a dedicated ground while the building and the cars stay legible.
-   A uniformly deeper scrim would have bought the same contrast by erasing the scene.
-   Verified on the composited render at 1440/1280/768/390. */
+/* Sell hero scrim — measured off, not tuned down.
+   The left-biased diagonal here was authored for the daylight photograph this
+   hero used to carry, where the type genuinely needed a ground cut for it. The
+   frame it carries now is a night scene whose left third is already all but
+   black: sampled under the proposition, the brightest pixel is rgb(49,44,39),
+   and #f5f5f5 clears 12.67:1 against it with no scrim at all. The diagonal was
+   therefore buying no legibility at full strength and spending the car to do it.
+   What is left is a quarter of it — 0.42 rather than 0.90, running out entirely
+   by two thirds across — kept for the weight it gives the proposition, not for
+   contrast it no longer has to buy. The vertical carries the header and the foot. */
 .sell-hero::after {
   background:
     linear-gradient(100deg,
-      rgba(11, 15, 20, 0.90) 0%,
-      rgba(11, 15, 20, 0.78) 42%,
-      rgba(11, 15, 20, 0.26) 68%,
-      rgba(11, 15, 20, 0.06) 100%),
+      rgba(11, 15, 20, 0.42) 0%,
+      rgba(11, 15, 20, 0.30) 38%,
+      rgba(11, 15, 20, 0.10) 66%,
+      rgba(11, 15, 20, 0) 100%),
     linear-gradient(to bottom,
-      rgba(11, 15, 20, 0.88) 0%,
-      rgba(11, 15, 20, 0.44) 20%,
-      rgba(11, 15, 20, 0.28) 46%,
-      rgba(11, 15, 20, 0.44) 74%,
-      rgba(11, 15, 20, 0.82) 100%);
+      rgba(11, 15, 20, 0.72) 0%,
+      rgba(11, 15, 20, 0.20) 22%,
+      rgba(11, 15, 20, 0.06) 50%,
+      rgba(11, 15, 20, 0.30) 78%,
+      rgba(11, 15, 20, 0.72) 100%);
 }
-/* On one column the form stacks under the type, so the left bias stops making
-   sense — fall back to a straight vertical scrim. */
+/* On one column the form stacks under the type and the frame is cropped much
+   tighter, so the same vertical runs a little deeper here. */
 @media (max-width: 1000px) {
   .sell-hero::after {
     background:
-      linear-gradient(rgba(11, 15, 20, 0.18), rgba(11, 15, 20, 0.18)),
       linear-gradient(to bottom,
-        rgba(11, 15, 20, 0.90) 0%,
-        rgba(11, 15, 20, 0.68) 18%,
-        rgba(11, 15, 20, 0.60) 46%,
-        rgba(11, 15, 20, 0.78) 74%,
-        rgba(11, 15, 20, 0.94) 100%);
+        rgba(11, 15, 20, 0.80) 0%,
+        rgba(11, 15, 20, 0.34) 20%,
+        rgba(11, 15, 20, 0.16) 48%,
+        rgba(11, 15, 20, 0.46) 76%,
+        rgba(11, 15, 20, 0.84) 100%);
   }
 }
 
@@ -4453,6 +4529,8 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   font-weight: var(--weight-medium);
   font-size: var(--text-base);
   line-height: 1.16;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--color-text);
 }
 .team-shot__role {
@@ -4461,6 +4539,11 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-soft);
+  /* Two lines are reserved whether the role needs them or not, so every
+     name in the grid sits on one baseline instead of stepping with the
+     length of the title beneath it. */
+  line-height: 1.35;
+  min-height: calc(1.35em * 2);
 }
 
 /* No portrait supplied yet. An authored typographic tile, NOT the client's
@@ -4568,6 +4651,40 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   box-shadow: 0 0 0 5px rgba(206, 182, 85, 0.12);
 }
 
+
+/* ---- THE YEAR, WRITTEN LARGE BEHIND THE ROAD ----
+   An outline, not a fill: at this size a solid numeral would out-rank the
+   medallion it sits behind. It carries the year at distance — where the caption
+   beside the title is unreadable — so the two are not one device twice. */
+.route-ghost {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  transform: translate(-50%, calc(-50% - var(--space-9)));
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  font-size: clamp(140px, 22vw, 340px);
+  line-height: 0.82;
+  letter-spacing: 0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(206, 182, 85, 0.16);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 700px) {
+  .route-ghost { transform: translate(-50%, calc(-50% - var(--space-7))); }
+}
+
+/* ---- THE WIRE ----
+   The box only; the wave itself is a path drawn by the route script, which
+   owns both its phase and its amplitude. It crosses the midline once per stop,
+   so every year rides the road however hard the road is moving. */
+.route-road {
+  height: 120px;
+  margin-top: -60px;
+}
 /* the years fade out toward the edges rather than being cut by them */
 .route-shell::before,
 .route-shell::after {
@@ -4758,6 +4875,100 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 @media (prefers-reduced-motion: reduce) {
   .route__frame, .route__year, .route__title, .route__desc, .route__node { transition: none; }
 }
+
+/* ---- A LANDMARK YEAR CHANGES SHAPE ----
+   Where a full-size frame exists, the medallion is the wrong container: it
+   crops a 3:2 photograph to a circle and throws two thirds of it away. Those
+   stops open into a plate at the source ratio instead — the car is seen whole,
+   and the years between them stay medallions, so the strip keeps its rhythm
+   and the landmark reads as the arrival it is.
+   420x280 is the source ratio exactly: no crop, nothing upscaled.
+
+   THE ROAD IS NO LONGER AT THE HALFWAY MARK. It used to be, and the two halves
+   were 1fr 1fr — which meant the caption's reserve also set the height above
+   the road, and the plate could only be given room by inflating both. The line
+   is now placed by --road-y, so each side is sized for what it actually holds:
+   the plate above, the caption below. The node and the grid read the same
+   variable, so they cannot drift apart. */
+.route-shell {
+  --road-y: 304px;
+  --route-h: 576px;
+}
+.route-road {
+  top: var(--road-y);
+  /* the wave is a drawn path now, not a tiled image */
+  background: none;
+  overflow: visible;
+}
+.route-road__wave { display: block; width: 100%; height: 120px; overflow: visible; }
+.route__node { top: var(--road-y); }
+.route__stop { grid-template-rows: var(--road-y) 1fr; }
+
+.route__stop--wide.is-active { z-index: 3; }
+.route__stop--wide.is-active .route__frame {
+  width: 420px;
+  height: 280px;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-4);
+}
+
+/* the morph itself — the circle has to be able to travel to the plate, so the
+   box properties join the transition the medallion already had */
+.route__frame {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              filter 0.35s ease,
+              border-color 0.35s ease,
+              width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* the slider sat a full section's worth of air below the road; it belongs to
+   the road, so it is brought up under it */
+.route-scrub { padding-block: var(--space-3) var(--space-2); }
+
+@media (max-width: 700px) {
+  .route-shell { --road-y: 224px; --route-h: 500px; }
+  .route__stop--wide.is-active .route__frame {
+    width: min(420px, 74vw);
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route__frame { transition: none; }
+}
+
+/* ---- THE FIELD ----
+   An oval, not a circle. The strip is long and low, so a round wash would read
+   as a spotlight thrown on the middle year; a wide ellipse reads as ground the
+   whole road stands on, and its soft top edge gives the medallions something to
+   sit against instead of open black.
+
+   The blue is derived, not chosen: #16212D is the one cool raised tone this
+   project already owns — the password gate lights its card on exactly that
+   ellipse — pushed a step further into blue and left dirty, so it stays a
+   setting and never becomes a colour.
+
+   Measured on the composited render, at the oval's brightest point rgb(17,27,40):
+   body text 14.62:1, captions 6.24:1 — both clear. One thing the wash did sink:
+   the waypoint dot at #506172 sat exactly on the 3.00 floor and fell to 2.70, so
+   it is lifted one step inside this section only. */
+#heritage {
+  --node-ink: #5C6E80;   /* 3.28:1 on the wash — the smallest lift that clears 3.0 */
+  background: radial-gradient(ellipse 45% 44% at 50% 44%,
+    rgba(23, 38, 58, 0.55) 0%,
+    rgba(20, 32, 48, 0.26) 46%,
+    rgba(11, 15, 20, 0) 100%);
+}
+#heritage .route__node { background: var(--node-ink); }
+
+/* The strip's edge fades paint solid --color-bg to hide the cut medallions, so
+   they can only stay invisible where the wash has already reached zero. That is
+   why the ellipse stops at 45% of the width: by the left and right edges there
+   is nothing left to paint over, and the fades go back to being invisible. */
 
 /* ============================================================
    ROUTE CONTROLS — step arrows and a year slider.
