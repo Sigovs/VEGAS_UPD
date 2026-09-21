@@ -43,6 +43,9 @@
     nav.classList.remove('is-open');
     navToggle?.setAttribute('aria-expanded', 'false');
     document.body.style.removeProperty('overflow');
+    // fold the accordions so the panel reopens tidy
+    nav.querySelectorAll('.is-expanded').forEach((li) => li.classList.remove('is-expanded'));
+    nav.querySelectorAll('.nav-sub-toggle').forEach((b) => b.setAttribute('aria-expanded', 'false'));
   };
 
   if (navToggle && nav) {
@@ -50,6 +53,32 @@
       const open = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', String(open));
       document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    // Phone panel: every top-level link that owns a sub-list gets a chevron
+    // after it. The label still navigates; the chevron folds the list open.
+    // CSS hides the button above 900px, where the sub-lists hover-open instead.
+    nav.querySelectorAll('.nav__list > li').forEach((li) => {
+      const link = li.querySelector(':scope > .nav__link');
+      const sub = li.querySelector(':scope > .mega-menu, :scope > .nav__dropdown');
+      if (!link || !sub) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'nav-sub-toggle';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', `Show ${link.textContent.trim()} menu`);
+      btn.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l5 5 5-5"/></svg>';
+      link.insertAdjacentElement('afterend', btn);
+      btn.addEventListener('click', () => {
+        const open = li.classList.toggle('is-expanded');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    });
+
+    // Rotating / resizing past the breakpoint with the panel open would leave
+    // the body scroll-locked under a desktop nav.
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900 && nav.classList.contains('is-open')) closeNav();
     });
   }
 
@@ -988,5 +1017,20 @@
       video.pause();
       seek();
     });
+
+    // Touch has no hover, so the loop above never fires and iOS Safari paints
+    // nothing for a video that has not played (Chromium shows frame 0). The
+    // poster attribute is the safety net; this plays the loop once the panel is
+    // on screen, which iOS allows for muted + playsinline. Low Power Mode will
+    // refuse and the poster stays — that is the designed still, not a fallback.
+    if (window.matchMedia('(hover: none)').matches && !reduceMotion && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { if (video.readyState < 1) video.load(); seek(); play(); }
+          else video.pause();
+        });
+      }, { threshold: 0.35 });
+      io.observe(panel);
+    }
   });
 })();

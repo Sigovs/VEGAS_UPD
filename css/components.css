@@ -117,6 +117,12 @@
 }
 .v6 .site-header:has(.brand-bar).is-scrolled .site-header__inner { padding-block: var(--space-3); }
 /* the kept bar makes the condensed header taller — re-anchor anything sticky under it */
+/* the home hero clears the full header the same way the page heroes do */
+.v6 .hero { padding-top: calc(var(--header-h) + var(--brand-bar-h) + var(--space-5)); }
+/* in-page anchors (#aftermarket, #appointment, #desk …) land below the fixed
+   header instead of under the logo; the VDP gallery keeps its own, larger margin */
+.v6 section[id]:not(.vdp-gallery-sec) { scroll-margin-top: calc(var(--header-h-sm) + var(--space-3)); }
+
 /* Bigger header logo (client). Sync the header-height tokens the srp/vdp/service
    page offsets + sticky anchors read from, so nothing tucks under the taller header. */
 .v6 { --logo-height: 76px; --header-h: 141px; --header-h-sm: 173px; }
@@ -236,6 +242,7 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 .nav-icon:hover { color: var(--color-accent); border-color: var(--color-border); }
 
 .nav-toggle { display: none; }
+.nav-sub-toggle { display: none; }   /* phone-panel accordion chevron — see MOBILE NAV */
 
 /* ============ MEGA MENU (desktop) — reusable, full-width under header ============ */
 /* Host <li> goes static so the panel can span the full header width
@@ -1453,6 +1460,21 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   .services-split { grid-template-columns: 1fr; min-height: 0; }
   .services-split__media { aspect-ratio: 16 / 10; }
   .services-split__panel { padding: var(--space-8) var(--space-4); }
+}
+
+/* v6 (client, 2026-09-21): both split photos read too dark — lift them a touch
+   and shorten the fade-in from the section above so it stops eating the top
+   third. The Aftermarket frame (black car, mean luma 44) gets a little more. */
+.v6 .services-split__media img { filter: brightness(1.14) contrast(0.97); }
+.v6 .services-split--reverse .services-split__media img { filter: brightness(1.22) contrast(0.96); }
+.v6 .services-split__media::after {
+  height: 340px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    color-mix(in srgb, var(--color-bg) 40%, transparent) 40%,
+    transparent 100%
+  );
 }
 
 /* ============ PROMO LINKS (3 boxes, CTA slides in on hover) ============ */
@@ -2732,23 +2754,167 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   transform: none;
 }
 
-/* ============ MOBILE NAV + MEGA ============ */
+/* ============ MOBILE NAV — hamburger + panel ============
+   The prototype originally let the nav wrap into a second header line with
+   no toggle. On a phone that made the sticky header 360px tall and put the
+   menu on top of every page's first screen. This is the toggle the JS was
+   already written for ([data-nav-toggle] / .nav.is-open / closeNav). */
 @media (max-width: 900px) {
-  /* Nav drops to its own full-width line and wraps — no toggle needed */
-  .site-header__inner { flex-wrap: wrap; row-gap: var(--space-3); }
+  /* compact header: 48px brand bar + 52px logo + 12px pads = 125px total,
+     down from 204. The page-offset tokens follow so srp/vdp/service pages
+     don't tuck under (or float below) the shorter bar. */
+  .v6 { --logo-height: 52px; --brand-bar-h: 48px; --header-h: 77px; --header-h-sm: 125px; }
+  .site-header:has(.brand-bar) .site-header__inner,
+  .site-header:has(.brand-bar).is-scrolled .site-header__inner,
+  .v6 .site-header:has(.brand-bar).is-scrolled .site-header__inner { padding-block: 12px; }
+  .brand-bar__logos img[alt="Lotus"] { height: 32px; }
+  .brand-bar__logos img[alt="Vegas Golden Knights"] { height: 26px; }
+  .brand-bar__logos img[alt="Vintage"] { height: 24px; }
 
-  .nav {
-    order: 3;
-    flex-basis: 100%;
+  .site-header__inner { flex-wrap: nowrap; gap: var(--space-3); }
+  .nav-actions { margin-left: auto; gap: 0; }
+  .nav-icon { width: 36px; height: 36px; }
+
+  /* the button — three bars, an X when open */
+  .nav-toggle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-left: var(--space-1);
+    border-radius: 50%;
+    color: var(--color-text);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
+  .nav-toggle:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .nav-toggle__bars {
+    position: relative;
+    width: 22px;
+    height: 14px;
+  }
+  .nav-toggle__bar {
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  }
+  .nav-toggle__bar:nth-child(1) { top: 0; }
+  .nav-toggle__bar:nth-child(2) { top: 6px; }
+  .nav-toggle__bar:nth-child(3) { top: 12px; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* the panel — under the header, full width, scrolls if it has to */
+  .nav {
+    position: absolute;
+    left: 0; right: 0;
+    top: 100%;
+    display: none;
+    max-height: calc(100dvh - 100%);
+    overflow-y: auto;
+    padding: var(--space-3) var(--space-4) var(--space-6);
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.45);
+  }
+  .nav.is-open { display: block; }
 
   .nav__list {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-3) var(--space-4);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
+  .nav__list > li {
+    display: grid;                       /* [ link | chevron ] — sub-list spans below */
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav__list > li:last-child { border-bottom: 0; }
+  .nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0;
+    font-size: var(--text-base);
+    background-image: none;            /* the desktop underline has no job in a stacked list */
+  }
+  .nav__link.is-active { color: var(--color-accent); }
+  .nav__link--menu::after { display: none; }   /* the chevron button carries the affordance here */
+
+  /* accordion chevron (inserted by main.js next to any link that owns a sub-list) */
+  .nav-sub-toggle {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 calc(var(--space-2) * -1) 0 0;   /* icon sits on the text edge, hit area runs to the gutter */
+    border: 0;
+    background: transparent;
+    color: var(--color-text-soft);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-sub-toggle:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -4px; }
+  .nav-sub-toggle svg { width: 16px; height: 16px; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+  .nav-sub-toggle[aria-expanded="true"] { color: var(--color-text); }
+  .nav-sub-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+  /* sub-menus: collapsed until their chevron opens them, then inline, indented */
+  .mega-menu,
+  .nav__dropdown {
+    grid-column: 1 / -1;
+    position: static;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    min-width: 0;
+    padding: 0 0 var(--space-4) var(--space-4);
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    transition: none;
+  }
+  .nav__list > li.is-expanded > .mega-menu,
+  .nav__list > li.is-expanded > .nav__dropdown { display: block; }
+  .nav__dropdown li a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-text-soft);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .mega-menu__inner { display: block; padding: 0; }   /* the desktop 80px band padding has no job in an accordion */
+  .mega-menu__cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  .mega-menu__col-title { font-size: var(--text-sm); margin-bottom: var(--space-2); }
+  .mega-menu__list { gap: 0; }
+  .mega-menu__link { min-height: 40px; display: flex; align-items: center; font-size: var(--text-sm); letter-spacing: 0.08em; }
+  .mega-menu__brands { margin-top: var(--space-4); }
+  .mega-menu__pills { gap: var(--space-2); }
+  .mega-menu__pill { min-height: 40px; }
+  .mega-menu__cta { margin-top: var(--space-4); width: 100%; justify-content: center; }
 
   .footer__cols { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+
+  /* ---- Horizontal overflow on phones (page scrolled sideways to 474px at 390).
+     Three sources, all fixed-width desktop decisions that never got a phone rule. */
+  .inv__head { flex-wrap: wrap; }                              /* "View All Inventory" drops under the title */
+  .ev-redesign .section-head .lead { white-space: normal; }    /* subtitle was pinned to one 520px line */
+  .insta__layout > * { min-width: 0; max-width: 100%; }        /* grid tracks were sized by the 450px Shorts block */
+  .v6 .shorts__grid { width: 100%; max-width: 450px; }
+}
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .nav-toggle__bar { transition: none; }
 }
 
 @media (max-width: 560px) {
@@ -3237,6 +3403,16 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 /* one-line variant — all makes on a single row, sharing width equally */
 .popular-makes__grid--row { flex-wrap: nowrap; }
 .popular-makes__grid--row .popular-makes__item { flex: 1 1 0; min-width: 0; max-width: none; }
+/* phones: eight 50px-padded cells can't share 327px — two rows of four */
+@media (max-width: 900px) {
+  .popular-makes__grid--row { flex-wrap: wrap; gap: var(--space-3); }
+  .popular-makes__grid--row .popular-makes__item { flex: 1 1 calc(25% - var(--space-3)); padding-inline: var(--space-2); }
+  /* open filter panels anchor to the whole row, not the 95px trigger — a
+     351px panel hanging off a trigger at x=139 scrolled the page sideways */
+  .srp-filters__row { position: relative; }
+  .filter, .sort { position: static; }
+  .filter__panel, .sort__panel { left: 0; right: 0; width: auto; max-width: none; }
+}
 
 @media (prefers-reduced-motion: reduce) { .popular-makes__item:hover { transform: none; } }
 
@@ -3267,10 +3443,8 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   .srp-grid { grid-template-columns: repeat(2, 1fr); }
   .filter-all__grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 900px) {
-  /* keep the approved wrap-nav; mega panel is a desktop hover enhancement */
-  .mega-menu { display: none; }
-}
+/* (the old ≤900px `.mega-menu { display:none }` from the wrap-nav era lived here —
+   removed: the hamburger panel renders the mega menu inline, see MOBILE NAV) */
 @media (max-width: 640px) {
   .srp-grid { grid-template-columns: 1fr; }
 }
@@ -4110,7 +4284,10 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   min-height: 100vh;
   min-height: 100dvh;
   align-items: flex-end;
-  padding-top: calc(var(--header-h) + var(--space-4));
+  /* clear the WHOLE fixed header (brand bar + nav row), not just the nav row:
+     on phones the content is taller than the viewport, so it sits at this
+     padding, and at 101px the eyebrow ran under the logo (client, 2026-09-21) */
+  padding-top: calc(var(--header-h) + var(--brand-bar-h) + var(--space-5));
   padding-bottom: var(--space-10);
 }
 /* darken top (for nav contrast) and bottom (for text), keep the middle clear */
