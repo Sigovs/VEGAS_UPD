@@ -5172,3 +5172,42 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 @media (prefers-reduced-motion: reduce) {
   .route-nav, .route-scrub__handle { transition: none; }
 }
+
+/* ============================================================
+   v6 HOME HERO SCRIM — rebuilt for the client's Strip footage.
+   layout.css .hero::after was drawn for a dark showroom loop: one bottom-up
+   gradient, transparent across the top half. The new convoy footage is lit
+   by the Strip — palms and headlights sit exactly where the four-line
+   display and the eyebrow start, and the nav row crosses bright fronds.
+   Measured on the composited render against the brightest of seven frames
+   sampled across the loop: eyebrow 1.01:1, display 1.57:1, lead 2.81:1.
+   This scrim is constructed rather than deepened: a left column for the
+   text, a top band for the nav, and the centre-right — the car — left open.
+   Scoped to .v6 so index..index5, which keep the old loop, are untouched.
+   ============================================================ */
+.v6 .hero::after {
+  background:
+    linear-gradient(100deg,
+      rgba(11, 15, 20, 0.90) 0%,
+      rgba(11, 15, 20, 0.78) 32%,
+      rgba(11, 15, 20, 0.30) 56%,
+      rgba(11, 15, 20, 0.06) 100%),
+    linear-gradient(to bottom,
+      rgba(11, 15, 20, 0.84) 0%,
+      rgba(11, 15, 20, 0.34) 22%,
+      rgba(11, 15, 20, 0.20) 50%,
+      rgba(11, 15, 20, 0.56) 78%,
+      rgba(11, 15, 20, 0.82) 100%);
+}
+@media (max-width: 1000px) {
+  .v6 .hero::after {
+    background:
+      linear-gradient(rgba(11, 15, 20, 0.30), rgba(11, 15, 20, 0.30)),
+      linear-gradient(to bottom,
+        rgba(11, 15, 20, 0.86) 0%,
+        rgba(11, 15, 20, 0.58) 20%,
+        rgba(11, 15, 20, 0.50) 50%,
+        rgba(11, 15, 20, 0.78) 78%,
+        rgba(11, 15, 20, 0.94) 100%);
+  }
+}

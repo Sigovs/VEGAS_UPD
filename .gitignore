@@ -10,3 +10,6 @@
 
 # Playwright MCP artifacts
 .playwright-mcp/
+
+# Raw video drops (multi-GB .mov masters) — working encodes live in assets/video/
+VIDEOS/
