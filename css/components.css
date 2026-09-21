@@ -162,6 +162,22 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   transition: color var(--transition), background-size var(--transition);
 }
 
+/* tablet band (above the hamburger, below the wide desktop): the seven labels
+   plus "Finance Center" need ~770px — trim the gap and tracking so the row holds
+   to 1200 and wraps to two lines, not three, below that */
+@media (min-width: 901px) and (max-width: 1279px) {
+  .nav__list { gap: var(--space-3); }
+  .nav__link { letter-spacing: 0.12em; }
+}
+/* small tablets / landscape phones: the row can't fit between logo and icons,
+   so the nav takes a full second line instead of wrapping into three */
+@media (min-width: 901px) and (max-width: 1099px) {
+  .site-header__inner { flex-wrap: wrap; row-gap: var(--space-2); }
+  .nav { order: 3; flex: 1 0 100%; }
+  .nav__list { justify-content: center; }
+  .v6 { --header-h: 178px; --header-h-sm: 211px; }   /* +38px nav line (measured), offsets follow */
+}
+
 .nav__link:hover,
 .nav__link[aria-expanded="true"] {
   color: var(--color-accent);
@@ -2906,6 +2922,18 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 
   .footer__cols { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
 
+  /* ---- A button standing alone in its row spans the row (client, 2026-09-21).
+     Pairs (hero actions, split-section actions) keep their own widths. */
+  .ev-cards__more .btn,
+  .srp-loadmore .btn,
+  .vdp-form__actions .btn,
+  .route-actions .btn,
+  .buy-form > .btn,
+  .journey__intro .btn,
+  .service-location__panel .btn,
+  .parts-promo__overlay .btn,
+  .video-break__content .btn { width: 100%; justify-content: center; }
+
   /* ---- Horizontal overflow on phones (page scrolled sideways to 474px at 390).
      Three sources, all fixed-width desktop decisions that never got a phone rule. */
   .inv__head { flex-wrap: wrap; }                              /* "View All Inventory" drops under the title */
@@ -4416,6 +4444,10 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
 
 @media (max-width: 900px) {
   .service-hero__boxes { grid-template-columns: repeat(2, 1fr); }
+  /* phone: the image is a fixed 360px band and the copy (eyebrow, 3-line title,
+     lead, button) overran it — let the copy set the height, image fills behind */
+  .parts-promo__img { position: absolute; inset: 0; height: 100%; }
+  .parts-promo__overlay { position: relative; inset: auto; min-height: 360px; padding: var(--space-6) var(--space-4); }
 }
 @media (max-width: 860px) {
   .service-location__layout { grid-template-columns: 1fr; }
