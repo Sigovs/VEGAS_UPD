@@ -1,0 +1,20 @@
+PROVENANCE — synthetic imagery, finance6.html "Four Ways to Own"
+Generator : ChatGPT image generation (OpenAI), supplied by Alex
+Generated : 2026-09-21, ~16:17 local  (supersedes the 16:01 set, which showed the
+            cars alone; this set shows the service each card is about)
+Source    : VIDEOS/ChatGPT Image Sep 21, 2026, 04_17_{01,13,19,25} PM.png  (1448x1086 PNG, gitignored)
+Derived   : sips → JPEG q82, longest side 1200 px
+Prompts   : not recorded at generation — Alex to paste the four prompts here
+
+gen-finance-financing.jpg   (16:17:25) finance desk — consultant across from a client, leather
+                            folio and pen, grey Ferrari Roma behind glass. Faces cropped by the frame.
+gen-finance-leasing.jpg     (16:17:19) grey Porsche 911 at a hotel entrance at night, valet holding
+                            the door for a client
+gen-finance-tradein.jpg     (16:17:13) grey Mercedes-AMG G63 inspected with a torch, second
+                            figure with a tablet behind
+gen-finance-protection.jpg  (16:17:01) technician laying paint-protection film over a Raptor's
+                            hood, rain-beaded
+
+Known departures from generated-imagery GI4 (no type / logo in frame), left as
+supplied and reported: badges on all four; "PORSCHE" and "GTS" lettering across
+the 911's light bar; "ORD" + red "R" on the Raptor grille.
