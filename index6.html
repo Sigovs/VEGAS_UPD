@@ -858,14 +858,15 @@
     </div>
   </section>
 
-  <!-- ============ VIDEO BREAK ============ -->
-  <section class="video-break" id="video-break" aria-label="Czinger">
-    <video class="video-break__media" src="assets/video/czinger.mp4" autoplay muted loop playsinline preload="metadata"></video>
+  <!-- ============ VIDEO BREAK — client lifestyle reel (2026-09-22) ============ -->
+  <!-- 16MB, so it carries a poster and only loads/plays once the band is in view
+       (data-inview-video). Under reduced motion the poster is the whole story. -->
+  <section class="video-break" id="video-break" aria-label="Life at the gallery">
+    <video class="video-break__media" src="assets/video/lifestyle.mp4" poster="assets/images/lifestyle-poster.jpg" muted loop playsinline preload="none" data-inview-video aria-hidden="true"></video>
     <div class="video-break__content" data-reveal>
-      <img class="video-break__logo" src="assets/images/czinger_logo.svg" alt="Czinger">
-      <h2 class="heading-light">Revolutionary Technology</h2>
-      <p class="video-break__text">The pinnacle of automotive engineering, art and technology&#8288;-&#8288;based design.</p>
-      <a class="btn btn--primary video-break__cta" href="#inventory">Explore</a>
+      <h2 class="heading-light">Life at the Gallery</h2>
+      <p class="video-break__text">Private launches, open-desert drives and Cars &amp; Coffee mornings — the people who turn a collection into a community.</p>
+      <a class="btn btn--primary video-break__cta" href="#events">See What&#8217;s On</a>
     </div>
   </section>
 

@@ -82,6 +82,22 @@
     });
   }
 
+  /* ---------- Heavy background video: load + play only in view ----------
+     The lifestyle band is 16MB. preload="none" + a poster means nothing is
+     fetched until the visitor reaches the band, and the poster is the static
+     path when the visitor asked for reduced motion. */
+  document.querySelectorAll('[data-inview-video]').forEach((video) => {
+    if (reduceMotion) return;                       // poster carries it
+    if (!('IntersectionObserver' in window)) { video.play().catch(() => {}); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      });
+    }, { threshold: 0.25 });
+    io.observe(video);
+  });
+
   /* ---------- Inventory mega menu ---------- */
   const megaToggle = document.querySelector('[data-mega-toggle]');
   const mega = document.querySelector('[data-mega]');

@@ -140,7 +140,11 @@
 
     <!-- ============ HERO — full-screen, darkened, with 4 service boxes ============ -->
     <section class="hero service-hero" id="service-top" aria-labelledby="service-heading">
-      <img class="hero__media" src="assets/images/service-hero.jpg" alt="" aria-hidden="true">
+      <!-- client drone footage of the service centre (2026-09-22); service-hero.jpg
+           stays in place for the older service page variants -->
+      <video class="hero__media" autoplay muted loop playsinline poster="assets/images/service-hero-poster.jpg" aria-hidden="true">
+        <source src="assets/video/service.mp4" type="video/mp4">
+      </video>
       <div class="container container--wide">
         <div class="hero__content">
           <span class="eyebrow eyebrow--oswald">Service Department</span>
