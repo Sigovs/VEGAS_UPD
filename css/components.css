@@ -42,6 +42,16 @@
 /* Logo pushes the nav + call group to the right */
 .site-header__inner .logo { margin-right: auto; }
 
+/* v6: the nav sits centred in the space between the logo and the icon group,
+   the way the live site reads (client, 2026-09-22) — not pushed up against the
+   icons. Below 1100px the nav already takes its own centred line, so this only
+   governs the single-row desktop header. */
+@media (min-width: 1100px) {
+  .v6 .site-header__inner .logo { margin-right: 0; }
+  .v6 .nav { flex: 1 1 auto; min-width: 0; }
+  .v6 .nav__list { justify-content: center; }
+}
+
 /* Condensed state after scroll (toggled by JS) — stays roomy */
 .site-header.is-scrolled {
   padding-block: var(--header-pad-sm);
