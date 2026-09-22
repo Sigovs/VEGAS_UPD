@@ -1965,14 +1965,15 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 .service-hero .service-hero__box { background: rgba(11, 15, 20, 0.35); }
 .service-hero .service-hero__box p { color: var(--color-text); }
 
-/* The client's lifestyle reel (index6) is a bright, fast-cut event montage —
-   mean luminance 112 over its 49s, brightest shots 162 — and this component
-   leaves its middle deliberately clear, which is exactly where it sets its type.
-   Measured on the composited render across the whole reel, #f5f5f5 landed at
-   1.68:1 there and the soft-grey paragraph at 1.00:1. So this instance lifts the
-   paragraph to the same near-white and darkens a spine under the text block
-   rather than washing the whole frame: worst frame is now 5.49 (heading) and
-   4.87 (paragraph), and the footage still reads at the edges. The foot gradient
+/* The client's lifestyle reel (index6) is a bright, fast-cut event montage, and
+   this component leaves its middle deliberately clear, which is exactly where it
+   sets its type. Measured on the composited render across every frame, #f5f5f5
+   landed at 1.68:1 there and the soft-grey paragraph at 1.00:1. So this instance
+   lifts the paragraph to the same near-white and darkens a spine under the text
+   block rather than washing the whole frame: worst frame 5.56 (heading) and
+   4.85 (paragraph) on the 32s cut the client supplied on 2026-09-22 — re-measured
+   against it, not carried over — and the footage still reads at the edges. The
+   foot gradient
    is the component's own, re-expressed over a full-height box (its stops scaled
    by 0.65) so the spine can be positioned against the whole band. */
 #video-break::after {
@@ -1995,7 +1996,7 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 /* Phones crop the same reel much harder and the type runs nearly edge to edge,
    so the elliptical spine stops covering it — measured 3.02 (heading) and 2.96
    (paragraph) at 375px. Widening the ellipse past the band turns it into a
-   horizontal band of shade: 5.71 and 5.93. */
+   horizontal band of shade: 5.72 and 5.92. */
 @media (max-width: 900px) {
   #video-break::after {
     background:
