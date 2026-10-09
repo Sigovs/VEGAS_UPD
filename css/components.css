@@ -618,20 +618,24 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   object-position: 50% center;
 }
 
-/* Hennessey Blackbird faces left, spanning 32–69% of the frame. A collapsed
-   panel is only 211–342px wide, so pin the crop's left edge at 30% of the
-   frame (-245px = 0.30 × 818px, the 16:9 frame at the 460px panel height):
-   the nose always shows whole, and the full car once the panel is ≥300px.
+/* Hennessey Blackbird faces left, spanning 21–83% of the first frame. A
+   collapsed panel is only 211–342px wide, too narrow for the whole car, so pin
+   the crop's left edge at 18% of the frame (-147px = 0.18 × 818px, the 16:9
+   frame at the 460px panel height): the nose always shows whole.
    Recentre on expand. Desktop only — the stacked mobile panels are wide. */
 @media (min-width: 801px) {
   .brands-accordion--overlay .brand-panel__video--hennessey {
-    object-position: -245px center;
+    object-position: -147px center;
     transition: transform var(--transition-slow), object-position var(--transition-slow);
   }
   .brands-accordion--overlay .brand-panel:hover .brand-panel__video--hennessey,
   .brands-accordion--overlay .brand-panel.is-open .brand-panel__video--hennessey {
     object-position: 50% center;
   }
+}
+/* Stacked phone panels crop the sides too — bias left so the nose clears the edge */
+@media (max-width: 800px) {
+  .brands-accordion--overlay .brand-panel__video--hennessey { object-position: 40% center; }
 }
 
 /* Stack on small screens — every panel full-width, no accordion */
