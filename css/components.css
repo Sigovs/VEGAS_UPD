@@ -618,33 +618,17 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   object-position: 50% center;
 }
 
-/* Hennessey: the clip frames the car too large (62% of frame width) to show
-   whole in a 211–342px collapsed panel, so the collapsed panel rests on the
-   client's wider still of the same hangar (car 30–71% of a 1.58:1 frame —
-   whole from ~300px of panel width) and crossfades to the clip on hover.
-   Pointer devices only; touch keeps the self-playing clip. Under reduced
-   motion the clip never plays, so the still stays. */
-@media (min-width: 801px) and (hover: hover) {
-  .brands-accordion--overlay .brand-panel__video--hennessey {
-    opacity: 0;
-    transition: transform var(--transition-slow), opacity var(--transition-slow);
-  }
-  .brands-accordion--overlay .brand-panel:hover .brand-panel__video--hennessey {
-    opacity: 1;
-  }
-}
-@media (min-width: 801px) and (hover: hover) and (prefers-reduced-motion: reduce) {
-  .brands-accordion--overlay .brand-panel:hover .brand-panel__video--hennessey { opacity: 0; }
-}
-/* Below ~300px of panel no crop holds the whole car — keep the nose whole:
-   crop's left edge at 28% of the still (-204px = 0.28 × 727px, the still's
-   width at the 460px panel height). */
+/* Hennessey's poster is the client's wider hangar still (car 30–71% of the
+   frame), so the collapsed panel shows the car whole from ~300px of panel
+   width. Below that no crop holds it — pin the crop's left edge at -170px
+   so the nose stays whole in both the still (23% of its 727px width at the
+   460px panel height) and the clip (21% of its 818px). Recentre on expand. */
 @media (min-width: 801px) and (max-width: 1199px) {
-  .brands-accordion--overlay .brand-panel__still--hennessey {
-    object-position: -204px center;
+  .brands-accordion--overlay .brand-panel__video--hennessey {
+    object-position: -170px center;
     transition: transform var(--transition-slow), object-position var(--transition-slow);
   }
-  .brands-accordion--overlay .brand-panel:hover .brand-panel__still--hennessey { object-position: 50% center; }
+  .brands-accordion--overlay .brand-panel:hover .brand-panel__video--hennessey { object-position: 50% center; }
 }
 /* Stacked phone panels crop the sides too — bias left so the nose clears the edge */
 @media (max-width: 800px) {

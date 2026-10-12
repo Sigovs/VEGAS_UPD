@@ -1031,7 +1031,11 @@
     });
     panel.addEventListener('mouseleave', () => {
       video.pause();
-      seek();
+      // data-rest="poster": the poster is the designed collapsed still (the
+      // clip's own frames crop the subject), so reset to it rather than
+      // resting on a video frame. load() drops back to the poster.
+      if (video.dataset.rest === 'poster') video.load();
+      else seek();
     });
 
     // Touch has no hover, so the loop above never fires and iOS Safari paints
