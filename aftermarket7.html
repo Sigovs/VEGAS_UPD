@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aftermarket Department &mdash; Vegas Auto Gallery</title>
+  <meta name="description" content="PPF, vinyl, performance upgrades, wheels, body kits and bespoke customizations at the Vegas Auto Gallery aftermarket department.">
+
+  <!-- Fonts: Oswald (display/headings) + Roboto Condensed (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (order: reset → tokens → base → layout → components) -->
+  <!-- Private preview gate (All Auto Network) -->
+  <script src="js/gate.js"></script>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css?v=20261112j">
+
+  <!-- Leaflet map (open-source) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+
+  <script src="js/main.js?v=20261112j" defer></script>
+</head>
+<body class="v2 v6">
+
+  <!-- ============ HEADER (shared — the demo's navigation) ============ -->
+  <header class="site-header" data-header>
+    <div class="brand-bar">
+      <div class="container container--wide brand-bar__inner">
+        <span class="brand-bar__label">Authorized Dealer</span>
+        <nav class="brand-bar__logos" aria-label="Brands we curate">
+          <a href="srp7.html?make=lotus" aria-label="Lotus inventory"><img src="assets/images/footer/lotus_color.svg" alt="Lotus"></a>
+          <a href="srp7.html?make=czinger" aria-label="Czinger inventory"><img src="assets/images/czinger_logo.svg" alt="Czinger"></a>
+          <a href="srp7.html?make=hennessey" aria-label="Hennessey inventory"><img src="assets/images/footer/hennesy_color.svg" alt="Hennessey"></a>
+          <a href="srp7.html?make=vintage" aria-label="Vintage inventory"><img src="assets/images/vintage_logo.svg" alt="Vintage"></a>
+          <img class="brand-bar__partner" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights" title="Official Luxury Car Partner of the Vegas Golden Knights">
+        </nav>
+      </div>
+    </div>
+    <div class="container container--wide site-header__inner">
+      <a href="index7.html" class="logo" aria-label="Vegas Auto Gallery — home">
+        <img class="logo__img" src="assets/images/logo_upd.svg" alt="Vegas Auto Gallery">
+      </a>
+
+      <nav class="nav nav--asbuilt" id="primary-nav" data-nav aria-label="Primary">
+        <ul role="list" class="nav__list">
+          <li class="nav__item--mega">
+            <a href="srp7.html" class="nav__link nav__link--menu" aria-haspopup="true">Inventory</a>
+            <div class="mega-menu" role="menu" aria-label="Inventory">
+              <div class="mega-menu__inner">
+                <div class="mega-menu__cols">
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">New Vehicles</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp7.html?cond=new"><span>All New Inventory</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=new&amp;make=lotus"><span>New Lotus Inventory</span></a>
+                      <a class="mega-menu__link" href="enquiries7.html"><span>New Vehicle Enquiries</span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Pre-Owned Vehicles</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp7.html?cond=preowned"><span>All Pre-Owned Inventory</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=preowned&amp;specials=1"><span>Pre-Owned Specials</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=sold"><span>Sold Vehicles</span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Personalized Shopping</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="garage7.html"><span>Saved Vehicles</span></a>
+                      <a class="mega-menu__link" href="source7.html"><span>Source a Vehicle</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mega-menu__brands">
+                  <p class="mega-menu__col-title">Browse by Brand</p>
+                  <div class="mega-menu__pills">
+                    <a class="mega-menu__pill" href="srp7.html?make=ferrari">Ferrari</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=jaguar">Jaguar</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=lamborghini">Lamborghini</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=mercedes-benz">Mercedes-Benz</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=porsche">Porsche</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=rolls-royce">Rolls-Royce</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=all">All Makes</a>
+                  </div>
+                  <a class="btn btn--primary mega-menu__cta" href="srp7.html">View All Inventory <span aria-hidden="true">&rarr;</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="sell7.html" class="nav__link nav__link--menu" aria-haspopup="true">Sell Your Car</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="sell7.html" role="menuitem">Sell Your Car</a></li>
+              <li><a href="consign7.html" role="menuitem">Consignment</a></li>
+              <li><a href="trade7.html" role="menuitem">Value Your Trade</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="service7.html" class="nav__link nav__link--menu" aria-haspopup="true">Service</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="service7.html" role="menuitem">Service Department</a></li>
+              <li><a href="appointment7.html" role="menuitem">Schedule Service</a></li>
+              <li><a href="https://parts.vegasautogallery.com/" role="menuitem" target="_blank" rel="noopener">Parts</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="aftermarket7.html" class="nav__link nav__link--menu is-active" aria-current="page" aria-haspopup="true">Aftermarket</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="aftermarket7.html" role="menuitem">Customization &amp; Performance</a></li>
+              <li><a href="consultation7.html" role="menuitem">Request a Consultation</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="finance7.html" class="nav__link nav__link--menu" aria-haspopup="true">Finance Center</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="finance7.html" role="menuitem">Financing Options</a></li>
+              <li><a href="https://www.routeone.net/digital-retail-ui/?dealerId=JH6TO" role="menuitem" target="_blank" rel="noopener">Apply for Financing</a></li>
+              <li><a href="finance7.html#calculator" role="menuitem">Payment Calculator</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="about7.html" class="nav__link nav__link--menu" aria-haspopup="true">About Us</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="about7.html" role="menuitem">Our Story</a></li>
+              <li><a href="vip7.html" role="menuitem">VIP Experience</a></li>
+              <li><a href="about7.html#team" role="menuitem">Meet the Team</a></li>
+              <li><a href="blog7.html" role="menuitem">The Journal</a></li>
+              <li><a href="locations7.html" role="menuitem">Locations &amp; Hours</a></li>
+              <li><a href="heritage7.html" role="menuitem">Heritage</a></li>
+              <li><a href="lotuswest7.html" role="menuitem">Vegas Auto Gallery Lotus West Directions</a></li>
+            </ul>
+          </li>
+          <li><a href="contact7.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="nav-icon" href="tel:7252190524" aria-label="Call 725-219-0524">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a class="nav-icon" href="#footer" aria-label="Hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </a>
+        <a class="nav-icon" href="directions7.html" aria-label="Directions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+          <span class="nav-toggle__bars" aria-hidden="true"><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- ============ HERO — full-screen, darkened, with 4 service boxes ============ -->
+    <section class="hero service-hero" id="service-top" aria-labelledby="service-heading">
+      <!-- client drone footage of the service centre (2026-09-22); service-hero.jpg
+           stays in place for the older service page variants -->
+      <video class="hero__media" autoplay muted loop playsinline poster="assets/images/demo/aftermarket-hero-poster.jpg" aria-hidden="true">
+        <source src="assets/video/aftermarket-hero.mp4" type="video/mp4">
+      </video>
+      <div class="container container--wide">
+        <div class="hero__content">
+          <span class="eyebrow eyebrow--oswald">Aftermarket Services</span>
+          <h1 class="heading-light" id="service-heading">The Aftermarket Department at Vegas Auto Gallery</h1>
+          <div class="hero__actions">
+            <a href="#appointment" class="btn btn--primary">Book an Appointment</a>
+            <a href="tel:7029642886" class="btn btn--secondary">Call 702-964-2886</a>
+          </div>
+        </div>
+        <div class="service-hero__boxes">
+          <div class="service-hero__box"><h3 class="service-item__title">Film Works</h3><p>PPF and vinyl film services. Precision installs with only the highest quality films on the market.</p></div>
+          <div class="service-hero__box"><h3 class="service-item__title">Performance Upgrades</h3><p>OEM quality aftermarket performance solutions. Get the most out of your vehicle, safely and reliably.</p></div>
+          <div class="service-hero__box"><h3 class="service-item__title">Wheels + Tires</h3><p>Personalize your car and improve driving dynamics. We offer custom wheel and tire packages from all of the industry leading manufacturers.</p></div>
+          <div class="service-hero__box"><h3 class="service-item__title">Accessories</h3><p>From fully integrated radar systems to carbon fiber body kits; ski boxes to carbon fiber wings, we offer accessories for every make and model.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT WE SERVICE — 4 image cards (Events pattern) ============ -->
+    <section class="section ev-redesign" aria-labelledby="what-heading">
+      <div class="container container--wide">
+        <div class="section-head section-head--tight" data-reveal>
+          <span class="eyebrow eyebrow--oswald">What We Do</span>
+          <h2 class="heading-light" id="what-heading">Aftermarket Services</h2>
+        </div>
+        <div class="ev-cards" data-reveal>
+          <article class="ev-card">
+            <a href="#appointment" class="ev-card__media"><img src="assets/images/demo/aftermarket-detailing.jpg" alt="Detailing" loading="lazy"></a>
+            <div class="ev-card__body">
+              <span class="ev-card__kicker">Details Matter</span>
+              <h3 class="ev-card__title">Detailing</h3>
+              <p class="ev-card__text">Paint corrections, ceramic coatings, dry ice blasting, and interior surface protections. Keep your investment looking its absolute best.</p>
+            </div>
+          </article>
+          <article class="ev-card">
+            <a href="#appointment" class="ev-card__media"><img src="assets/images/demo/aftermarket-bodykit.jpg" alt="Body Kit Installations" loading="lazy"></a>
+            <div class="ev-card__body">
+              <span class="ev-card__kicker">Complete Transformations</span>
+              <h3 class="ev-card__title">Body Kit Installations</h3>
+              <p class="ev-card__text">Partial and full body kit installations in paint-matched and carbon fiber variations. From carbon fiber add-ons to full body conversions, expertly fitted to your vehicle.</p>
+            </div>
+          </article>
+          <article class="ev-card">
+            <a href="#appointment" class="ev-card__media"><img src="assets/images/demo/aftermarket-brands.jpg" alt="Name Brand Partnerships" loading="lazy"></a>
+            <div class="ev-card__body">
+              <span class="ev-card__kicker">The Finer Things</span>
+              <h3 class="ev-card__title">Name Brand Partnerships</h3>
+              <p class="ev-card__text">Urban Automotive, Mansory USA, HRE Wheels, Brixton Forged, AL13, MV Forged, VF Engineering, Renntech, and many more. We offer only the finest in aftermarket parts and solutions to our discerning clientele.</p>
+            </div>
+          </article>
+          <article class="ev-card">
+            <a href="#appointment" class="ev-card__media"><img src="assets/images/demo/aftermarket-bespoke.jpg" alt="Bespoke Customizations" loading="lazy"></a>
+            <div class="ev-card__body">
+              <span class="ev-card__kicker">A Personal Touch</span>
+              <h3 class="ev-card__title">Bespoke Customizations</h3>
+              <p class="ev-card__text">Personalization tailored to your vehicle, your fleet, and your lifestyle. From the latest and greatest to your childhood favorites, we have extensive experience in all years, makes, and models.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICE SPECIALS — current offers ============ -->
+    <section class="section" id="specials" aria-labelledby="specials-heading">
+      <div class="container container--wide">
+        <div class="section-head section-head--tight" data-reveal>
+          <span class="eyebrow eyebrow--oswald">Current Offers</span>
+          <h2 class="heading-light" id="specials-heading">Aftermarket Specials</h2>
+        </div>
+        <div class="specials" data-reveal>
+          <article class="special">
+            <span class="special__validity">Through October 31</span>
+            <h3 class="special__title">Paint Correction</h3>
+            <p class="special__text">$1,750 – 3-step correction and ceramic coating. Restore your paint and protect it!</p>
+            <span class="special__note">Present this offer at checkout</span>
+          </article>
+          <article class="special">
+            <span class="special__validity">Limited Time</span>
+            <h3 class="special__title">15% Off Vinyl Wrap Materials</h3>
+            <p class="special__text">Receive 15% off vinyl wrap with the purchase of a qualifying installation through December 31, 2026. Some exclusions apply. Consult with your advisor today.</p>
+            <span class="special__note">Present this offer at checkout</span>
+          </article>
+          <article class="special">
+            <span class="special__validity">With Any Service Over $750</span>
+            <h3 class="special__title">Complimentary Hand Detail</h3>
+            <p class="special__text">A full exterior and interior hand detail, on us, with qualifying service.</p>
+            <span class="special__note">Present this offer at checkout</span>
+          </article>
+        </div>
+        <p class="specials__terms t-small" data-reveal>Offers cannot be combined and are subject to change. Please mention the offer when scheduling your appointment.</p>
+      </div>
+    </section>
+
+    <!-- ============ SCHEDULE SERVICE — stepped form (vdp-form pattern) ============ -->
+    <section class="section" id="appointment" aria-labelledby="appt-heading">
+      <div class="container container--wide">
+        <div class="section-head section-head--tight" data-reveal>
+          <span class="eyebrow eyebrow--oswald">Schedule Service</span>
+          <h2 class="heading-light" id="appt-heading">Book an Appointment</h2>
+        </div>
+        <form class="vdp-form" data-inquiry data-reveal>
+          <span class="eyebrow eyebrow--oswald vdp-form__step">1&nbsp;&middot;&nbsp;Vehicle Information</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field"><label for="am-year">Year*</label><input id="am-year" name="year" type="text" required></div>
+            <div class="vdp-form__field"><label for="am-make">make*</label><select id="am-make" name="make" required><option value="">Make</option><option>ACURA</option><option>ALFA ROMEO</option><option>AM GENERAL</option><option>AMC</option><option>AMERICAN MOTORS</option><option>ASTON MARTIN</option><option>AUBURN</option><option>AUSTIN</option><option>AUSTIN HEALEY</option><option>AUDI</option><option>AVANTI</option><option>A.C.</option><option>BENTLEY</option><option>BMC</option><option>BMW</option><option>BUELL</option><option>BUICK</option><option>BUCKBOARD</option><option>CADILLAC</option><option>CHEVROLET</option><option>CHRYSLER</option><option>CORD</option><option>CROSLEY</option><option>CUSHMAN</option><option>DAEWOO</option><option>DAIHATSU</option><option>DELOREAN</option><option>DETOMASO</option><option>DODGE</option><option>DUCATI</option><option>DUESENBERG</option><option>EAGLE</option><option>EDSEL</option><option>ESSEX</option><option>EXCALIBUR</option><option>FERRARI</option><option>FIAT</option><option>FIRESTONE</option><option>FORD</option><option>GEO</option><option>GMC</option><option>HARLEY-DAVIDSON</option><option>HOLLYWOOD</option><option>HOLLYWOOD+PROP</option><option>HONDA</option><option>HUMMER</option><option>HYUNDAI</option><option>INTERNATIONAL</option><option>INFINITI</option><option>ISUZU</option><option>JAGUAR</option><option>JEEP</option><option>JENSEN</option><option>JENSEN HEALEY</option><option>JOHN</option><option>KARMA</option><option>KAWASAKI</option><option>KENT</option><option>KIA</option><option>KIT CARS</option><option>LAMBORGHINI</option><option>LAND ROVER</option><option>LA SALLE</option><option>LEXUS</option><option>LINCOLN</option><option>LOTUS</option><option>MASERATI</option><option>MAYBACH</option><option>MAZDA</option><option>MAXWELL</option><option>MCLAREN</option><option>MERCEDES-BENZ</option><option>MERCURY</option><option>MERKUR</option><option>MINI</option><option>MITSUBISHI</option><option>MORGAN</option><option>MG</option><option>MGA</option><option>MGB</option><option>NISSAN</option><option>OLDSMOBILE</option><option>OTHER</option><option>PANOZ</option><option>PACKARD</option><option>PATHFINDER</option><option>PEUGEOT</option><option>PONTIAC</option><option>PORSCHE</option><option>PLYMOUTH</option><option>QVALE</option><option>RENAULT</option><option>ROLLS-ROYCE</option><option>SAAB</option><option>SALEEN</option><option>SATURN</option><option>SCHWIN</option><option>SCION</option><option>SMART</option><option>STERLING</option><option>STUDEBAKER</option><option>SUBARU</option><option>SUZUKI</option><option>TESLA</option><option>TEXACO</option><option>TOYOTA</option><option>TRIUMPH</option><option>ULTRA</option><option>VOLKSWAGEN</option><option>VOLVO</option><option>WHIPPET</option><option>WOOD</option><option>YAMAHA</option><option>YUGO</option><option>ZIMMER</option></select></div>
+            <div class="vdp-form__field"><label for="am-model">Model*</label><input id="am-model" name="model" type="text" required></div>
+            <div class="vdp-form__field"><label for="am-miles">Mileage</label><input id="am-miles" name="miles" type="text"></div>
+            <div class="vdp-form__field"><label for="am-vin">VIN</label><input id="am-vin" name="vin" type="text"></div>
+          </div>
+
+          <span class="eyebrow eyebrow--oswald vdp-form__step">2&nbsp;&middot;&nbsp;Contact Information</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field"><label for="am-fname">First Name*</label><input id="am-fname" name="fname" type="text" autocomplete="given-name" required></div>
+            <div class="vdp-form__field"><label for="am-lname">Last Name*</label><input id="am-lname" name="lname" type="text" autocomplete="family-name" required></div>
+            <div class="vdp-form__field"><label for="am-email">Email*</label><input id="am-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="vdp-form__field"><label for="am-phone">Phone*</label><input id="am-phone" name="phone" type="tel" autocomplete="tel" required></div>
+            <div class="vdp-form__field vdp-form__field--full"><label for="am-message">Message</label><textarea id="am-message" name="message" rows="4"></textarea></div>
+          </div>
+
+          <span class="eyebrow eyebrow--oswald vdp-form__step">3&nbsp;&middot;&nbsp;Appointment Information</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field"><label for="am-appointment-datetime">Preferred Appointment Date*</label><input id="am-appointment-datetime" name="appointment_datetime" type="date" required></div>
+            <div class="vdp-form__field"><label for="am-alternate-appointment-da">Alternative Appointment Date</label><input id="am-alternate-appointment-da" name="alternate_appointment_datetime" type="date"></div>
+            <div class="vdp-form__field vdp-form__field--full">
+              <label class="consign-agree"><input type="checkbox" name="i_agree" required><span>Please note that by completing this form, you agree to be contacted by Vegas Auto Gallery about your service request. We never share your details. Or call Service directly at 702-964-2886.*</span></label>
+            </div>
+          </div>
+
+          <div class="vdp-form__actions">
+            <button type="submit" class="btn btn--primary">Request Appointment</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ HOURS & LOCATION (info left, map right) ============ -->
+    <section class="section section--surface" id="location" aria-labelledby="loc-heading">
+      <div class="container service-location">
+        <div class="section-head section-head--tight" data-reveal>
+          <span class="eyebrow eyebrow--oswald">Service Center</span>
+          <h2 class="heading-light" id="loc-heading">Hours &amp; Location</h2>
+        </div>
+
+        <div class="service-location__layout" data-reveal>
+          <div class="service-location__panel">
+            <div class="service-location__item">
+              <h4 class="footer__label">Visit Us</h4>
+              <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road,<br>Suites 125&ndash;135<br>Las Vegas, NV 89118</a></address>
+            </div>
+            <div class="service-location__item">
+              <h4 class="footer__label">Call Service</h4>
+              <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+            </div>
+            <div class="service-location__item">
+              <h4 class="footer__label">Service Hours</h4>
+              <dl class="footer__hours">
+                <div><dt>Mon – Fri</dt><dd>8:00 AM – 6:00 PM</dd></div>
+                <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+                <div><dt>Sunday</dt><dd>Closed</dd></div>
+              </dl>
+            </div>
+            <a class="btn btn--secondary service-location__cta" href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+
+          <div id="service-map" class="service-map" aria-label="Map to Vegas Auto Gallery Service Center"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ============ PROMO LINKS — the four tiles the demo shows on its inner pages ============ -->
+    <section class="promos-section">
+      <div class="promos" data-reveal>
+        <a class="promo promo--image promo--newinv" href="srp7.html?cond=preowned">
+          <span class="promo__head"><span class="promo__eyebrow">Hand-Selected</span><span class="promo__title">Pre-Owned</span></span>
+          <span class="promo__desc">Hand-selected, meticulously inspected pre-owned exotics ready to drive home.</span>
+          <span class="promo__cta">View Pre-Owned</span>
+        </a>
+        <a class="promo promo--image promo--preowned" href="sell7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Top Dollar, Effortless</span><span class="promo__title">Sell Your Car</span></span>
+          <span class="promo__desc">Top dollar for your exotic, luxury, or collector car — get an offer in minutes.</span>
+          <span class="promo__cta">Get An Offer</span>
+        </a>
+        <a class="promo promo--image promo--service" href="appointment7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Factory-Trained</span><span class="promo__title">Service</span></span>
+          <span class="promo__desc">Factory-trained technicians for exotic and luxury maintenance, repair, and inspection.</span>
+          <span class="promo__cta">Schedule Service</span>
+        </a>
+        <a class="promo promo--image promo--lease" href="about7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Our Story</span><span class="promo__title">About</span></span>
+          <span class="promo__desc">The people and passion behind Las Vegas' premier destination for fine automobiles.</span>
+          <span class="promo__cta">Learn More</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============ FOOTER (shared) ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="container container--wide">
+
+      <!-- Golden Knights partnership — its own centred band -->
+      <div class="footer__partner" data-reveal>
+        <img class="footer__knight" src="assets/images/footer/4.png" alt="" aria-hidden="true" loading="lazy">
+        <div class="footer__partner-center">
+          <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
+          <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
+        </div>
+        <img class="footer__knight" src="assets/images/footer/3.png" alt="" aria-hidden="true" loading="lazy">
+      </div>
+
+      <!-- Contact / hours -->
+      <div class="footer__grid footer__grid--5">
+        <div class="footer__col">
+          <h4 class="footer__label">Sales</h4>
+          <a class="footer__phone" href="tel:7027828882">702-782-8882</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">5530 Rafael Rivera Way<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Sales Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>9:00 AM – 7:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service</h4>
+          <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road, Suites 125-135<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>8:00 AM – 6:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Follow</h4>
+          <ul class="footer__social">
+            <li><a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/images/footer/insta_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.facebook.com/vegasautogallery/" target="_blank" rel="noopener" aria-label="Facebook"><img src="assets/images/footer/facebook_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.youtube.com/@vegasautogallery" target="_blank" rel="noopener" aria-label="YouTube"><img src="assets/images/footer/youtube_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.tiktok.com/@vegasautogallery" target="_blank" rel="noopener" aria-label="TikTok"><img src="assets/images/footer/tiktok_color.svg" alt="" aria-hidden="true"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Brand partners -->
+      <div class="footer__partners">
+        <span class="footer__partners-label">Authorized Dealer</span>
+        <div class="footer__logos">
+          <img src="assets/images/footer/lotus_color.svg" alt="Lotus">
+          <img src="assets/images/czinger_logo.svg" alt="Czinger">
+          <img src="assets/images/footer/hennesy_color.svg" alt="Hennessey">
+          <img src="assets/images/vintage_logo.svg" alt="Vintage">
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Lotus Las Vegas. All Rights Reserved. <a href="#">Privacy Policy</a> <span class="footer__sep">|</span> <a href="#">Sitemap</a></span>
+        <span>Powered by All Auto Network</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Service Center map (Leaflet + CARTO dark tiles) -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      var el = document.getElementById('service-map');
+      if (!el || !window.L) return;
+      var coords = [36.0719, -115.1969]; // 6551 Westwind Rd, Las Vegas, NV 89118 (approx)
+      var map = L.map(el, { scrollWheelZoom: false, zoomControl: true }).setView(coords, 14);
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://www.esri.com/">Esri</a>',
+        maxZoom: 16
+      }).addTo(map);
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16 }).addTo(map);
+      L.marker(coords).addTo(map)
+        .bindPopup('Vegas Auto Gallery — Service<br>6551 Westwind Rd, Las Vegas');
+      // keep tiles filling the container through any layout/size change
+      setTimeout(function () { map.invalidateSize(); map.setView(coords, 14); }, 250);
+      window.addEventListener('load', function () { map.invalidateSize(); });
+      if (window.ResizeObserver) {
+        new ResizeObserver(function () { map.invalidateSize(); }).observe(el);
+      }
+    });
+  </script>
+
+</body>
+</html>

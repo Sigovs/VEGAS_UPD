@@ -399,6 +399,53 @@
     });
   }
 
+  /* ---------- Sourcing form (source7): path cards set "I'm here to…",
+     phone becomes required when phone is the preferred contact, and the
+     trade-in details field appears only when there is a trade-in ---------- */
+  document.querySelectorAll('[data-set-intent]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const radio = document.querySelector(`input[name="searchIntent"][value="${card.dataset.setIntent}"]`);
+      if (radio) radio.checked = true;
+      const target = document.getElementById('request');
+      if (!target) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const top = target.getBoundingClientRect().top + window.scrollY - 130; // clear fixed header
+      window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+      document.getElementById('sr-message')?.focus({ preventScroll: true });
+    });
+  });
+  document.querySelectorAll('[data-contact-pref]').forEach((pref) => {
+    const form = pref.closest('form');
+    const phone = form?.querySelector('input[type="tel"]');
+    const mark = form?.querySelector('[data-phone-mark]');
+    const hint = form?.querySelector('[data-phone-hint]');
+    const sync = () => {
+      const needed = pref.value === 'phone';
+      if (phone) phone.required = needed;
+      if (mark) mark.innerHTML = needed ? '*' : ' <span class="form-optional">(optional)</span>';
+      if (hint) hint.hidden = needed;
+    };
+    pref.addEventListener('change', sync);
+    sync();
+  });
+  document.querySelectorAll('[data-trade-toggle]').forEach((sel) => {
+    const field = document.getElementById(sel.dataset.tradeToggle);
+    const sync = () => { if (field) field.hidden = !(sel.value === 'yes' || sel.value === 'maybe'); };
+    sel.addEventListener('change', sync);
+    sync();
+  });
+
+  /* ---------- Dialogs (service7 hero boxes) ---------- */
+  document.querySelectorAll('[data-dialog-open]').forEach((btn) => {
+    const dlg = document.getElementById(btn.dataset.dialogOpen);
+    if (!dlg || typeof dlg.showModal !== 'function') return;
+    btn.addEventListener('click', () => dlg.showModal());
+  });
+  document.querySelectorAll('dialog').forEach((dlg) => {
+    dlg.querySelectorAll('[data-dialog-close]').forEach((x) => x.addEventListener('click', () => dlg.close()));
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });   // backdrop click
+  });
+
   /* ---------- VDP "Request more information" form (front-end stub) ---------- */
   const inquiry = document.querySelector('[data-inquiry]');
   if (inquiry) {
@@ -775,7 +822,8 @@
   /* ---------- Hero featured-vehicle slider (2–3 cars) ---------- */
   const hf = document.querySelector('[data-hero-cars]');
   if (hf) {
-    const cars = [
+    // A page can supply its own list as data-cars (JSON); img may be a full URL.
+    const cars = hf.dataset.cars ? JSON.parse(hf.dataset.cars) : [
       { name: '2024 Lamborghini<br>Huracán EVO', price: '$274,900',   img: 'inventory/2024%20Lamborghini%20Huracan%20EVO%20Base.png', href: 'vdp5.html' },
       { name: '2021 McLaren<br>720S',            price: '$259,900',   img: 'inventory/2021%20McLaren%20720S%20Base.png',            href: 'vdp5.html' },
       { name: '2020 Ford GT<br>Carbon Series',   price: '$1,095,000', img: 'inventory/2020%20Ford%20GT%20Carbon%20Series.png',      href: 'vdp5.html' },
@@ -800,7 +848,7 @@
 
     const render = (i) => {
       const c = cars[i];
-      imgEl.src = `assets/images/${c.img}`;
+      imgEl.src = /^https?:/.test(c.img) ? c.img : `assets/images/${c.img}`;
       imgEl.alt = c.name.replace('<br>', ' ');
       nameEl.innerHTML = c.name;
       priceEl.textContent = c.price;
@@ -863,7 +911,76 @@
       console.log('We Buy Cars lead:', data);
       buyForm.innerHTML = '<p class="form-success">Thank you — our acquisition team will be in touch shortly.</p>';
     });
+
+    // Two-step variant (sell7, as built): [data-form-step] panels, Next / Back.
+    const steps = Array.from(buyForm.querySelectorAll('[data-form-step]'));
+    if (steps.length > 1) {
+      const show = (n) => {
+        steps.forEach((s, i) => { s.hidden = i !== n; });
+        const first = steps[n].querySelector('input, select');
+        if (first) first.focus({ preventScroll: true });
+      };
+      buyForm.querySelectorAll('[data-step-next]').forEach((b) => b.addEventListener('click', () => {
+        const fields = Array.from(steps[0].querySelectorAll('input, select'));
+        if (fields.every((f) => f.reportValidity())) show(1);
+      }));
+      buyForm.querySelectorAll('[data-step-back]').forEach((b) => b.addEventListener('click', () => show(0)));
+    }
   }
+
+  /* ---------- Consignment photo drop zone (consign7): up to 8 images ---------- */
+  document.querySelectorAll('[data-upload]').forEach((zone) => {
+    const input = zone.querySelector('input[type="file"]');
+    const count = zone.querySelector('[data-upload-count]');
+    const MAX = 8;
+    let files = [];
+    // the chosen photos, as a row of thumbnails under the drop zone, each with its own remove control
+    const list = document.createElement('ul');
+    list.className = 'consign-thumbs';
+    list.setAttribute('role', 'list');
+    list.setAttribute('aria-label', 'Selected photos');
+    list.hidden = true;
+    zone.insertAdjacentElement('afterend', list);
+    const sync = () => {
+      const dt = new DataTransfer();
+      files.forEach((f) => dt.items.add(f));
+      input.files = dt.files;
+      count.textContent = files.length ? `${files.length} of ${MAX} photos` : '';
+      zone.classList.toggle('is-full', files.length >= MAX);
+      list.querySelectorAll('img').forEach((img) => URL.revokeObjectURL(img.src));
+      list.innerHTML = '';
+      files.forEach((f, i) => {
+        const li = document.createElement('li');
+        li.className = 'consign-thumb';
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(f);
+        img.alt = f.name;
+        const x = document.createElement('button');
+        x.type = 'button';
+        x.className = 'consign-thumb__remove';
+        x.setAttribute('aria-label', `Remove ${f.name}`);
+        x.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+        x.addEventListener('click', () => { files.splice(i, 1); sync(); });
+        li.append(img, x);
+        list.append(li);
+      });
+      list.hidden = !files.length;
+    };
+    const add = (list_) => {
+      Array.from(list_).filter((f) => f.type.startsWith('image/')).forEach((f) => { if (files.length < MAX) files.push(f); });
+      sync();
+    };
+    input.addEventListener('change', () => add(input.files));
+    ['dragenter', 'dragover'].forEach((t) => zone.addEventListener(t, (e) => { e.preventDefault(); zone.classList.add('is-dragover'); }));
+    ['dragleave', 'drop'].forEach((t) => zone.addEventListener(t, () => zone.classList.remove('is-dragover')));
+    zone.addEventListener('drop', (e) => { e.preventDefault(); add(e.dataTransfer.files); });
+    // design state for review: zones marked data-upload-demo (or ?uploads=demo) start with three photos in
+    if (zone.hasAttribute('data-upload-demo') || new URLSearchParams(location.search).get('uploads') === 'demo') {
+      Promise.all(['6882', '6535', '6451'].map((id) => fetch(`assets/images/inv-demo/${id}.webp`)
+        .then((r) => r.blob()).then((bl) => new File([bl], `vehicle-${id}.webp`, { type: 'image/webp' }))))
+        .then(add).catch(() => {});
+    }
+  });
 
   /* ---------- Events photos: light 3D tilt on hover ---------- */
   const tiltCards = document.querySelectorAll('.ev-redesign .ev-feature__media');
@@ -1031,11 +1148,7 @@
     });
     panel.addEventListener('mouseleave', () => {
       video.pause();
-      // data-rest="poster": the poster is the designed collapsed still (the
-      // clip's own frames crop the subject), so reset to it rather than
-      // resting on a video frame. load() drops back to the poster.
-      if (video.dataset.rest === 'poster') video.load();
-      else seek();
+      seek();
     });
 
     // Touch has no hover, so the loop above never fires and iOS Safari paints

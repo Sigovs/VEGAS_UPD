@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Value Your Trade &mdash; Vegas Auto Gallery</title>
+  <meta name="description" content="Value your trade with Vegas Auto Gallery — tell us about your vehicle and we will be in touch.">
+
+  <!-- Fonts: Oswald (display/headings) + Roboto Condensed (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (order: reset → tokens → base → layout → components) -->
+  <!-- Private preview gate (All Auto Network) -->
+  <script src="js/gate.js"></script>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css?v=20261112j">
+
+  <script src="js/main.js?v=20261112j" defer></script>
+</head>
+<body class="v2 v6">
+
+  <!-- ============ HEADER (shared — the demo's navigation) ============ -->
+  <header class="site-header" data-header>
+    <div class="brand-bar">
+      <div class="container container--wide brand-bar__inner">
+        <span class="brand-bar__label">Authorized Dealer</span>
+        <nav class="brand-bar__logos" aria-label="Brands we curate">
+          <a href="srp7.html?make=lotus" aria-label="Lotus inventory"><img src="assets/images/footer/lotus_color.svg" alt="Lotus"></a>
+          <a href="srp7.html?make=czinger" aria-label="Czinger inventory"><img src="assets/images/czinger_logo.svg" alt="Czinger"></a>
+          <a href="srp7.html?make=hennessey" aria-label="Hennessey inventory"><img src="assets/images/footer/hennesy_color.svg" alt="Hennessey"></a>
+          <a href="srp7.html?make=vintage" aria-label="Vintage inventory"><img src="assets/images/vintage_logo.svg" alt="Vintage"></a>
+          <img class="brand-bar__partner" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights" title="Official Luxury Car Partner of the Vegas Golden Knights">
+        </nav>
+      </div>
+    </div>
+    <div class="container container--wide site-header__inner">
+      <a href="index7.html" class="logo" aria-label="Vegas Auto Gallery — home">
+        <img class="logo__img" src="assets/images/logo_upd.svg" alt="Vegas Auto Gallery">
+      </a>
+
+      <nav class="nav nav--asbuilt" id="primary-nav" data-nav aria-label="Primary">
+        <ul role="list" class="nav__list">
+          <li class="nav__item--mega">
+            <a href="srp7.html" class="nav__link nav__link--menu" aria-haspopup="true">Inventory</a>
+            <div class="mega-menu" role="menu" aria-label="Inventory">
+              <div class="mega-menu__inner">
+                <div class="mega-menu__cols">
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">New Vehicles</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp7.html?cond=new"><span>All New Inventory</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=new&amp;make=lotus"><span>New Lotus Inventory</span></a>
+                      <a class="mega-menu__link" href="enquiries7.html"><span>New Vehicle Enquiries</span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Pre-Owned Vehicles</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp7.html?cond=preowned"><span>All Pre-Owned Inventory</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=preowned&amp;specials=1"><span>Pre-Owned Specials</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=sold"><span>Sold Vehicles</span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Personalized Shopping</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="garage7.html"><span>Saved Vehicles</span></a>
+                      <a class="mega-menu__link" href="source7.html"><span>Source a Vehicle</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mega-menu__brands">
+                  <p class="mega-menu__col-title">Browse by Brand</p>
+                  <div class="mega-menu__pills">
+                    <a class="mega-menu__pill" href="srp7.html?make=ferrari">Ferrari</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=jaguar">Jaguar</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=lamborghini">Lamborghini</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=mercedes-benz">Mercedes-Benz</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=porsche">Porsche</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=rolls-royce">Rolls-Royce</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=all">All Makes</a>
+                  </div>
+                  <a class="btn btn--primary mega-menu__cta" href="srp7.html">View All Inventory <span aria-hidden="true">&rarr;</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="sell7.html" class="nav__link nav__link--menu is-active" aria-current="page" aria-haspopup="true">Sell Your Car</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="sell7.html" role="menuitem">Sell Your Car</a></li>
+              <li><a href="consign7.html" role="menuitem">Consignment</a></li>
+              <li><a href="trade7.html" role="menuitem">Value Your Trade</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="service7.html" class="nav__link nav__link--menu" aria-haspopup="true">Service</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="service7.html" role="menuitem">Service Department</a></li>
+              <li><a href="appointment7.html" role="menuitem">Schedule Service</a></li>
+              <li><a href="https://parts.vegasautogallery.com/" role="menuitem" target="_blank" rel="noopener">Parts</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="aftermarket7.html" class="nav__link nav__link--menu" aria-haspopup="true">Aftermarket</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="aftermarket7.html" role="menuitem">Customization &amp; Performance</a></li>
+              <li><a href="consultation7.html" role="menuitem">Request a Consultation</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="finance7.html" class="nav__link nav__link--menu" aria-haspopup="true">Finance Center</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="finance7.html" role="menuitem">Financing Options</a></li>
+              <li><a href="https://www.routeone.net/digital-retail-ui/?dealerId=JH6TO" role="menuitem" target="_blank" rel="noopener">Apply for Financing</a></li>
+              <li><a href="finance7.html#calculator" role="menuitem">Payment Calculator</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="about7.html" class="nav__link nav__link--menu" aria-haspopup="true">About Us</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="about7.html" role="menuitem">Our Story</a></li>
+              <li><a href="vip7.html" role="menuitem">VIP Experience</a></li>
+              <li><a href="about7.html#team" role="menuitem">Meet the Team</a></li>
+              <li><a href="blog7.html" role="menuitem">The Journal</a></li>
+              <li><a href="locations7.html" role="menuitem">Locations &amp; Hours</a></li>
+              <li><a href="heritage7.html" role="menuitem">Heritage</a></li>
+              <li><a href="lotuswest7.html" role="menuitem">Vegas Auto Gallery Lotus West Directions</a></li>
+            </ul>
+          </li>
+          <li><a href="contact7.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="nav-icon" href="tel:7252190524" aria-label="Call 725-219-0524">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a class="nav-icon" href="#footer" aria-label="Hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </a>
+        <a class="nav-icon" href="directions7.html" aria-label="Directions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+          <span class="nav-toggle__bars" aria-hidden="true"><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="form-page">
+
+    <!-- ============ HERO — the demo's /value-your-trade/ (as built, 2026-11-11) ============ -->
+    <section class="hero page-hero" id="vt-top" aria-labelledby="vt-heading">
+      <img class="hero__media" src="assets/images/demo/trade-hero.jpg" alt="" aria-hidden="true">
+      <div class="container container--wide">
+        <div class="hero__content">
+          <span class="eyebrow eyebrow--oswald">Value Your Trade</span>
+          <h1 class="heading-light" id="vt-heading">Your Current Car.<br>Your Next Exotic.</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="section form-page--wide" id="vt-form" aria-label="Value Your Trade form">
+      <div class="container container--wide">
+        <form class="vdp-form" data-inquiry data-reveal>
+          <span class="eyebrow eyebrow--oswald vdp-form__step">Vehicle Info</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field"><label class="sr-only" for="vt-year">year*</label><select id="vt-year" name="year" required><option value="">Year</option><option>2027</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option><option>1979</option><option>1978</option><option>1977</option><option>1976</option><option>1975</option><option>1974</option><option>1973</option><option>1972</option><option>1971</option><option>1970</option><option>1969</option><option>1968</option><option>1967</option><option>1966</option><option>1965</option><option>1964</option><option>1963</option><option>1962</option><option>1961</option><option>1960</option><option>1959</option><option>1958</option><option>1957</option><option>1956</option><option>1955</option><option>1954</option><option>1953</option><option>1952</option><option>1951</option><option>1950</option><option>1949</option><option>1948</option><option>1947</option><option>1946</option><option>1945</option><option>1944</option><option>1943</option><option>1942</option><option>1941</option><option>1940</option><option>1939</option><option>1938</option><option>1937</option><option>1936</option><option>1935</option><option>1934</option><option>1933</option><option>1932</option><option>1931</option><option>1930</option><option>1929</option><option>1928</option><option>1927</option><option>1926</option><option>1925</option><option>1924</option><option>1923</option><option>1922</option><option>1921</option><option>1920</option></select></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-make">make*</label><select id="vt-make" name="make" required><option value="">Make</option><option>ACURA</option><option>ALFA ROMEO</option><option>AM GENERAL</option><option>AMC</option><option>AMERICAN MOTORS</option><option>ASTON MARTIN</option><option>AUBURN</option><option>AUSTIN</option><option>AUSTIN HEALEY</option><option>AUDI</option><option>AVANTI</option><option>A.C.</option><option>BENTLEY</option><option>BMC</option><option>BMW</option><option>BUELL</option><option>BUICK</option><option>BUCKBOARD</option><option>CADILLAC</option><option>CHEVROLET</option><option>CHRYSLER</option><option>CORD</option><option>CROSLEY</option><option>CUSHMAN</option><option>DAEWOO</option><option>DAIHATSU</option><option>DELOREAN</option><option>DETOMASO</option><option>DODGE</option><option>DUCATI</option><option>DUESENBERG</option><option>EAGLE</option><option>EDSEL</option><option>ESSEX</option><option>EXCALIBUR</option><option>FERRARI</option><option>FIAT</option><option>FIRESTONE</option><option>FORD</option><option>GEO</option><option>GMC</option><option>HARLEY-DAVIDSON</option><option>HOLLYWOOD</option><option>HOLLYWOOD+PROP</option><option>HONDA</option><option>HUMMER</option><option>HYUNDAI</option><option>INTERNATIONAL</option><option>INFINITI</option><option>ISUZU</option><option>JAGUAR</option><option>JEEP</option><option>JENSEN</option><option>JENSEN HEALEY</option><option>JOHN</option><option>KARMA</option><option>KAWASAKI</option><option>KENT</option><option>KIA</option><option>KIT CARS</option><option>LAMBORGHINI</option><option>LAND ROVER</option><option>LA SALLE</option><option>LEXUS</option><option>LINCOLN</option><option>LOTUS</option><option>MASERATI</option><option>MAYBACH</option><option>MAZDA</option><option>MAXWELL</option><option>MCLAREN</option><option>MERCEDES-BENZ</option><option>MERCURY</option><option>MERKUR</option><option>MINI</option><option>MITSUBISHI</option><option>MORGAN</option><option>MG</option><option>MGA</option><option>MGB</option><option>NISSAN</option><option>OLDSMOBILE</option><option>OTHER</option><option>PANOZ</option><option>PACKARD</option><option>PATHFINDER</option><option>PEUGEOT</option><option>PONTIAC</option><option>PORSCHE</option><option>PLYMOUTH</option><option>QVALE</option><option>RENAULT</option><option>ROLLS-ROYCE</option><option>SAAB</option><option>SALEEN</option><option>SATURN</option><option>SCHWIN</option><option>SCION</option><option>SMART</option><option>STERLING</option><option>STUDEBAKER</option><option>SUBARU</option><option>SUZUKI</option><option>TESLA</option><option>TEXACO</option><option>TOYOTA</option><option>TRIUMPH</option><option>ULTRA</option><option>VOLKSWAGEN</option><option>VOLVO</option><option>WHIPPET</option><option>WOOD</option><option>YAMAHA</option><option>YUGO</option><option>ZIMMER</option></select></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-model">Model*</label><input id="vt-model" name="model" type="text" placeholder="Model*" required></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-trim">Trim</label><input id="vt-trim" name="trim" type="text" placeholder="Trim"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-body">body</label><select id="vt-body" name="body"><option value="">Body Style</option><option>2 Door</option><option>4 Door</option><option>Hatchback</option></select></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-vin">VIN</label><input id="vt-vin" name="vin" type="text" placeholder="VIN"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-ext-color">Exterior Color</label><input id="vt-ext-color" name="ext_color" type="text" placeholder="Exterior Color"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-int-color">Interior Color</label><input id="vt-int-color" name="int_color" type="text" placeholder="Interior Color"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-cylinders">Cylinders</label><input id="vt-cylinders" name="cylinders" type="text" placeholder="Cylinders"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-litrs">Liters</label><input id="vt-litrs" name="litrs" type="text" placeholder="Liters"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-mileage">Mileage</label><input id="vt-mileage" name="mileage" type="text" placeholder="Mileage"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-trans">trans</label><select id="vt-trans" name="trans"><option value="">Transmission</option><option>Automatic</option><option>Manual</option></select></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-lienholder">Lien Holder</label><input id="vt-lienholder" name="lienholder" type="text" placeholder="Lien Holder"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-estimatepayoff">Estimated Payoff</label><input id="vt-estimatepayoff" name="estimatepayoff" type="text" placeholder="Estimated Payoff"></div>
+            <div class="vdp-form__field vdp-form__field--full">
+              <label class="consign-upload" data-upload data-upload-demo>
+                <input type="file" name="image" accept="image/*" multiple>
+                <span class="consign-upload__title">Upload Images (up to 8)</span>
+                <span class="consign-upload__hint">Drag and drop here, or click to choose</span>
+                <span class="consign-upload__count" data-upload-count aria-live="polite"></span>
+              </label>
+            </div>
+          </div>
+
+          <span class="eyebrow eyebrow--oswald vdp-form__step">Contact Info</span>
+          <div class="vdp-form__grid">
+            <div class="vdp-form__field"><label class="sr-only" for="vt-fname">First Name*</label><input id="vt-fname" name="fname" type="text" autocomplete="given-name" placeholder="First Name*" required></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-lname">Last Name*</label><input id="vt-lname" name="lname" type="text" autocomplete="family-name" placeholder="Last Name*" required></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-address">Address</label><input id="vt-address" name="address" type="text" autocomplete="street-address" placeholder="Address"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-city">City</label><input id="vt-city" name="city" type="text" autocomplete="address-level2" placeholder="City"></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-state">state*</label><select id="vt-state" name="state" required><option value="">State</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virgin Islands</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-zip">Zip*</label><input id="vt-zip" name="zip" type="text" autocomplete="postal-code" placeholder="Zip*" required></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-email">Email*</label><input id="vt-email" name="email" type="email" autocomplete="email" placeholder="Email*" required></div>
+            <div class="vdp-form__field"><label class="sr-only" for="vt-phone">Phone*</label><input id="vt-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone*" required></div>
+            <div class="vdp-form__field vdp-form__field--full"><label class="sr-only" for="vt-message">Message*</label><textarea id="vt-message" name="message" rows="4" placeholder="Message*" required></textarea></div>
+            <div class="vdp-form__field vdp-form__field--full">
+              <label class="consign-agree"><input type="checkbox" name="i_agree" required><span>Please note that by completing this form, you agree to being contacted via text, phone and email.*</span></label>
+            </div>
+          </div>
+
+          <div class="vdp-form__actions">
+            <button type="submit" class="btn btn--primary">Send</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ PROMO LINKS — the four tiles the demo shows on its inner pages ============ -->
+    <section class="promos-section">
+      <div class="promos" data-reveal>
+        <a class="promo promo--image promo--newinv" href="srp7.html?cond=preowned">
+          <span class="promo__head"><span class="promo__eyebrow">Hand-Selected</span><span class="promo__title">Pre-Owned</span></span>
+          <span class="promo__desc">Hand-selected, meticulously inspected pre-owned exotics ready to drive home.</span>
+          <span class="promo__cta">View Pre-Owned</span>
+        </a>
+        <a class="promo promo--image promo--preowned" href="sell7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Top Dollar, Effortless</span><span class="promo__title">Sell Your Car</span></span>
+          <span class="promo__desc">Top dollar for your exotic, luxury, or collector car — get an offer in minutes.</span>
+          <span class="promo__cta">Get An Offer</span>
+        </a>
+        <a class="promo promo--image promo--service" href="appointment7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Factory-Trained</span><span class="promo__title">Service</span></span>
+          <span class="promo__desc">Factory-trained technicians for exotic and luxury maintenance, repair, and inspection.</span>
+          <span class="promo__cta">Schedule Service</span>
+        </a>
+        <a class="promo promo--image promo--lease" href="about7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Our Story</span><span class="promo__title">About</span></span>
+          <span class="promo__desc">The people and passion behind Las Vegas' premier destination for fine automobiles.</span>
+          <span class="promo__cta">Learn More</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (shared) ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="container container--wide">
+
+      <!-- Golden Knights partnership — its own centred band -->
+      <div class="footer__partner" data-reveal>
+        <img class="footer__knight" src="assets/images/footer/4.png" alt="" aria-hidden="true" loading="lazy">
+        <div class="footer__partner-center">
+          <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
+          <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
+        </div>
+        <img class="footer__knight" src="assets/images/footer/3.png" alt="" aria-hidden="true" loading="lazy">
+      </div>
+
+      <!-- Contact / hours -->
+      <div class="footer__grid footer__grid--5">
+        <div class="footer__col">
+          <h4 class="footer__label">Sales</h4>
+          <a class="footer__phone" href="tel:7027828882">702-782-8882</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">5530 Rafael Rivera Way<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Sales Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>9:00 AM – 7:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service</h4>
+          <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road, Suites 125-135<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>8:00 AM – 6:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Follow</h4>
+          <ul class="footer__social">
+            <li><a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/images/footer/insta_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.facebook.com/vegasautogallery/" target="_blank" rel="noopener" aria-label="Facebook"><img src="assets/images/footer/facebook_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.youtube.com/@vegasautogallery" target="_blank" rel="noopener" aria-label="YouTube"><img src="assets/images/footer/youtube_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.tiktok.com/@vegasautogallery" target="_blank" rel="noopener" aria-label="TikTok"><img src="assets/images/footer/tiktok_color.svg" alt="" aria-hidden="true"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Brand partners -->
+      <div class="footer__partners">
+        <span class="footer__partners-label">Authorized Dealer</span>
+        <div class="footer__logos">
+          <img src="assets/images/footer/lotus_color.svg" alt="Lotus">
+          <img src="assets/images/czinger_logo.svg" alt="Czinger">
+          <img src="assets/images/footer/hennesy_color.svg" alt="Hennessey">
+          <img src="assets/images/vintage_logo.svg" alt="Vintage">
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Lotus Las Vegas. All Rights Reserved. <a href="#">Privacy Policy</a> <span class="footer__sep">|</span> <a href="#">Sitemap</a></span>
+        <span>Powered by All Auto Network</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

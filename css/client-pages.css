@@ -1,0 +1,282 @@
+/* ============================================================
+   CLIENT PAGES — Source a Vehicle (source7) + VIP Experience (vip7)
+   The client's two concept pages (Nov 2026 handoff) rebuilt on the site's
+   own system: hero, services-split, specials, video-break and vdp-form come
+   from components.css unchanged. This file adds only the few pieces those
+   pages need that the chain did not have yet, all on existing tokens.
+   ============================================================ */
+
+/* Section intro set in the middle of the page (VIP "A Personal Approach") */
+.lede-block {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+.lede-block .section-head { margin: 0; align-items: center; max-width: none; }
+.lede-block .lead { max-width: 62ch; }
+.lede-block p:not(.lead) { color: var(--color-text-soft); line-height: var(--leading-normal); max-width: 62ch; }
+
+.services-split__inner .services-split__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
+
+/* Focal points of the client's portrait frames inside the split media */
+.services-split__media img.focus-low   { object-position: 50% 72%; }
+.services-split__media img.focus-lower { object-position: 50% 100%; }
+
+/* The client's showroom frames are bright already; the chain's v6 lift is for
+   its own darker split photos, so it does not apply to these */
+.v6 .services-split__media img.focus-low,
+.v6 .services-split__media img.focus-lower { filter: none; }
+
+/* Portrait frames on one column: the chain's 16:10 strip under a 340px fade
+   would show floor and shadow, so these get a taller frame and a short fade,
+   held on the car */
+@media (max-width: 900px) {
+  .services-split--portrait .services-split__media { aspect-ratio: 4 / 5; }
+  .v6 .services-split--portrait .services-split__media::after { height: 28%; }
+  .services-split--portrait .services-split__media img.focus-low { object-position: 50% 74%; }
+  .services-split--portrait .services-split__media img.focus-lower { object-position: 30% 88%; }
+}
+@media (max-width: 560px) {
+  .services-split--portrait .services-split__media { aspect-ratio: 1 / 1; }
+}
+
+/* Long uppercase labels: on a phone the page's actions take the full width so
+   a label sets on one line instead of breaking mid-phrase */
+@media (max-width: 560px) {
+  .client-page .hero__actions,
+  .client-page .services-split__actions { flex-direction: column; align-items: stretch; }
+  .client-page .hero__actions .btn,
+  .client-page .services-split__actions .btn,
+  .client-page .vdp-form__actions .btn,
+  .client-page .video-break__cta { width: 100%; justify-content: center; padding-inline: var(--space-3); letter-spacing: 2px; white-space: nowrap; }
+}
+.lede-block .heading-light { text-wrap: balance; }
+@media (max-width: 760px) { .lede-block .heading-light br { display: none; } }
+
+/* The rooftop frame is bright concrete with the cars in the middle, where the
+   copy sits: hold the photo down and give the copy a soft ground of its own */
+.vip-source .video-break__media { filter: brightness(0.62) saturate(0.95); }
+.vip-source .video-break__content { padding-block: var(--space-8); }
+.vip-source .video-break__content::before {
+  content: "";
+  position: absolute;
+  inset: -10% -25%;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(11, 15, 20, 0.82), rgba(11, 15, 20, 0.6) 60%, rgba(11, 15, 20, 0));
+  pointer-events: none;
+}
+.vip-source .video-break__text { color: var(--color-text); }
+
+/* Route cards on vip7 — the note is the card's action, so it reads as one */
+.vip-routes .special__note a { color: var(--color-gold); transition: color var(--transition); }
+.vip-routes .special:hover .special__note a,
+.vip-routes .special__note a:hover { color: var(--color-accent-hover); }
+
+/* ---------- Source a Vehicle: the two ways in ---------- */
+.path-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+.path-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.path-card:hover,
+.path-card:focus-visible {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+  transform: translateY(-3px);
+}
+.path-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.path-card__media { aspect-ratio: 16 / 9; overflow: hidden; }
+.path-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition-slow); }
+.path-card:hover .path-card__media img { transform: scale(1.03); }
+.path-card__body { display: flex; flex-direction: column; flex: 1 1 auto; padding: var(--space-6); }
+.path-card__label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.path-card__title {
+  margin-top: var(--space-3);
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+.path-card__text { margin-top: var(--space-3); color: var(--color-text-soft); line-height: var(--leading-normal); flex: 1 1 auto; }
+.path-card__link {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  transition: color var(--transition);
+}
+.path-card:hover .path-card__link { color: var(--color-accent-hover); }
+@media (max-width: 760px) { .path-cards { grid-template-columns: 1fr; } }
+
+/* ---------- Source a Vehicle: the detail pair ---------- */
+.detail-pair {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--space-5);
+  align-items: end;
+}
+.detail-pair figure { margin: 0; }
+.detail-pair img { width: 100%; display: block; object-fit: cover; border-radius: var(--radius-lg); }
+.detail-pair figure:first-child img { aspect-ratio: 4 / 3; }
+.detail-pair figure:last-child img { aspect-ratio: 3 / 2; }
+.detail-pair figcaption { display: flex; flex-direction: column; gap: var(--space-1); margin-top: var(--space-3); }
+.detail-pair__label { font-size: var(--text-xs); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-accent); }
+.detail-pair__title { font-family: var(--font-display); font-weight: var(--weight-light); font-size: var(--text-xl); letter-spacing: 1px; text-transform: uppercase; color: var(--color-text); }
+@media (max-width: 760px) { .detail-pair { grid-template-columns: 1fr; } }
+
+/* the three planning steps under the detail pair */
+.source-steps { margin-top: var(--space-8); }
+
+/* ---------- Copy beside a form (Source request, VIP contact) ---------- */
+.inquiry-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+.inquiry-split__aside { display: flex; flex-direction: column; gap: var(--space-4); }
+.inquiry-split__aside .section-head { margin-bottom: 0; }
+.inquiry-split__aside > p { color: var(--color-text-soft); line-height: var(--leading-normal); }
+.inquiry-split__aside h3 {
+  margin-top: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: var(--text-xl);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+.inquiry-split__note { font-size: var(--text-sm); color: var(--color-text-soft); }
+.inquiry-split__photo { margin: var(--space-3) 0 0; }
+.inquiry-split__photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; border-radius: var(--radius-lg); }
+.inquiry-split__photo figcaption { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--color-text-soft); }
+.brief-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.brief-list li { position: relative; padding-left: var(--space-4); color: var(--color-text); line-height: var(--leading-normal); }
+/* the site's list marker: the 6px gold dot of the VDP options list (.vdp-options) */
+.brief-list li::before { content: ""; position: absolute; left: 0; top: calc(0.75em - 3px); width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); }
+
+.inquiry-split .vdp-form {
+  max-width: none;
+  margin: 0;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.form-title {
+  display: block;
+  margin: var(--space-1) 0 var(--space-2);
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+.form-hint--gap { margin-top: var(--space-2); }
+.form-hint { font-size: var(--text-sm); color: var(--color-text-soft); line-height: var(--leading-normal); }
+.vdp-form__field label .form-optional { color: var(--color-text-muted); }
+.vdp-form fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+/* a legend is the first child of its fieldset, so the base
+   .vdp-form__step:first-child reset would zero every group's top margin */
+.vdp-form fieldset { margin-top: var(--space-6); }
+.vdp-form .form-hint + fieldset { margin-top: var(--space-5); }
+.vdp-form fieldset > .vdp-form__step { margin-top: 0; }
+.vdp-form legend { padding: 0; }
+
+/* "I'm here to…" — two-way choice set as a segmented control */
+.intent-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-bottom: var(--space-2); }
+.intent-toggle label { position: relative; cursor: pointer; }
+.intent-toggle input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.intent-toggle span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-text-soft);
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+.intent-toggle label:hover span { border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border)); color: var(--color-text); }
+.intent-toggle input:checked + span { border-color: var(--color-gold); color: var(--color-gold); background: color-mix(in srgb, var(--color-gold) 8%, transparent); }
+.intent-toggle input:focus-visible + span { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* "Refine your search" — the chain's accordion, nested in the form */
+.vdp-form .vdp-accordion { margin-top: var(--space-4); background: var(--color-bg); }
+.vdp-form .vdp-accordion:hover,
+.vdp-form .vdp-accordion[open] { background: var(--color-bg); }
+.vdp-form .vdp-accordion__title { font-size: var(--text-lg); }
+.vdp-form .vdp-accordion__body .form-hint { margin-bottom: var(--space-4); }
+.vdp-form .consign-agree + .consign-agree { margin-top: var(--space-2); }
+.form-privacy { margin-top: var(--space-4); font-size: var(--text-sm); }
+.form-privacy a { color: var(--color-text-soft); text-decoration: underline; text-underline-offset: 3px; }
+.form-privacy a:hover { color: var(--color-gold); }
+.inquiry-split .vdp-form__actions { justify-content: flex-start; }
+
+@media (max-width: 1100px) { .inquiry-split { grid-template-columns: 1fr; gap: var(--space-6); } .inquiry-split__photo { display: none; } }
+@media (max-width: 560px)  { .inquiry-split .vdp-form { padding: var(--space-4); } .intent-toggle { grid-template-columns: 1fr; } }
+
+/* ---------- FAQ: heading left, questions right ---------- */
+.faq-split { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-8); align-items: start; }
+.faq-split .section-head { margin-bottom: 0; }
+.faq-list { display: flex; flex-direction: column; gap: var(--space-3); }
+.faq-list .vdp-accordion__title { font-size: var(--text-lg); line-height: var(--leading-snug); }
+.faq-list .vdp-accordion__body p { color: var(--color-text-soft); line-height: var(--leading-normal); max-width: 68ch; }
+@media (max-width: 900px) { .faq-split { grid-template-columns: 1fr; gap: var(--space-5); } }
+
+/* ---------- VIP: coordination topics + process steps inside a split ---------- */
+.topic-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-5); margin-top: var(--space-4); }
+.topic-list li {
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+@media (max-width: 560px) { .topic-list { grid-template-columns: 1fr; } }
+
+/* Video-break used for a photograph with two paragraphs of copy */
+.video-break__content .video-break__text + .video-break__text { margin-top: calc(-1 * var(--space-3)); }

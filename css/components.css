@@ -313,6 +313,79 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   gap: var(--space-10);
   flex: 0 0 auto;
 }
+
+/* As built (index7, .nav--asbuilt): the demo menu is longer — six dropdowns and
+   "Finance Center" / "About Us" — and needs ~1019px in one row (measured).
+   1320–1439: tighten so the row holds (~881px). 901–1319: the nav takes its own centred
+   line under the logo (as the 901–1099 band already does for v6). Below 1440 the
+   26-brand pill block sits under the link columns instead of a squeezed column. */
+.nav--asbuilt .nav__link { white-space: nowrap; }
+/* The demo's menu, as read off its computed styles (2026-11-11): the header
+   carries a 90% ground with a 12px blur at all times, not only after scroll;
+   the labels are 600 / 0.14em; the page you are on keeps the white label with
+   the gold rule under it (gold is the hover, not the "you are here"); the
+   dropdowns are sentence-case 13px links in soft grey on a square panel. */
+.site-header:has(.nav--asbuilt) {
+  background: rgba(11, 15, 20, 0.9);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.nav--asbuilt .nav__link { font-weight: 600; letter-spacing: 0.14em; }
+.nav--asbuilt .nav__link.is-active { color: var(--color-text); }
+.nav--asbuilt .nav__link.is-active:hover { color: var(--color-accent); background-image: linear-gradient(var(--color-accent), var(--color-accent)); }
+.nav--asbuilt .nav__dropdown { padding: var(--space-3) var(--space-4); border-radius: 0; min-width: 200px; }
+.nav--asbuilt .nav__dropdown a {
+  padding: 6px 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-text-soft);
+}
+.nav--asbuilt .nav__dropdown a:hover { color: var(--color-accent); background: none; }
+
+/* the nav row: 109px on the demo (16px above and below the 76px logo) and
+   32px between the labels */
+@media (min-width: 901px) {
+  .site-header:has(.nav--asbuilt) .site-header__inner,
+  .site-header:has(.nav--asbuilt).is-scrolled .site-header__inner { padding-block: 16px; }
+  .v6:has(.nav--asbuilt) { --header-h: 109px; --header-h-sm: 109px; }
+}
+@media (min-width: 1440px) { .nav--asbuilt .nav__list { gap: var(--space-5); } }
+
+/* the Inventory mega menu, laid out as on the demo: three equal link columns
+   across the container, then a ruled "Browse by Brand" row, then the button */
+.nav--asbuilt .mega-menu__inner { display: block; padding: var(--space-5) var(--space-4) var(--space-6); }
+.nav--asbuilt .mega-menu__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
+.nav--asbuilt .mega-menu__col-title {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: 0.18em;
+}
+.nav--asbuilt .mega-menu__list { gap: var(--space-3); align-items: flex-start; }
+.nav--asbuilt .mega-menu__link { display: block; font-size: var(--text-base); font-weight: var(--weight-medium); line-height: 1.25; letter-spacing: normal; text-transform: none; color: var(--color-text); }
+.nav--asbuilt .mega-menu__link:hover { color: var(--color-accent); }
+.nav--asbuilt .mega-menu__brands { margin-top: var(--space-6); padding-top: 33px; border-top: 1px solid var(--color-border); }
+.nav--asbuilt .mega-menu__pill { padding: var(--space-2) var(--space-3); font-size: 13px; font-weight: 600; line-height: 1; letter-spacing: 0.1em; }
+.nav--asbuilt .mega-menu__cta { margin-top: var(--space-5); gap: var(--space-2); }
+@media (min-width: 1320px) and (max-width: 1439px) {
+  .nav--asbuilt .nav__list { gap: var(--space-3); }
+  .nav--asbuilt .nav__link { letter-spacing: 0.08em; }
+}
+@media (min-width: 901px) and (max-width: 1319px) {
+  .site-header__inner:has(.nav--asbuilt) { flex-wrap: wrap; row-gap: var(--space-2); }
+  .site-header__inner .nav--asbuilt { order: 3; flex: 1 0 100%; }
+  .site-header__inner:has(.nav--asbuilt) .nav-actions { margin-left: auto; }   /* v6 zeroes the logo's auto margin from 1100 */
+  .nav--asbuilt .nav__list { justify-content: center; }
+  .v6:has(.nav--asbuilt) { --header-h: 147px; --header-h-sm: 147px; }   /* 109px row + the 38px wrapped nav line */
+}
+@media (min-width: 901px) and (max-width: 1439px) {
+  .nav--asbuilt .mega-menu__inner { flex-wrap: wrap; row-gap: var(--space-6); }
+  .nav--asbuilt .mega-menu__brands { flex: 1 0 100%; }
+}
 .mega-menu__col-title {
   margin-bottom: var(--space-3);
   font-family: var(--font-display);
@@ -606,6 +679,10 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
 /* Optically balanced with Hennessey: Czinger lockup + Lotus roundel read the same scale */
 .brands-accordion--overlay .brand-panel__logo--czinger { height: 40px; }
 .brands-accordion--overlay .brand-panel__logo--lotus { height: 64px; }
+/* the logo is absolutely placed inside a panel that can be narrower than the
+   wordmark (collapsed, 901-1099): the panel clips it, or the last one pushes an
+   8px horizontal scroll onto the page */
+.brands-accordion--overlay .brand-panel { overflow: hidden; }
 
 /* Czinger car sits left-of-centre — shift the crop while collapsed so the
    whole car shows; recentre once the panel expands on hover. */
@@ -618,17 +695,20 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   object-position: 50% center;
 }
 
-/* Hennessey's poster is the client's wider hangar still (car 30–71% of the
-   frame), so the collapsed panel shows the car whole from ~300px of panel
-   width. Below that no crop holds it — pin the crop's left edge at -170px
-   so the nose stays whole in both the still (23% of its 727px width at the
-   460px panel height) and the clip (21% of its 818px). Recentre on expand. */
-@media (min-width: 801px) and (max-width: 1199px) {
+/* Hennessey Blackbird faces left, spanning 21–83% of the first frame. A
+   collapsed panel is only 211–342px wide, too narrow for the whole car, so pin
+   the crop's left edge at 18% of the frame (-147px = 0.18 × 818px, the 16:9
+   frame at the 460px panel height): the nose always shows whole.
+   Recentre on expand. Desktop only — the stacked mobile panels are wide. */
+@media (min-width: 801px) {
   .brands-accordion--overlay .brand-panel__video--hennessey {
-    object-position: -170px center;
+    object-position: -147px center;
     transition: transform var(--transition-slow), object-position var(--transition-slow);
   }
-  .brands-accordion--overlay .brand-panel:hover .brand-panel__video--hennessey { object-position: 50% center; }
+  .brands-accordion--overlay .brand-panel:hover .brand-panel__video--hennessey,
+  .brands-accordion--overlay .brand-panel.is-open .brand-panel__video--hennessey {
+    object-position: 50% center;
+  }
 }
 /* Stacked phone panels crop the sides too — bias left so the nose clears the edge */
 @media (max-width: 800px) {
@@ -2167,6 +2247,11 @@ body:has(.brand-bar) .vdp-page { padding-top: calc(var(--header-h) + var(--brand
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-6);
   padding-block: var(--space-8);
+}
+/* As built (index7): Sales | Sales Hours | Service | Service Hours | Follow */
+.footer__grid--5 { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 1100px) {
+  .footer__grid--5 { grid-template-columns: repeat(3, 1fr); }
 }
 
 .footer__label {
@@ -4800,6 +4885,58 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
   }
 }
 
+/* sell7 carries the demo's own photographs (as built, 2026-11-11): the
+   daylight showroom in the hero, the garage in the process band, the
+   collection in the floor break. The demo builds its hero on these same sell
+   hero rules — mirrored frame, the v6 night frame kept as the headlight
+   layer, the same light scrim — so only the frame itself changes here. */
+/* body.v6 brings the home hero's Strip scrim (.v6 .hero::after, which outranks
+   .sell-hero::after); the demo page has no .v6, so its hero shows the sell
+   hero's own light scrim. Restated here at the higher specificity, values
+   as read off the demo. */
+.v6 .sell-hero.sell-hero--showroom::after {
+  background:
+    linear-gradient(100deg,
+      rgba(11, 15, 20, 0.42) 0%,
+      rgba(11, 15, 20, 0.30) 38%,
+      rgba(11, 15, 20, 0.10) 66%,
+      rgba(11, 15, 20, 0) 100%),
+    linear-gradient(to bottom,
+      rgba(11, 15, 20, 0.72) 0%,
+      rgba(11, 15, 20, 0.20) 22%,
+      rgba(11, 15, 20, 0.06) 50%,
+      rgba(11, 15, 20, 0.30) 78%,
+      rgba(11, 15, 20, 0.72) 100%);
+}
+@media (max-width: 1000px) {
+  .v6 .sell-hero.sell-hero--showroom::after {
+    background:
+      linear-gradient(to bottom,
+        rgba(11, 15, 20, 0.80) 0%,
+        rgba(11, 15, 20, 0.34) 20%,
+        rgba(11, 15, 20, 0.16) 48%,
+        rgba(11, 15, 20, 0.46) 76%,
+        rgba(11, 15, 20, 0.84) 100%);
+  }
+}
+/* the demo sets the hero lead in white over this frame; the soft grey of the
+   night hero is not enough over the lit showroom */
+.sell-hero--showroom .lead { color: var(--color-text); }
+.process__media--garage { object-position: 70% 64%; }
+@media (max-width: 1000px) { .process__media--garage { object-position: 60% 64%; } }
+.video-break__media--collection { object-position: 50% 58%; filter: brightness(0.6); }
+/* the collection frame is bright right where the copy sits: white copy, as on
+   the demo, over a soft ground of its own */
+#floor:has(.video-break__media--collection) .video-break__text { color: var(--color-text); }
+#floor:has(.video-break__media--collection) .video-break__content::before {
+  content: "";
+  position: absolute;
+  inset: -14% -22%;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(11, 15, 20, 0.78), rgba(11, 15, 20, 0.5) 62%, rgba(11, 15, 20, 0));
+  pointer-events: none;
+}
+
 /* ============================================================
    ACTIVE NAV ITEM — "you are here".
    No new device: this is the existing hover underline pinned at full
@@ -5509,3 +5646,343 @@ body:has(.site-header.is-scrolled) .srp-filters { top: var(--header-h-sm); }
         rgba(11, 15, 20, 0.94) 100%);
   }
 }
+
+
+/* =====================================================================
+   As built (sell7 / consign7) — blocks the demo added to Sell Your Car
+   (vegasautogallery.aandemo.com, read 2026-11-10), rebuilt on our tokens.
+   ===================================================================== */
+
+/* Two-step valuation form: the step wrappers vanish from layout so the
+   fields keep the form's own flex gap; [hidden] takes a step out. */
+.buy-form__step { display: contents; }
+.buy-form__step[hidden] { display: none; }
+.buy-form__back { width: 100%; }
+
+/* Consignment on sell7 — the chain's services-split (copy left, photo right),
+   the demo's three steps carried inside the copy column as a step list.
+   The pieces below are shared with source7 / vip7. */
+/* The photograph is a dealer studio frame (3:2, light room, the car filling
+   the width), so it is shown whole at its own proportion rather than cropped
+   to the column's full height — and therefore as a framed image on the page
+   grid, like the Events cards: right edge on the container line, full radius.
+   No fade from the section above and no v6 lift: both are written for the
+   chain's dark night frames. */
+.consign-split { min-height: 0; align-items: center; padding-block: var(--space-10); }
+.consign-split .services-split__media { aspect-ratio: 3 / 2; align-self: center; border-radius: var(--radius-lg); }
+@media (min-width: 901px) {
+  .consign-split .services-split__media { margin-right: max(calc((100vw - 1600px) / 2 + var(--space-4)), var(--space-4)); }
+}
+.consign-split .services-split__media::after { display: none; }
+.v6 .consign-split .services-split__media img { filter: none; }
+.consign-split .services-split__panel { padding-block: 0; }
+/* the copy starts on the page's container edge, like every other block on
+   sell7 (the split's own 80px inset is for full-height photo halves) */
+@media (min-width: 901px) {
+  .consign-split .services-split__panel {
+    justify-content: flex-start;
+    padding-left: max(calc((100vw - 1600px) / 2 + var(--space-4)), var(--space-4));
+    padding-right: var(--space-8);
+  }
+}
+@media (max-width: 900px) {
+  .consign-split { padding-block: var(--space-8) 0; }
+  .consign-split .services-split__media { border-radius: 0; }
+  .consign-split .services-split__panel { padding-block: var(--space-6) var(--space-8); }
+}
+.services-split__inner .consign-split__note { margin: var(--space-3) 0 0; font-size: var(--text-sm); color: var(--color-text-soft); }
+
+/* Second line of a heading in gold */
+.heading-accent { display: block; color: var(--color-gold); }
+
+/* Paragraph rhythm inside a split panel */
+.services-split__inner p { color: var(--color-text-soft); line-height: var(--leading-normal); margin-bottom: var(--space-3); }
+.services-split__inner .lead { font-size: var(--text-lg); }
+
+/* Numbered steps set as ruled rows: gold numeral, title, optional line */
+.step-list { list-style: none; counter-reset: step; display: flex; flex-direction: column; margin-top: var(--space-5); }
+.step-list li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.step-list li:last-child { border-bottom: 1px solid var(--color-border); }
+.step-list li::before {
+  content: counter(step, decimal-leading-zero);
+  grid-row: span 2;
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: var(--text-2xl);
+  line-height: 1;
+  color: var(--color-gold);
+}
+.step-list h3 { font-family: var(--font-display); font-weight: var(--weight-light); font-size: var(--text-xl); letter-spacing: 1px; text-transform: uppercase; color: var(--color-text); }
+.step-list p { grid-column: 2; margin: 0; }
+
+/* Consignment form — photo drop zone (up to 8 images) */
+.consign-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+.consign-upload:hover,
+.consign-upload.is-dragover,
+.consign-upload:focus-within { border-color: var(--color-gold); }
+.consign-upload { position: relative; }
+.consign-upload input[type="file"] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.consign-upload__title { font-size: var(--text-sm); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+.consign-upload__hint { font-size: var(--text-xs); color: var(--color-text-soft); }
+.consign-upload__count { font-size: var(--text-xs); color: var(--color-gold); }
+/* chosen photos: thumbnails under the drop zone, each with its own remove control */
+.consign-thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-3); margin-top: var(--space-3); list-style: none; }
+.consign-thumbs[hidden] { display: none; }
+.consign-thumb { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); }
+.consign-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.consign-thumb__remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--color-text);
+  background: rgba(11, 15, 20, 0.78);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+.consign-thumb__remove svg { width: 14px; height: 14px; }
+.consign-thumb__remove:hover,
+.consign-thumb__remove:focus-visible { color: var(--color-bg); background: var(--color-gold); border-color: var(--color-gold); }
+.consign-thumb__remove:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+@media (hover: none) { .consign-thumb__remove { width: 36px; height: 36px; } }
+.consign-upload.is-full { opacity: 0.5; pointer-events: none; }
+.consign-agree { display: flex; gap: var(--space-2); align-items: flex-start; font-size: var(--text-sm); color: var(--color-text-soft); }
+.consign-agree input { margin-top: 3px; accent-color: var(--color-gold); }
+
+/* consign7: the heading sits on the form's 980px column, not the container edge;
+   Send / Clear Form are a pair, so they get the actions gap */
+#consign-form .section-head { max-width: 980px; margin-inline: auto; }
+#consign-form .vdp-form__actions { gap: var(--space-3); }
+
+/* =====================================================================
+   As built (*7 chain) — the demo pages the menu links to, rebuilt on the
+   chain's components: form pages, map pages, the journal list.
+   ===================================================================== */
+/* a page whose first mass is a heading and a form: the heading sits on the
+   form's 980px column (consign7's rule, generalised) */
+/* As read off the demo's form pages (contact-us, consignment, service-appointment,
+   aftermarket-consultation): the h1 sits 30px under the header, Oswald 49/500;
+   heading and form share a 1242px column (1272 less 15px each side) and the two
+   field columns are 606px with a 30px gutter. */
+main.form-page > .section:first-child,
+main.vdp-page > #consign-form { padding-top: 27px; }
+.form-page .container--wide,
+#consign-form .container--wide { max-width: 1272px; padding-inline: 15px; }
+.form-page .section-head,
+#consign-form .section-head { max-width: none; margin-inline: 0; margin-bottom: 22px; }
+.form-page .section-head h1.heading-light,
+#consign-form h1.heading-light { font-size: 49px; font-weight: var(--weight-medium); line-height: 1.08; letter-spacing: 0.01em; }
+.form-page .vdp-form,
+#consign-form .vdp-form { max-width: none; }
+.form-page .vdp-form__grid,
+#consign-form .vdp-form__grid { column-gap: 30px; }
+.form-page .vdp-form__actions,
+#consign-form .vdp-form__actions { justify-content: flex-start; gap: var(--space-3); }
+/* the demo's enquiries and aftermarket forms keep a 980px column */
+.form-page--narrow .vdp-form,
+.form-page--narrow .section-head { max-width: 980px; margin-inline: auto; }
+/* value-your-trade: the form runs across the wide container, labels inside the fields */
+.form-page--wide .container--wide { max-width: 1600px; padding-inline: var(--space-4); }
+.section-head--center { text-align: center; align-items: center; }
+.form-page > .container > .lead { max-width: 980px; margin-inline: auto; }
+
+/* embedded Google map (directions pages) */
+.map-embed { max-width: 980px; margin-inline: auto; aspect-ratio: 16 / 9; border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface); }
+.map-embed iframe { display: block; width: 100%; height: 100%; border: 0; }
+.map-embed__head { margin-top: var(--space-8); }
+@media (max-width: 760px) { .map-embed { aspect-ratio: 4 / 3; } }
+
+/* the journal: recent stories as rows, image left */
+.post-list { display: flex; flex-direction: column; gap: var(--space-5); }
+.post-row { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: var(--space-5); align-items: start; padding-bottom: var(--space-5); border-bottom: 1px solid var(--color-border); }
+.post-row__media { display: block; overflow: hidden; border-radius: var(--radius-lg); }
+.post-row__media img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform var(--transition-slow); }
+.post-row:hover .post-row__media img { transform: scale(1.03); }
+.post-row__body { display: flex; flex-direction: column; gap: var(--space-2); }
+.post-row__title { font-family: var(--font-display); font-weight: var(--weight-light); font-size: var(--text-2xl); line-height: var(--leading-snug); letter-spacing: 0.5px; text-transform: uppercase; }
+.post-row__title a { color: var(--color-text); transition: color var(--transition); }
+.post-row__title a:hover { color: var(--color-accent); }
+.post-row__text { color: var(--color-text-soft); line-height: var(--leading-normal); max-width: 70ch; }
+@media (max-width: 760px) { .post-row { grid-template-columns: 1fr; gap: var(--space-3); } }
+
+/* service7: the hero boxes open the demo's pop-ups (Factory-Trained, Full
+   Service, White-Glove) — each box is a control, so it reads as one */
+.service-hero__box--link { display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; border: 1px solid var(--color-border); transition: border-color var(--transition), background var(--transition), transform var(--transition); }
+.service-hero__box--link:hover,
+.service-hero__box--link:focus-visible { border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border)); transform: translateY(-2px); }
+.service-hero__box--link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.svc-dialog {
+  width: min(760px, calc(100vw - 2 * var(--space-4)));
+  max-height: calc(100dvh - 2 * var(--space-6));
+  margin: auto;
+  padding: var(--space-6);
+  overflow-y: auto;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.svc-dialog--wide { width: min(1100px, calc(100vw - 2 * var(--space-4))); }
+.svc-dialog::backdrop { background: rgba(11, 15, 20, 0.78); backdrop-filter: blur(4px); }
+.svc-dialog .heading-light { font-size: var(--text-2xl); line-height: var(--leading-snug); margin: var(--space-6) 0 var(--space-3); }
+.svc-dialog .heading-light:first-of-type { margin-top: 0; padding-right: var(--space-6); }
+.svc-dialog h3 { margin: var(--space-5) 0 var(--space-2); font-family: var(--font-display); font-weight: var(--weight-light); font-size: var(--text-xl); letter-spacing: 1px; text-transform: uppercase; }
+.svc-dialog p { color: var(--color-text-soft); line-height: var(--leading-normal); margin-bottom: var(--space-3); }
+.svc-dialog ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-3); }
+.svc-dialog li { position: relative; padding-left: var(--space-4); color: var(--color-text-soft); line-height: var(--leading-normal); }
+.svc-dialog li::before { content: ""; position: absolute; left: 0; top: calc(0.75em - 3px); width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); }
+.svc-dialog li strong { color: var(--color-text); font-weight: var(--weight-medium); }
+.svc-dialog a { color: var(--color-gold); }
+.svc-dialog__sub { display: block; margin-top: var(--space-1); font-size: var(--text-base); letter-spacing: normal; text-transform: none; color: var(--color-text-soft); }
+.svc-dialog__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+.svc-dialog__cols .special__validity { display: block; margin-bottom: var(--space-3); }
+.svc-dialog__close { position: absolute; top: var(--space-3); right: var(--space-3); width: 44px; height: 44px; font-size: 28px; line-height: 1; color: var(--color-text); background: none; border: 0; cursor: pointer; transition: color var(--transition); }
+.svc-dialog__close:hover { color: var(--color-accent); }
+@media (max-width: 900px) { .svc-dialog__cols { grid-template-columns: 1fr; } .svc-dialog { padding: var(--space-5) var(--space-4); } }
+
+/* demo values: checkbox options are sentence-case 13px in white; the service
+   hero's copy runs wider than the v6 hero's */
+.vdp-form__checks .vdp-check { font-size: 13px; letter-spacing: normal; text-transform: none; color: var(--color-text); }
+.v6:has(.nav--asbuilt) .service-hero .hero__content { max-width: 1120px; }
+.v6:has(.nav--asbuilt) .service-hero .hero__content .lead { max-width: none; }
+
+/* Every dropdown opens rightward from its item. Only on the tablet band, where
+   the nav sits on its own centred line, the last panel (About Us — the demo's
+   "Lotus West Directions" is the longest label) would run 70–170px past the
+   screen edge, so there alone it opens from the item's right edge. */
+@media (min-width: 901px) and (max-width: 1279px) {
+  .nav--asbuilt .nav__list > li:nth-last-child(2) > .nav__dropdown { left: auto; right: 0; }
+}
+
+/* =====================================================================
+   locations7 — two addresses, one gallery. The two locations stand side by
+   side on one base: photograph with the name set on it, today's status from
+   the published hours, address and phone, the week, the actions, the map.
+   ===================================================================== */
+.loc-hero { min-height: 72vh; min-height: 72dvh; }
+.loc-hero .hero__media { object-position: 70% 50%; }
+.loc-hero.page-hero { padding-bottom: var(--space-8); }
+.loc-section { padding-top: var(--space-5); }
+.loc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); align-items: stretch; }
+.loc-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  scroll-margin-top: calc(var(--header-h) + var(--brand-bar-h) + var(--space-4));
+}
+.loc-card__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+.loc-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition-slow); }
+.loc-card:hover .loc-card__media img { transform: scale(1.02); }
+.loc-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 15, 20, 0.88) 0%, rgba(11, 15, 20, 0.35) 42%, rgba(11, 15, 20, 0) 70%);
+  pointer-events: none;
+}
+.loc-card__label { position: absolute; left: var(--space-6); right: var(--space-6); bottom: var(--space-5); z-index: 1; display: flex; flex-direction: column; gap: 4px; }
+.loc-card__label .heading-light { font-size: var(--text-4xl); line-height: 1.05; }
+.loc-card__body { display: flex; flex-direction: column; gap: var(--space-5); padding: var(--space-6); flex: 1 1 auto; }
+.loc-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+.loc-card__status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--color-text-muted); }
+.loc-card__status.is-open { color: var(--color-text); }
+.loc-card__status.is-open::before { background: #3fb950; box-shadow: 0 0 0 4px rgba(63, 185, 80, 0.18); }
+.loc-card__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); padding-block: var(--space-5); border-block: 1px solid var(--color-border); }
+.loc-card__facts dt { margin-bottom: var(--space-2); }
+.loc-card__facts dd { margin: 0; }
+.loc-card__hours .footer__label { display: block; margin-bottom: var(--space-3); }
+.loc-card__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: auto; }
+.loc-card__map { height: auto; aspect-ratio: 16 / 9; min-height: 0; border: 0; border-top: 1px solid var(--color-border); border-radius: 0; }
+@media (max-width: 1100px) { .loc-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .loc-card__body { padding: var(--space-5) var(--space-4); }
+  .loc-card__media { aspect-ratio: 4 / 3; }
+  .loc-card__label { left: var(--space-4); right: var(--space-4); }
+  .loc-card__label .heading-light { font-size: var(--text-3xl); }
+  .loc-card__facts { grid-template-columns: 1fr; gap: var(--space-4); }
+  .loc-card__actions .btn { width: 100%; }
+}
+
+/* garage7 — My Collection (the demo's /my-garage/) with the Source a Vehicle
+   link the client asked for beside the sign-in panel */
+.garage-intro { max-width: 72ch; }
+.garage-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); margin: var(--space-6) 0 var(--space-8); }
+.garage-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  color: inherit;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition), transform var(--transition);
+}
+.garage-panel__title { margin-top: var(--space-2); font-family: var(--font-display); font-weight: var(--weight-light); font-size: var(--text-2xl); line-height: var(--leading-snug); letter-spacing: 0.5px; text-transform: uppercase; color: var(--color-text); }
+.garage-panel__text { margin-top: var(--space-3); color: var(--color-text-soft); line-height: var(--leading-normal); max-width: 52ch; }
+.garage-panel__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.garage-panel--source { background: linear-gradient(rgba(11, 15, 20, 0.72), rgba(11, 15, 20, 0.86)), url('../assets/images/source/gallery-night.webp') center / cover; }
+.garage-panel--source:hover,
+.garage-panel--source:focus-visible { border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border)); transform: translateY(-3px); }
+.garage-panel--source:hover .garage-panel__cta { border-color: var(--color-accent); color: var(--color-accent-hover); }
+.garage-panel__cta { align-self: flex-start; }
+.garage-recent { display: block; margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
+.garage-grid { margin-bottom: var(--space-4); }
+@media (max-width: 900px) { .garage-panels { grid-template-columns: 1fr; } }
+
+/* blog7 — as read off the demo's /blog/: story titles in sentence case (Oswald
+   24/500, white), the date in Oswald 14 gold, an 18px excerpt; "Most Popular"
+   on a white panel across a 1200px column with dark Oswald 18 titles. */
+@media (min-width: 761px) { .post-row { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); } }
+.post-row__title { font-weight: var(--weight-medium); font-size: 24px; line-height: 1.2; letter-spacing: normal; text-transform: none; }
+.post-row__title a { color: #fff; }
+.post-row__date { font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-gold); }
+.post-row__text { font-size: 18px; line-height: 1.5; }
+.blog-popular { background: none; padding-top: var(--space-5); }
+.blog-popular::before,
+.blog-popular::after { display: none; }
+.blog-popular .container--wide { max-width: 1200px; padding: var(--space-6) var(--space-5); background: #fff; }
+@media (max-width: 560px) { .blog-popular .container--wide { padding: var(--space-5) var(--space-4); } }
+.blog-popular .section-head { text-align: left; align-items: flex-start; margin-inline: 0; margin-bottom: var(--space-5); }
+.blog-popular .section-head .heading-light { font-family: var(--font-sans); font-weight: var(--weight-normal); font-size: 40px; line-height: 1.1; letter-spacing: normal; text-transform: none; color: #0c0c0c; }
+.blog-popular .ev-card { background: transparent; border-color: rgba(0, 0, 0, 0.08); }
+.blog-popular .ev-card__title { font-weight: var(--weight-medium); font-size: 18px; letter-spacing: normal; text-transform: none; color: #000; }
+.blog-popular .ev-card__text { color: #4a525b; }

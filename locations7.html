@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locations &amp; Hours &mdash; Vegas Auto Gallery</title>
+  <meta name="description" content="Vegas Auto Gallery locations and hours in Las Vegas — the showroom on Rafael Rivera Way and the service and aftermarket center on Westwind Road.">
+
+  <!-- Fonts: Oswald (display/headings) + Roboto Condensed (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (order: reset → tokens → base → layout → components) -->
+  <!-- Private preview gate (All Auto Network) -->
+  <script src="js/gate.js"></script>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css?v=20261112j">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+  <script src="js/main.js?v=20261112j" defer></script>
+</head>
+<body class="v2 v6">
+
+  <!-- ============ HEADER (shared — the demo's navigation) ============ -->
+  <header class="site-header" data-header>
+    <div class="brand-bar">
+      <div class="container container--wide brand-bar__inner">
+        <span class="brand-bar__label">Authorized Dealer</span>
+        <nav class="brand-bar__logos" aria-label="Brands we curate">
+          <a href="srp7.html?make=lotus" aria-label="Lotus inventory"><img src="assets/images/footer/lotus_color.svg" alt="Lotus"></a>
+          <a href="srp7.html?make=czinger" aria-label="Czinger inventory"><img src="assets/images/czinger_logo.svg" alt="Czinger"></a>
+          <a href="srp7.html?make=hennessey" aria-label="Hennessey inventory"><img src="assets/images/footer/hennesy_color.svg" alt="Hennessey"></a>
+          <a href="srp7.html?make=vintage" aria-label="Vintage inventory"><img src="assets/images/vintage_logo.svg" alt="Vintage"></a>
+          <img class="brand-bar__partner" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights" title="Official Luxury Car Partner of the Vegas Golden Knights">
+        </nav>
+      </div>
+    </div>
+    <div class="container container--wide site-header__inner">
+      <a href="index7.html" class="logo" aria-label="Vegas Auto Gallery — home">
+        <img class="logo__img" src="assets/images/logo_upd.svg" alt="Vegas Auto Gallery">
+      </a>
+
+      <nav class="nav nav--asbuilt" id="primary-nav" data-nav aria-label="Primary">
+        <ul role="list" class="nav__list">
+          <li class="nav__item--mega">
+            <a href="srp7.html" class="nav__link nav__link--menu" aria-haspopup="true">Inventory</a>
+            <div class="mega-menu" role="menu" aria-label="Inventory">
+              <div class="mega-menu__inner">
+                <div class="mega-menu__cols">
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">New Vehicles</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp7.html?cond=new"><span>All New Inventory</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=new&amp;make=lotus"><span>New Lotus Inventory</span></a>
+                      <a class="mega-menu__link" href="enquiries7.html"><span>New Vehicle Enquiries</span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Pre-Owned Vehicles</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="srp7.html?cond=preowned"><span>All Pre-Owned Inventory</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=preowned&amp;specials=1"><span>Pre-Owned Specials</span></a>
+                      <a class="mega-menu__link" href="srp7.html?cond=sold"><span>Sold Vehicles</span></a>
+                    </div>
+                  </div>
+                  <div class="mega-menu__col">
+                    <p class="mega-menu__col-title">Personalized Shopping</p>
+                    <div class="mega-menu__list">
+                      <a class="mega-menu__link" href="garage7.html"><span>Saved Vehicles</span></a>
+                      <a class="mega-menu__link" href="source7.html"><span>Source a Vehicle</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mega-menu__brands">
+                  <p class="mega-menu__col-title">Browse by Brand</p>
+                  <div class="mega-menu__pills">
+                    <a class="mega-menu__pill" href="srp7.html?make=ferrari">Ferrari</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=jaguar">Jaguar</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=lamborghini">Lamborghini</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=mercedes-benz">Mercedes-Benz</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=porsche">Porsche</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=rolls-royce">Rolls-Royce</a>
+                    <a class="mega-menu__pill" href="srp7.html?make=all">All Makes</a>
+                  </div>
+                  <a class="btn btn--primary mega-menu__cta" href="srp7.html">View All Inventory <span aria-hidden="true">&rarr;</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="sell7.html" class="nav__link nav__link--menu" aria-haspopup="true">Sell Your Car</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="sell7.html" role="menuitem">Sell Your Car</a></li>
+              <li><a href="consign7.html" role="menuitem">Consignment</a></li>
+              <li><a href="trade7.html" role="menuitem">Value Your Trade</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="service7.html" class="nav__link nav__link--menu" aria-haspopup="true">Service</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="service7.html" role="menuitem">Service Department</a></li>
+              <li><a href="appointment7.html" role="menuitem">Schedule Service</a></li>
+              <li><a href="https://parts.vegasautogallery.com/" role="menuitem" target="_blank" rel="noopener">Parts</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="aftermarket7.html" class="nav__link nav__link--menu" aria-haspopup="true">Aftermarket</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="aftermarket7.html" role="menuitem">Customization &amp; Performance</a></li>
+              <li><a href="consultation7.html" role="menuitem">Request a Consultation</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="finance7.html" class="nav__link nav__link--menu" aria-haspopup="true">Finance Center</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="finance7.html" role="menuitem">Financing Options</a></li>
+              <li><a href="https://www.routeone.net/digital-retail-ui/?dealerId=JH6TO" role="menuitem" target="_blank" rel="noopener">Apply for Financing</a></li>
+              <li><a href="finance7.html#calculator" role="menuitem">Payment Calculator</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="about7.html" class="nav__link nav__link--menu is-active" aria-current="page" aria-haspopup="true">About Us</a>
+            <ul class="nav__dropdown" role="menu">
+              <li><a href="about7.html" role="menuitem">Our Story</a></li>
+              <li><a href="vip7.html" role="menuitem">VIP Experience</a></li>
+              <li><a href="about7.html#team" role="menuitem">Meet the Team</a></li>
+              <li><a href="blog7.html" role="menuitem">The Journal</a></li>
+              <li><a href="locations7.html" role="menuitem">Locations &amp; Hours</a></li>
+              <li><a href="heritage7.html" role="menuitem">Heritage</a></li>
+              <li><a href="lotuswest7.html" role="menuitem">Vegas Auto Gallery Lotus West Directions</a></li>
+            </ul>
+          </li>
+          <li><a href="contact7.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="nav-icon" href="tel:7252190524" aria-label="Call 725-219-0524">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a class="nav-icon" href="#footer" aria-label="Hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </a>
+        <a class="nav-icon" href="directions7.html" aria-label="Directions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+          <span class="nav-toggle__bars" aria-hidden="true"><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO — the gallery at night ============ -->
+    <section class="hero page-hero loc-hero" id="locations-top" aria-labelledby="locations-heading">
+      <img class="hero__media" src="assets/images/source/gallery-night.webp" alt="" aria-hidden="true">
+      <div class="container container--wide">
+        <div class="hero__content">
+          <span class="eyebrow eyebrow--oswald">Visit Vegas Auto Gallery</span>
+          <h1 class="heading-light" id="locations-heading">Locations &amp; Hours</h1>
+          <p class="lead">The showroom on Rafael Rivera Way. Service and aftermarket on Westwind Road.</p>
+          <div class="hero__actions">
+            <a href="#showroom" class="btn btn--primary">The Gallery</a>
+            <a href="#service-center" class="btn btn--secondary">Service Center</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE TWO LOCATIONS — side by side, one base ============ -->
+    <section class="section loc-section" aria-label="Our locations">
+      <div class="container container--wide">
+        <div class="loc-grid">
+          <article class="loc-card" id="showroom" aria-labelledby="showroom-heading">
+            <div class="loc-card__media">
+              <img src="assets/images/sell/sell-hero-showroom.webp" alt="The Vegas Auto Gallery showroom floor" loading="lazy">
+              <div class="loc-card__label">
+                <span class="eyebrow eyebrow--oswald">Showroom &amp; Sales</span>
+                <h2 class="heading-light" id="showroom-heading">The Gallery</h2>
+              </div>
+            </div>
+            <div class="loc-card__body">
+              <p class="loc-card__status" data-hours='[[[1,2,3,4,5],9,19],[[6],9,18]]' hidden></p>
+              <dl class="loc-card__facts">
+                <div>
+                  <dt class="footer__label">Address</dt>
+                  <dd><address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">5530 Rafael Rivera Way<br>Las Vegas, NV 89118</a></address></dd>
+                </div>
+                <div>
+                  <dt class="footer__label">Phone</dt>
+                  <dd><a class="footer__phone" href="tel:7027828882">702-782-8882</a></dd>
+                </div>
+              </dl>
+              <div class="loc-card__hours">
+                <span class="footer__label">Hours</span>
+                <dl class="footer__hours">
+                <div><dt>Mon – Fri</dt><dd>9:00 AM – 7:00 PM</dd></div>
+                <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+                <div><dt>Sunday</dt><dd>Closed</dd></div>
+                </dl>
+              </div>
+              <div class="loc-card__actions">
+                <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">Get Directions</a>
+                <a class="btn btn--secondary" href="tel:7027828882">Call 702-782-8882</a>
+              </div>
+            </div>
+            <div class="loc-card__map service-map" data-map data-lat="36.068146" data-lng="-115.21667" data-pin="Vegas Auto Gallery — Showroom<br>5530 Rafael Rivera Way" aria-label="Map to the The Gallery"></div>
+          </article>
+          <article class="loc-card" id="service-center" aria-labelledby="service-center-heading">
+            <div class="loc-card__media">
+              <img src="assets/images/demo/svc-hero-poster.jpg" alt="The Vegas Auto Gallery service center on Westwind Road" loading="lazy">
+              <div class="loc-card__label">
+                <span class="eyebrow eyebrow--oswald">Service &amp; Aftermarket</span>
+                <h2 class="heading-light" id="service-center-heading">Service Center</h2>
+              </div>
+            </div>
+            <div class="loc-card__body">
+              <p class="loc-card__status" data-hours='[[[1,2,3,4,5],8,18],[[6],9,18]]' hidden></p>
+              <dl class="loc-card__facts">
+                <div>
+                  <dt class="footer__label">Address</dt>
+                  <dd><address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road, Suites 125&ndash;135<br>Las Vegas, NV 89118</a></address></dd>
+                </div>
+                <div>
+                  <dt class="footer__label">Phone</dt>
+                  <dd><a class="footer__phone" href="tel:7029642886">702-964-2886</a></dd>
+                </div>
+              </dl>
+              <div class="loc-card__hours">
+                <span class="footer__label">Hours</span>
+                <dl class="footer__hours">
+                <div><dt>Mon – Fri</dt><dd>8:00 AM – 6:00 PM</dd></div>
+                <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+                <div><dt>Sunday</dt><dd>Closed</dd></div>
+                </dl>
+              </div>
+              <div class="loc-card__actions">
+                <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">Get Directions</a>
+                <a class="btn btn--secondary" href="tel:7029642886">Call 702-964-2886</a>
+              </div>
+            </div>
+            <div class="loc-card__map service-map" data-map data-lat="36.0719" data-lng="-115.1969" data-pin="Vegas Auto Gallery — Service &amp; Aftermarket<br>6551 Westwind Rd" aria-label="Map to the Service Center"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROMO LINKS — the four tiles the demo shows on its inner pages ============ -->
+    <section class="promos-section">
+      <div class="promos" data-reveal>
+        <a class="promo promo--image promo--newinv" href="srp7.html?cond=preowned">
+          <span class="promo__head"><span class="promo__eyebrow">Hand-Selected</span><span class="promo__title">Pre-Owned</span></span>
+          <span class="promo__desc">Hand-selected, meticulously inspected pre-owned exotics ready to drive home.</span>
+          <span class="promo__cta">View Pre-Owned</span>
+        </a>
+        <a class="promo promo--image promo--preowned" href="sell7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Top Dollar, Effortless</span><span class="promo__title">Sell Your Car</span></span>
+          <span class="promo__desc">Top dollar for your exotic, luxury, or collector car — get an offer in minutes.</span>
+          <span class="promo__cta">Get An Offer</span>
+        </a>
+        <a class="promo promo--image promo--service" href="appointment7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Factory-Trained</span><span class="promo__title">Service</span></span>
+          <span class="promo__desc">Factory-trained technicians for exotic and luxury maintenance, repair, and inspection.</span>
+          <span class="promo__cta">Schedule Service</span>
+        </a>
+        <a class="promo promo--image promo--lease" href="about7.html">
+          <span class="promo__head"><span class="promo__eyebrow">Our Story</span><span class="promo__title">About</span></span>
+          <span class="promo__desc">The people and passion behind Las Vegas' premier destination for fine automobiles.</span>
+          <span class="promo__cta">Learn More</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (shared) ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="container container--wide">
+
+      <!-- Golden Knights partnership — its own centred band -->
+      <div class="footer__partner" data-reveal>
+        <img class="footer__knight" src="assets/images/footer/4.png" alt="" aria-hidden="true" loading="lazy">
+        <div class="footer__partner-center">
+          <img class="footer__vgk" src="assets/images/footer/vgk-logo.svg" alt="Vegas Golden Knights">
+          <span class="footer__partner-text">Official Luxury Car Partner of the<br><span>Vegas Golden Knights</span></span>
+        </div>
+        <img class="footer__knight" src="assets/images/footer/3.png" alt="" aria-hidden="true" loading="lazy">
+      </div>
+
+      <!-- Contact / hours -->
+      <div class="footer__grid footer__grid--5">
+        <div class="footer__col">
+          <h4 class="footer__label">Sales</h4>
+          <a class="footer__phone" href="tel:7027828882">702-782-8882</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=5530+Rafael+Rivera+Way+Las+Vegas+NV+89118" target="_blank" rel="noopener">5530 Rafael Rivera Way<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Sales Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>9:00 AM – 7:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service</h4>
+          <a class="footer__phone" href="tel:7029642886">702-964-2886</a>
+          <address class="footer__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=6551+Westwind+Road+Las+Vegas+NV+89118" target="_blank" rel="noopener">6551 Westwind Road, Suites 125-135<br>Las Vegas, NV 89118</a></address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Service Hours</h4>
+          <dl class="footer__hours">
+            <div><dt>Mon – Fri</dt><dd>8:00 AM – 6:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__label">Follow</h4>
+          <ul class="footer__social">
+            <li><a href="https://www.instagram.com/vegasautogallery/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/images/footer/insta_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.facebook.com/vegasautogallery/" target="_blank" rel="noopener" aria-label="Facebook"><img src="assets/images/footer/facebook_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.youtube.com/@vegasautogallery" target="_blank" rel="noopener" aria-label="YouTube"><img src="assets/images/footer/youtube_color.svg" alt="" aria-hidden="true"></a></li>
+            <li><a href="https://www.tiktok.com/@vegasautogallery" target="_blank" rel="noopener" aria-label="TikTok"><img src="assets/images/footer/tiktok_color.svg" alt="" aria-hidden="true"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Brand partners -->
+      <div class="footer__partners">
+        <span class="footer__partners-label">Authorized Dealer</span>
+        <div class="footer__logos">
+          <img src="assets/images/footer/lotus_color.svg" alt="Lotus">
+          <img src="assets/images/czinger_logo.svg" alt="Czinger">
+          <img src="assets/images/footer/hennesy_color.svg" alt="Hennessey">
+          <img src="assets/images/vintage_logo.svg" alt="Vintage">
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Lotus Las Vegas. All Rights Reserved. <a href="#">Privacy Policy</a> <span class="footer__sep">|</span> <a href="#">Sitemap</a></span>
+        <span>Powered by All Auto Network</span>
+      </div>
+    </div>
+  </footer>
+  <!-- Location maps (Leaflet + Esri dark gray, as on the demo) and today's status from the published hours -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (window.L) document.querySelectorAll('[data-map]').forEach(function (el) {
+        var c = [parseFloat(el.dataset.lat), parseFloat(el.dataset.lng)];
+        var map = L.map(el, { scrollWheelZoom: false, zoomControl: true }).setView(c, 14);
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://www.esri.com/">Esri</a>',
+        maxZoom: 16
+      }).addTo(map);
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16 }).addTo(map);
+        L.marker(c).addTo(map).bindPopup(el.dataset.pin);
+        setTimeout(function () { map.invalidateSize(); map.setView(c, 14); }, 250);
+        window.addEventListener('load', function () { map.invalidateSize(); });
+        if (window.ResizeObserver) new ResizeObserver(function () { map.invalidateSize(); }).observe(el);
+      });
+
+      // "Open now · until 7:00 PM" / "Closed now · opens Monday 9:00 AM", in Las Vegas time
+      var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var fmt = function (h) { return (h % 12 || 12) + ':00 ' + (h < 12 ? 'AM' : 'PM'); };
+      var now;
+      try {
+        var p = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+        var get = function (t) { return (p.find(function (x) { return x.type === t; }) || {}).value; };
+        now = { d: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday')), h: (parseInt(get('hour'), 10) % 24) + parseInt(get('minute'), 10) / 60 };
+      } catch (e) { return; }
+      document.querySelectorAll('[data-hours]').forEach(function (el) {
+        var sched = JSON.parse(el.dataset.hours);
+        var day = function (d) { for (var i = 0; i < sched.length; i++) if (sched[i][0].indexOf(d) > -1) return sched[i]; return null; };
+        var t = day(now.d), open = t && now.h >= t[1] && now.h < t[2], text;
+        if (open) text = 'Open now · until ' + fmt(t[2]);
+        else {
+          for (var k = 0; k < 8; k++) {
+            var d = (now.d + k) % 7, s = day(d);
+            if (s && (k > 0 || now.h < s[1])) { text = 'Closed now · opens ' + (k === 0 ? 'today' : k === 1 ? 'tomorrow' : DAYS[d]) + ' ' + fmt(s[1]); break; }
+          }
+        }
+        el.textContent = text;
+        el.classList.toggle('is-open', !!open);
+        el.hidden = false;
+      });
+    });
+  </script>
+
+</body>
+</html>
