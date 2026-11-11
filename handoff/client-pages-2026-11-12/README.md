@@ -12,6 +12,18 @@ Five pieces to build into the site. They are designed on the site's own system (
 | 4 | Sell Your Car — Consignment block | https://sigovs.github.io/VEGAS_UPD/sell7.html#consignment |
 | 5 | Consignment form — photos uploaded state | https://sigovs.github.io/VEGAS_UPD/consign7.html |
 
+## Menu changes (against the current demo menu)
+
+Everything else in the menu stays exactly as on the demo.
+
+| Menu | Change | Link to |
+|------|--------|---------|
+| Inventory → Personalized Shopping | **New item: Source a Vehicle**, under Saved Vehicles | Source a Vehicle page (1) |
+| Inventory → Personalized Shopping → Saved Vehicles | Unchanged item; the page now carries a *Vehicle Sourcing* panel linking to Source a Vehicle (client request) | Saved Vehicles / My Collection |
+| About Us | **New item: VIP Experience**, directly after Our Story | VIP Experience page (2) |
+| About Us → Locations & Hours | Unchanged item, now points to a real page (it was "Coming soon") | Locations & Hours page (3) |
+| About Us → Vegas Auto Gallery Lotus West Directions | Unchanged, kept for now — the client may remove it, since Locations & Hours now covers both addresses | — |
+
 **Files:** [`vag-client-pages-2026-11-12.zip`](vag-client-pages-2026-11-12.zip) is a self-contained copy of the five pages with only the CSS, JS and images they use. Unzip it and open any page through a local server (`python -m http.server` in the folder). No password in the zip. The header and footer link to other pages that are not in the zip; those links 404 there, which is expected.
 
 The same files live at the repo root: [`source7.html`](../../source7.html), [`vip7.html`](../../vip7.html), [`locations7.html`](../../locations7.html), [`sell7.html`](../../sell7.html), [`consign7.html`](../../consign7.html), [`css/components.css`](../../css/components.css), [`css/client-pages.css`](../../css/client-pages.css), [`js/main.js`](../../js/main.js).
